@@ -8,7 +8,6 @@ public class Passenger {
 	String birthdate;
 	String gmail;
 	int phone;
-	int hola;
 	public Passenger() {
 		// TODO Auto-generated constructor stub
 	}
