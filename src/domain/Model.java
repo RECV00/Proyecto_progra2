@@ -4,22 +4,24 @@ public class Model {
 	
 	String name;
 	String marca;
-	int cantAsientosEjecutivo;
-	int cantAsientosTurista;
-	int cantAsientosEconomico;
+	int cantSeatExecutive;
+	int cantSeatTourist;
+	int cantSeatEconomic;
 	int cant;
+	
 	public Model() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Model(String name, String marca, int cantAsientosEjecutivo, int cantAsientosTurista,
-			int cantAsientosEconomico) {
+	public Model(String name, String marca, int cantSeatExecutive, int cantSeatTourist, int cantSeatEconomic,
+			int cant) {
 		super();
 		this.name = name;
 		this.marca = marca;
-		this.cantAsientosEjecutivo = cantAsientosEjecutivo;
-		this.cantAsientosTurista = cantAsientosTurista;
-		this.cantAsientosEconomico = cantAsientosEconomico;
+		this.cantSeatExecutive = cantSeatExecutive;
+		this.cantSeatTourist = cantSeatTourist;
+		this.cantSeatEconomic = cantSeatEconomic;
+		this.cant = cant;
 	}
 
 	public String getName() {
@@ -38,34 +40,44 @@ public class Model {
 		this.marca = marca;
 	}
 
-	public int getCantAsientosEjecutivo() {
-		return cantAsientosEjecutivo;
+	public int getCantSeatExecutive() {
+		return cantSeatExecutive;
 	}
 
-	public void setCantAsientosEjecutivo(int cantAsientosEjecutivo) {
-		this.cantAsientosEjecutivo = cantAsientosEjecutivo;
+	public void setCantSeatExecutive(int cantSeatExecutive) {
+		this.cantSeatExecutive = cantSeatExecutive;
 	}
 
-	public int getCantAsientosTurista() {
-		return cantAsientosTurista;
+	public int getCantSeatTourist() {
+		return cantSeatTourist;
 	}
 
-	public void setCantAsientosTurista(int cantAsientosTurista) {
-		this.cantAsientosTurista = cantAsientosTurista;
+	public void setCantSeatTourist(int cantSeatTourist) {
+		this.cantSeatTourist = cantSeatTourist;
 	}
 
-	public int getCantAsientosEconomico() {
-		return cantAsientosEconomico;
+	public int getCantSeatEconomic() {
+		return cantSeatEconomic;
 	}
 
-	public void setCantAsientosEconomico(int cantAsientosEconomico) {
-		this.cantAsientosEconomico = cantAsientosEconomico;
+	public void setCantSeatEconomic(int cantSeatEconomic) {
+		this.cantSeatEconomic = cantSeatEconomic;
+	}
+
+	public int getCant() {
+		return cant;
+	}
+
+	public void setCant(int cant) {
+		this.cant = cant;
 	}
 
 	@Override
 	public String toString() {
-		return  name + "-" + marca + "-" + cantAsientosEjecutivo
-				+ "-" + cantAsientosTurista + "-" + cantAsientosEconomico;
+		return  name + "-" + marca + "-" + cantSeatExecutive
+				+ "-" + cantSeatTourist + "-" + cantSeatEconomic + "-" + cant;
 	}
+
+	
 
 }
