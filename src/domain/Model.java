@@ -12,15 +12,14 @@ public class Model {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Model(String name, String marca, int cantSeatExecutive, int cantSeatTourist, int cantSeatEconomic,
-			int cant) {
+	public Model(String name, String marca, int cantSeatExecutive, int cantSeatTourist, int cantSeatEconomic) {
 		super();
 		this.name = name;
 		this.marca = marca;
 		this.cantSeatExecutive = cantSeatExecutive;
 		this.cantSeatTourist = cantSeatTourist;
 		this.cantSeatEconomic = cantSeatEconomic;
-		this.cant = cant;
+		
 	}
 
 	public String getName() {
@@ -63,18 +62,11 @@ public class Model {
 		this.cantSeatEconomic = cantSeatEconomic;
 	}
 
-	public int getCant() {
-		return cant;
-	}
-
-	public void setCant(int cant) {
-		this.cant = cant;
-	}
 
 	@Override
 	public String toString() {
 		return  name + "-" + marca + "-" + cantSeatExecutive
-				+ "-" + cantSeatTourist + "-" + cantSeatEconomic + "-" + cant;
+				+ "-" + cantSeatTourist + "-" + cantSeatEconomic;
 	}
 
 	
