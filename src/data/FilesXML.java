@@ -146,7 +146,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 	    }
 	}
 
-public String validateUser(String username, String password) throws Exception {
+public String getValidateUser(String username, String password) throws Exception {
 	    // Load the XML file
 	    File file = new File("users.xml");
 	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

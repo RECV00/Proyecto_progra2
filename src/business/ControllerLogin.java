@@ -17,13 +17,18 @@ public class ControllerLogin implements ActionListener{
 	}
 
 	private void initalizer() {
-		// TODO Auto-generated method stub
-		
+		guiL.getBLogin().addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==guiL.getBLogin()) {
+			if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador");
+			//new ControllerAdmin;
+			guiL.dispose();
+		}else {
+			
+		}
 		
 	}
 
