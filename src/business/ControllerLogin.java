@@ -23,7 +23,12 @@ public class ControllerLogin implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiL.getBLogin()) {
-			if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador");
+			try {
+				if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			//new ControllerAdmin;
 			guiL.dispose();
 		}else {
