@@ -6,6 +6,7 @@ public class User {
 	String password;
 	String typeUser;
 	String state;
+//contructores
 	public User() {	
 		
 	}
@@ -17,6 +18,7 @@ public class User {
 		this.typeUser = typeUser;
 		this.state = state;
 	}
+//sets y gets
 	public String getTypeUser() {
 		return typeUser;
 	}
@@ -32,9 +34,6 @@ public class User {
 	public void setState(String state) {
 		this.state = state;
 	}
-
-	
-
 	public String getName() {
 		return name;
 	}
@@ -50,10 +49,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	public String[] getDataName() {//son mis etiquetas de apertura y cierre
+		String[] dataName = {"name","password","typeUser","state"};
+		return dataName;
+	}
+	public String[] getData() {
+		String[] data = {name,password,typeUser,state};
+		return data;
+	}
+//toString
 	@Override
 	public String toString() {
-		return name+"-"+password+"-"+typeUser+"-"+state;
+		return name+"\n"+password+"\n"+typeUser+"\n"+state;
 	}
 	
 

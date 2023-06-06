@@ -79,7 +79,16 @@ public class Flight {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-
+	public String[] getDataName() {//son mis etiquetas de apertura y cierre
+		String[] dataName = {"numFlight","departureCity","departureDateTime",
+				"arrivalCity","arrivalDateTime","flight","amount"};
+		return dataName;
+	}
+	public String[] getData() {
+		String[] data = {numFlight,departureCity,departureDateTime,
+				arrivalCity,arrivalDateTime,flight,String.valueOf(amount)};
+		return data;
+	}
 	@Override
 	public String toString() {
 		return numFlight + "-" + departureCity + "-"+ departureDateTime + "-" + arrivalCity + "-"

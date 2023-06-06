@@ -46,10 +46,17 @@ public class Ticket {
 		
 		return true;
 	}
-
+	public String[] getDataName() {//son mis etiquetas de apertura y cierre
+		String[] dataName = {"numTicket","passport","numFlight"};
+		return dataName;
+	}
+	public String[] getData() {
+		String[] data = {numTicket,passport,numFlight};
+		return data;
+	}
 	@Override
 	public String toString() {
-		return numTicket + "-" + passport + "-" + numFlight;
+		return numTicket + "\n" + passport + "\n" + numFlight;
 	}
 	 
 	

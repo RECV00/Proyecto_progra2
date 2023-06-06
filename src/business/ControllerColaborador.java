@@ -36,34 +36,34 @@ public class ControllerColaborador implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == guiA.getMiUsers()) {
-			new ControllerUser;
+			new ControllerUser();
 		}
 		if(e.getSource() == guiA.getMiBrand()) {
-			new ControllerBrand;
+			new ControllerBrand();
 		}
 		if(e.getSource() == guiA.getMiModel()) {
-			new ControllerModel;
+			new ControllerModel();
 		}
 		if(e.getSource() == guiA.getMiAirline()) {
-			new ControllerAirline;
+			new ControllerAirline();
 		}
 		if(e.getSource() == guiA.getMiPlane()) {
-			new ControllerPlane;
+			new ControllerPlane();
 		}
 		if(e.getSource() == guiA.getMiFlight()) {
-			new ControllerFlight;
+			new ControllerFlight();
 		}
 		if(e.getSource() == guiA.getMiPassenger()) {
-			new ControllerPassenger;
+			new ControllerPassenger();
 		}
 		if(e.getSource() == guiA.getMiTickert()) {
-			new ControllerTicket;
+			new ControllerTicket();
 		}
 		if(e.getSource() == guiA.getMiImpresionT()) {
-			new ControllerImpresionT;
+			new ControllerImpresionT();
 		}
 		if(e.getSource() == guiA.getMiVuelos()) {
-			new ControllerVuelos;
+			new ControllerVuelos();
 		}
 		
 		

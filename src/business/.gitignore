@@ -2,3 +2,13 @@
 /ControllerLogin.class
 /ControllerAdmin.class
 /ControllerColaborador.class
+/ControllerUser.class
+/ControllerBrand.class
+/ControllerModel.class
+/ControllerAirline.class
+/ControllerFlight.class
+/ControllerPlane.class
+/ControllerPassenger.class
+/ControllerTicket.class
+/ControllerImpresionT.class
+/ControllerVuelos.class
