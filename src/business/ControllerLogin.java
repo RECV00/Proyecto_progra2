@@ -16,7 +16,7 @@ public class ControllerLogin implements ActionListener{
 		guiL=new GUILogin();
 		fXML=new FilesXML();
 		u = new User();
-		fXML.createXML("Users", "Users.xml");
+		//fXML.createXML("Users", "Users.xml");
 		initalizer();
 	}
 
@@ -26,8 +26,8 @@ public class ControllerLogin implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			u= new User("admin","admin","administrador","activo");
-		fXML.writeXML("Users.xml","User",u.getDataName(),u.getData());
+			//u= new User("admin","admin","administrador","activo");
+		    //fXML.writeXML("Users.xml","User",u.getDataName(),u.getData());
 		
 		if(e.getSource()==guiL.getBLogin()) {
 			

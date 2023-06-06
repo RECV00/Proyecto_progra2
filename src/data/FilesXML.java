@@ -142,7 +142,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 	    }
 	}
 
-public String getValidateUser(String fileName,String elementType,String username, String password) throws Exception {
+public String getValidateUser(String fileName,String elementType,String userName, String password) throws Exception {
 	    // Load the XML file
 	    File file = new File(fileName);
 	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -151,7 +151,7 @@ public String getValidateUser(String fileName,String elementType,String username
 	    doc.getDocumentElement().normalize();
 
 	    // Get the list of user nodes
-	    NodeList userList = doc.getElementsByTagName("user");
+	    NodeList userList = doc.getElementsByTagName(userName);
 
 	    // Loop through each user
 	    for (int i = 0; i < userList.getLength(); i++) {
@@ -165,7 +165,7 @@ public String getValidateUser(String fileName,String elementType,String username
 	            String userState = user.getElementsByTagName("state").item(0).getTextContent();
 
 	            // Check if the username and password match
-	            if (username.equals(userUsername) && password.equals(userPassword)) {
+	            if (userName.equals(userUsername) && password.equals(userPassword)) {
 	                // Check if the user is active
 	                if (userState.equals("activo")) {
 	                    // Return the user's type
