@@ -140,43 +140,43 @@ public class GUIAdmin extends JFrame {
 	}
 	public JMenuItem getMiPlane() {
 		if (miPlane == null) {
-			miPlane = new JMenuItem("Gestión de ");
+			miPlane = new JMenuItem("Gestión de Aviones");
 		}
 		return miPlane;
 	}
 	public JMenuItem getMiFlight() {
 		if (miFlight == null) {
-			miFlight = new JMenuItem("New menu item");
+			miFlight = new JMenuItem("Gestión de Vuelos");
 		}
 		return miFlight;
 	}
 	public JMenuItem getMiPassenger() {
 		if (miPassenger == null) {
-			miPassenger = new JMenuItem("New menu item");
+			miPassenger = new JMenuItem("Gestión de Pasajero");
 		}
 		return miPassenger;
 	}
 	public JMenuItem getMiTickert() {
 		if (miTickert == null) {
-			miTickert = new JMenuItem("New menu item");
+			miTickert = new JMenuItem("Gestión de Tiquetes");
 		}
 		return miTickert;
 	}
 	public JMenuItem getMiImpresionT() {
 		if (miImpresionT == null) {
-			miImpresionT = new JMenuItem("New menu item");
+			miImpresionT = new JMenuItem("Impresión de Tiquete");
 		}
 		return miImpresionT;
 	}
 	public JMenuItem getMiHistorialT() {
 		if (miHistorialT == null) {
-			miHistorialT = new JMenuItem("New menu item");
+			miHistorialT = new JMenuItem("Historial de Tiquetes");
 		}
 		return miHistorialT;
 	}
 	public JMenuItem getMiVuelos() {
 		if (miVuelos == null) {
-			miVuelos = new JMenuItem("New menu item");
+			miVuelos = new JMenuItem("Consultar Vuelos");
 		}
 		return miVuelos;
 	}
