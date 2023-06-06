@@ -1,7 +1,9 @@
 package domain;
 
+import java.util.ArrayList;
+
 public class User {
-	
+	//ArrayList<User> listaUser;
 	String name;
 	String password;
 	String typeUser;
@@ -33,8 +35,6 @@ public class User {
 		this.state = state;
 	}
 
-	
-
 	public String getName() {
 		return name;
 	}
@@ -56,5 +56,23 @@ public class User {
 		return name+"-"+password+"-"+typeUser+"-"+state;
 	}
 	
-
+	/*public void imprimirListaUser() {
+		for(User user : listaUser) {
+			System.out.println(user);
+		}
+	}
+	public ArrayList<User> getLista(){
+		return listaUser;
+	}
+	
+	public User obtUser(String data) {
+		User u=null;
+		for(User user : listaUser) {
+			if(user.getDocumento().equals(data)) {
+				u=user;
+			}
+			//system.out.println(persona);
+			}
+		return u;
+	}*/
 }
