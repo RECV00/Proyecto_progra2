@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -44,7 +45,7 @@ public class GUILogin extends JFrame {
 	public JLabel getLPassword() {
 		if (lPassword == null) {
 			lPassword = new JLabel("Contraseña");
-			lPassword.setBounds(32, 103, 65, 14);
+			lPassword.setBounds(32, 103, 73, 14);
 		}
 		return lPassword;
 	}
@@ -71,5 +72,9 @@ public class GUILogin extends JFrame {
 		}
 		return bLogin;
 	}
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
+		}
 }
 

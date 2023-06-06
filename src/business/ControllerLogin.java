@@ -35,7 +35,7 @@ public class ControllerLogin implements ActionListener{
 			//new ControllerAdmin;
 			guiL.dispose();
 		}else {
-			
+			guiL.showMessage("Acceso Inválido");
 		}
 		
 	}
