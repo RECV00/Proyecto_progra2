@@ -114,7 +114,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 		}
 }
 	
-	public static void deleteLine(String archive, String wordDelete) {
+	public void deleteLine(String archive, String wordDelete) {
 	    try {
 	        // Leer el archivo XML y cargarlo en un objeto Document
 	        File xmlFile = new File(archive);

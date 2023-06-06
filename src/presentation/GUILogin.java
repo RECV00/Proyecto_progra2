@@ -72,3 +72,4 @@ public class GUILogin extends JFrame {
 		return bLogin;
 	}
 }
+

@@ -26,7 +26,6 @@ public class ControllerLogin implements ActionListener{
 			try {
 				if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador");
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			//new ControllerAdmin;
