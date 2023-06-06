@@ -25,14 +25,14 @@ public class ControllerLogin implements ActionListener{
 		if(e.getSource()==guiL.getBLogin()) {
 			try {
 				if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador") {
-					
+					//new ControllerAdmin;
 				}else {
-					
+					//new ControllerCo;
 				}
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			//new ControllerAdmin;
+			
 			guiL.dispose();
 		}else {
 			guiL.showMessage("Acceso Inválido");
