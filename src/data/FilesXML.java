@@ -12,12 +12,16 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.xpath.XPathExpression;
 import org.xml.sax.SAXException;
 
 public class FilesXML {
@@ -179,4 +183,36 @@ public String validateUser(String username, String password) throws Exception {
 
 	    throw new Exception("User not found");
 	}
+
+public  String searchXML(String archive, String searchWord)throws Exception {
+
+	    // Crear un objeto DocumentBuilderFactory y un objeto DocumentBuilder para obtener el archivo XML
+	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	    DocumentBuilder builder = factory.newDocumentBuilder();
+
+	    // Crear un objeto Document a partir del archivo XML
+	    File archivo = new File(archive);
+	    Document doc = builder.parse(archivo);
+
+	    // Obtener una lista de todos los elementos del documento XML
+	    NodeList nodos = doc.getElementsByTagName("*");
+
+	    // Iterar a través de los nodos y buscar la línea que contiene la palabra buscada
+	    for (int i = 0; i < nodos.getLength(); i++) {
+	        Node nodo = nodos.item(i);
+	        if (nodo.getNodeType() == Node.TEXT_NODE) {
+	            String texto = nodo.getNodeValue().trim();
+	            if (texto.equals(searchWord)) {
+	                // Obtener el nodo padre que contiene la línea
+	                Node padre = nodo.getParentNode();
+	                // Obtener el contenido del nodo padre
+	                String linea = padre.getNodeValue().trim();
+	                return linea;
+	            }
+	        }
+	    }
+	    return null; // Si no se encontró la línea, retorna null
+	}
+
+
 }
