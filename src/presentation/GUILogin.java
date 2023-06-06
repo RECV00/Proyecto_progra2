@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class GUILogin extends JFrame {
 
 	private JPanel contentPane;
