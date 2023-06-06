@@ -3,7 +3,6 @@ package data;
 import java.io.File;
 import java.io.IOException;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -143,9 +142,9 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 	    }
 	}
 
-public String getValidateUser(String username, String password) throws Exception {
+public String getValidateUser(String fileName,String elementType,String username, String password) throws Exception {
 	    // Load the XML file
-	    File file = new File("users.xml");
+	    File file = new File(fileName);
 	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	    Document doc = dBuilder.parse(file);
@@ -161,16 +160,16 @@ public String getValidateUser(String username, String password) throws Exception
 	            Element user = (Element) userNode;
 
 	            // Get the user's credentials and status
-	            String userUsername = user.getElementsByTagName("username").item(0).getTextContent();
+	            String userUsername = user.getElementsByTagName("name").item(0).getTextContent();
 	            String userPassword = user.getElementsByTagName("password").item(0).getTextContent();
-	            String userStatus = user.getElementsByTagName("status").item(0).getTextContent();
+	            String userState = user.getElementsByTagName("state").item(0).getTextContent();
 
 	            // Check if the username and password match
 	            if (username.equals(userUsername) && password.equals(userPassword)) {
 	                // Check if the user is active
-	                if (userStatus.equals("active")) {
+	                if (userState.equals("activo")) {
 	                    // Return the user's type
-	                    return user.getElementsByTagName("type").item(0).getTextContent();
+	                    return user.getElementsByTagName("typeUser").item(0).getTextContent();
 	                } else {
 	                    throw new Exception("User is not active");
 	                }

@@ -61,7 +61,14 @@ public class Model {
 	public void setCantSeatEconomic(int cantSeatEconomic) {
 		this.cantSeatEconomic = cantSeatEconomic;
 	}
-
+	public String[] getDataName() {//son mis etiquetas de apertura y cierre
+		String[] dataName = {"name","marca","cantSeatExecutive","cantSeatTourist","cantSeatEconomic"};
+		return dataName;
+	}
+	public String[] getData() {
+		String[] data = {name,marca,String.valueOf(cantSeatExecutive),String.valueOf(cantSeatTourist),String.valueOf(cantSeatEconomic)};
+		return data;
+	}
 
 	@Override
 	public String toString() {

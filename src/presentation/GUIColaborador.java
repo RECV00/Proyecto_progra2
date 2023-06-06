@@ -37,6 +37,7 @@ public class GUIColaborador extends JFrame {
 	 * Create the frame.
 	 */
 	public GUIColaborador() {
+		setTitle("Privilegios del Colaborador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
 		setJMenuBar(getMenuBar_1());

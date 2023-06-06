@@ -58,7 +58,14 @@ public class Plane {
 	public void setYear(String year) {
 		this.year = year;
 	}
-
+	public String[] getDataName() {//son mis etiquetas de apertura y cierre
+		String[] dataName = {"plate","airline","model","year"};
+		return dataName;
+	}
+	public String[] getData() {
+		String[] data = {plate,airline,model,year};
+		return data;
+	}
 @Override
 	public String toString() {
 		return plate +"-"+ airline +"-"+ model+"-"+ year;

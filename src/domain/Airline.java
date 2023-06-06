@@ -4,14 +4,14 @@ public class Airline {
 	
 	private String name;
 	private String contry;
-	
-
+//contructores
+public Airline() {}
 	public Airline(String name, String contry) {
 		super();
 		this.name = name;
 		this.contry = contry;
 	}
-	
+//sets y gets
 	public String getName() {
 		return name;
 	}
@@ -24,7 +24,15 @@ public class Airline {
 	public void setContry(String contry) {
 		this.contry = contry;
 	}
-	
+	public String[] getDataName() {//son mis etiquetas de apertura y cierre
+		String[] dataName = {"name","contry"};
+		return dataName;
+	}
+	public String[] getData() {
+		String[] data = {name,contry};
+		return data;
+	}
+//toString
 	@Override
 	public String toString() {
 		return name +"-"+ contry;
