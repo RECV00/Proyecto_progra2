@@ -3,9 +3,11 @@ package data;
 import java.io.File;
 import java.io.IOException;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -209,5 +211,24 @@ public  String searchXML(String archive, String searchWord)throws Exception {
 	    return null; // Si no se encontró la línea, retorna null
 	}
 
+public void updateXML(String archive, String word, String update) throws Exception {
+    // Cargar el documento XML desde el archivo
+    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    Document doc = dBuilder.parse(archive);
 
+    // Buscar el primer elemento "nombre"
+    NodeList lista = doc.getElementsByTagName(word);
+    if (lista.getLength() > 0) {
+        Element elem = (Element) lista.item(0);
+        // Modificar el valor de la etiqueta
+        elem.setTextContent(update);
+    }
+
+    // Escribir el contenido del documento modificado en el archivo
+    Transformer transformer = TransformerFactory.newInstance().newTransformer();
+    StreamResult output = new StreamResult(new java.io.File(archive));
+    Source input = new DOMSource(doc);
+    transformer.transform(input, output);
+}
 }
