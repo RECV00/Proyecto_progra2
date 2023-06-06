@@ -24,7 +24,11 @@ public class ControllerLogin implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiL.getBLogin()) {
 			try {
-				if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador");
+				if(fXML.getValidateUser(guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador") {
+					
+				}else {
+					
+				}
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
