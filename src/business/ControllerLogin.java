@@ -31,20 +31,19 @@ public class ControllerLogin implements ActionListener{
 		
 		if(e.getSource()==guiL.getBLogin()) {
 			
-		
-			try {
-				if(fXML.getValidateUser("Users.xml","User",guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador") {
-					new ControllerAdmin();
-					
-				}else {
-					//new ControllerCo;
+				try {
+					if(fXML.getValidateUser("Users.xml","User",guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador") {
+						new ControllerAdmin();
+					}else {
+						new ControllerColaborador();
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			
 			guiL.dispose();
 		}else {
+			
 			guiL.showMessage("Acceso Inválido");
 		}
 		
