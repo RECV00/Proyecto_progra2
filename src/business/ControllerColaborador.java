@@ -5,64 +5,66 @@ import java.awt.event.ActionListener;
 
 import data.FilesXML;
 import presentation.GUIAdmin;
+import presentation.GUIColaborador;
 
 public class ControllerColaborador implements ActionListener{
-	private GUIAdmin guiA;
+	private GUIColaborador guiC;
 	private FilesXML fXML;
 	
 	public ControllerColaborador() {
 		// TODO Auto-generated constructor stub
-		guiA= new GUIAdmin();
+		guiC= new GUIColaborador();
 		fXML= new FilesXML();
+		
 		initializer();
 	}
 
 	private void initializer() {
 		// TODO Auto-generated method stub
-		guiA.getMiUsers().addActionListener(this);
-		guiA.getMiBrand().addActionListener(this);
-		guiA.getMiModel().addActionListener(this);
-		guiA.getMiAirline().addActionListener(this);
-		guiA.getMiPlane().addActionListener(this);
-		guiA.getMiFlight().addActionListener(this);
-		guiA.getMiPassenger().addActionListener(this);
-		guiA.getMiTickert().addActionListener(this);
-		guiA.getMiImpresionT().addActionListener(this);
-		guiA.getMiVuelos().addActionListener(this);
+		guiC.getMiUsers().addActionListener(this);
+		guiC.getMiBrand().addActionListener(this);
+		guiC.getMiModel().addActionListener(this);
+		guiC.getMiAirline().addActionListener(this);
+		guiC.getMiPlane().addActionListener(this);
+		guiC.getMiFlight().addActionListener(this);
+		guiC.getMiPassenger().addActionListener(this);
+		guiC.getMiTickert().addActionListener(this);
+		guiC.getMiImpresionT().addActionListener(this);
+		guiC.getMiVuelos().addActionListener(this);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == guiA.getMiUsers()) {
+		if(e.getSource() == guiC.getMiUsers()) {
 			new ControllerUser();
 		}
-		if(e.getSource() == guiA.getMiBrand()) {
+		if(e.getSource() == guiC.getMiBrand()) {
 			new ControllerBrand();
 		}
-		if(e.getSource() == guiA.getMiModel()) {
+		if(e.getSource() == guiC.getMiModel()) {
 			new ControllerModel();
 		}
-		if(e.getSource() == guiA.getMiAirline()) {
+		if(e.getSource() == guiC.getMiAirline()) {
 			new ControllerAirline();
 		}
-		if(e.getSource() == guiA.getMiPlane()) {
+		if(e.getSource() == guiC.getMiPlane()) {
 			new ControllerPlane();
 		}
-		if(e.getSource() == guiA.getMiFlight()) {
+		if(e.getSource() == guiC.getMiFlight()) {
 			new ControllerFlight();
 		}
-		if(e.getSource() == guiA.getMiPassenger()) {
+		if(e.getSource() == guiC.getMiPassenger()) {
 			new ControllerPassenger();
 		}
-		if(e.getSource() == guiA.getMiTickert()) {
+		if(e.getSource() == guiC.getMiTickert()) {
 			new ControllerTicket();
 		}
-		if(e.getSource() == guiA.getMiImpresionT()) {
+		if(e.getSource() == guiC.getMiImpresionT()) {
 			new ControllerImpresionT();
 		}
-		if(e.getSource() == guiA.getMiVuelos()) {
+		if(e.getSource() == guiC.getMiVuelos()) {
 			new ControllerVuelos();
 		}
 		

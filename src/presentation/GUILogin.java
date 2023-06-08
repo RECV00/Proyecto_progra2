@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class GUILogin extends JFrame {
@@ -15,8 +16,8 @@ public class GUILogin extends JFrame {
 	private JLabel lUser;
 	private JLabel lPassword;
 	private JTextField tUser;
-	private JTextField tPassword;
 	private JButton bLogin;
+	private JPasswordField pfPassword;
 
 	/**
 	 * Create the frame.
@@ -32,8 +33,8 @@ public class GUILogin extends JFrame {
 		contentPane.add(getLUser());
 		contentPane.add(getLPassword());
 		contentPane.add(getTUser());
-		contentPane.add(getTPassword());
 		contentPane.add(getBLogin());
+		contentPane.add(getPfPassword());
 		setVisible(true);
 	}
 	public JLabel getLUser() {
@@ -58,14 +59,6 @@ public class GUILogin extends JFrame {
 		}
 		return tUser;
 	}
-	public JTextField getTPassword() {
-		if (tPassword == null) {
-			tPassword = new JTextField();
-			tPassword.setBounds(94, 128, 86, 20);
-			tPassword.setColumns(10);
-		}
-		return tPassword;
-	}
 	public JButton getBLogin() {
 		if (bLogin == null) {
 			bLogin = new JButton("Ingresar");
@@ -77,5 +70,12 @@ public class GUILogin extends JFrame {
 		
 		JOptionPane.showMessageDialog(null, message);
 		}
+	public JPasswordField getPfPassword() {
+		if (pfPassword == null) {
+			pfPassword = new JPasswordField();
+			pfPassword.setBounds(94, 128, 86, 20);
+		}
+		return pfPassword;
+	}
 }
 

@@ -143,43 +143,82 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 	}
 
 public String getValidateUser(String fileName,String elementType,String userName, String password) throws Exception {
-	    // Load the XML file
-	    File file = new File(fileName);
+	
+	    File inputfile = new File(fileName);
 	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    Document doc = dBuilder.parse(file);
+	    Document doc = dBuilder.parse(inputfile);
 	    doc.getDocumentElement().normalize();
 
 	    // Get the list of user nodes
-	    NodeList userList = doc.getElementsByTagName(userName);
+	    NodeList userList = doc.getElementsByTagName(elementType);
 
 	    // Loop through each user
 	    for (int i = 0; i < userList.getLength(); i++) {
 	        Node userNode = userList.item(i);
 	        if (userNode.getNodeType() == Node.ELEMENT_NODE) {
-	            Element user = (Element) userNode;
+	            Element eUser = (Element) userNode;
 
 	            // Get the user's credentials and status
-	            String userUsername = user.getElementsByTagName("name").item(0).getTextContent();
-	            String userPassword = user.getElementsByTagName("password").item(0).getTextContent();
-	            String userState = user.getElementsByTagName("state").item(0).getTextContent();
-
-	            // Check if the username and password match
-	            if (userName.equals(userUsername) && password.equals(userPassword)) {
-	                // Check if the user is active
-	                if (userState.equals("activo")) {
-	                    // Return the user's type
-	                    return user.getElementsByTagName("typeUser").item(0).getTextContent();
-	                } else {
+	            String name = eUser.getAttribute("userName");
+	            String pass = eUser.getElementsByTagName("password").item(0).getTextContent();
+	            String sta = eUser.getElementsByTagName("state").item(0).getTextContent();
+	            String type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
+	            // valida username and password 
+	           
+	            if (userName.equals(name) && password.equals(pass)) {
+	            	//valida si esta activo
+	            	System.out.print(name+"\n");
+	            	 //System.out.print(pass+"\n");
+	            	
+	            	if(sta.equals("activo")) {
+	            		// Return the user's type
+	                    return type;
+	                    
+	            	}else {
 	                    throw new Exception("User is not active");
 	                }
+	            	
 	            }
 	        }
 	    }
-
 	    throw new Exception("User not found");
-	}
+}
 
+public String readXMLString(String FileName, String elementType) {
+	String dato = " ";
+	
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		System.out.println("Raíz de los Elementos:" + doc.getDocumentElement().getNodeName());
+		NodeList nList = doc.getElementsByTagName(elementType);
+		System.out.println("----------------------------");
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+			System.out.println("\nDatos de los usuarios: " + nNode.getNodeName());
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				dato += ("\nUsuario: " + eElement.getAttribute("userName"));         
+				dato += ("\nContraseña: " + eElement.getElementsByTagName("password").
+						item(0).getTextContent());
+				dato +=("\nTipo de Usuario: "  + eElement.getElementsByTagName("typeUser").
+						item(0).getTextContent());
+				dato+=("\nEstado: "  + eElement.getElementsByTagName("state").
+						item(0).getTextContent())+"\n"; 
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return dato;
+}
 public  String searchXML(String archive, String searchWord)throws Exception {
 
 	    // Crear un objeto DocumentBuilderFactory y un objeto DocumentBuilder para obtener el archivo XML

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
 	//ArrayList<User> listaUser;
-	String name;
+	String userName;
 	String password;
 	String typeUser;
 	String state;
@@ -13,9 +13,9 @@ public class User {
 		
 	}
 	
-	public User(String name, String password, String typeUser, String state) {
+	public User(String userName, String password, String typeUser, String state) {
 		super();
-		this.name = name;
+		this.userName = userName;
 		this.password = password;
 		this.typeUser = typeUser;
 		this.state = state;
@@ -37,12 +37,12 @@ public class User {
 		this.state = state;
 	}
 	
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -53,17 +53,17 @@ public class User {
 		this.password = password;
 	}
 	public String[] getDataName() {//son mis etiquetas de apertura y cierre
-		String[] dataName = {"name","password","typeUser","state"};
+		String[] dataName = {"userName","password","typeUser","state"};
 		return dataName;
 	}
 	public String[] getData() {
-		String[] data = {name,password,typeUser,state};
+		String[] data = {userName,password,typeUser,state};
 		return data;
 	}
 //toString
 	@Override
 	public String toString() {
-		return name+"\n"+password+"\n"+typeUser+"\n"+state;
+		return userName+"\n"+password+"\n"+typeUser+"\n"+state;
 	}
 	
 	/*public void imprimirListaUser() {
