@@ -182,7 +182,7 @@ public class GUIUser extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Gestion de Usuarios");
+			tTitule = new JLabel("Gestión de Usuarios");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(169, 26, 279, 29);
 		}
