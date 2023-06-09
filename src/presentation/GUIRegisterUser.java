@@ -49,7 +49,6 @@ public class GUIRegisterUser extends JFrame {
 	private JTextField tContrasena;
 	private JTextField tTypeUser;
 	
-	public String arrayComboGender[]= {"Ninguno","Activo","Inactivo"};
 	private JComboBox comboBoxState;
 
 	public GUIRegisterUser() {
