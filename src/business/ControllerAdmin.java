@@ -27,7 +27,7 @@ public class ControllerAdmin implements ActionListener{
 		guiA.getMnFlight().addActionListener(this);
 		guiA.getMnPass().addActionListener(this);
 		guiA.getMnTicket().addActionListener(this);
-		guiA.getMnImpresinT().addActionListener(this);
+		guiA.getMnImpresionT().addActionListener(this);
 		guiA.getMnVuelos().addActionListener(this);
 		
 	}
@@ -59,7 +59,7 @@ public class ControllerAdmin implements ActionListener{
 		if(e.getSource() == guiA.getMnTicket()) {
 			new ControllerTicket();
 		}
-		if(e.getSource() == guiA.getMnImpresinT()) {
+		if(e.getSource() == guiA.getMnImpresionT()) {
 			new ControllerImpresionT();
 		}
 		if(e.getSource() == guiA.getMnVuelos()) {
