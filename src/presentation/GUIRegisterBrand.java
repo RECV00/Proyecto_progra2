@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class GUIRegisterUser extends JFrame {
+public class GUIRegisterBrand extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -51,7 +51,7 @@ public class GUIRegisterUser extends JFrame {
 	
 	private JComboBox comboBoxState;
 
-	public GUIRegisterUser() {
+	public GUIRegisterBrand() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -71,7 +71,7 @@ public class GUIRegisterUser extends JFrame {
 		getContentPane().add(getTContrasena());
 		getContentPane().add(getTTypeUser());
 		getContentPane().add(getComboBoxState());
-		setSize(688,368);
+		setSize(460,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -113,7 +113,7 @@ public class GUIRegisterUser extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Marca"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -142,7 +142,7 @@ public class GUIRegisterUser extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(83, 130, 213, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -157,7 +157,7 @@ public class GUIRegisterUser extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(319, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -165,16 +165,16 @@ public class GUIRegisterUser extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(527, 146, 94, 23);
+			bRegister.setBounds(319, 134, 94, 23);
 		}
 		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Usuarios");
+			tTitule = new JLabel("Registrar Marca");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(100, 11, 279, 29);
 		}
 		return tTitule;
 	}

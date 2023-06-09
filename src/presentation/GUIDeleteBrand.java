@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIDeleteUser extends JFrame {
+public class GUIDeleteBrand extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -42,7 +42,7 @@ public class GUIDeleteUser extends JFrame {
 	private JTextField tNameDelete;
 	private JLabel lNameDelete;
 
-	public GUIDeleteUser() {
+	public GUIDeleteBrand() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -57,7 +57,7 @@ public class GUIDeleteUser extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTNameDelete());
 		getContentPane().add(getLNameDelete());
-		setSize(688,368);
+		setSize(434,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIDeleteUser extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Marca"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIDeleteUser extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(83, 130, 213, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -141,7 +141,11 @@ public class GUIDeleteUser extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(306, 278, 94, 23);
 		}
 		return bExit;
 	}
@@ -156,9 +160,9 @@ public class GUIDeleteUser extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Eliminar Usuarios");
+			tTitule = new JLabel("Eliminar Marca");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(107, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -172,7 +176,7 @@ public class GUIDeleteUser extends JFrame {
 	}
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
-			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
+			lNameDelete = new JLabel("Ingrese la Marca a Eliminar");
 			lNameDelete.setBounds(27, 57, 157, 14);
 		}
 		return lNameDelete;

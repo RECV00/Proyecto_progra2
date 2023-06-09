@@ -59,7 +59,7 @@ public class GUIConsultBrand extends JFrame {
 		getContentPane().add(getTextField());
 		getContentPane().add(getLConsultName());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		setSize(473,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -99,7 +99,7 @@ public class GUIConsultBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre"};
+		String columnsNames[] = {"Marca"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +128,7 @@ public class GUIConsultBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(83, 130, 213, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -143,7 +143,7 @@ public class GUIConsultBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(306, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -155,7 +155,7 @@ public class GUIConsultBrand extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(306, 134, 141, 23);
 		}
 		return bCheckHistory;
 	}
@@ -164,7 +164,7 @@ public class GUIConsultBrand extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Consultar Marca");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(121, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -179,7 +179,7 @@ public class GUIConsultBrand extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getLConsultName() {
 		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese el Nombre del Usuario");
+			lConsultName = new JLabel("Ingrese la Marca");
 			lConsultName.setBounds(34, 59, 166, 20);
 		}
 		return lConsultName;
