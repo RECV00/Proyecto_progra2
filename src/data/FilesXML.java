@@ -2,6 +2,7 @@ package data;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,6 +20,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 
 public class FilesXML {
 
@@ -269,4 +271,6 @@ public void updateXML(String archive, String word, String update) throws Excepti
     Source input = new DOMSource(doc);
     transformer.transform(input, output);
 }
+
+
 }
