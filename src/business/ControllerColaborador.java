@@ -20,7 +20,6 @@ public class ControllerColaborador implements ActionListener{
 
 	private void initializer() {
 		// TODO Auto-generated method stub
-		guiC.getMnUser().addActionListener(this);
 		guiC.getMnBrand().addActionListener(this);
 		guiC.getMnModel().addActionListener(this);
 		guiC.getMnAeroline().addActionListener(this);
@@ -28,7 +27,7 @@ public class ControllerColaborador implements ActionListener{
 		guiC.getMnFlight().addActionListener(this);
 		guiC.getMnPass().addActionListener(this);
 		guiC.getMnTicket().addActionListener(this);
-		guiC.getMnImpresinT().addActionListener(this);
+		guiC.getMnImpresionT().addActionListener(this);
 		guiC.getMnVuelos().addActionListener(this);
 		
 	}
@@ -36,9 +35,6 @@ public class ControllerColaborador implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == guiC.getMnUser()) {
-			new ControllerUser();
-		}
 		if(e.getSource() == guiC.getMnBrand()) {
 			new ControllerBrand();
 		}
@@ -60,7 +56,7 @@ public class ControllerColaborador implements ActionListener{
 		if(e.getSource() == guiC.getMnTicket()) {
 			new ControllerTicket();
 		}
-		if(e.getSource() == guiC.getMnImpresinT()) {
+		if(e.getSource() == guiC.getMnImpresionT()) {
 			new ControllerImpresionT();
 		}
 		if(e.getSource() == guiC.getMnVuelos()) {

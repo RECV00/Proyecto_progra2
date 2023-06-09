@@ -31,6 +31,7 @@ public class ControllerUser implements ActionListener{
 
 		if(e.getSource()== guiU.getBExit()) {
 			//meter la pagina anterior
+			
 		}
 	}
 
