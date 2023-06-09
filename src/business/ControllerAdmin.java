@@ -19,15 +19,49 @@ public class ControllerAdmin implements ActionListener{
 
 	private void initializer() {
 		// TODO Auto-generated method stub
-		guiA.getMnUser().addActionListener(this);
-		guiA.getMnBrand().addActionListener(this);
-		guiA.getMnModel().addActionListener(this);
-		guiA.getMnAeroline().addActionListener(this);
-		guiA.getMnPlane().addActionListener(this);
-		guiA.getMnFlight().addActionListener(this);
-		guiA.getMnPass().addActionListener(this);
-		guiA.getMnTicket().addActionListener(this);
+		//opciones usuario
+		guiA.getMiRegister().addActionListener(this);
+		guiA.getMiConsult().addActionListener(this);
+		guiA.getMiRemove().addActionListener(this);
+		guiA.getMiUpdate().addActionListener(this);
+		//opciones marcas
+		guiA.getMiRegisterBrand().addActionListener(this);
+		guiA.getMiConsultBrand().addActionListener(this);
+		guiA.getMiRemoveBrand().addActionListener(this);
+		guiA.getMiUpdateBrand().addActionListener(this);
+		//opciones modelo
+		guiA.getMiRegisterModel().addActionListener(this);
+		guiA.getMiConsultModel().addActionListener(this);
+		guiA.getMiRemoveModel().addActionListener(this);
+		guiA.getMiUpdateModel().addActionListener(this);
+		//aerolinea
+		guiA.getMiRegisterAeroline().addActionListener(this);
+		guiA.getMiConsultAeroline().addActionListener(this);
+		guiA.getMiRemoveAeroline().addActionListener(this);
+		guiA.getMiUpdateAeroline().addActionListener(this);
+		//aviones
+		guiA.getMiRegisterPlane().addActionListener(this);
+		guiA.getMiConsultPlane().addActionListener(this);
+		guiA.getMiRemovePlane().addActionListener(this);
+		guiA.getMiUpdatePlane().addActionListener(this);
+		//opciones vuelos
+		guiA.getMiRegisterFlight().addActionListener(this);
+		guiA.getMiConsultFlight().addActionListener(this);
+		guiA.getMiRemoveFlight().addActionListener(this);
+		guiA.getMiUpdateFlight().addActionListener(this);
+		//opciones pasajero
+		guiA.getMiRegisterPass().addActionListener(this);
+		guiA.getMiConsultPass().addActionListener(this);
+		guiA.getMiRemovePass().addActionListener(this);
+		guiA.getMiUpdatePass().addActionListener(this);
+		//opciones tiquetes
+		guiA.getMiRegisterTicket().addActionListener(this);
+		guiA.getMiConsultTicket().addActionListener(this);
+		guiA.getMiRemoveTicket().addActionListener(this);
+		guiA.getMiUpdateTicket().addActionListener(this);
+		//impresion
 		guiA.getMnImpresionT().addActionListener(this);
+		guiA.getMnHistorialT().addActionListener(this);
 		guiA.getMnVuelos().addActionListener(this);
 		
 	}
@@ -35,7 +69,7 @@ public class ControllerAdmin implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == guiA.getMnUser()) {
+		if(e.getSource() == guiA.getMiRegister()) {
 			new ControllerUser();
 		}
 		if(e.getSource() == guiA.getMnBrand()) {

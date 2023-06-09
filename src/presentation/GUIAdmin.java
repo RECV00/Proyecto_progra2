@@ -31,29 +31,29 @@ public class GUIAdmin extends JFrame {
 	private JMenu mnFlight;
 	private JMenu mnPass;
 	private JMenu mnTicket;
-	private JMenuItem mnRemove;
-	private JMenuItem mnConsult;
-	private JMenuItem mnUpdate;
+	private JMenuItem miRemove;
+	private JMenuItem miConsult;
+	private JMenuItem miUpdate;
 	private JMenuItem miRegisterBrand;
-	private JMenuItem mnRemoveBrand;
-	private JMenuItem mnConsultBrand;
-	private JMenuItem mnUpdateBrand;
+	private JMenuItem miRemoveBrand;
+	private JMenuItem miConsultBrand;
+	private JMenuItem miUpdateBrand;
 	private JMenuItem miRegisterModel;
-	private JMenuItem mnRemoveModel;
-	private JMenuItem mnConsultModel;
-	private JMenuItem mnUpdateModel;
+	private JMenuItem miRemoveModel;
+	private JMenuItem miConsultModel;
+	private JMenuItem miUpdateModel;
 	private JMenuItem miRegisterAeroline;
-	private JMenuItem mnRemoveAeroline;
-	private JMenuItem mnConsultAeroline;
-	private JMenuItem mnUpdateAeroline;
+	private JMenuItem miRemoveAeroline;
+	private JMenuItem miConsultAeroline;
+	private JMenuItem miUpdateAeroline;
 	private JMenuItem miRegisterPlane;
-	private JMenuItem mnRemovePlane;
-	private JMenuItem mnConsultPlane;
-	private JMenuItem mnUpdatePlane;
+	private JMenuItem miRemovePlane;
+	private JMenuItem miConsultPlane;
+	private JMenuItem miUpdatePlane;
 	private JMenuItem miRegisterFlight;
-	private JMenuItem mnRemoveFlight;
-	private JMenuItem mnConsultFlight;
-	private JMenuItem mnUpdateFlight;
+	private JMenuItem miRemoveFlight;
+	private JMenuItem miConsultFlight;
+	private JMenuItem miUpdateFlight;
 	private JMenuItem miRegisterPass;
 	private JMenuItem miRemovePass;
 	private JMenuItem miConsultPass;
@@ -151,9 +151,9 @@ public class GUIAdmin extends JFrame {
 		if (mnUser == null) {
 			mnUser = new JMenu("Gestión de Usuarios");
 			mnUser.add(getMiRegister());
-			mnUser.add(getMnRemove());
-			mnUser.add(getMnConsult());
-			mnUser.add(getMnUpdate());
+			mnUser.add(getMiRemove());
+			mnUser.add(getMiConsult());
+			mnUser.add(getMiUpdate());
 		}
 		return mnUser;
 	}
@@ -167,9 +167,9 @@ public class GUIAdmin extends JFrame {
 		if (mnBrand == null) {
 			mnBrand = new JMenu("Gestión de Marcas");
 			mnBrand.add(getMiRegisterBrand());
-			mnBrand.add(getMnRemoveBrand());
-			mnBrand.add(getMnConsultBrand());
-			mnBrand.add(getMnUpdateBrand());
+			mnBrand.add(getMiRemoveBrand());
+			mnBrand.add(getMiConsultBrand());
+			mnBrand.add(getMiUpdateBrand());
 		}
 		return mnBrand;
 	}
@@ -177,9 +177,9 @@ public class GUIAdmin extends JFrame {
 		if (mnModel == null) {
 			mnModel = new JMenu("Gestión de Modelos");
 			mnModel.add(getMiRegisterModel());
-			mnModel.add(getMnRemoveModel());
-			mnModel.add(getMnConsultModel());
-			mnModel.add(getMnUpdateModel());
+			mnModel.add(getMiRemoveModel());
+			mnModel.add(getMiConsultModel());
+			mnModel.add(getMiUpdateModel());
 		}
 		return mnModel;
 	}
@@ -187,9 +187,9 @@ public class GUIAdmin extends JFrame {
 		if (mnAeroline == null) {
 			mnAeroline = new JMenu("Gestión de Aerolíneas");
 			mnAeroline.add(getMiRegisterAeroline());
-			mnAeroline.add(getMnRemoveAeroline());
-			mnAeroline.add(getMnConsultAeroline());
-			mnAeroline.add(getMnUpdateAeroline());
+			mnAeroline.add(getMiRemoveAeroline());
+			mnAeroline.add(getMiConsultAeroline());
+			mnAeroline.add(getMiUpdateAeroline());
 		}
 		return mnAeroline;
 	}
@@ -197,9 +197,9 @@ public class GUIAdmin extends JFrame {
 		if (mnPlane == null) {
 			mnPlane = new JMenu("Gestión de Aviones");
 			mnPlane.add(getMiRegisterPlane());
-			mnPlane.add(getMnRemovePlane());
-			mnPlane.add(getMnConsultPlane());
-			mnPlane.add(getMnUpdatePlane());
+			mnPlane.add(getMiRemovePlane());
+			mnPlane.add(getMiConsultPlane());
+			mnPlane.add(getMiUpdatePlane());
 		}
 		return mnPlane;
 	}
@@ -207,9 +207,9 @@ public class GUIAdmin extends JFrame {
 		if (mnFlight == null) {
 			mnFlight = new JMenu("Gestión de Vuelos");
 			mnFlight.add(getMiRegisterFlight());
-			mnFlight.add(getMnRemoveFlight());
-			mnFlight.add(getMnConsultFlight());
-			mnFlight.add(getMnUpdateFlight());
+			mnFlight.add(getMiRemoveFlight());
+			mnFlight.add(getMiConsultFlight());
+			mnFlight.add(getMiUpdateFlight());
 		}
 		return mnFlight;
 	}
@@ -233,23 +233,23 @@ public class GUIAdmin extends JFrame {
 		}
 		return mnTicket;
 	}
-	public JMenuItem getMnRemove() {
-		if (mnRemove == null) {
-			mnRemove = new JMenuItem("Eliminar");
+	public JMenuItem getMiRemove() {
+		if (miRemove == null) {
+			miRemove = new JMenuItem("Eliminar");
 		}
-		return mnRemove;
+		return miRemove;
 	}
-	public JMenuItem getMnConsult() {
-		if (mnConsult == null) {
-			mnConsult = new JMenuItem("Consultar");
+	public JMenuItem getMiConsult() {
+		if (miConsult == null) {
+			miConsult = new JMenuItem("Consultar");
 		}
-		return mnConsult;
+		return miConsult;
 	}
-	public JMenuItem getMnUpdate() {
-		if (mnUpdate == null) {
-			mnUpdate = new JMenuItem("Actualizar");
+	public JMenuItem getMiUpdate() {
+		if (miUpdate == null) {
+			miUpdate = new JMenuItem("Actualizar");
 		}
-		return mnUpdate;
+		return miUpdate;
 	}
 	public JMenuItem getMiRegisterBrand() {
 		if (miRegisterBrand == null) {
@@ -257,23 +257,23 @@ public class GUIAdmin extends JFrame {
 		}
 		return miRegisterBrand;
 	}
-	public JMenuItem getMnRemoveBrand() {
-		if (mnRemoveBrand == null) {
-			mnRemoveBrand = new JMenuItem("Eliminar");
+	public JMenuItem getMiRemoveBrand() {
+		if (miRemoveBrand == null) {
+			miRemoveBrand = new JMenuItem("Eliminar");
 		}
-		return mnRemoveBrand;
+		return miRemoveBrand;
 	}
-	public JMenuItem getMnConsultBrand() {
-		if (mnConsultBrand == null) {
-			mnConsultBrand = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultBrand() {
+		if (miConsultBrand == null) {
+			miConsultBrand = new JMenuItem("Consultar");
 		}
-		return mnConsultBrand;
+		return miConsultBrand;
 	}
-	public JMenuItem getMnUpdateBrand() {
-		if (mnUpdateBrand == null) {
-			mnUpdateBrand = new JMenuItem("Actualizar");
+	public JMenuItem getMiUpdateBrand() {
+		if (miUpdateBrand == null) {
+			miUpdateBrand = new JMenuItem("Actualizar");
 		}
-		return mnUpdateBrand;
+		return miUpdateBrand;
 	}
 	public JMenuItem getMiRegisterModel() {
 		if (miRegisterModel == null) {
@@ -281,23 +281,23 @@ public class GUIAdmin extends JFrame {
 		}
 		return miRegisterModel;
 	}
-	public JMenuItem getMnRemoveModel() {
-		if (mnRemoveModel == null) {
-			mnRemoveModel = new JMenuItem("Eliminar");
+	public JMenuItem getMiRemoveModel() {
+		if (miRemoveModel == null) {
+			miRemoveModel = new JMenuItem("Eliminar");
 		}
-		return mnRemoveModel;
+		return miRemoveModel;
 	}
-	public JMenuItem getMnConsultModel() {
-		if (mnConsultModel == null) {
-			mnConsultModel = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultModel() {
+		if (miConsultModel == null) {
+			miConsultModel = new JMenuItem("Consultar");
 		}
-		return mnConsultModel;
+		return miConsultModel;
 	}
-	public JMenuItem getMnUpdateModel() {
-		if (mnUpdateModel == null) {
-			mnUpdateModel = new JMenuItem("Actualizar");
+	public JMenuItem getMiUpdateModel() {
+		if (miUpdateModel == null) {
+			miUpdateModel = new JMenuItem("Actualizar");
 		}
-		return mnUpdateModel;
+		return miUpdateModel;
 	}
 	public JMenuItem getMiRegisterAeroline() {
 		if (miRegisterAeroline == null) {
@@ -305,23 +305,23 @@ public class GUIAdmin extends JFrame {
 		}
 		return miRegisterAeroline;
 	}
-	public JMenuItem getMnRemoveAeroline() {
-		if (mnRemoveAeroline == null) {
-			mnRemoveAeroline = new JMenuItem("Eliminar");
+	public JMenuItem getMiRemoveAeroline() {
+		if (miRemoveAeroline == null) {
+			miRemoveAeroline = new JMenuItem("Eliminar");
 		}
-		return mnRemoveAeroline;
+		return miRemoveAeroline;
 	}
-	public JMenuItem getMnConsultAeroline() {
-		if (mnConsultAeroline == null) {
-			mnConsultAeroline = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultAeroline() {
+		if (miConsultAeroline == null) {
+			miConsultAeroline = new JMenuItem("Consultar");
 		}
-		return mnConsultAeroline;
+		return miConsultAeroline;
 	}
-	public JMenuItem getMnUpdateAeroline() {
-		if (mnUpdateAeroline == null) {
-			mnUpdateAeroline = new JMenuItem("Actualizar");
+	public JMenuItem getMiUpdateAeroline() {
+		if (miUpdateAeroline == null) {
+			miUpdateAeroline = new JMenuItem("Actualizar");
 		}
-		return mnUpdateAeroline;
+		return miUpdateAeroline;
 	}
 	public JMenuItem getMiRegisterPlane() {
 		if (miRegisterPlane == null) {
@@ -329,23 +329,23 @@ public class GUIAdmin extends JFrame {
 		}
 		return miRegisterPlane;
 	}
-	public JMenuItem getMnRemovePlane() {
-		if (mnRemovePlane == null) {
-			mnRemovePlane = new JMenuItem("Eliminar");
+	public JMenuItem getMiRemovePlane() {
+		if (miRemovePlane == null) {
+			miRemovePlane = new JMenuItem("Eliminar");
 		}
-		return mnRemovePlane;
+		return miRemovePlane;
 	}
-	public JMenuItem getMnConsultPlane() {
-		if (mnConsultPlane == null) {
-			mnConsultPlane = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultPlane() {
+		if (miConsultPlane == null) {
+			miConsultPlane = new JMenuItem("Consultar");
 		}
-		return mnConsultPlane;
+		return miConsultPlane;
 	}
-	public JMenuItem getMnUpdatePlane() {
-		if (mnUpdatePlane == null) {
-			mnUpdatePlane = new JMenuItem("Actualizar");
+	public JMenuItem getMiUpdatePlane() {
+		if (miUpdatePlane == null) {
+			miUpdatePlane = new JMenuItem("Actualizar");
 		}
-		return mnUpdatePlane;
+		return miUpdatePlane;
 	}
 	public JMenuItem getMiRegisterFlight() {
 		if (miRegisterFlight == null) {
@@ -353,23 +353,23 @@ public class GUIAdmin extends JFrame {
 		}
 		return miRegisterFlight;
 	}
-	public JMenuItem getMnRemoveFlight() {
-		if (mnRemoveFlight == null) {
-			mnRemoveFlight = new JMenuItem("Eliminar");
+	public JMenuItem getMiRemoveFlight() {
+		if (miRemoveFlight == null) {
+			miRemoveFlight = new JMenuItem("Eliminar");
 		}
-		return mnRemoveFlight;
+		return miRemoveFlight;
 	}
-	public JMenuItem getMnConsultFlight() {
-		if (mnConsultFlight == null) {
-			mnConsultFlight = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultFlight() {
+		if (miConsultFlight == null) {
+			miConsultFlight = new JMenuItem("Consultar");
 		}
-		return mnConsultFlight;
+		return miConsultFlight;
 	}
-	public JMenuItem getMnUpdateFlight() {
-		if (mnUpdateFlight == null) {
-			mnUpdateFlight = new JMenuItem("Actualizar");
+	public JMenuItem getMiUpdateFlight() {
+		if (miUpdateFlight == null) {
+			miUpdateFlight = new JMenuItem("Actualizar");
 		}
-		return mnUpdateFlight;
+		return miUpdateFlight;
 	}
 	public JMenuItem getMiRegisterPass() {
 		if (miRegisterPass == null) {

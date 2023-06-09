@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import presentation.GUIAdmin;
 import presentation.GUIColaborador;
 
 public class ControllerColaborador implements ActionListener{
 	private GUIColaborador guiC;
+	@SuppressWarnings("unused")
 	private FilesXML fXML;
 	
 	public ControllerColaborador() {

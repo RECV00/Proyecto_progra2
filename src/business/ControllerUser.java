@@ -21,6 +21,7 @@ public class ControllerUser implements ActionListener{
 
 	private void initializer() {
 		guiU.getBExit().addActionListener(this);
+		
 	}
 
 	@Override
