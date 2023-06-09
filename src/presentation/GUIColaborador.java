@@ -18,26 +18,27 @@ public class GUIColaborador extends JFrame {
 	private JMenuItem miOpen;
 	private JMenuItem miSave;
 	private JMenuItem miExit;
-	private JMenuItem miUsers;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
-	private JMenuItem miBrand;
 	
 	private int resultAcces;
-	private JMenuItem miModel;
-	private JMenuItem miAirline;
-	private JMenuItem miPlane;
-	private JMenuItem miFlight;
-	private JMenuItem miPassenger;
-	private JMenuItem miTickert;
-	private JMenuItem miImpresionT;
-	private JMenuItem miHistorialT;
-	private JMenuItem miVuelos;
+	private JMenu mnUser;
+	private JMenuItem miRegister;
+	private JMenu mnBrand;
+	private JMenu mnModel;
+	private JMenu mnAeroline;
+	private JMenu mnPlane;
+	private JMenu mnFlight;
+	private JMenu mnPass;
+	private JMenu mnTicket;
+	private JMenu mnImpresinT;
+	private JMenu mnHistorialT;
+	private JMenu mnVuelos;
 	/**
 	 * Create the frame.
 	 */
 	public GUIColaborador() {
-		setTitle("Privilegios del Colaborador");
+		setTitle("Privilegios del Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
 		setJMenuBar(getMenuBar_1());
@@ -70,17 +71,17 @@ public class GUIColaborador extends JFrame {
 	public JMenu getMOperations() {
 		if (mOperations == null) {
 			mOperations = new JMenu("Operaciones");
-			mOperations.add(getMiUsers());
-			mOperations.add(getMiBrand());
-			mOperations.add(getMiModel());
-			mOperations.add(getMiAirline());
-			mOperations.add(getMiPlane());
-			mOperations.add(getMiFlight());
-			mOperations.add(getMiPassenger());
-			mOperations.add(getMiTickert());
-			mOperations.add(getMiImpresionT());
-			mOperations.add(getMiHistorialT());
-			mOperations.add(getMiVuelos());
+			mOperations.add(getMnUser());
+			mOperations.add(getMnBrand());
+			mOperations.add(getMnModel());
+			mOperations.add(getMnAeroline());
+			mOperations.add(getMnPlane());
+			mOperations.add(getMnFlight());
+			mOperations.add(getMnPass());
+			mOperations.add(getMnTicket());
+			mOperations.add(getMnImpresinT());
+			mOperations.add(getMnHistorialT());
+			mOperations.add(getMnVuelos());
 		}
 		return mOperations;
 	}
@@ -109,77 +110,83 @@ public class GUIColaborador extends JFrame {
 		}
 		return miExit;
 	}
-	public JMenuItem getMiUsers() {
-		if (miUsers == null) {
-			miUsers = new JMenuItem("Gestión de Usuario");
-		}
-		return miUsers;
-	}
 	public JMenuItem getMiAboutSystem() {
 		if (miAboutSystem == null) {
 			miAboutSystem = new JMenuItem("Acerca del Sistema");
 		}
 		return miAboutSystem;
 	}
-	public JMenuItem getMiBrand() {
-		if (miBrand == null) {
-			miBrand = new JMenuItem("Gestión de Marcas");
+	public JMenu getMnUser() {
+		if (mnUser == null) {
+			mnUser = new JMenu("Gestión de Usuarios");
+			mnUser.add(getMiRegister());
 		}
-		return miBrand;
+		return mnUser;
 	}
-	public JMenuItem getMiModel() {
-		if (miModel == null) {
-			miModel = new JMenuItem("Gestión de Modelos");
+	public JMenuItem getMiRegister() {
+		if (miRegister == null) {
+			miRegister = new JMenuItem("Registrar");
 		}
-		return miModel;
+		return miRegister;
 	}
-	public JMenuItem getMiAirline() {
-		if (miAirline == null) {
-			miAirline = new JMenuItem("Gestión de Aerolínea");
+	public JMenu getMnBrand() {
+		if (mnBrand == null) {
+			mnBrand = new JMenu("Gestión de Marcas");
 		}
-		return miAirline;
+		return mnBrand;
 	}
-	public JMenuItem getMiPlane() {
-		if (miPlane == null) {
-			miPlane = new JMenuItem("Gestión de Aviones");
+	public JMenu getMnModel() {
+		if (mnModel == null) {
+			mnModel = new JMenu("Gestión de Modelos");
 		}
-		return miPlane;
+		return mnModel;
 	}
-	public JMenuItem getMiFlight() {
-		if (miFlight == null) {
-			miFlight = new JMenuItem("Gestión de Vuelos");
+	public JMenu getMnAeroline() {
+		if (mnAeroline == null) {
+			mnAeroline = new JMenu("Gestión de Aerolíneas");
 		}
-		return miFlight;
+		return mnAeroline;
 	}
-	public JMenuItem getMiPassenger() {
-		if (miPassenger == null) {
-			miPassenger = new JMenuItem("Gestión de Pasajero");
+	public JMenu getMnPlane() {
+		if (mnPlane == null) {
+			mnPlane = new JMenu("Gestión de Aviones");
 		}
-		return miPassenger;
+		return mnPlane;
 	}
-	public JMenuItem getMiTickert() {
-		if (miTickert == null) {
-			miTickert = new JMenuItem("Gestión de Tiquetes");
+	public JMenu getMnFlight() {
+		if (mnFlight == null) {
+			mnFlight = new JMenu("Gestión de Vuelos");
 		}
-		return miTickert;
+		return mnFlight;
 	}
-	public JMenuItem getMiImpresionT() {
-		if (miImpresionT == null) {
-			miImpresionT = new JMenuItem("Impresión de Tiquete");
+	public JMenu getMnPass() {
+		if (mnPass == null) {
+			mnPass = new JMenu("Gestión de Pasajeros");
 		}
-		return miImpresionT;
+		return mnPass;
 	}
-	public JMenuItem getMiHistorialT() {
-		if (miHistorialT == null) {
-			miHistorialT = new JMenuItem("Historial de Tiquetes");
+	public JMenu getMnTicket() {
+		if (mnTicket == null) {
+			mnTicket = new JMenu("Gestión de Tiquetes");
 		}
-		return miHistorialT;
+		return mnTicket;
 	}
-	public JMenuItem getMiVuelos() {
-		if (miVuelos == null) {
-			miVuelos = new JMenuItem("Consultar Vuelos");
+	public JMenu getMnImpresinT() {
+		if (mnImpresinT == null) {
+			mnImpresinT = new JMenu("Impresión de Tiquetes");
 		}
-		return miVuelos;
+		return mnImpresinT;
+	}
+	public JMenu getMnHistorialT() {
+		if (mnHistorialT == null) {
+			mnHistorialT = new JMenu("Historial de Tiquetes");
+		}
+		return mnHistorialT;
+	}
+	public JMenu getMnVuelos() {
+		if (mnVuelos == null) {
+			mnVuelos = new JMenu("Consultar Vuelos");
+		}
+		return mnVuelos;
 	}
 }
-
