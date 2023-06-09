@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIConsultUser extends JFrame {
+public class GUIDeleteUser extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -37,13 +37,12 @@ public class GUIConsultUser extends JFrame {
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bCheckHistory;
+	private JButton bDelete;
 	private JLabel tTitule;
-	private JTextField textField;
-	private JLabel lConsultName;
-	private JButton bSearch;
+	private JTextField tNameDelete;
+	private JLabel lNameDelete;
 
-	public GUIConsultUser() {
+	public GUIDeleteUser() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -54,11 +53,10 @@ public class GUIConsultUser extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBCheckHistory());
+		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTextField());
-		getContentPane().add(getLConsultName());
-		getContentPane().add(getBSearch());
+		getContentPane().add(getTNameDelete());
+		getContentPane().add(getLNameDelete());
 		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,48 +146,35 @@ public class GUIConsultUser extends JFrame {
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBCheckHistory() {
-		if (bCheckHistory == null) {
-			bCheckHistory = new JButton("Consultar Historial");
-			bCheckHistory.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+	public JButton getBDelete() {
+		if (bDelete == null) {
+			bDelete = new JButton("Eliminar");
+			bDelete.setBounds(162, 81, 94, 23);
 		}
-		return bCheckHistory;
+		return bDelete;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Usuarios");
+			tTitule = new JLabel("Eliminar Usuarios");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(34, 79, 146, 29);
-			textField.setColumns(10);
+	public JTextField getTNameDelete() {
+		if (tNameDelete == null) {
+			tNameDelete = new JTextField();
+			tNameDelete.setBounds(27, 82, 112, 20);
+			tNameDelete.setColumns(10);
 		}
-		return textField;
+		return tNameDelete;
 	}
-//------------------------------------------------------------------------------------
-	public JLabel getLConsultName() {
-		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese el Nombre del Usuario");
-			lConsultName.setBounds(34, 59, 166, 20);
+	public JLabel getLNameDelete() {
+		if (lNameDelete == null) {
+			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
+			lNameDelete.setBounds(27, 57, 157, 14);
 		}
-		return lConsultName;
-	}
-//------------------------------------------------------------------------------------
-	public JButton getBSearch() {
-		if (bSearch == null) {
-			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
-		}
-		return bSearch;
+		return lNameDelete;
 	}
 }

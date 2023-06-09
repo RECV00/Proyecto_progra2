@@ -162,6 +162,7 @@ public class GUIDeleteUser extends JFrame {
 		}
 		return tTitule;
 	}
+//------------------------------------------------------------------------------------
 	public JTextField getTNameDelete() {
 		if (tNameDelete == null) {
 			tNameDelete = new JTextField();
@@ -170,6 +171,7 @@ public class GUIDeleteUser extends JFrame {
 		}
 		return tNameDelete;
 	}
+//------------------------------------------------------------------------------------
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
 			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");

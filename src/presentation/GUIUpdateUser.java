@@ -162,6 +162,7 @@ public class GUIUpdateUser extends JFrame {
 		}
 		return tTitule;
 	}
+//------------------------------------------------------------------------------------
 	public JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
@@ -170,6 +171,7 @@ public class GUIUpdateUser extends JFrame {
 		}
 		return textField;
 	}
+//------------------------------------------------------------------------------------
 	public JLabel getLUpdateUser() {
 		if (lUpdateUser == null) {
 			lUpdateUser = new JLabel("Ingrese el Nombre a Actualizar");

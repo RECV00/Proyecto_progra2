@@ -215,6 +215,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return tContrasena;
 	}
+//------------------------------------------------------------------------------------
 	public JTextField getTTypeUser() {
 		if (tTypeUser == null) {
 			tTypeUser = new JTextField();
@@ -224,6 +225,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return tTypeUser;
 	}
+//------------------------------------------------------------------------------------
 	public JComboBox getComboBoxState() {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
