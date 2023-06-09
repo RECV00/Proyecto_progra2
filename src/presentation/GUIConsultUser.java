@@ -155,7 +155,7 @@ public class GUIConsultUser extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(527, 214, 137, 23);
+			bCheckHistory.setBounds(376, 107, 141, 23);
 		}
 		return bCheckHistory;
 	}

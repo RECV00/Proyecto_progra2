@@ -39,6 +39,8 @@ public class GUIUpdateUser extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
+	private JTextField textField;
+	private JLabel lUpdateUser;
 
 	public GUIUpdateUser() {
 		
@@ -53,6 +55,8 @@ public class GUIUpdateUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
+		getContentPane().add(getTextField());
+		getContentPane().add(getLUpdateUser());
 		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,7 +149,7 @@ public class GUIUpdateUser extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(527, 121, 94, 23);
+			bUpdate.setBounds(187, 73, 94, 23);
 		}
 		return bUpdate;
 	}
@@ -157,5 +161,20 @@ public class GUIUpdateUser extends JFrame {
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
+	}
+	public JTextField getTextField() {
+		if (textField == null) {
+			textField = new JTextField();
+			textField.setBounds(27, 74, 132, 20);
+			textField.setColumns(10);
+		}
+		return textField;
+	}
+	public JLabel getLUpdateUser() {
+		if (lUpdateUser == null) {
+			lUpdateUser = new JLabel("Ingrese el Nombre a Actualizar");
+			lUpdateUser.setBounds(27, 52, 172, 23);
+		}
+		return lUpdateUser;
 	}
 }

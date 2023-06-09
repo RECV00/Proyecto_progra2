@@ -149,7 +149,7 @@ public class GUIDeleteUser extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(527, 159, 94, 23);
+			bDelete.setBounds(162, 81, 94, 23);
 		}
 		return bDelete;
 	}
