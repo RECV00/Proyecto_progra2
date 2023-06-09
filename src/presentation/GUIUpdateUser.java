@@ -21,10 +21,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
-public class GUIRegisterUser extends JFrame {
+public class GUIUpdateUser extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -34,25 +32,15 @@ public class GUIRegisterUser extends JFrame {
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
 	
-	
 	private JScrollPane spTUser;
 	
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bRegister;
+	private JButton bUpdate;
 	private JLabel tTitule;
-	private JLabel lName;
-	private JTextField tName;
-	private JLabel lContrasena;
-	private JLabel lTypeUser;
-	private JTextField tContrasena;
-	private JTextField tTypeUser;
-	
-	public String arrayComboGender[]= {"Ninguno","Activo","Inactivo"};
-	private JComboBox comboBoxState;
 
-	public GUIRegisterUser() {
+	public GUIUpdateUser() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -63,23 +51,14 @@ public class GUIRegisterUser extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBRegister());
+		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLName());
-		getContentPane().add(getTName());
-		getContentPane().add(getLContrasena());
-		getContentPane().add(getLTypeUser());
-		getContentPane().add(getTContrasena());
-		getContentPane().add(getTTypeUser());
-		getContentPane().add(getComboBoxState());
 		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
-	
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -163,74 +142,20 @@ public class GUIRegisterUser extends JFrame {
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBRegister() {
-		if (bRegister == null) {
-			bRegister = new JButton("Registrar");
-			bRegister.setBounds(527, 142, 94, 23);
+	public JButton getBUpdate() {
+		if (bUpdate == null) {
+			bUpdate = new JButton("Actualizar");
+			bUpdate.setBounds(527, 121, 94, 23);
 		}
-		return bRegister;
+		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Usuarios");
+			tTitule = new JLabel("Actualizar Usuarios");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
-	}
-	public JLabel getLName() {
-		if (lName == null) {
-			lName = new JLabel("Nombre");
-			lName.setBounds(34, 49, 49, 14);
-		}
-		return lName;
-	}
-	public JTextField getTName() {
-		if (tName == null) {
-			tName = new JTextField();
-			tName.setBounds(10, 85, 96, 20);
-			tName.setColumns(10);
-		}
-		return tName;
-	}
-	public JLabel getLContrasena() {
-		if (lContrasena == null) {
-			lContrasena = new JLabel("Contraseña");
-			lContrasena.setBounds(142, 51, 49, 14);
-		}
-		return lContrasena;
-	}
-	public JLabel getLTypeUser() {
-		if (lTypeUser == null) {
-			lTypeUser = new JLabel("Tipo de Usuario");
-			lTypeUser.setBounds(248, 51, 87, 14);
-		}
-		return lTypeUser;
-	}
-	public JTextField getTContrasena() {
-		if (tContrasena == null) {
-			tContrasena = new JTextField();
-			tContrasena.setBounds(114, 85, 96, 20);
-			tContrasena.setColumns(10);
-		}
-		return tContrasena;
-	}
-	public JTextField getTTypeUser() {
-		if (tTypeUser == null) {
-			tTypeUser = new JTextField();
-			tTypeUser.setText("");
-			tTypeUser.setBounds(222, 85, 96, 20);
-			tTypeUser.setColumns(10);
-		}
-		return tTypeUser;
-	}
-	public JComboBox getComboBoxState() {
-		if (comboBoxState == null) {
-			comboBoxState = new JComboBox();
-			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Activo", "Inactivo"}));
-			comboBoxState.setBounds(364, 84, 87, 22);
-		}
-		return comboBoxState;
 	}
 }
