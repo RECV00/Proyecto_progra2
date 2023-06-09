@@ -20,7 +20,7 @@ public class ControllerUser implements ActionListener{
 	}
 
 	private void initializer() {
-		//guiU.getBEXIT().addActionListener(this);
+		guiU.getBExit().addActionListener(this);
 	}
 
 	@Override
