@@ -182,7 +182,7 @@ public class GUIRegisterUser extends JFrame {
 	public JLabel getLName() {
 		if (lName == null) {
 			lName = new JLabel("Nombre");
-			lName.setBounds(34, 49, 49, 14);
+			lName.setBounds(20, 60, 49, 14);
 		}
 		return lName;
 	}
@@ -197,14 +197,14 @@ public class GUIRegisterUser extends JFrame {
 	public JLabel getLContrasena() {
 		if (lContrasena == null) {
 			lContrasena = new JLabel("Contraseña");
-			lContrasena.setBounds(142, 51, 49, 14);
+			lContrasena.setBounds(118, 60, 80, 14);
 		}
 		return lContrasena;
 	}
 	public JLabel getLTypeUser() {
 		if (lTypeUser == null) {
 			lTypeUser = new JLabel("Tipo de Usuario");
-			lTypeUser.setBounds(248, 51, 87, 14);
+			lTypeUser.setBounds(222, 60, 116, 14);
 		}
 		return lTypeUser;
 	}
@@ -229,7 +229,7 @@ public class GUIRegisterUser extends JFrame {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
 			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Activo", "Inactivo"}));
-			comboBoxState.setBounds(364, 84, 87, 22);
+			comboBoxState.setBounds(342, 84, 87, 22);
 		}
 		return comboBoxState;
 	}

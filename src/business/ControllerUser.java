@@ -5,32 +5,32 @@ import java.awt.event.ActionListener;
 
 import data.FilesXML;
 import domain.User;
-import presentation.GUIUser;
+import presentation.GUIRegisterUser;
 
 public class ControllerUser implements ActionListener{
-	private GUIUser guiU;
+	private GUIRegisterUser guiRU;
 	private FilesXML fXML;
 	private User u;
 	
 	public ControllerUser() {
-	guiU= new GUIUser();
+	guiRU= new GUIRegisterUser();
 	fXML = new FilesXML();
 	fXML.createXML("User", "User.xml");
 	initializer();
 	}
 
 	private void initializer() {
-		guiU.getBExit().addActionListener(this);
+		guiRU.getBExit().addActionListener(this);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println(guiU.getArrayListUser().size());
-		guiU.print(guiU.getTUser());//pdf
+		System.out.println(guiRU.getArrayListUser().size());
+		guiRU.print(guiRU.getTUser());//pdf
 
-		if(e.getSource()== guiU.getBExit()) {
+		if(e.getSource()== guiRU.getBExit()) {
 			//meter la pagina anterior
 			
 		}
