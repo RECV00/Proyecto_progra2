@@ -19,50 +19,50 @@ public class ControllerAdmin implements ActionListener{
 
 	private void initializer() {
 		// TODO Auto-generated method stub
-		guiA.getMiUsers().addActionListener(this);
-		guiA.getMiBrand().addActionListener(this);
-		guiA.getMiModel().addActionListener(this);
-		guiA.getMiAirline().addActionListener(this);
-		guiA.getMiPlane().addActionListener(this);
-		guiA.getMiFlight().addActionListener(this);
-		guiA.getMiPassenger().addActionListener(this);
-		guiA.getMiTickert().addActionListener(this);
-		guiA.getMiImpresionT().addActionListener(this);
-		guiA.getMiVuelos().addActionListener(this);
+		guiA.getMnUser().addActionListener(this);
+		guiA.getMnBrand().addActionListener(this);
+		guiA.getMnModel().addActionListener(this);
+		guiA.getMnAeroline().addActionListener(this);
+		guiA.getMnPlane().addActionListener(this);
+		guiA.getMnFlight().addActionListener(this);
+		guiA.getMnPass().addActionListener(this);
+		guiA.getMnTicket().addActionListener(this);
+		guiA.getMnImpresinT().addActionListener(this);
+		guiA.getMnVuelos().addActionListener(this);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == guiA.getMiUsers()) {
+		if(e.getSource() == guiA.getMnUser()) {
 			new ControllerUser();
 		}
-		if(e.getSource() == guiA.getMiBrand()) {
+		if(e.getSource() == guiA.getMnBrand()) {
 			new ControllerBrand();
 		}
-		if(e.getSource() == guiA.getMiModel()) {
+		if(e.getSource() == guiA.getMnModel()) {
 			new ControllerModel();
 		}
-		if(e.getSource() == guiA.getMiAirline()) {
+		if(e.getSource() == guiA.getMnAeroline()) {
 			new ControllerAirline();
 		}
-		if(e.getSource() == guiA.getMiPlane()) {
+		if(e.getSource() == guiA.getMnPlane()) {
 			new ControllerPlane();
 		}
-		if(e.getSource() == guiA.getMiFlight()) {
+		if(e.getSource() == guiA.getMnFlight()) {
 			new ControllerFlight();
 		}
-		if(e.getSource() == guiA.getMiPassenger()) {
+		if(e.getSource() == guiA.getMnPass()) {
 			new ControllerPassenger();
 		}
-		if(e.getSource() == guiA.getMiTickert()) {
+		if(e.getSource() == guiA.getMnTicket()) {
 			new ControllerTicket();
 		}
-		if(e.getSource() == guiA.getMiImpresionT()) {
+		if(e.getSource() == guiA.getMnImpresinT()) {
 			new ControllerImpresionT();
 		}
-		if(e.getSource() == guiA.getMiVuelos()) {
+		if(e.getSource() == guiA.getMnVuelos()) {
 			new ControllerVuelos();
 		}
 		

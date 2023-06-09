@@ -1,0 +1,138 @@
+private static final String XML_PATH = "path/to/xml/file.xml";
+
+  public static boolean isValidUser(String username, String password) {
+
+    try {
+
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      Document document = factory.newDocumentBuilder().parse(XML_PATH);
+
+      XPath xpath = XPathFactory.newInstance().newXPath();
+
+      // Evaluate XPath expression to get the user node
+      String expression = "//user[username='" + username + "'][password='" + password + "']";
+      Node userNode = (Node) xpath.evaluate(expression, document, XPathConstants.NODE);
+
+      // If user node is found, credentials are valid
+      if (userNode != null) {
+        return true;
+      }
+
+    } catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e) {
+      // Handle exceptions
+    }
+
+    return false;
+  }
+}
+
+///
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+
+public class XmlValidator {
+
+  private static final String XML_PATH = "path/to/xml/file.xml";
+
+  public static boolean isValidUser(String username, String password, String userType, String userStatus) {
+
+    try {
+
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      Document document = factory.newDocumentBuilder().parse(XML_PATH);
+
+      XPath xpath = XPathFactory.newInstance().newXPath();
+
+      // Evaluate XPath expression to get the user node
+      String expression = "//user[username='" + username + "'][password='" + password + "'][userType='" + userType + "'][userStatus='" + userStatus + "']";
+      Node userNode = (Node) xpath.evaluate(expression, document, XPathConstants.NODE);
+
+      // If user node is found, credentials are valid
+      if (userNode != null) {
+        return true;
+      }
+
+    } catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e) {
+      // Handle exceptions
+    }
+
+    return false;
+  }
+}
+///
+public static boolean isValidUser(String username, String password, String userType, String userStatus) {
+    try {
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      Document document = builder.parse(XML_PATH);
+
+      XPath xpath = XPathFactory.newInstance().newXPath();
+      String expression = "//user[username='" + username + "']";
+      Node userNode = (Node) xpath.evaluate(expression, document, XPathConstants.NODE);
+      
+      if (userNode != null) {
+        String actualPassword = xpath.evaluate("password", userNode);  
+        String actualUserType = xpath.evaluate("userType", userNode); 
+        String actualUserStatus = xpath.evaluate("userStatus", userNode);
+        
+        if (password.equals(actualPassword) &&
+            userType.equals(actualUserType) &&
+            userStatus.equals(actualUserStatus)) {
+          return true;
+        }
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
+}
+
+/// esta
+public boolean login(String username, String password) {
+    try {
+        File xmlFile = new File("users.xml");
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(xmlFile);
+        doc.getDocumentElement().normalize();
+
+        NodeList nList = doc.getElementsByTagName("user");
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                String user = eElement.getElementsByTagName("username").item(0).getTextContent();
+                String pass = eElement.getElementsByTagName("password").item(0).getTextContent();
+                String type = eElement.getElementsByTagName("type").item(0).getTextContent();
+                boolean active = Boolean.parseBoolean(eElement.getElementsByTagName("active").item(0).getTextContent());
+                if (user.equals(username) && pass.equals(password) && active) {
+                    System.out.println("User type: " + type);
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+try {
+					if(fXML.getValidateUser("Users.xml","User",guiL.getTUser().getText(),guiL.getTPassword().getText()) == "administrador") {
+						new ControllerAdmin();
+					}else {
+						new ControllerColaborador();
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}

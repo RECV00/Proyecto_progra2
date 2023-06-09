@@ -15,56 +15,55 @@ public class ControllerColaborador implements ActionListener{
 		// TODO Auto-generated constructor stub
 		guiC= new GUIColaborador();
 		fXML= new FilesXML();
-		
 		initializer();
 	}
 
 	private void initializer() {
 		// TODO Auto-generated method stub
-		guiC.getMiUsers().addActionListener(this);
-		guiC.getMiBrand().addActionListener(this);
-		guiC.getMiModel().addActionListener(this);
-		guiC.getMiAirline().addActionListener(this);
-		guiC.getMiPlane().addActionListener(this);
-		guiC.getMiFlight().addActionListener(this);
-		guiC.getMiPassenger().addActionListener(this);
-		guiC.getMiTickert().addActionListener(this);
-		guiC.getMiImpresionT().addActionListener(this);
-		guiC.getMiVuelos().addActionListener(this);
+		guiC.getMnUser().addActionListener(this);
+		guiC.getMnBrand().addActionListener(this);
+		guiC.getMnModel().addActionListener(this);
+		guiC.getMnAeroline().addActionListener(this);
+		guiC.getMnPlane().addActionListener(this);
+		guiC.getMnFlight().addActionListener(this);
+		guiC.getMnPass().addActionListener(this);
+		guiC.getMnTicket().addActionListener(this);
+		guiC.getMnImpresinT().addActionListener(this);
+		guiC.getMnVuelos().addActionListener(this);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == guiC.getMiUsers()) {
+		if(e.getSource() == guiC.getMnUser()) {
 			new ControllerUser();
 		}
-		if(e.getSource() == guiC.getMiBrand()) {
+		if(e.getSource() == guiC.getMnBrand()) {
 			new ControllerBrand();
 		}
-		if(e.getSource() == guiC.getMiModel()) {
+		if(e.getSource() == guiC.getMnModel()) {
 			new ControllerModel();
 		}
-		if(e.getSource() == guiC.getMiAirline()) {
+		if(e.getSource() == guiC.getMnAeroline()) {
 			new ControllerAirline();
 		}
-		if(e.getSource() == guiC.getMiPlane()) {
+		if(e.getSource() == guiC.getMnPlane()) {
 			new ControllerPlane();
 		}
-		if(e.getSource() == guiC.getMiFlight()) {
+		if(e.getSource() == guiC.getMnFlight()) {
 			new ControllerFlight();
 		}
-		if(e.getSource() == guiC.getMiPassenger()) {
+		if(e.getSource() == guiC.getMnPass()) {
 			new ControllerPassenger();
 		}
-		if(e.getSource() == guiC.getMiTickert()) {
+		if(e.getSource() == guiC.getMnTicket()) {
 			new ControllerTicket();
 		}
-		if(e.getSource() == guiC.getMiImpresionT()) {
+		if(e.getSource() == guiC.getMnImpresinT()) {
 			new ControllerImpresionT();
 		}
-		if(e.getSource() == guiC.getMiVuelos()) {
+		if(e.getSource() == guiC.getMnVuelos()) {
 			new ControllerVuelos();
 		}
 		
