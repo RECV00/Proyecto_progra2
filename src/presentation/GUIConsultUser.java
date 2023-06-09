@@ -37,7 +37,7 @@ public class GUIConsultUser extends JFrame {
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bConsult;
+	private JButton bCheckHistory;
 	private JLabel tTitule;
 	private JTextField textField;
 	private JLabel lConsultName;
@@ -54,7 +54,7 @@ public class GUIConsultUser extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBConsult());
+		getContentPane().add(getBCheckHistory());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTextField());
 		getContentPane().add(getLConsultName());
@@ -148,16 +148,16 @@ public class GUIConsultUser extends JFrame {
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBConsult() {
-		if (bConsult == null) {
-			bConsult = new JButton("Consultar Historial");
-			bConsult.addActionListener(new ActionListener() {
+	public JButton getBCheckHistory() {
+		if (bCheckHistory == null) {
+			bCheckHistory = new JButton("Consultar Historial");
+			bCheckHistory.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bConsult.setBounds(527, 214, 137, 23);
+			bCheckHistory.setBounds(527, 214, 137, 23);
 		}
-		return bConsult;
+		return bCheckHistory;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {

@@ -39,6 +39,8 @@ public class GUIDeleteUser extends JFrame {
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
+	private JTextField tNameDelete;
+	private JLabel lNameDelete;
 
 	public GUIDeleteUser() {
 		
@@ -53,6 +55,8 @@ public class GUIDeleteUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
+		getContentPane().add(getTNameDelete());
+		getContentPane().add(getLNameDelete());
 		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,7 +149,7 @@ public class GUIDeleteUser extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(527, 119, 94, 23);
+			bDelete.setBounds(527, 159, 94, 23);
 		}
 		return bDelete;
 	}
@@ -157,5 +161,20 @@ public class GUIDeleteUser extends JFrame {
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
+	}
+	public JTextField getTNameDelete() {
+		if (tNameDelete == null) {
+			tNameDelete = new JTextField();
+			tNameDelete.setBounds(27, 82, 112, 20);
+			tNameDelete.setColumns(10);
+		}
+		return tNameDelete;
+	}
+	public JLabel getLNameDelete() {
+		if (lNameDelete == null) {
+			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
+			lNameDelete.setBounds(27, 57, 157, 14);
+		}
+		return lNameDelete;
 	}
 }
