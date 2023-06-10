@@ -65,22 +65,22 @@ public class Flight {
 		this.arrivalDateTime = arrivalDateTime;
 	}
 
-	public String getFlight(String typeSeat) {
-		if (typeSeat=="Clase Ejecutiva") {
-			return "48429";
-		}else if (typeSeat=="Clase Turista") {
-			return "16143";
-		}else {
-			return "5381";
-		}
+	public String getFlight() {
+		return flight;
 	}
 
 	public void setFlight(String flight) {
 		this.flight = flight;
 	}
 
-	public int getAmount() {
-		return amount;
+	public int getAmount(String typeSeat) {
+		if (typeSeat=="Clase Ejecutiva") {
+			return 48429;
+		}else if (typeSeat=="Clase Turista") {
+			return 16143;
+		}else {
+			return 5381;
+		}
 	}
 
 	public void setAmount(int amount) {

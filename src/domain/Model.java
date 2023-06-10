@@ -7,7 +7,6 @@ public class Model {
 	int cantSeatExecutive;
 	int cantSeatTourist;
 	int cantSeatEconomic;
-	
 	public Model() {
 		// TODO Auto-generated constructor stub
 	}
