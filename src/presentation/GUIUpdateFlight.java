@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIUpdateUser extends JFrame {
+public class GUIUpdateFlight extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -39,10 +39,10 @@ public class GUIUpdateUser extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField textField;
-	private JLabel lUpdateUser;
+	private JTextField tUpdateVuelo;
+	private JLabel lUpdateVueloName;
 
-	public GUIUpdateUser() {
+	public GUIUpdateFlight() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -55,9 +55,9 @@ public class GUIUpdateUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTextField());
-		getContentPane().add(getLUpdateUser());
-		setSize(688,368);
+		getContentPane().add(getTUpdateVuelo());
+		getContentPane().add(getLUpdateVueloName());
+		setSize(563,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIUpdateUser extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombres de Vuelos"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIUpdateUser extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 130, 414, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -141,7 +141,7 @@ public class GUIUpdateUser extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(434, 283, 94, 23);
 		}
 		return bExit;
 	}
@@ -156,28 +156,28 @@ public class GUIUpdateUser extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Usuarios");
+			tTitule = new JLabel("Actualizar Vuelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(154, 12, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(27, 74, 132, 20);
-			textField.setColumns(10);
+	public JTextField getTUpdateVuelo() {
+		if (tUpdateVuelo == null) {
+			tUpdateVuelo = new JTextField();
+			tUpdateVuelo.setBounds(27, 74, 132, 20);
+			tUpdateVuelo.setColumns(10);
 		}
-		return textField;
+		return tUpdateVuelo;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLUpdateUser() {
-		if (lUpdateUser == null) {
-			lUpdateUser = new JLabel("Ingrese el Nombre a Actualizar");
-			lUpdateUser.setBounds(27, 52, 172, 23);
+	public JLabel getLUpdateVueloName() {
+		if (lUpdateVueloName == null) {
+			lUpdateVueloName = new JLabel("Ingrese el Vuelo a Actualizar");
+			lUpdateVueloName.setBounds(27, 52, 172, 23);
 		}
-		return lUpdateUser;
+		return lUpdateVueloName;
 	}
 }
 

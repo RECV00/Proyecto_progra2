@@ -43,14 +43,20 @@ public class GUIRegisterFlight extends JFrame {
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
-	private JLabel lName;
-	private JTextField tName;
-	private JLabel lContrasena;
-	private JLabel lTypeUser;
-	private JTextField tContrasena;
+	private JLabel lNumFlight;
+	private JTextField tNumFlight;
+	private JLabel lDepartureCity;
+	private JLabel lDepartureDateTime;
+	private JTextField tDepartureCity;
 	private JTextField tTypeUser;
 	
 	private JComboBox comboBoxState;
+	private JLabel lArrivalCity;
+	private JLabel lArrivalDateTime;
+	private JLabel lFlight;
+	private JTextField tArrivalCity;
+	private JTextField tArrivalDateTime;
+	private JTextField tFlight;
 
 	public GUIRegisterFlight() {
 		
@@ -65,14 +71,20 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLName());
-		getContentPane().add(getTName());
-		getContentPane().add(getLContrasena());
-		getContentPane().add(getLTypeUser());
-		getContentPane().add(getTContrasena());
+		getContentPane().add(getLNumFlight());
+		getContentPane().add(getTNumFlight());
+		getContentPane().add(getLDepartureCity());
+		getContentPane().add(getLDepartureDateTime());
+		getContentPane().add(getTDepartureCity());
 		getContentPane().add(getTTypeUser());
 		getContentPane().add(getComboBoxState());
-		setSize(688,368);
+		getContentPane().add(getLArrivalCity());
+		getContentPane().add(getLArrivalDateTime());
+		getContentPane().add(getLFlight());
+		getContentPane().add(getTArrivalCity());
+		getContentPane().add(getTArrivalDateTime());
+		getContentPane().add(getTFlight());
+		setSize(929,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -114,7 +126,7 @@ public class GUIRegisterFlight extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Fecha y Hora de Salida", "Cuidad de Arrribo","Fecha y Hora Arribo","Avión","Monto de Asiento"};
+		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -143,7 +155,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 209, 874, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -158,7 +170,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(830, 11, 75, 23);
 		}
 		return bExit;
 	}
@@ -166,67 +178,67 @@ public class GUIRegisterFlight extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(527, 146, 94, 23);
+			bRegister.setBounds(755, 189, 109, 23);
 		}
 		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Usuarios");
+			tTitule = new JLabel("Registrar Vuelo");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLName() {
-		if (lName == null) {
-			lName = new JLabel("Nombre");
-			lName.setBounds(20, 60, 49, 14);
+	public JLabel getLNumFlight() {
+		if (lNumFlight == null) {
+			lNumFlight = new JLabel("Numero de Vuelo");
+			lNumFlight.setBounds(20, 60, 109, 14);
 		}
-		return lName;
+		return lNumFlight;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTName() {
-		if (tName == null) {
-			tName = new JTextField();
-			tName.setBounds(10, 85, 96, 20);
-			tName.setColumns(10);
+	public JTextField getTNumFlight() {
+		if (tNumFlight == null) {
+			tNumFlight = new JTextField();
+			tNumFlight.setBounds(20, 85, 96, 20);
+			tNumFlight.setColumns(10);
 		}
-		return tName;
+		return tNumFlight;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLContrasena() {
-		if (lContrasena == null) {
-			lContrasena = new JLabel("Contraseña");
-			lContrasena.setBounds(118, 60, 80, 14);
+	public JLabel getLDepartureCity() {
+		if (lDepartureCity == null) {
+			lDepartureCity = new JLabel("Ciudad de Salidad");
+			lDepartureCity.setBounds(20, 116, 109, 14);
 		}
-		return lContrasena;
+		return lDepartureCity;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLTypeUser() {
-		if (lTypeUser == null) {
-			lTypeUser = new JLabel("Tipo de Usuario");
-			lTypeUser.setBounds(222, 60, 116, 14);
+	public JLabel getLDepartureDateTime() {
+		if (lDepartureDateTime == null) {
+			lDepartureDateTime = new JLabel("Salida:Hora/Fecha");
+			lDepartureDateTime.setBounds(160, 116, 116, 14);
 		}
-		return lTypeUser;
+		return lDepartureDateTime;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTContrasena() {
-		if (tContrasena == null) {
-			tContrasena = new JTextField();
-			tContrasena.setBounds(114, 85, 96, 20);
-			tContrasena.setColumns(10);
+	public JTextField getTDepartureCity() {
+		if (tDepartureCity == null) {
+			tDepartureCity = new JTextField();
+			tDepartureCity.setBounds(20, 141, 96, 20);
+			tDepartureCity.setColumns(10);
 		}
-		return tContrasena;
+		return tDepartureCity;
 	}
 //------------------------------------------------------------------------------------
 	public JTextField getTTypeUser() {
 		if (tTypeUser == null) {
 			tTypeUser = new JTextField();
 			tTypeUser.setText("");
-			tTypeUser.setBounds(222, 85, 96, 20);
+			tTypeUser.setBounds(160, 141, 96, 20);
 			tTypeUser.setColumns(10);
 		}
 		return tTypeUser;
@@ -235,20 +247,65 @@ public class GUIRegisterFlight extends JFrame {
 	public JComboBox getComboBoxState() {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
-			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Activo", "Inactivo"}));
-			comboBoxState.setBounds(342, 84, 87, 22);
+			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
+			comboBoxState.setBounds(438, 140, 87, 22);
 		}
 		return comboBoxState;
 	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
-		tName.setText("");
-		tContrasena.setText("");
+		tNumFlight.setText("");
+		tDepartureCity.setText("");
 		tTypeUser.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
 		
 		JOptionPane.showMessageDialog(null, message);
+	}
+	public JLabel getLArrivalCity() {
+		if (lArrivalCity == null) {
+			lArrivalCity = new JLabel("Ciudad de Arribo");
+			lArrivalCity.setBounds(160, 60, 116, 14);
+		}
+		return lArrivalCity;
+	}
+	public JLabel getLArrivalDateTime() {
+		if (lArrivalDateTime == null) {
+			lArrivalDateTime = new JLabel("Arribo:Hora/Fecha");
+			lArrivalDateTime.setBounds(303, 60, 116, 14);
+		}
+		return lArrivalDateTime;
+	}
+	public JLabel getLFlight() {
+		if (lFlight == null) {
+			lFlight = new JLabel("Avión");
+			lFlight.setBounds(303, 116, 49, 14);
+		}
+		return lFlight;
+	}
+	public JTextField getTArrivalCity() {
+		if (tArrivalCity == null) {
+			tArrivalCity = new JTextField();
+			tArrivalCity.setBounds(160, 85, 96, 20);
+			tArrivalCity.setColumns(10);
+		}
+		return tArrivalCity;
+	}
+	public JTextField getTArrivalDateTime() {
+		if (tArrivalDateTime == null) {
+			tArrivalDateTime = new JTextField();
+			tArrivalDateTime.setBounds(303, 85, 96, 20);
+			tArrivalDateTime.setColumns(10);
+		}
+		return tArrivalDateTime;
+	}
+	public JTextField getTFlight() {
+		if (tFlight == null) {
+			tFlight = new JTextField();
+			tFlight.setBounds(303, 141, 96, 20);
+			tFlight.setColumns(10);
+		}
+		return tFlight;
 	}
 }

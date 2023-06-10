@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import domain.User;
+import domain.Brand;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -29,12 +29,12 @@ public class GUIDeleteBrand extends JFrame {
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTUser;
-	private JTable tUser;
+	private DefaultTableModel dtmTBrand;
+	private JTable tBrand;
 	
-	private JScrollPane spTUser;
+	private JScrollPane spTBrand;
 	
-	private ArrayList<User> arrayLUser;
+	private ArrayList<Brand> arrayLBrand;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bDelete;
@@ -44,9 +44,9 @@ public class GUIDeleteBrand extends JFrame {
 
 	public GUIDeleteBrand() {
 		
-		setDTMTUser(dataTable,getColumnsNames());
-		setUser(dtmTUser);
-		setSPTUser(tUser);
+		setDTMTBrand(dataTable,getColumnsNames());
+		setBrand(dtmTBrand);
+		setSPTBrand(tBrand);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -64,36 +64,36 @@ public class GUIDeleteBrand extends JFrame {
 		
 	}
 //------------------------------------------------------------------------------------
-	public void setDTMTUser(Object data[][],String[] columnsNames) {
-		dtmTUser = new DefaultTableModel(data,columnsNames);
+	public void setDTMTBrand(Object data[][],String[] columnsNames) {
+		dtmTBrand = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTUser() {
-		return dtmTUser;
+	public DefaultTableModel getDTMTBrand() {
+		return dtmTBrand;
 	}
 //------------------------------------------------------------------------------------
-	public void setUser(DefaultTableModel dtmTUser) {
-		tUser = new JTable(dtmTUser);
+	public void setBrand(DefaultTableModel dtmTBrand) {
+		tBrand = new JTable(dtmTBrand);
 		//No poder editar los valores de la tabla
-		tUser.setEnabled(false);
+		tBrand.setEnabled(false);
 		//no poder mover las columnas
-		tUser.getTableHeader().setReorderingAllowed(false);
+		tBrand.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tUser.getTableHeader().setResizingAllowed(false);
+		tBrand.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTUser() {
-		return this.tUser;
+	public JTable getTBrand() {
+		return this.tBrand;
 	}
 	
-	public void setSPTUser(JTable tUser) {
-		spTUser = new JScrollPane(tUser);
-		spTUser.setBounds(10,70,460,80);
+	public void setSPTBrand(JTable tBrand) {
+		spTBrand = new JScrollPane(tBrand);
+		spTBrand.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTUser() {
-		return this.spTUser;
+	public JScrollPane getSPTBrand() {
+		return this.spTBrand;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
@@ -101,13 +101,13 @@ public class GUIDeleteBrand extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<User>getArrayListUser(){
-		return arrayLUser;
+	public ArrayList<Brand>getArrayListBrand(){
+		return arrayLBrand;
 	}
 //------------------------------------------------------------------------------------
-	public void print(JTable tUser) {
+	public void print(JTable tBrand) {
 		try {
-			if(!tUser.print()) {
+			if(!tBrand.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -128,12 +128,12 @@ public class GUIDeleteBrand extends JFrame {
 			scrollPane = new JScrollPane();
 			scrollPane.setBounds(83, 130, 213, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tUser=new JTable(dtmTUser);
-			tUser.setEnabled(false);
-			tUser.getTableHeader().setReorderingAllowed(false);
-			tUser.getTableHeader().setResizingAllowed(false);	
-			spTUser = new JScrollPane(tUser);
-			scrollPane.setColumnHeaderView(spTUser);
+			tBrand=new JTable(dtmTBrand);
+			tBrand.setEnabled(false);
+			tBrand.getTableHeader().setReorderingAllowed(false);
+			tBrand.getTableHeader().setResizingAllowed(false);	
+			spTBrand = new JScrollPane(tBrand);
+			scrollPane.setColumnHeaderView(spTBrand);
 		}
 		return scrollPane;
 	}

@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import domain.User;
+import domain.Flight;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -22,32 +22,32 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIConsultUser extends JFrame {
+public class GUIConsultFlight extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTUser;
-	private JTable tUser;
+	private DefaultTableModel dtmTFlight;
+	private JTable tFlight;
 	
-	private JScrollPane spTUser;
+	private JScrollPane spTFlight;
 	
-	private ArrayList<User> arrayLUser;
+	private ArrayList<Flight> arrayLFlight;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
-	private JTextField tConsultName;
-	private JLabel lConsultName;
+	private JTextField tConsultNameVuelo;
+	private JLabel lConsultNameVuelo;
 	private JButton bSearch;
 
-	public GUIConsultUser() {
+	public GUIConsultFlight() {
 		
-		setDTMTUser(dataTable,getColumnsNames());
-		setUser(dtmTUser);
-		setSPTUser(tUser);
+		setDTMTFlight(dataTable,getColumnsNames());
+		setFlight(dtmTFlight);
+		setSPTFlight(tFlight);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -56,8 +56,8 @@ public class GUIConsultUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTConsultName());
-		getContentPane().add(getLConsultName());
+		getContentPane().add(getTConsultNameVuelo());
+		getContentPane().add(getLConsultNameVuelo());
 		getContentPane().add(getBSearch());
 		setSize(688,368);
 		setLocationRelativeTo(null);
@@ -66,50 +66,50 @@ public class GUIConsultUser extends JFrame {
 		
 	}
 //------------------------------------------------------------------------------------
-	public void setDTMTUser(Object data[][],String[] columnsNames) {
-		dtmTUser = new DefaultTableModel(data,columnsNames);
+	public void setDTMTFlight(Object data[][],String[] columnsNames) {
+		dtmTFlight = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTUser() {
-		return dtmTUser;
+	public DefaultTableModel getDTMTFlight() {
+		return dtmTFlight;
 	}
 //------------------------------------------------------------------------------------
-	public void setUser(DefaultTableModel dtmTUser) {
-		tUser = new JTable(dtmTUser);
+	public void setFlight(DefaultTableModel dtmTFlight) {
+		tFlight = new JTable(dtmTFlight);
 		//No poder editar los valores de la tabla
-		tUser.setEnabled(false);
+		tFlight.setEnabled(false);
 		//no poder mover las columnas
-		tUser.getTableHeader().setReorderingAllowed(false);
+		tFlight.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tUser.getTableHeader().setResizingAllowed(false);
+		tFlight.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTUser() {
-		return this.tUser;
+	public JTable getTFlight() {
+		return this.tFlight;
 	}
 	
-	public void setSPTUser(JTable tUser) {
-		spTUser = new JScrollPane(tUser);
-		spTUser.setBounds(10,70,460,80);
+	public void setSPTFlight(JTable tFlight) {
+		spTFlight = new JScrollPane(tFlight);
+		spTFlight.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTUser() {
-		return this.spTUser;
+	public JScrollPane getSPTFlight() {
+		return this.spTFlight;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombres de Vuelos"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<User>getArrayListUser(){
-		return arrayLUser;
+	public ArrayList<Flight>getArrayListFlight(){
+		return arrayLFlight;
 	}
 //------------------------------------------------------------------------------------
-	public void print(JTable tUser) {
+	public void print(JTable tFlight) {
 		try {
-			if(!tUser.print()) {
+			if(!tFlight.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -128,14 +128,14 @@ public class GUIConsultUser extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 130, 459, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tUser=new JTable(dtmTUser);
-			tUser.setEnabled(false);
-			tUser.getTableHeader().setReorderingAllowed(false);
-			tUser.getTableHeader().setResizingAllowed(false);	
-			spTUser = new JScrollPane(tUser);
-			scrollPane.setColumnHeaderView(spTUser);
+			tFlight=new JTable(dtmTFlight);
+			tFlight.setEnabled(false);
+			tFlight.getTableHeader().setReorderingAllowed(false);
+			tFlight.getTableHeader().setResizingAllowed(false);	
+			spTFlight = new JScrollPane(tFlight);
+			scrollPane.setColumnHeaderView(spTFlight);
 		}
 		return scrollPane;
 	}
@@ -155,34 +155,34 @@ public class GUIConsultUser extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(330, 107, 141, 23);
 		}
 		return bCheckHistory;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Usuarios");
+			tTitule = new JLabel("Consultar Vuelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTConsultName() {
-		if (tConsultName == null) {
-			tConsultName = new JTextField();
-			tConsultName.setBounds(34, 79, 146, 29);
-			tConsultName.setColumns(10);
+	public JTextField getTConsultNameVuelo() {
+		if (tConsultNameVuelo == null) {
+			tConsultNameVuelo = new JTextField();
+			tConsultNameVuelo.setBounds(34, 79, 146, 29);
+			tConsultNameVuelo.setColumns(10);
 		}
-		return tConsultName;
+		return tConsultNameVuelo;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLConsultName() {
-		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese el Nombre del Usuario");
-			lConsultName.setBounds(34, 59, 166, 20);
+	public JLabel getLConsultNameVuelo() {
+		if (lConsultNameVuelo == null) {
+			lConsultNameVuelo = new JLabel("Ingrese el Nombre del Vuelo");
+			lConsultNameVuelo.setBounds(34, 59, 166, 20);
 		}
-		return lConsultName;
+		return lConsultNameVuelo;
 	}
 //------------------------------------------------------------------------------------
 	public JButton getBSearch() {

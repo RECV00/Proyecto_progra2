@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIDeleteUser extends JFrame {
+public class GUIDeleteFlight extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -39,10 +39,10 @@ public class GUIDeleteUser extends JFrame {
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
-	private JTextField tNameDelete;
+	private JTextField tVueloDelete;
 	private JLabel lNameDelete;
 
-	public GUIDeleteUser() {
+	public GUIDeleteFlight() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -55,9 +55,9 @@ public class GUIDeleteUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameDelete());
+		getContentPane().add(getTVueloDelete());
 		getContentPane().add(getLNameDelete());
-		setSize(688,368);
+		setSize(421,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIDeleteUser extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombre de Vuelo"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIDeleteUser extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 130, 236, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -141,7 +141,7 @@ public class GUIDeleteUser extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(278, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -156,25 +156,25 @@ public class GUIDeleteUser extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Eliminar Usuarios");
+			tTitule = new JLabel("Eliminar Vuelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(93, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNameDelete() {
-		if (tNameDelete == null) {
-			tNameDelete = new JTextField();
-			tNameDelete.setBounds(27, 82, 112, 20);
-			tNameDelete.setColumns(10);
+	public JTextField getTVueloDelete() {
+		if (tVueloDelete == null) {
+			tVueloDelete = new JTextField();
+			tVueloDelete.setBounds(27, 82, 112, 20);
+			tVueloDelete.setColumns(10);
 		}
-		return tNameDelete;
+		return tVueloDelete;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
-			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
+			lNameDelete = new JLabel("Ingrese el Vuelo Eliminar");
 			lNameDelete.setBounds(27, 57, 157, 14);
 		}
 		return lNameDelete;

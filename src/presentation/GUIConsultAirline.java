@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import domain.User;
+import domain.Airline;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -29,12 +29,12 @@ public class GUIConsultAirline extends JFrame {
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTUser;
-	private JTable tUser;
+	private DefaultTableModel dtmTAirline;
+	private JTable tAirline;
 	
-	private JScrollPane spTUser;
+	private JScrollPane spTAirline;
 	
-	private ArrayList<User> arrayLUser;
+	private ArrayList<Airline> arrayLAirline;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bCheckHistory;
@@ -45,9 +45,9 @@ public class GUIConsultAirline extends JFrame {
 
 	public GUIConsultAirline() {
 		
-		setDTMTUser(dataTable,getColumnsNames());
-		setUser(dtmTUser);
-		setSPTUser(tUser);
+		setDTMTAirline(dataTable,getColumnsNames());
+		setAirline(dtmTAirline);
+		setSPTAirline(tAirline);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -66,36 +66,36 @@ public class GUIConsultAirline extends JFrame {
 		
 	}
 //------------------------------------------------------------------------------------
-	public void setDTMTUser(Object data[][],String[] columnsNames) {
-		dtmTUser = new DefaultTableModel(data,columnsNames);
+	public void setDTMTAirline(Object data[][],String[] columnsNames) {
+		dtmTAirline = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTUser() {
-		return dtmTUser;
+	public DefaultTableModel getDTMTAirline() {
+		return dtmTAirline;
 	}
 //------------------------------------------------------------------------------------
-	public void setUser(DefaultTableModel dtmTUser) {
-		tUser = new JTable(dtmTUser);
+	public void setAirline(DefaultTableModel dtmTAirline) {
+		tAirline = new JTable(dtmTAirline);
 		//No poder editar los valores de la tabla
-		tUser.setEnabled(false);
+		tAirline.setEnabled(false);
 		//no poder mover las columnas
-		tUser.getTableHeader().setReorderingAllowed(false);
+		tAirline.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tUser.getTableHeader().setResizingAllowed(false);
+		tAirline.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTUser() {
-		return this.tUser;
+	public JTable getTAirline() {
+		return this.tAirline;
 	}
 	
-	public void setSPTUser(JTable tUser) {
-		spTUser = new JScrollPane(tUser);
-		spTUser.setBounds(10,70,460,80);
+	public void setSPTAirline(JTable tAirline) {
+		spTAirline = new JScrollPane(tAirline);
+		spTAirline.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTUser() {
-		return this.spTUser;
+	public JScrollPane getSPTAirline() {
+		return this.spTAirline;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
@@ -103,13 +103,13 @@ public class GUIConsultAirline extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<User>getArrayListUser(){
-		return arrayLUser;
+	public ArrayList<Airline>getArrayListAirline(){
+		return arrayLAirline;
 	}
 //------------------------------------------------------------------------------------
-	public void print(JTable tUser) {
+	public void print(JTable tAirline) {
 		try {
-			if(!tUser.print()) {
+			if(!tAirline.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -130,12 +130,12 @@ public class GUIConsultAirline extends JFrame {
 			scrollPane = new JScrollPane();
 			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tUser=new JTable(dtmTUser);
-			tUser.setEnabled(false);
-			tUser.getTableHeader().setReorderingAllowed(false);
-			tUser.getTableHeader().setResizingAllowed(false);	
-			spTUser = new JScrollPane(tUser);
-			scrollPane.setColumnHeaderView(spTUser);
+			tAirline=new JTable(dtmTAirline);
+			tAirline.setEnabled(false);
+			tAirline.getTableHeader().setReorderingAllowed(false);
+			tAirline.getTableHeader().setResizingAllowed(false);	
+			spTAirline = new JScrollPane(tAirline);
+			scrollPane.setColumnHeaderView(spTAirline);
 		}
 		return scrollPane;
 	}

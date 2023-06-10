@@ -1,5 +1,6 @@
 package domain;
 
+
 public class Flight {
 
 	private String numFlight;
@@ -64,8 +65,14 @@ public class Flight {
 		this.arrivalDateTime = arrivalDateTime;
 	}
 
-	public String getFlight() {
-		return flight;
+	public String getFlight(String typeSeat) {
+		if (typeSeat=="Clase Ejecutiva") {
+			return "48429";
+		}else if (typeSeat=="Clase Turista") {
+			return "16143";
+		}else {
+			return "5381";
+		}
 	}
 
 	public void setFlight(String flight) {
@@ -79,6 +86,7 @@ public class Flight {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
 	public String[] getDataName() {//son mis etiquetas de apertura y cierre
 		String[] dataName = {"numFlight","departureCity","departureDateTime",
 				"arrivalCity","arrivalDateTime","flight","amount"};
