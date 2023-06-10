@@ -39,7 +39,7 @@ public class GUIConsultUser extends JFrame {
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
-	private JTextField textField;
+	private JTextField tConsultName;
 	private JLabel lConsultName;
 	private JButton bSearch;
 
@@ -56,7 +56,7 @@ public class GUIConsultUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTextField());
+		getContentPane().add(getTConsultName());
 		getContentPane().add(getLConsultName());
 		getContentPane().add(getBSearch());
 		setSize(688,368);
@@ -168,13 +168,13 @@ public class GUIConsultUser extends JFrame {
 		}
 		return tTitule;
 	}
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(34, 79, 146, 29);
-			textField.setColumns(10);
+	public JTextField getTConsultName() {
+		if (tConsultName == null) {
+			tConsultName = new JTextField();
+			tConsultName.setBounds(34, 79, 146, 29);
+			tConsultName.setColumns(10);
 		}
-		return textField;
+		return tConsultName;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLConsultName() {

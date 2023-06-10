@@ -30,8 +30,8 @@ public class ControllerRegisterUser implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println(guiRU.getArrayListUser().size());
-		guiRU.print(guiRU.getTUser());//pdf
+	//	System.out.println(guiRU.getArrayListUser().size());
+		//guiRU.print(guiRU.getTUser());//pdf
 		
 		if(e.getSource()== guiRU.getBRegister()) {
 			
@@ -44,7 +44,8 @@ public class ControllerRegisterUser implements ActionListener{
 		}
 		if(e.getSource()== guiRU.getBExit()) {
 			//meter la pagina anterior
-			System.exit(0);
+			guiRU.dispose();
+			//System.exit(0);
 		}
 	}
 

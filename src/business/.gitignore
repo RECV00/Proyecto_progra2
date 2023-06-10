@@ -22,3 +22,9 @@
 /ControllerRegisterPassenger.class
 /ControllerRegisterPlane.class
 /ControllerHistorialT.class
+/ControllerConsultUser.class
+/ControllerDeleteUser.class
+/ControllerUpdateUser.class
+/ControllerConsultBrand.class
+/ControllerDeleteBrand.class
+/ControllerUpdateBrand.class

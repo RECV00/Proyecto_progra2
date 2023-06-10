@@ -74,26 +74,26 @@ public class ControllerAdmin implements ActionListener{
 			new ControllerRegisterUser();
 		}
 		if(e.getSource() == guiA.getMiConsult()) {
-			new ControllerRegisterBrand();
+			new ControllerConsultUser();
 		}
 		if(e.getSource() == guiA.getMiRemove()) {
-			new ControllerRegisterModel();
+			new ControllerDeleteUser();
 		}
 		if(e.getSource() == guiA.getMiUpdate()) {
-			new ControllerRegisterAirline();
+			new ControllerUpdateUser();
 		}
 		//marca
 		if(e.getSource() == guiA.getMiRegisterBrand()) {
 			new ControllerRegisterBrand();
 		}
 		if(e.getSource() == guiA.getMiConsultBrand()) {
-			new ControllerRegisterFlight();
+			new ControllerConsultBrand();
 		}
 		if(e.getSource() == guiA.getMiRemoveBrand()) {
-			new ControllerRegisterPassenger();
+			new ControllerDeleteBrand();
 		}
 		if(e.getSource() == guiA.getMiUpdateBrand()) {
-			new ControllerRegisterTicket();
+			new ControllerUpdateBrand();
 		}
 		//modelo
 		if(e.getSource() == guiA.getMiRegisterModel()) {
@@ -183,7 +183,10 @@ public class ControllerAdmin implements ActionListener{
 		if(e.getSource() == guiA.getMnVuelos()) {
 			new ControllerVuelos();
 		}
-		
+		if(e.getSource()== guiA.getMiExit()) {
+			System.exit(0);
+		}
+
 	}
 
 }
