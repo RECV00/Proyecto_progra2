@@ -166,7 +166,7 @@ public class GUIRegisterUser extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(527, 142, 94, 23);
+			bRegister.setBounds(527, 146, 94, 23);
 		}
 		return bRegister;
 	}
@@ -216,6 +216,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return tContrasena;
 	}
+//------------------------------------------------------------------------------------
 	public JTextField getTTypeUser() {
 		if (tTypeUser == null) {
 			tTypeUser = new JTextField();
@@ -225,6 +226,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return tTypeUser;
 	}
+//------------------------------------------------------------------------------------
 	public JComboBox getComboBoxState() {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
