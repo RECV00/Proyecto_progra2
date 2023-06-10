@@ -60,7 +60,7 @@ public class ControllerColaborador implements ActionListener{
 			new ControllerImpresionT();
 		}
 		if(e.getSource() == guiC.getMnVuelos()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		
 		

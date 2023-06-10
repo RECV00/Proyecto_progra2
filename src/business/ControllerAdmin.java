@@ -84,7 +84,7 @@ public class ControllerAdmin implements ActionListener{
 		}
 		//marca
 		if(e.getSource() == guiA.getMiRegisterBrand()) {
-			new ControllerRegisterPlane();
+			new ControllerRegisterBrand();
 		}
 		if(e.getSource() == guiA.getMiConsultBrand()) {
 			new ControllerRegisterFlight();
@@ -97,91 +97,91 @@ public class ControllerAdmin implements ActionListener{
 		}
 		//modelo
 		if(e.getSource() == guiA.getMiRegisterModel()) {
-			new ControllerImpresionT();
+			new ControllerRegisterModel();
 		}
 		if(e.getSource() == guiA.getMiConsultModel()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiRemoveModel()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiUpdateModel()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		//aerolinea
 		if(e.getSource() == guiA.getMiRegisterAeroline()) {
-			new ControllerImpresionT();
+			new ControllerRegisterAirline();
 		}
 		if(e.getSource() == guiA.getMiConsultAeroline()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiRemoveAeroline()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiUpdateAeroline()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		//vuelos
 		if(e.getSource() == guiA.getMiRegisterFlight()) {
-			new ControllerImpresionT();
+			new ControllerRegisterFlight();
 		}
 		if(e.getSource() == guiA.getMiConsultFlight()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiRemoveFlight()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiUpdateFlight()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		//aviones
 		if(e.getSource() == guiA.getMiRegisterPlane()) {
-			new ControllerImpresionT();
+			new ControllerRegisterPlane();
 		}
 		if(e.getSource() == guiA.getMiConsultPlane()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiRemovePlane()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiUpdatePlane()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		//pasajeros
 		if(e.getSource() == guiA.getMiRegisterPass()) {
-			new ControllerImpresionT();
+			new ControllerRegisterPassenger();
 		}
 		if(e.getSource() == guiA.getMiConsultPass()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiRemovePass()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiUpdatePass()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		//tiquetes
 		if(e.getSource() == guiA.getMiRegisterTicket()) {
-			new ControllerImpresionT();
+			new ControllerRegisterTicket();
 		}
 		if(e.getSource() == guiA.getMiConsultTicket()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiRemoveTicket()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		if(e.getSource() == guiA.getMiUpdateTicket()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		//otras opciones
 		if(e.getSource() == guiA.getMnImpresionT()) {
 			new ControllerImpresionT();
 		}
 		if(e.getSource() == guiA.getMnHistorialT()) {
-			new ControllerRegisterVuelos();
+			new ControllerHistorialT();
 		}
 		if(e.getSource() == guiA.getMnVuelos()) {
-			new ControllerRegisterVuelos();
+			new ControllerVuelos();
 		}
 		
 	}
