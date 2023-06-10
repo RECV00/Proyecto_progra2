@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -231,5 +232,16 @@ public class GUIRegisterUser extends JFrame {
 			comboBoxState.setBounds(342, 84, 87, 22);
 		}
 		return comboBoxState;
+	}
+	public void cleanForm() {
+		tName.setText("");
+		tContrasena.setText("");
+		tTypeUser.setText("");
+	}
+	
+	
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
 	}
 }

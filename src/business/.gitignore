@@ -12,3 +12,12 @@
 /ControllerTicket.class
 /ControllerImpresionT.class
 /ControllerVuelos.class
+/ControllerRegisterAirline.class
+/ControllerRegisterBrand.class
+/ControllerRegisterTicket.class
+/ControllerRegisterVuelos.class
+/ControllerRegisterUser.class
+/ControllerRegisterFlight.class
+/ControllerRegisterModel.class
+/ControllerRegisterPassenger.class
+/ControllerRegisterPlane.class

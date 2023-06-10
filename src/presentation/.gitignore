@@ -6,7 +6,14 @@
 /GUIColaborador.class
 /GUIUser.class
 /GUIUser$1.class
+<<<<<<< Updated upstream
 /GUIConsultUser$1.class
 /GUIConsultUser.class
 /GUIDeleteUser.class
 /GUIUpdateUser.class
+=======
+/GUIRegisterUser$1.class
+/GUIRegisterUser.class
+>>>>>>> Stashed changes
+/GUIDeleteUser$1.class
+/GUIUpdateUser$1.class
