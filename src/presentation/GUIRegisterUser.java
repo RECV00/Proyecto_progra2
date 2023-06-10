@@ -179,6 +179,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return tTitule;
 	}
+//------------------------------------------------------------------------------------
 	public JLabel getLName() {
 		if (lName == null) {
 			lName = new JLabel("Nombre");
@@ -186,6 +187,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return lName;
 	}
+//------------------------------------------------------------------------------------
 	public JTextField getTName() {
 		if (tName == null) {
 			tName = new JTextField();
@@ -194,6 +196,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return tName;
 	}
+//------------------------------------------------------------------------------------
 	public JLabel getLContrasena() {
 		if (lContrasena == null) {
 			lContrasena = new JLabel("Contraseña");
@@ -201,6 +204,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return lContrasena;
 	}
+//------------------------------------------------------------------------------------
 	public JLabel getLTypeUser() {
 		if (lTypeUser == null) {
 			lTypeUser = new JLabel("Tipo de Usuario");
@@ -208,6 +212,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return lTypeUser;
 	}
+//------------------------------------------------------------------------------------
 	public JTextField getTContrasena() {
 		if (tContrasena == null) {
 			tContrasena = new JTextField();
@@ -235,13 +240,13 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return comboBoxState;
 	}
+//-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tName.setText("");
 		tContrasena.setText("");
 		tTypeUser.setText("");
 	}
-	
-	
+//------------------------------------------------------------------------------------
 	public void showMessage(String message) {
 		
 		JOptionPane.showMessageDialog(null, message);

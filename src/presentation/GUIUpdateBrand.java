@@ -42,8 +42,8 @@ public class GUIUpdateBrand extends JFrame {
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
-	private JLabel lName;
-	private JTextField tName;
+	private JLabel lNameUpdateMarca;
+	private JTextField tNameMarcaUpdate;
 
 	public GUIUpdateBrand() {
 		
@@ -58,8 +58,8 @@ public class GUIUpdateBrand extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLName());
-		getContentPane().add(getTName());
+		getContentPane().add(getLNameUpdateMarca());
+		getContentPane().add(getTNameMarcaUpdate());
 		setSize(460,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -167,19 +167,19 @@ public class GUIUpdateBrand extends JFrame {
 		}
 		return tTitule;
 	}
-	public JLabel getLName() {
-		if (lName == null) {
-			lName = new JLabel("Marca a Atualizar");
-			lName.setBounds(41, 61, 146, 23);
+	public JLabel getLNameUpdateMarca() {
+		if (lNameUpdateMarca == null) {
+			lNameUpdateMarca = new JLabel("Marca a Atualizar");
+			lNameUpdateMarca.setBounds(51, 65, 146, 23);
 		}
-		return lName;
+		return lNameUpdateMarca;
 	}
-	public JTextField getTName() {
-		if (tName == null) {
-			tName = new JTextField();
-			tName.setBounds(41, 86, 126, 33);
-			tName.setColumns(10);
+	public JTextField getTNameMarcaUpdate() {
+		if (tNameMarcaUpdate == null) {
+			tNameMarcaUpdate = new JTextField();
+			tNameMarcaUpdate.setBounds(51, 99, 126, 20);
+			tNameMarcaUpdate.setColumns(10);
 		}
-		return tName;
+		return tNameMarcaUpdate;
 	}
 }

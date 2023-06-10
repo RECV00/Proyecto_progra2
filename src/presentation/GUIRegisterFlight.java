@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -21,8 +22,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
-public class GUIConsultBrand extends JFrame {
+public class GUIRegisterFlight extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -32,18 +35,24 @@ public class GUIConsultBrand extends JFrame {
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
 	
+	
 	private JScrollPane spTUser;
 	
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bCheckHistory;
+	private JButton bRegister;
 	private JLabel tTitule;
-	private JTextField TNameConsultMarca;
-	private JLabel lConsultName;
-	private JButton bSearch;
+	private JLabel lName;
+	private JTextField tName;
+	private JLabel lContrasena;
+	private JLabel lTypeUser;
+	private JTextField tContrasena;
+	private JTextField tTypeUser;
+	
+	private JComboBox comboBoxState;
 
-	public GUIConsultBrand() {
+	public GUIRegisterFlight() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -54,17 +63,23 @@ public class GUIConsultBrand extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBCheckHistory());
+		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameConsultMarca());
-		getContentPane().add(getLConsultName());
-		getContentPane().add(getBSearch());
-		setSize(473,368);
+		getContentPane().add(getLName());
+		getContentPane().add(getTName());
+		getContentPane().add(getLContrasena());
+		getContentPane().add(getLTypeUser());
+		getContentPane().add(getTContrasena());
+		getContentPane().add(getTTypeUser());
+		getContentPane().add(getComboBoxState());
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -99,7 +114,7 @@ public class GUIConsultBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Fecha y Hora de Salida", "Cuidad de Arrribo","Fecha y Hora Arribo","Avión","Monto de Asiento"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +143,7 @@ public class GUIConsultBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -143,53 +158,97 @@ public class GUIConsultBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(306, 290, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBCheckHistory() {
-		if (bCheckHistory == null) {
-			bCheckHistory = new JButton("Consultar Historial");
-			bCheckHistory.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			bCheckHistory.setBounds(306, 134, 141, 23);
+	public JButton getBRegister() {
+		if (bRegister == null) {
+			bRegister = new JButton("Registrar");
+			bRegister.setBounds(527, 146, 94, 23);
 		}
-		return bCheckHistory;
+		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Marca");
+			tTitule = new JLabel("Registrar Usuarios");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(121, 11, 279, 29);
+			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTNameConsultMarca() {
-		if (TNameConsultMarca == null) {
-			TNameConsultMarca = new JTextField();
-			TNameConsultMarca.setBounds(34, 79, 146, 29);
-			TNameConsultMarca.setColumns(10);
+//------------------------------------------------------------------------------------
+	public JLabel getLName() {
+		if (lName == null) {
+			lName = new JLabel("Nombre");
+			lName.setBounds(20, 60, 49, 14);
 		}
-		return TNameConsultMarca;
+		return lName;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLConsultName() {
-		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese la Marca");
-			lConsultName.setBounds(34, 59, 166, 20);
+	public JTextField getTName() {
+		if (tName == null) {
+			tName = new JTextField();
+			tName.setBounds(10, 85, 96, 20);
+			tName.setColumns(10);
 		}
-		return lConsultName;
+		return tName;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBSearch() {
-		if (bSearch == null) {
-			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+	public JLabel getLContrasena() {
+		if (lContrasena == null) {
+			lContrasena = new JLabel("Contraseña");
+			lContrasena.setBounds(118, 60, 80, 14);
 		}
-		return bSearch;
+		return lContrasena;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLTypeUser() {
+		if (lTypeUser == null) {
+			lTypeUser = new JLabel("Tipo de Usuario");
+			lTypeUser.setBounds(222, 60, 116, 14);
+		}
+		return lTypeUser;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTContrasena() {
+		if (tContrasena == null) {
+			tContrasena = new JTextField();
+			tContrasena.setBounds(114, 85, 96, 20);
+			tContrasena.setColumns(10);
+		}
+		return tContrasena;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTTypeUser() {
+		if (tTypeUser == null) {
+			tTypeUser = new JTextField();
+			tTypeUser.setText("");
+			tTypeUser.setBounds(222, 85, 96, 20);
+			tTypeUser.setColumns(10);
+		}
+		return tTypeUser;
+	}
+//------------------------------------------------------------------------------------
+	public JComboBox getComboBoxState() {
+		if (comboBoxState == null) {
+			comboBoxState = new JComboBox();
+			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Activo", "Inactivo"}));
+			comboBoxState.setBounds(342, 84, 87, 22);
+		}
+		return comboBoxState;
+	}
+//-----------------------------------------------------------------------------------
+	public void cleanForm() {
+		tName.setText("");
+		tContrasena.setText("");
+		tTypeUser.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
 	}
 }

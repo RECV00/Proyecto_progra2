@@ -39,7 +39,7 @@ public class GUIDeleteBrand extends JFrame {
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
-	private JTextField tNameDelete;
+	private JTextField tNameDeleteMarca;
 	private JLabel lNameDelete;
 
 	public GUIDeleteBrand() {
@@ -55,7 +55,7 @@ public class GUIDeleteBrand extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameDelete());
+		getContentPane().add(getTNameDeleteMarca());
 		getContentPane().add(getLNameDelete());
 		setSize(434,368);
 		setLocationRelativeTo(null);
@@ -166,13 +166,13 @@ public class GUIDeleteBrand extends JFrame {
 		}
 		return tTitule;
 	}
-	public JTextField getTNameDelete() {
-		if (tNameDelete == null) {
-			tNameDelete = new JTextField();
-			tNameDelete.setBounds(27, 82, 112, 20);
-			tNameDelete.setColumns(10);
+	public JTextField getTNameDeleteMarca() {
+		if (tNameDeleteMarca == null) {
+			tNameDeleteMarca = new JTextField();
+			tNameDeleteMarca.setBounds(27, 82, 112, 20);
+			tNameDeleteMarca.setColumns(10);
 		}
-		return tNameDelete;
+		return tNameDeleteMarca;
 	}
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {

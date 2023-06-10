@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIConsultBrand extends JFrame {
+public class GUIUpdateAirline extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -37,13 +37,12 @@ public class GUIConsultBrand extends JFrame {
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bCheckHistory;
+	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField TNameConsultMarca;
-	private JLabel lConsultName;
-	private JButton bSearch;
+	private JTextField tNameAeroUpdate;
+	private JLabel lUpdateName;
 
-	public GUIConsultBrand() {
+	public GUIUpdateAirline() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -54,12 +53,11 @@ public class GUIConsultBrand extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBCheckHistory());
+		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameConsultMarca());
-		getContentPane().add(getLConsultName());
-		getContentPane().add(getBSearch());
-		setSize(473,368);
+		getContentPane().add(getTNameAeroUpdate());
+		getContentPane().add(getLUpdateName());
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -99,7 +97,7 @@ public class GUIConsultBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Nombre", "País"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +126,7 @@ public class GUIConsultBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -143,53 +141,42 @@ public class GUIConsultBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(306, 290, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBCheckHistory() {
-		if (bCheckHistory == null) {
-			bCheckHistory = new JButton("Consultar Historial");
-			bCheckHistory.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			bCheckHistory.setBounds(306, 134, 141, 23);
+	public JButton getBUpdate() {
+		if (bUpdate == null) {
+			bUpdate = new JButton("Actualizar");
+			bUpdate.setBounds(187, 73, 94, 23);
 		}
-		return bCheckHistory;
+		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Marca");
+			tTitule = new JLabel("Actualizar Aerolineas");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(121, 11, 279, 29);
+			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTNameConsultMarca() {
-		if (TNameConsultMarca == null) {
-			TNameConsultMarca = new JTextField();
-			TNameConsultMarca.setBounds(34, 79, 146, 29);
-			TNameConsultMarca.setColumns(10);
+//------------------------------------------------------------------------------------
+	public JTextField getTNameAeroUpdate() {
+		if (tNameAeroUpdate == null) {
+			tNameAeroUpdate = new JTextField();
+			tNameAeroUpdate.setBounds(27, 74, 132, 20);
+			tNameAeroUpdate.setColumns(10);
 		}
-		return TNameConsultMarca;
+		return tNameAeroUpdate;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLConsultName() {
-		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese la Marca");
-			lConsultName.setBounds(34, 59, 166, 20);
+	public JLabel getLUpdateName() {
+		if (lUpdateName == null) {
+			lUpdateName = new JLabel("Ingrese el Nombre a Actualizar");
+			lUpdateName.setBounds(27, 52, 172, 23);
 		}
-		return lConsultName;
-	}
-//------------------------------------------------------------------------------------
-	public JButton getBSearch() {
-		if (bSearch == null) {
-			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
-		}
-		return bSearch;
+		return lUpdateName;
 	}
 }

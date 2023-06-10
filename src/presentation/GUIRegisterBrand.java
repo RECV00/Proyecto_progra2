@@ -42,14 +42,8 @@ public class GUIRegisterBrand extends JFrame {
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
-	private JLabel lName;
-	private JTextField tName;
-	private JLabel lContrasena;
-	private JLabel lTypeUser;
-	private JTextField tContrasena;
-	private JTextField tTypeUser;
-	
-	private JComboBox comboBoxState;
+	private JLabel lNameMarca;
+	private JTextField tNameRegisterMarca;
 
 	public GUIRegisterBrand() {
 		
@@ -64,13 +58,8 @@ public class GUIRegisterBrand extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLName());
-		getContentPane().add(getTName());
-		getContentPane().add(getLContrasena());
-		getContentPane().add(getLTypeUser());
-		getContentPane().add(getTContrasena());
-		getContentPane().add(getTTypeUser());
-		getContentPane().add(getComboBoxState());
+		getContentPane().add(getLNameMarca());
+		getContentPane().add(getTNameRegisterMarca());
 		setSize(460,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -165,7 +154,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(319, 134, 94, 23);
+			bRegister.setBounds(217, 96, 94, 23);
 		}
 		return bRegister;
 	}
@@ -178,58 +167,19 @@ public class GUIRegisterBrand extends JFrame {
 		}
 		return tTitule;
 	}
-	public JLabel getLName() {
-		if (lName == null) {
-			lName = new JLabel("Nombre");
-			lName.setBounds(20, 60, 49, 14);
+	public JLabel getLNameMarca() {
+		if (lNameMarca == null) {
+			lNameMarca = new JLabel("Nombre de la Marca");
+			lNameMarca.setBounds(86, 79, 115, 14);
 		}
-		return lName;
+		return lNameMarca;
 	}
-	public JTextField getTName() {
-		if (tName == null) {
-			tName = new JTextField();
-			tName.setBounds(10, 85, 96, 20);
-			tName.setColumns(10);
+	public JTextField getTNameRegisterMarca() {
+		if (tNameRegisterMarca == null) {
+			tNameRegisterMarca = new JTextField();
+			tNameRegisterMarca.setBounds(83, 96, 118, 23);
+			tNameRegisterMarca.setColumns(10);
 		}
-		return tName;
-	}
-	public JLabel getLContrasena() {
-		if (lContrasena == null) {
-			lContrasena = new JLabel("Contraseña");
-			lContrasena.setBounds(118, 60, 80, 14);
-		}
-		return lContrasena;
-	}
-	public JLabel getLTypeUser() {
-		if (lTypeUser == null) {
-			lTypeUser = new JLabel("Tipo de Usuario");
-			lTypeUser.setBounds(222, 60, 116, 14);
-		}
-		return lTypeUser;
-	}
-	public JTextField getTContrasena() {
-		if (tContrasena == null) {
-			tContrasena = new JTextField();
-			tContrasena.setBounds(114, 85, 96, 20);
-			tContrasena.setColumns(10);
-		}
-		return tContrasena;
-	}
-	public JTextField getTTypeUser() {
-		if (tTypeUser == null) {
-			tTypeUser = new JTextField();
-			tTypeUser.setText("");
-			tTypeUser.setBounds(222, 85, 96, 20);
-			tTypeUser.setColumns(10);
-		}
-		return tTypeUser;
-	}
-	public JComboBox getComboBoxState() {
-		if (comboBoxState == null) {
-			comboBoxState = new JComboBox();
-			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Activo", "Inactivo"}));
-			comboBoxState.setBounds(342, 84, 87, 22);
-		}
-		return comboBoxState;
+		return tNameRegisterMarca;
 	}
 }

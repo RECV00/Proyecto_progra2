@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -21,8 +22,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
-public class GUIConsultBrand extends JFrame {
+public class GUIRegisterAirline extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -32,18 +35,20 @@ public class GUIConsultBrand extends JFrame {
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
 	
+	
 	private JScrollPane spTUser;
 	
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bCheckHistory;
+	private JButton bRegister;
 	private JLabel tTitule;
-	private JTextField TNameConsultMarca;
-	private JLabel lConsultName;
-	private JButton bSearch;
+	private JLabel lNameAeroline;
+	private JTextField tNameAerolinea;
+	private JLabel lContry;
+	private JTextField tContry;
 
-	public GUIConsultBrand() {
+	public GUIRegisterAirline() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -54,17 +59,20 @@ public class GUIConsultBrand extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBCheckHistory());
+		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameConsultMarca());
-		getContentPane().add(getLConsultName());
-		getContentPane().add(getBSearch());
-		setSize(473,368);
+		getContentPane().add(getLNameAeroline());
+		getContentPane().add(getTNameAerolinea());
+		getContentPane().add(getLContry());
+		getContentPane().add(getTContry());
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -99,7 +107,7 @@ public class GUIConsultBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Nombre", "País"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +136,7 @@ public class GUIConsultBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -143,53 +151,70 @@ public class GUIConsultBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(306, 290, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBCheckHistory() {
-		if (bCheckHistory == null) {
-			bCheckHistory = new JButton("Consultar Historial");
-			bCheckHistory.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			bCheckHistory.setBounds(306, 134, 141, 23);
+	public JButton getBRegister() {
+		if (bRegister == null) {
+			bRegister = new JButton("Registrar");
+			bRegister.setBounds(347, 84, 94, 23);
 		}
-		return bCheckHistory;
+		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Marca");
+			tTitule = new JLabel("Registrar Aerolinea");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(121, 11, 279, 29);
+			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTNameConsultMarca() {
-		if (TNameConsultMarca == null) {
-			TNameConsultMarca = new JTextField();
-			TNameConsultMarca.setBounds(34, 79, 146, 29);
-			TNameConsultMarca.setColumns(10);
+//------------------------------------------------------------------------------------
+	public JLabel getLNameAeroline() {
+		if (lNameAeroline == null) {
+			lNameAeroline = new JLabel("Nombre de la Aerolinea");
+			lNameAeroline.setBounds(20, 60, 127, 14);
 		}
-		return TNameConsultMarca;
+		return lNameAeroline;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLConsultName() {
-		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese la Marca");
-			lConsultName.setBounds(34, 59, 166, 20);
+	public JTextField getTNameAerolinea() {
+		if (tNameAerolinea == null) {
+			tNameAerolinea = new JTextField();
+			tNameAerolinea.setBounds(10, 85, 137, 20);
+			tNameAerolinea.setColumns(10);
 		}
-		return lConsultName;
+		return tNameAerolinea;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBSearch() {
-		if (bSearch == null) {
-			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+	public JLabel getLContry() {
+		if (lContry == null) {
+			lContry = new JLabel("País");
+			lContry.setBounds(209, 60, 80, 14);
 		}
-		return bSearch;
+		return lContry;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTContry() {
+		if (tContry == null) {
+			tContry = new JTextField();
+			tContry.setBounds(209, 85, 96, 20);
+			tContry.setColumns(10);
+		}
+		return tContry;
+	}
+//-----------------------------------------------------------------------------------
+	public void cleanForm() {
+		tNameAerolinea.setText("");
+		tContry.setText("");
+		tTypeUser.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
 	}
 }
