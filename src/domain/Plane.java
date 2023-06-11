@@ -6,6 +6,7 @@ public class Plane {
 	String airline;
 	String model;
 	String year;
+	
 	public Plane() {
 		// TODO Auto-generated constructor stub
 	}
