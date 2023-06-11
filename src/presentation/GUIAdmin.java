@@ -17,7 +17,7 @@ public class GUIAdmin extends JFrame {
 	private JMenu mHelp;
 	private JMenuItem miOpen;
 	private JMenuItem miSave;
-	private JMenuItem miExit;
+	private JMenuItem miiExit;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
 	
@@ -95,7 +95,7 @@ public class GUIAdmin extends JFrame {
 			mFile = new JMenu("Archivo");
 			mFile.add(getMiOpen());
 			mFile.add(getMiSave());
-			mFile.add(getMiExit());
+			mFile.add(getMiiExit());
 		}
 		return mFile;
 	}
@@ -135,11 +135,11 @@ public class GUIAdmin extends JFrame {
 		}
 		return miSave;
 	}
-	public JMenuItem getMiExit() {
-		if (miExit == null) {
-			miExit = new JMenuItem("Salir");
+	public JMenuItem getMiiExit() {
+		if (miiExit == null) {
+			miiExit = new JMenuItem("Salir");
 		}
-		return miExit;
+		return miiExit;
 	}
 	public JMenuItem getMiAboutSystem() {
 		if (miAboutSystem == null) {

@@ -100,78 +100,78 @@ public class ControllerAdmin implements ActionListener{
 			new ControllerRegisterModel();
 		}
 		if(e.getSource() == guiA.getMiConsultModel()) {
-			new ControllerVuelos();
+			new ControllerConsultModel();
 		}
 		if(e.getSource() == guiA.getMiRemoveModel()) {
-			new ControllerVuelos();
+			new ControllerDeleteModel();
 		}
 		if(e.getSource() == guiA.getMiUpdateModel()) {
-			new ControllerVuelos();
+			new ControllerUpdateModel();
 		}
 		//aerolinea
 		if(e.getSource() == guiA.getMiRegisterAeroline()) {
 			new ControllerRegisterAirline();
 		}
 		if(e.getSource() == guiA.getMiConsultAeroline()) {
-			new ControllerVuelos();
+			new ControllerConsultAirline();
 		}
 		if(e.getSource() == guiA.getMiRemoveAeroline()) {
-			new ControllerVuelos();
+			new ControllerDeleteAirline();
 		}
 		if(e.getSource() == guiA.getMiUpdateAeroline()) {
-			new ControllerVuelos();
+			new ControllerUpdateAirline();
 		}
 		//vuelos
 		if(e.getSource() == guiA.getMiRegisterFlight()) {
 			new ControllerRegisterFlight();
 		}
 		if(e.getSource() == guiA.getMiConsultFlight()) {
-			new ControllerVuelos();
+			new ControllerConsultFlight();
 		}
 		if(e.getSource() == guiA.getMiRemoveFlight()) {
-			new ControllerVuelos();
+			new ControllerDeleteFlight();
 		}
 		if(e.getSource() == guiA.getMiUpdateFlight()) {
-			new ControllerVuelos();
+			new ControllerUpdateFlight();
 		}
 		//aviones
 		if(e.getSource() == guiA.getMiRegisterPlane()) {
 			new ControllerRegisterPlane();
 		}
 		if(e.getSource() == guiA.getMiConsultPlane()) {
-			new ControllerVuelos();
+			new ControllerConsultPlane();
 		}
 		if(e.getSource() == guiA.getMiRemovePlane()) {
-			new ControllerVuelos();
+			new ControllerDeletePlane();
 		}
 		if(e.getSource() == guiA.getMiUpdatePlane()) {
-			new ControllerVuelos();
+			new ControllerUpdatePlane();
 		}
 		//pasajeros
 		if(e.getSource() == guiA.getMiRegisterPass()) {
 			new ControllerRegisterPassenger();
 		}
 		if(e.getSource() == guiA.getMiConsultPass()) {
-			new ControllerVuelos();
+			new ControllerConsultPassenger();
 		}
 		if(e.getSource() == guiA.getMiRemovePass()) {
-			new ControllerVuelos();
+			new ControllerDeletePassenger();
 		}
 		if(e.getSource() == guiA.getMiUpdatePass()) {
-			new ControllerVuelos();
+			new ControllerUpdatePassenger();
 		}
 		//tiquetes
 		if(e.getSource() == guiA.getMiRegisterTicket()) {
 			new ControllerRegisterTicket();
 		}
 		if(e.getSource() == guiA.getMiConsultTicket()) {
-			new ControllerVuelos();
+			new ControllerConsultTicket();
 		}
 		if(e.getSource() == guiA.getMiRemoveTicket()) {
-			new ControllerVuelos();
+			new ControllerDeleteTicket();
 		}
 		if(e.getSource() == guiA.getMiUpdateTicket()) {
-			new ControllerVuelos();
+			new ControllerUpdateTicket();
 		}
 		//otras opciones
 		if(e.getSource() == guiA.getMnImpresionT()) {
@@ -183,8 +183,10 @@ public class ControllerAdmin implements ActionListener{
 		if(e.getSource() == guiA.getMnVuelos()) {
 			new ControllerVuelos();
 		}
-		if(e.getSource()== guiA.getMiExit()) {
-			System.exit(0);
+		else if(e.getSource()== guiA.getMiiExit()) {
+			//System.exit(0);
+			guiA.dispose();
+			new ControllerLogin();
 		}
 
 	}

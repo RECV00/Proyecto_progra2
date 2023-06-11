@@ -26,7 +26,12 @@ public class ControllerUpdateUser implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiUu.getBUpdate()) {
-			
+			try {
+				fXML.updateXML("Users.xml",guiUu.getTNameUserUpdate().getText(),"hola");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		if(e.getSource()== guiUu.getBExit()) {
 			guiUu.dispose();

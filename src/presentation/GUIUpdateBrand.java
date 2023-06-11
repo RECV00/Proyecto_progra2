@@ -40,7 +40,7 @@ public class GUIUpdateBrand extends JFrame {
 	private ArrayList<Brand> arrayLBrand;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bRegister;
+	private JButton bUpdateBrand;
 	private JLabel tTitule;
 	private JLabel lNameUpdateMarca;
 	private JTextField tNameMarcaUpdate;
@@ -56,7 +56,7 @@ public class GUIUpdateBrand extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBRegister());
+		getContentPane().add(getBUpdateBrand());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getLNameUpdateMarca());
 		getContentPane().add(getTNameMarcaUpdate());
@@ -151,12 +151,12 @@ public class GUIUpdateBrand extends JFrame {
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBRegister() {
-		if (bRegister == null) {
-			bRegister = new JButton("Registrar");
-			bRegister.setBounds(319, 134, 94, 23);
+	public JButton getBUpdateBrand() {
+		if (bUpdateBrand == null) {
+			bUpdateBrand = new JButton("Actualizar");
+			bUpdateBrand.setBounds(319, 134, 94, 23);
 		}
-		return bRegister;
+		return bUpdateBrand;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {

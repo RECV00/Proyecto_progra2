@@ -6,6 +6,10 @@ public class Ticket {
 	private String passport;
 	private String numFlight;
 	
+	public Ticket() {
+		
+	};
+	
 	public Ticket(String numTicket, String passport, String numFlight) {
 		super();
 		this.numTicket = numTicket;
