@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import domain.Model;
+import domain.Passenger;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -22,31 +22,31 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIDeleteModel extends JFrame {
+public class GUIDeletePassenger extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTModel;
-	private JTable tModel;
+	private DefaultTableModel dtmTPassenger;
+	private JTable tPassenger;
 	
-	private JScrollPane spTModel;
+	private JScrollPane spTPassenger;
 	
-	private ArrayList<Model> arrayLModel;
+	private ArrayList<Passenger> arrayLPassenger;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
-	private JTextField tNameDeleteModelo;
-	private JLabel lNameDeleteModelo;
+	private JTextField tPassportDelete;
+	private JLabel lNameDelete;
 
-	public GUIDeleteModel() {
+	public GUIDeletePassenger() {
 		
-		setDTMTModel(dataTable,getColumnsNames());
-		setModel(dtmTModel);
-		setSPTModel(tModel);
+		setDTMTPassenger(dataTable,getColumnsNames());
+		setPassenger(dtmTPassenger);
+		setSPTPassenger(tPassenger);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -55,59 +55,59 @@ public class GUIDeleteModel extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameDeleteModelo());
-		getContentPane().add(getLNameDeleteModelo());
-		setSize(852,410);
+		getContentPane().add(getTPassportDelete());
+		getContentPane().add(getLNameDelete());
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
 //------------------------------------------------------------------------------------
-	public void setDTMTModel(Object data[][],String[] columnsNames) {
-		dtmTModel = new DefaultTableModel(data,columnsNames);
+	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
+		dtmTPassenger = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTModel() {
-		return dtmTModel;
+	public DefaultTableModel getDTMTPassenger() {
+		return dtmTPassenger;
 	}
 //------------------------------------------------------------------------------------
-	public void setModel(DefaultTableModel dtmTModel) {
-		tModel = new JTable(dtmTModel);
+	public void setPassenger(DefaultTableModel dtmTPassenger) {
+		tPassenger = new JTable(dtmTPassenger);
 		//No poder editar los valores de la tabla
-		tModel.setEnabled(false);
+		tPassenger.setEnabled(false);
 		//no poder mover las columnas
-		tModel.getTableHeader().setReorderingAllowed(false);
+		tPassenger.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tModel.getTableHeader().setResizingAllowed(false);
+		tPassenger.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTModel() {
-		return this.tModel;
+	public JTable getTPassenger() {
+		return this.tPassenger;
 	}
 	
-	public void setSPTModel(JTable tModel) {
-		spTModel = new JScrollPane(tModel);
-		spTModel.setBounds(10,70,460,80);
+	public void setSPTPassenger(JTable tPassenger) {
+		spTPassenger = new JScrollPane(tPassenger);
+		spTPassenger.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTModel() {
-		return this.spTModel;
+	public JScrollPane getSPTPassenger() {
+		return this.spTPassenger;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
+		String columnsNames[] = {"Pasaporte", "Nombre", "Apellido", "Cumpleaños","Correo","Celular"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<Model>getArrayListModel(){
-		return arrayLModel;
+	public ArrayList<Passenger>getArrayListPassenger(){
+		return arrayLPassenger;
 	}
 //------------------------------------------------------------------------------------
-	public void print(JTable tModel) {
+	public void print(JTable tPassenger) {
 		try {
-			if(!tModel.print()) {
+			if(!tPassenger.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -126,14 +126,14 @@ public class GUIDeleteModel extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 179, 698, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tModel=new JTable(dtmTModel);
-			tModel.setEnabled(false);
-			tModel.getTableHeader().setReorderingAllowed(false);
-			tModel.getTableHeader().setResizingAllowed(false);	
-			spTModel = new JScrollPane(tModel);
-			scrollPane.setColumnHeaderView(spTModel);
+			tPassenger=new JTable(dtmTPassenger);
+			tPassenger.setEnabled(false);
+			tPassenger.getTableHeader().setReorderingAllowed(false);
+			tPassenger.getTableHeader().setResizingAllowed(false);	
+			spTPassenger = new JScrollPane(tPassenger);
+			scrollPane.setColumnHeaderView(spTPassenger);
 		}
 		return scrollPane;
 	}
@@ -141,7 +141,7 @@ public class GUIDeleteModel extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(718, 339, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -149,38 +149,34 @@ public class GUIDeleteModel extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			bDelete.setBounds(551, 158, 157, 23);
+			bDelete.setBounds(162, 81, 94, 23);
 		}
 		return bDelete;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Eliminar Modelos");
+			tTitule = new JLabel("Eliminar Pasajeros");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNameDeleteModelo() {
-		if (tNameDeleteModelo == null) {
-			tNameDeleteModelo = new JTextField();
-			tNameDeleteModelo.setBounds(27, 82, 139, 23);
-			tNameDeleteModelo.setColumns(10);
+	public JTextField getTPassportDelete() {
+		if (tPassportDelete == null) {
+			tPassportDelete = new JTextField();
+			tPassportDelete.setBounds(27, 82, 112, 20);
+			tPassportDelete.setColumns(10);
 		}
-		return tNameDeleteModelo;
+		return tPassportDelete;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLNameDeleteModelo() {
-		if (lNameDeleteModelo == null) {
-			lNameDeleteModelo = new JLabel("Ingrese el Modelo a Eliminar");
-			lNameDeleteModelo.setBounds(27, 57, 157, 14);
+	public JLabel getLNameDelete() {
+		if (lNameDelete == null) {
+			lNameDelete = new JLabel("Ingrese el Pasajero a Eliminar");
+			lNameDelete.setBounds(27, 57, 157, 14);
 		}
-		return lNameDeleteModelo;
+		return lNameDelete;
 	}
 }

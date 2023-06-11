@@ -174,7 +174,7 @@ public class GUIUpdateAirline extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getLUpdateName() {
 		if (lUpdateName == null) {
-			lUpdateName = new JLabel("Ingrese el Nombre a Actualizar");
+			lUpdateName = new JLabel("Ingrese la Aerolinea a Actualizar");
 			lUpdateName.setBounds(27, 52, 172, 23);
 		}
 		return lUpdateName;

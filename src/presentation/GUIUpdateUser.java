@@ -39,7 +39,7 @@ public class GUIUpdateUser extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField textField;
+	private JTextField tNameUserUpdate;
 	private JLabel lUpdateUser;
 
 	public GUIUpdateUser() {
@@ -55,7 +55,7 @@ public class GUIUpdateUser extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTextField());
+		getContentPane().add(getTNameUserUpdate());
 		getContentPane().add(getLUpdateUser());
 		setSize(688,368);
 		setLocationRelativeTo(null);
@@ -163,13 +163,13 @@ public class GUIUpdateUser extends JFrame {
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(27, 74, 132, 20);
-			textField.setColumns(10);
+	public JTextField getTNameUserUpdate() {
+		if (tNameUserUpdate == null) {
+			tNameUserUpdate = new JTextField();
+			tNameUserUpdate.setBounds(27, 74, 132, 20);
+			tNameUserUpdate.setColumns(10);
 		}
-		return textField;
+		return tNameUserUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLUpdateUser() {
