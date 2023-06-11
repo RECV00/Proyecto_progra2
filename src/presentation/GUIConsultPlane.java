@@ -39,7 +39,7 @@ public class GUIConsultPlane extends JFrame {
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
-	private JTextField tConsultAvionPlane;
+	private JTextField tConsultPlane;
 	private JLabel lConsultAvionPlane;
 	private JButton bSearch;
 
@@ -56,7 +56,7 @@ public class GUIConsultPlane extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTConsultAvionPlane());
+		getContentPane().add(getTConsultPlane());
 		getContentPane().add(getLConsultAvionPlane());
 		getContentPane().add(getBSearch());
 		setSize(688,368);
@@ -168,13 +168,13 @@ public class GUIConsultPlane extends JFrame {
 		}
 		return tTitule;
 	}
-	public JTextField getTConsultAvionPlane() {
-		if (tConsultAvionPlane == null) {
-			tConsultAvionPlane = new JTextField();
-			tConsultAvionPlane.setBounds(34, 79, 146, 29);
-			tConsultAvionPlane.setColumns(10);
+	public JTextField getTConsultPlane() {
+		if (tConsultPlane == null) {
+			tConsultPlane = new JTextField();
+			tConsultPlane.setBounds(34, 79, 146, 29);
+			tConsultPlane.setColumns(10);
 		}
-		return tConsultAvionPlane;
+		return tConsultPlane;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLConsultAvionPlane() {
