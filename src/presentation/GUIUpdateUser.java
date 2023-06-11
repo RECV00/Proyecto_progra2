@@ -149,7 +149,11 @@ public class GUIUpdateUser extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bUpdate.setBounds(227, 73, 94, 23);
 		}
 		return bUpdate;
 	}
@@ -166,7 +170,7 @@ public class GUIUpdateUser extends JFrame {
 	public JTextField getTNameUserUpdate() {
 		if (tNameUserUpdate == null) {
 			tNameUserUpdate = new JTextField();
-			tNameUserUpdate.setBounds(27, 74, 132, 20);
+			tNameUserUpdate.setBounds(27, 74, 151, 20);
 			tNameUserUpdate.setColumns(10);
 		}
 		return tNameUserUpdate;
@@ -175,7 +179,7 @@ public class GUIUpdateUser extends JFrame {
 	public JLabel getLUpdateUser() {
 		if (lUpdateUser == null) {
 			lUpdateUser = new JLabel("Ingrese el Nombre a Actualizar");
-			lUpdateUser.setBounds(27, 52, 172, 23);
+			lUpdateUser.setBounds(27, 52, 236, 23);
 		}
 		return lUpdateUser;
 	}

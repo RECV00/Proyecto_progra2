@@ -149,7 +149,7 @@ public class GUIDeleteUser extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(162, 81, 94, 23);
+			bDelete.setBounds(199, 81, 94, 23);
 		}
 		return bDelete;
 	}
@@ -166,7 +166,7 @@ public class GUIDeleteUser extends JFrame {
 	public JTextField getTNameDelete() {
 		if (tNameDelete == null) {
 			tNameDelete = new JTextField();
-			tNameDelete.setBounds(27, 82, 112, 20);
+			tNameDelete.setBounds(27, 82, 145, 20);
 			tNameDelete.setColumns(10);
 		}
 		return tNameDelete;
@@ -175,7 +175,7 @@ public class GUIDeleteUser extends JFrame {
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
 			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
-			lNameDelete.setBounds(27, 57, 157, 14);
+			lNameDelete.setBounds(27, 57, 176, 14);
 		}
 		return lNameDelete;
 	}

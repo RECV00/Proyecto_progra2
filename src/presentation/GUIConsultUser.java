@@ -171,7 +171,7 @@ public class GUIConsultUser extends JFrame {
 	public JTextField getTConsultName() {
 		if (tConsultName == null) {
 			tConsultName = new JTextField();
-			tConsultName.setBounds(34, 79, 146, 29);
+			tConsultName.setBounds(34, 79, 175, 29);
 			tConsultName.setColumns(10);
 		}
 		return tConsultName;
@@ -180,7 +180,7 @@ public class GUIConsultUser extends JFrame {
 	public JLabel getLConsultName() {
 		if (lConsultName == null) {
 			lConsultName = new JLabel("Ingrese el Nombre del Usuario");
-			lConsultName.setBounds(34, 59, 166, 20);
+			lConsultName.setBounds(34, 59, 213, 20);
 		}
 		return lConsultName;
 	}
@@ -188,7 +188,7 @@ public class GUIConsultUser extends JFrame {
 	public JButton getBSearch() {
 		if (bSearch == null) {
 			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+			bSearch.setBounds(219, 82, 89, 23);
 		}
 		return bSearch;
 	}

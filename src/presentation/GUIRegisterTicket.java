@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import domain.Airline;
+import domain.Ticket;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -25,34 +25,36 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class GUIRegisterAirline extends JFrame {
+public class GUIRegisterTicket extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTAirline;
-	private JTable tAirline;
+	private DefaultTableModel dtmTTicket;
+	private JTable tTicket;
 	
 	
-	private JScrollPane spTAirline;
+	private JScrollPane spTTicket;
 	
-	private ArrayList<Airline> arrayLAirline;
+	private ArrayList<Ticket> arrayLTicket;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
-	private JLabel lNameAeroline;
-	private JTextField tNameAerolinea;
-	private JLabel lContry;
-	private JTextField tContry;
+	private JLabel lNumTicket;
+	private JTextField tNumTicket;
+	private JLabel lPassportTicket;
+	private JLabel lNumFlightTicket;
+	private JTextField tPassportTicket;
+	private JTextField tNumFlightTicket;
 
-	public GUIRegisterAirline() {
+	public GUIRegisterTicket() {
 		
-		setDTMTAirline(dataTable,getColumnsNames());
-		setAirline(dtmTAirline);
-		setSPTAirline(tAirline);
+		setDTMTTicket(dataTable,getColumnsNames());
+		setTicket(dtmTTicket);
+		setSPTTicket(tTicket);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -61,11 +63,13 @@ public class GUIRegisterAirline extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLNameAeroline());
-		getContentPane().add(getTNameAerolinea());
-		getContentPane().add(getLContry());
-		getContentPane().add(getTContry());
-		setSize(688,368);
+		getContentPane().add(getLNumTicket());
+		getContentPane().add(getTNumTicket());
+		getContentPane().add(getLPassportTicket());
+		getContentPane().add(getLNumFlightTicket());
+		getContentPane().add(getTPassportTicket());
+		getContentPane().add(getTNumFlightTicket());
+		setSize(691,417);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -74,50 +78,50 @@ public class GUIRegisterAirline extends JFrame {
 	
 	
 //------------------------------------------------------------------------------------
-	public void setDTMTAirline(Object data[][],String[] columnsNames) {
-		dtmTAirline = new DefaultTableModel(data,columnsNames);
+	public void setDTMTTicket(Object data[][],String[] columnsNames) {
+		dtmTTicket = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTAirline() {
-		return dtmTAirline;
+	public DefaultTableModel getDTMTTicket() {
+		return dtmTTicket;
 	}
 //------------------------------------------------------------------------------------
-	public void setAirline(DefaultTableModel dtmTAirline) {
-		tAirline = new JTable(dtmTAirline);
+	public void setTicket(DefaultTableModel dtmTTicket) {
+		tTicket = new JTable(dtmTTicket);
 		//No poder editar los valores de la tabla
-		tAirline.setEnabled(false);
+		tTicket.setEnabled(false);
 		//no poder mover las columnas
-		tAirline.getTableHeader().setReorderingAllowed(false);
+		tTicket.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tAirline.getTableHeader().setResizingAllowed(false);
+		tTicket.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTAirline() {
-		return this.tAirline;
+	public JTable getTTicket() {
+		return this.tTicket;
 	}
 	
-	public void setSPTAirline(JTable tAirline) {
-		spTAirline = new JScrollPane(tAirline);
-		spTAirline.setBounds(10,70,460,80);
+	public void setSPTTicket(JTable tTicket) {
+		spTTicket = new JScrollPane(tTicket);
+		spTTicket.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTAirline() {
-		return this.spTAirline;
+	public JScrollPane getSPTTicket() {
+		return this.spTTicket;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "País"};
+		String columnsNames[] = {"Número de Tiquete", "Pasaporte", "Número de Vuelo"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<Airline>getArrayListAirline(){
-		return arrayLAirline;
+	public ArrayList<Ticket>getArrayListTicket(){
+		return arrayLTicket;
 	}
 //------------------------------------------------------------------------------------
-	public void print(JTable tAirline) {
+	public void print(JTable tTicket) {
 		try {
-			if(!tAirline.print()) {
+			if(!tTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -136,14 +140,14 @@ public class GUIRegisterAirline extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 175, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tAirline=new JTable(dtmTAirline);
-			tAirline.setEnabled(false);
-			tAirline.getTableHeader().setReorderingAllowed(false);
-			tAirline.getTableHeader().setResizingAllowed(false);	
-			spTAirline = new JScrollPane(tAirline);
-			scrollPane.setColumnHeaderView(spTAirline);
+			tTicket=new JTable(dtmTTicket);
+			tTicket.setEnabled(false);
+			tTicket.getTableHeader().setReorderingAllowed(false);
+			tTicket.getTableHeader().setResizingAllowed(false);	
+			spTTicket = new JScrollPane(tTicket);
+			scrollPane.setColumnHeaderView(spTTicket);
 		}
 		return scrollPane;
 	}
@@ -159,57 +163,80 @@ public class GUIRegisterAirline extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(347, 84, 94, 23);
+			bRegister.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bRegister.setBounds(332, 153, 185, 23);
 		}
 		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Aerolinea");
+			tTitule = new JLabel("Registrar Tiquetes");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLNameAeroline() {
-		if (lNameAeroline == null) {
-			lNameAeroline = new JLabel("Nombre de la Aerolinea");
-			lNameAeroline.setBounds(20, 60, 167, 14);
+	public JLabel getLNumTicket() {
+		if (lNumTicket == null) {
+			lNumTicket = new JLabel("Número de Tiquete");
+			lNumTicket.setBounds(26, 60, 116, 14);
 		}
-		return lNameAeroline;
+		return lNumTicket;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNameAerolinea() {
-		if (tNameAerolinea == null) {
-			tNameAerolinea = new JTextField();
-			tNameAerolinea.setBounds(10, 85, 137, 20);
-			tNameAerolinea.setColumns(10);
+	public JTextField getTNumTicket() {
+		if (tNumTicket == null) {
+			tNumTicket = new JTextField();
+			tNumTicket.setBounds(26, 82, 96, 20);
+			tNumTicket.setColumns(10);
 		}
-		return tNameAerolinea;
+		return tNumTicket;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLContry() {
-		if (lContry == null) {
-			lContry = new JLabel("País");
-			lContry.setBounds(209, 60, 80, 14);
+	public JLabel getLPassportTicket() {
+		if (lPassportTicket == null) {
+			lPassportTicket = new JLabel("Pasaporte");
+			lPassportTicket.setBounds(26, 108, 80, 14);
 		}
-		return lContry;
+		return lPassportTicket;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTContry() {
-		if (tContry == null) {
-			tContry = new JTextField();
-			tContry.setBounds(209, 85, 96, 20);
-			tContry.setColumns(10);
+	public JLabel getLNumFlightTicket() {
+		if (lNumFlightTicket == null) {
+			lNumFlightTicket = new JLabel("Número de Vuelo");
+			lNumFlightTicket.setBounds(164, 60, 116, 14);
 		}
-		return tContry;
+		return lNumFlightTicket;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTPassportTicket() {
+		if (tPassportTicket == null) {
+			tPassportTicket = new JTextField();
+			tPassportTicket.setBounds(26, 133, 96, 20);
+			tPassportTicket.setColumns(10);
+		}
+		return tPassportTicket;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTNumFlightTicket() {
+		if (tNumFlightTicket == null) {
+			tNumFlightTicket = new JTextField();
+			tNumFlightTicket.setText("");
+			tNumFlightTicket.setBounds(164, 82, 96, 20);
+			tNumFlightTicket.setColumns(10);
+		}
+		return tNumFlightTicket;
 	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
-		tNameAerolinea.setText("");
-		tContry.setText("");
+		tNumTicket.setText("");
+		tPassportTicket.setText("");
+		tNumFlightTicket.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
