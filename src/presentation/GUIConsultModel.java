@@ -40,7 +40,7 @@ public class GUIConsultModel extends JFrame {
 	private JButton bCheckHistory;
 	private JLabel tTitule;
 	private JTextField tConsultName;
-	private JLabel lConsultName;
+	private JLabel lConsultNameModel;
 	private JButton bSearch;
 
 	public GUIConsultModel() {
@@ -57,9 +57,9 @@ public class GUIConsultModel extends JFrame {
 		getContentPane().add(getBCheckHistory());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTConsultName());
-		getContentPane().add(getLConsultName());
+		getContentPane().add(getLConsultNameModel());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		setSize(891,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -99,7 +99,7 @@ public class GUIConsultModel extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +128,7 @@ public class GUIConsultModel extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 179, 745, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -143,7 +143,11 @@ public class GUIConsultModel extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(765, 339, 94, 23);
 		}
 		return bExit;
 	}
@@ -155,7 +159,7 @@ public class GUIConsultModel extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(590, 157, 165, 23);
 		}
 		return bCheckHistory;
 	}
@@ -177,18 +181,18 @@ public class GUIConsultModel extends JFrame {
 		return tConsultName;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLConsultName() {
-		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese el Nombre del Usuario");
-			lConsultName.setBounds(34, 59, 166, 20);
+	public JLabel getLConsultNameModel() {
+		if (lConsultNameModel == null) {
+			lConsultNameModel = new JLabel("Ingrese el Modelo");
+			lConsultNameModel.setBounds(34, 59, 166, 20);
 		}
-		return lConsultName;
+		return lConsultNameModel;
 	}
 //------------------------------------------------------------------------------------
 	public JButton getBSearch() {
 		if (bSearch == null) {
 			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+			bSearch.setBounds(241, 82, 89, 23);
 		}
 		return bSearch;
 	}

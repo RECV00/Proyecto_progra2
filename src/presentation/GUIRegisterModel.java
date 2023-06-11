@@ -48,7 +48,11 @@ public class GUIRegisterModel extends JFrame {
 	private JLabel lMarcaModel;
 	private JLabel lnumAsientosModelEJE;
 	private JTextField tMarcaModel;
-	private JTextField tNumMarcaModelEJE;
+	private JTextField tCanMarcaModelEJE;
+	private JLabel lnumAsientosModelTUR;
+	private JTextField tCanAsientosTUR;
+	private JLabel lnumAsientosModelEco;
+	private JTextField tCanAsientosECO;
 
 	public GUIRegisterModel() {
 		
@@ -68,8 +72,12 @@ public class GUIRegisterModel extends JFrame {
 		getContentPane().add(getLMarcaModel());
 		getContentPane().add(getLnumAsientosModelEJE());
 		getContentPane().add(getTMarcaModel());
-		getContentPane().add(getTNumMarcaModelEJE());
-		setSize(689,410);
+		getContentPane().add(getTCanMarcaModelEJE());
+		getContentPane().add(getLnumAsientosModelTUR());
+		getContentPane().add(getTCanAsientosTUR());
+		getContentPane().add(getLnumAsientosModelEco());
+		getContentPane().add(getTCanAsientosECO());
+		setSize(891,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -111,7 +119,7 @@ public class GUIRegisterModel extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -140,7 +148,7 @@ public class GUIRegisterModel extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 179, 745, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -155,7 +163,11 @@ public class GUIRegisterModel extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(771, 339, 94, 23);
 		}
 		return bExit;
 	}
@@ -163,16 +175,20 @@ public class GUIRegisterModel extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(527, 146, 94, 23);
+			bRegister.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bRegister.setBounds(590, 156, 165, 23);
 		}
 		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Usuarios");
+			tTitule = new JLabel("Registrar Modelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(276, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -188,7 +204,7 @@ public class GUIRegisterModel extends JFrame {
 	public JTextField getTNameModel() {
 		if (tNameModel == null) {
 			tNameModel = new JTextField();
-			tNameModel.setBounds(10, 85, 96, 20);
+			tNameModel.setBounds(20, 85, 96, 20);
 			tNameModel.setColumns(10);
 		}
 		return tNameModel;
@@ -197,7 +213,7 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLMarcaModel() {
 		if (lMarcaModel == null) {
 			lMarcaModel = new JLabel("Marca");
-			lMarcaModel.setBounds(118, 60, 80, 14);
+			lMarcaModel.setBounds(20, 116, 80, 14);
 		}
 		return lMarcaModel;
 	}
@@ -205,7 +221,7 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLnumAsientosModelEJE() {
 		if (lnumAsientosModelEJE == null) {
 			lnumAsientosModelEJE = new JLabel("Cantidad de Asientos Ejecutivos");
-			lnumAsientosModelEJE.setBounds(222, 60, 116, 14);
+			lnumAsientosModelEJE.setBounds(156, 60, 180, 14);
 		}
 		return lnumAsientosModelEJE;
 	}
@@ -213,31 +229,63 @@ public class GUIRegisterModel extends JFrame {
 	public JTextField getTMarcaModel() {
 		if (tMarcaModel == null) {
 			tMarcaModel = new JTextField();
-			tMarcaModel.setBounds(114, 85, 96, 20);
+			tMarcaModel.setBounds(20, 134, 96, 20);
 			tMarcaModel.setColumns(10);
 		}
 		return tMarcaModel;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNumMarcaModelEJE() {
-		if (tNumMarcaModelEJE == null) {
-			tNumMarcaModelEJE = new JTextField();
-			tNumMarcaModelEJE.setText("");
-			tNumMarcaModelEJE.setBounds(222, 85, 96, 20);
-			tNumMarcaModelEJE.setColumns(10);
+	public JTextField getTCanMarcaModelEJE() {
+		if (tCanMarcaModelEJE == null) {
+			tCanMarcaModelEJE = new JTextField();
+			tCanMarcaModelEJE.setText("");
+			tCanMarcaModelEJE.setBounds(156, 85, 61, 20);
+			tCanMarcaModelEJE.setColumns(10);
 		}
-		return tNumMarcaModelEJE;
+		return tCanMarcaModelEJE;
 	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNameModel.setText("");
 		tMarcaModel.setText("");
-		tNumMarcaModelEJE.setText("");
+		tCanMarcaModelEJE.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
 		
 		JOptionPane.showMessageDialog(null, message);
+	}
+	public JLabel getLnumAsientosModelTUR() {
+		if (lnumAsientosModelTUR == null) {
+			lnumAsientosModelTUR = new JLabel("Cantidad de Asientos Turista");
+			lnumAsientosModelTUR.setBounds(156, 116, 180, 14);
+		}
+		return lnumAsientosModelTUR;
+	}
+	public JTextField getTCanAsientosTUR() {
+		if (tCanAsientosTUR == null) {
+			tCanAsientosTUR = new JTextField();
+			tCanAsientosTUR.setText("");
+			tCanAsientosTUR.setColumns(10);
+			tCanAsientosTUR.setBounds(156, 134, 61, 20);
+		}
+		return tCanAsientosTUR;
+	}
+	public JLabel getLnumAsientosModelEco() {
+		if (lnumAsientosModelEco == null) {
+			lnumAsientosModelEco = new JLabel("Cantidad de Asientos Económicos");
+			lnumAsientosModelEco.setBounds(375, 60, 180, 14);
+		}
+		return lnumAsientosModelEco;
+	}
+	public JTextField getTCanAsientosECO() {
+		if (tCanAsientosECO == null) {
+			tCanAsientosECO = new JTextField();
+			tCanAsientosECO.setText("");
+			tCanAsientosECO.setColumns(10);
+			tCanAsientosECO.setBounds(375, 85, 61, 20);
+		}
+		return tCanAsientosECO;
 	}
 }
 

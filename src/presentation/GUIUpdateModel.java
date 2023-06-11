@@ -39,7 +39,7 @@ public class GUIUpdateModel extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField textField;
+	private JTextField tNameModelUpdate;
 	private JLabel lUpdateModel;
 
 	public GUIUpdateModel() {
@@ -55,9 +55,9 @@ public class GUIUpdateModel extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTextField());
+		getContentPane().add(getTNameModelUpdate());
 		getContentPane().add(getLUpdateModel());
-		setSize(688,368);
+		setSize(852,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIUpdateModel extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIUpdateModel extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 179, 698, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -141,7 +141,11 @@ public class GUIUpdateModel extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(718, 339, 94, 23);
 		}
 		return bExit;
 	}
@@ -149,7 +153,7 @@ public class GUIUpdateModel extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.setBounds(551, 156, 157, 23);
 		}
 		return bUpdate;
 	}
@@ -163,19 +167,19 @@ public class GUIUpdateModel extends JFrame {
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(27, 74, 132, 20);
-			textField.setColumns(10);
+	public JTextField getTNameModelUpdate() {
+		if (tNameModelUpdate == null) {
+			tNameModelUpdate = new JTextField();
+			tNameModelUpdate.setBounds(37, 86, 142, 23);
+			tNameModelUpdate.setColumns(10);
 		}
-		return textField;
+		return tNameModelUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLUpdateModel() {
 		if (lUpdateModel == null) {
 			lUpdateModel = new JLabel("Ingrese el Nombre a Actualizar");
-			lUpdateModel.setBounds(27, 52, 172, 23);
+			lUpdateModel.setBounds(36, 52, 172, 23);
 		}
 		return lUpdateModel;
 	}

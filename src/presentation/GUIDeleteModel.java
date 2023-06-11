@@ -39,8 +39,8 @@ public class GUIDeleteModel extends JFrame {
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
-	private JTextField tNameDelete;
-	private JLabel lNameDelete;
+	private JTextField tNameDeleteModelo;
+	private JLabel lNameDeleteModelo;
 
 	public GUIDeleteModel() {
 		
@@ -55,9 +55,9 @@ public class GUIDeleteModel extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameDelete());
-		getContentPane().add(getLNameDelete());
-		setSize(688,368);
+		getContentPane().add(getTNameDeleteModelo());
+		getContentPane().add(getLNameDeleteModelo());
+		setSize(852,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIDeleteModel extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
+		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIDeleteModel extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 179, 698, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -141,7 +141,7 @@ public class GUIDeleteModel extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(718, 339, 94, 23);
 		}
 		return bExit;
 	}
@@ -149,35 +149,39 @@ public class GUIDeleteModel extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(162, 81, 94, 23);
+			bDelete.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bDelete.setBounds(551, 158, 157, 23);
 		}
 		return bDelete;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Eliminar Usuarios");
+			tTitule = new JLabel("Eliminar Modelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNameDelete() {
-		if (tNameDelete == null) {
-			tNameDelete = new JTextField();
-			tNameDelete.setBounds(27, 82, 112, 20);
-			tNameDelete.setColumns(10);
+	public JTextField getTNameDeleteModelo() {
+		if (tNameDeleteModelo == null) {
+			tNameDeleteModelo = new JTextField();
+			tNameDeleteModelo.setBounds(27, 82, 139, 23);
+			tNameDeleteModelo.setColumns(10);
 		}
-		return tNameDelete;
+		return tNameDeleteModelo;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLNameDelete() {
-		if (lNameDelete == null) {
-			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
-			lNameDelete.setBounds(27, 57, 157, 14);
+	public JLabel getLNameDeleteModelo() {
+		if (lNameDeleteModelo == null) {
+			lNameDeleteModelo = new JLabel("Ingrese el Modelo a Eliminar");
+			lNameDeleteModelo.setBounds(27, 57, 157, 14);
 		}
-		return lNameDelete;
+		return lNameDeleteModelo;
 	}
 }
 
