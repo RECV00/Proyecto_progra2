@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+@SuppressWarnings("serial")
 public class GUIRegisterFlight extends JFrame {
 
 	private JPanel contentPane;
@@ -48,7 +49,7 @@ public class GUIRegisterFlight extends JFrame {
 	private JLabel lDepartureCity;
 	private JLabel lDepartureDateTime;
 	private JTextField tDepartureCity;
-	private JTextField tTypeUser;
+	private JTextField tDepartureDateTime;
 	
 	private JComboBox comboBoxState;
 	private JLabel lArrivalCity;
@@ -76,7 +77,7 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getLDepartureCity());
 		getContentPane().add(getLDepartureDateTime());
 		getContentPane().add(getTDepartureCity());
-		getContentPane().add(getTTypeUser());
+		getContentPane().add(getTDepartureDateTime());
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getLArrivalCity());
 		getContentPane().add(getLArrivalDateTime());
@@ -234,14 +235,14 @@ public class GUIRegisterFlight extends JFrame {
 		return tDepartureCity;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTTypeUser() {
-		if (tTypeUser == null) {
-			tTypeUser = new JTextField();
-			tTypeUser.setText("");
-			tTypeUser.setBounds(160, 141, 96, 20);
-			tTypeUser.setColumns(10);
+	public JTextField getTDepartureDateTime() {
+		if (tDepartureDateTime == null) {
+			tDepartureDateTime = new JTextField();
+			tDepartureDateTime.setText("");
+			tDepartureDateTime.setBounds(160, 141, 96, 20);
+			tDepartureDateTime.setColumns(10);
 		}
-		return tTypeUser;
+		return tDepartureDateTime;
 	}
 //------------------------------------------------------------------------------------
 	public JComboBox getComboBoxState() {
@@ -256,7 +257,7 @@ public class GUIRegisterFlight extends JFrame {
 	public void cleanForm() {
 		tNumFlight.setText("");
 		tDepartureCity.setText("");
-		tTypeUser.setText("");
+		tDepartureDateTime.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {

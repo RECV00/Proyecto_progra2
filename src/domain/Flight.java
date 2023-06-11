@@ -11,6 +11,8 @@ public class Flight {
 	private String flight;
 	private int amount;
 	
+	public Flight() {}
+	
 	public Flight(String numFlight, String departureCity, String departureDateTime, String arrivalCity,
 			String arrivalDateTime, String flight, int amount) {
 		super();

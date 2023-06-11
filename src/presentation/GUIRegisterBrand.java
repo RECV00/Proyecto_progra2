@@ -182,4 +182,7 @@ public class GUIRegisterBrand extends JFrame {
 		}
 		return tNameRegisterMarca;
 	}
+	public void cleanForm() {
+		tNameRegisterMarca.setText("");
+	}
 }
