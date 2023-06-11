@@ -170,7 +170,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JLabel getLNameMarca() {
 		if (lNameMarca == null) {
 			lNameMarca = new JLabel("Nombre de la Marca");
-			lNameMarca.setBounds(86, 79, 115, 14);
+			lNameMarca.setBounds(86, 79, 147, 14);
 		}
 		return lNameMarca;
 	}

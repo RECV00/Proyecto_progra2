@@ -38,7 +38,9 @@ public class ControllerRegisterFlight implements ActionListener{
 			flight = new Flight(guiRF.getTNumFlight().getText(),
 					guiRF.getTDepartureCity().getText(),guiRF.getTDepartureDateTime().getText(),
 					guiRF.getTArrivalCity().getText(),guiRF.getTArrivalDateTime().getText(),
-					guiRF.getTFlight().getText(),Integer.valueOf(guiRF.getTAmount().getText()));
+					guiRF.getTFlight().getText(),
+					guiRF.getComboBoxState().getSelectedItem().toString(),
+					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
 			
 			guiRF.cleanForm();
 			fXML.writeXML("Brands.xml","Brand",flight.getDataName(),flight.getData());

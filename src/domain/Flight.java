@@ -9,12 +9,13 @@ public class Flight {
 	private String arrivalCity;
 	private String arrivalDateTime;
 	private String flight;
+	private String seat;
 	private int amount;
 	
 	public Flight() {}
 	
 	public Flight(String numFlight, String departureCity, String departureDateTime, String arrivalCity,
-			String arrivalDateTime, String flight, int amount) {
+			String arrivalDateTime, String flight, String seat,int amount) {
 		super();
 		this.numFlight = numFlight;
 		this.departureCity = departureCity;
@@ -22,6 +23,7 @@ public class Flight {
 		this.arrivalCity = arrivalCity;
 		this.arrivalDateTime = arrivalDateTime;
 		this.flight = flight;
+		this.seat=seat;
 		this.amount = amount;
 	}
 
@@ -89,20 +91,28 @@ public class Flight {
 		this.amount = amount;
 	}
 	
+	public String getSeat() {
+		return seat;
+	}
+
+	public void setSeat(String seat) {
+		this.seat = seat;
+	}
+
 	public String[] getDataName() {//son mis etiquetas de apertura y cierre
 		String[] dataName = {"numFlight","departureCity","departureDateTime",
-				"arrivalCity","arrivalDateTime","flight","amount"};
+				"arrivalCity","arrivalDateTime","flight","seat","amount"};
 		return dataName;
 	}
 	public String[] getData() {
 		String[] data = {numFlight,departureCity,departureDateTime,
-				arrivalCity,arrivalDateTime,flight,String.valueOf(amount)};
+				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(amount)};
 		return data;
 	}
 	@Override
 	public String toString() {
 		return numFlight + "-" + departureCity + "-"+ departureDateTime + "-" + arrivalCity + "-"
-				+ arrivalDateTime+ "-" + flight + "-" + amount;
+				+ arrivalDateTime+ "-" + flight + "-" + seat + "-" + amount;
 	}
 	
 	
