@@ -153,7 +153,7 @@ public class GUIDeleteTicket extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bDelete.setBounds(200, 81, 94, 23);
+			bDelete.setBounds(388, 110, 129, 23);
 		}
 		return bDelete;
 	}
@@ -179,7 +179,7 @@ public class GUIDeleteTicket extends JFrame {
 	public JLabel getLNameDeleteTicket() {
 		if (lNameDeleteTicket == null) {
 			lNameDeleteTicket = new JLabel("Ingrese el Número de Tiquete a Eliminar");
-			lNameDeleteTicket.setBounds(27, 57, 215, 14);
+			lNameDeleteTicket.setBounds(27, 57, 285, 14);
 		}
 		return lNameDeleteTicket;
 	}

@@ -149,7 +149,7 @@ public class GUIUpdateAirline extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.setBounds(370, 107, 147, 23);
 		}
 		return bUpdate;
 	}
@@ -166,7 +166,7 @@ public class GUIUpdateAirline extends JFrame {
 	public JTextField getTNameAeroUpdate() {
 		if (tNameAeroUpdate == null) {
 			tNameAeroUpdate = new JTextField();
-			tNameAeroUpdate.setBounds(27, 74, 132, 20);
+			tNameAeroUpdate.setBounds(27, 74, 147, 20);
 			tNameAeroUpdate.setColumns(10);
 		}
 		return tNameAeroUpdate;
@@ -175,7 +175,7 @@ public class GUIUpdateAirline extends JFrame {
 	public JLabel getLUpdateName() {
 		if (lUpdateName == null) {
 			lUpdateName = new JLabel("Ingrese la Aerolinea a Actualizar");
-			lUpdateName.setBounds(27, 52, 172, 23);
+			lUpdateName.setBounds(27, 52, 230, 23);
 		}
 		return lUpdateName;
 	}

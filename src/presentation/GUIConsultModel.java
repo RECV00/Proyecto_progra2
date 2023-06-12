@@ -166,16 +166,16 @@ public class GUIConsultModel extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Usuarios");
+			tTitule = new JLabel("Consultar Modelo");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(316, 11, 279, 29);
 		}
 		return tTitule;
 	}
 	public JTextField getTConsultName() {
 		if (tConsultName == null) {
 			tConsultName = new JTextField();
-			tConsultName.setBounds(34, 79, 146, 29);
+			tConsultName.setBounds(44, 92, 146, 29);
 			tConsultName.setColumns(10);
 		}
 		return tConsultName;
@@ -184,7 +184,7 @@ public class GUIConsultModel extends JFrame {
 	public JLabel getLConsultNameModel() {
 		if (lConsultNameModel == null) {
 			lConsultNameModel = new JLabel("Ingrese el Modelo");
-			lConsultNameModel.setBounds(34, 59, 166, 20);
+			lConsultNameModel.setBounds(44, 61, 166, 20);
 		}
 		return lConsultNameModel;
 	}
@@ -192,7 +192,7 @@ public class GUIConsultModel extends JFrame {
 	public JButton getBSearch() {
 		if (bSearch == null) {
 			bSearch = new JButton("Buscar");
-			bSearch.setBounds(241, 82, 89, 23);
+			bSearch.setBounds(233, 95, 89, 23);
 		}
 		return bSearch;
 	}

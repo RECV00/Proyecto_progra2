@@ -159,7 +159,7 @@ public class GUIRegisterAirline extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(347, 84, 94, 23);
+			bRegister.setBounds(380, 106, 137, 23);
 		}
 		return bRegister;
 	}
@@ -176,7 +176,7 @@ public class GUIRegisterAirline extends JFrame {
 	public JLabel getLNameAeroline() {
 		if (lNameAeroline == null) {
 			lNameAeroline = new JLabel("Nombre de la Aerolinea");
-			lNameAeroline.setBounds(20, 60, 167, 14);
+			lNameAeroline.setBounds(20, 60, 179, 14);
 		}
 		return lNameAeroline;
 	}

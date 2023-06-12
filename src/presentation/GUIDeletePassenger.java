@@ -57,7 +57,7 @@ public class GUIDeletePassenger extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTPassportDelete());
 		getContentPane().add(getLNameDelete());
-		setSize(688,368);
+		setSize(658,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -149,7 +149,7 @@ public class GUIDeletePassenger extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(162, 81, 94, 23);
+			bDelete.setBounds(413, 108, 104, 23);
 		}
 		return bDelete;
 	}
@@ -158,7 +158,7 @@ public class GUIDeletePassenger extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Eliminar Pasajeros");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(205, 17, 279, 29);
 		}
 		return tTitule;
 	}
@@ -175,7 +175,7 @@ public class GUIDeletePassenger extends JFrame {
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
 			lNameDelete = new JLabel("Ingrese el Pasajero a Eliminar");
-			lNameDelete.setBounds(27, 57, 157, 14);
+			lNameDelete.setBounds(27, 57, 214, 14);
 		}
 		return lNameDelete;
 	}

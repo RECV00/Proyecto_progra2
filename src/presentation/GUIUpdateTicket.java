@@ -149,14 +149,18 @@ public class GUIUpdateTicket extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bUpdate.setBounds(386, 105, 131, 23);
 		}
 		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Usuarios");
+			tTitule = new JLabel("Actualizar Tiquete");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
@@ -174,8 +178,8 @@ public class GUIUpdateTicket extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getLUpdateTicket() {
 		if (lUpdateTicket == null) {
-			lUpdateTicket = new JLabel("Ingrese el Nombre a Actualizar");
-			lUpdateTicket.setBounds(27, 52, 172, 23);
+			lUpdateTicket = new JLabel("Ingrese el Número de Tiquete a Actualizar");
+			lUpdateTicket.setBounds(27, 52, 284, 23);
 		}
 		return lUpdateTicket;
 	}

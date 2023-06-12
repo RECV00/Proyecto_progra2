@@ -149,14 +149,14 @@ public class GUIUpdatePlane extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.setBounds(378, 108, 139, 23);
 		}
 		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Usuarios");
+			tTitule = new JLabel("Actualizar Aviones");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
@@ -175,7 +175,7 @@ public class GUIUpdatePlane extends JFrame {
 	public JLabel getLUpdateAvionPlane() {
 		if (lUpdateAvionPlane == null) {
 			lUpdateAvionPlane = new JLabel("Ingrese del Avión a Actualizar");
-			lUpdateAvionPlane.setBounds(27, 52, 172, 23);
+			lUpdateAvionPlane.setBounds(27, 52, 209, 23);
 		}
 		return lUpdateAvionPlane;
 	}

@@ -85,7 +85,7 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getTArrivalCity());
 		getContentPane().add(getTArrivalDateTime());
 		getContentPane().add(getTFlight());
-		setSize(929,440);
+		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -171,7 +171,11 @@ public class GUIRegisterFlight extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(830, 11, 75, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(894, 358, 75, 23);
 		}
 		return bExit;
 	}
@@ -179,7 +183,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(755, 189, 109, 23);
+			bRegister.setBounds(755, 189, 129, 23);
 		}
 		return bRegister;
 	}
@@ -196,7 +200,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLNumFlight() {
 		if (lNumFlight == null) {
 			lNumFlight = new JLabel("Numero de Vuelo");
-			lNumFlight.setBounds(20, 60, 109, 14);
+			lNumFlight.setBounds(20, 60, 130, 14);
 		}
 		return lNumFlight;
 	}
@@ -213,7 +217,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLDepartureCity() {
 		if (lDepartureCity == null) {
 			lDepartureCity = new JLabel("Ciudad de Salidad");
-			lDepartureCity.setBounds(20, 116, 109, 14);
+			lDepartureCity.setBounds(20, 116, 130, 14);
 		}
 		return lDepartureCity;
 	}
@@ -221,7 +225,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLDepartureDateTime() {
 		if (lDepartureDateTime == null) {
 			lDepartureDateTime = new JLabel("Salida:Hora/Fecha");
-			lDepartureDateTime.setBounds(160, 116, 116, 14);
+			lDepartureDateTime.setBounds(160, 116, 133, 14);
 		}
 		return lDepartureDateTime;
 	}
@@ -267,21 +271,21 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLArrivalCity() {
 		if (lArrivalCity == null) {
 			lArrivalCity = new JLabel("Ciudad de Arribo");
-			lArrivalCity.setBounds(160, 60, 116, 14);
+			lArrivalCity.setBounds(160, 60, 133, 14);
 		}
 		return lArrivalCity;
 	}
 	public JLabel getLArrivalDateTime() {
 		if (lArrivalDateTime == null) {
 			lArrivalDateTime = new JLabel("Arribo:Hora/Fecha");
-			lArrivalDateTime.setBounds(303, 60, 116, 14);
+			lArrivalDateTime.setBounds(303, 60, 129, 14);
 		}
 		return lArrivalDateTime;
 	}
 	public JLabel getLFlight() {
 		if (lFlight == null) {
 			lFlight = new JLabel("Avión");
-			lFlight.setBounds(303, 116, 49, 14);
+			lFlight.setBounds(303, 116, 68, 14);
 		}
 		return lFlight;
 	}

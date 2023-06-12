@@ -180,7 +180,7 @@ public class GUIConsultTicket extends JFrame {
 	public JLabel getLConsultNumTicket() {
 		if (lConsultNumTicket == null) {
 			lConsultNumTicket = new JLabel("Ingrese el Número de Tiquete");
-			lConsultNumTicket.setBounds(34, 59, 166, 20);
+			lConsultNumTicket.setBounds(34, 59, 224, 20);
 		}
 		return lConsultNumTicket;
 	}

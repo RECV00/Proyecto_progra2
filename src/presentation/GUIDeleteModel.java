@@ -162,7 +162,7 @@ public class GUIDeleteModel extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Eliminar Modelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(319, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -170,7 +170,7 @@ public class GUIDeleteModel extends JFrame {
 	public JTextField getTNameDeleteModelo() {
 		if (tNameDeleteModelo == null) {
 			tNameDeleteModelo = new JTextField();
-			tNameDeleteModelo.setBounds(27, 82, 139, 23);
+			tNameDeleteModelo.setBounds(59, 97, 139, 23);
 			tNameDeleteModelo.setColumns(10);
 		}
 		return tNameDeleteModelo;
@@ -179,7 +179,7 @@ public class GUIDeleteModel extends JFrame {
 	public JLabel getLNameDeleteModelo() {
 		if (lNameDeleteModelo == null) {
 			lNameDeleteModelo = new JLabel("Ingrese el Modelo a Eliminar");
-			lNameDeleteModelo.setBounds(27, 57, 157, 14);
+			lNameDeleteModelo.setBounds(59, 72, 198, 14);
 		}
 		return lNameDeleteModelo;
 	}

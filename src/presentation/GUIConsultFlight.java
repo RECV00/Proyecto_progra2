@@ -59,7 +59,7 @@ public class GUIConsultFlight extends JFrame {
 		getContentPane().add(getTConsultNameVuelo());
 		getContentPane().add(getLConsultNameVuelo());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -99,7 +99,7 @@ public class GUIConsultFlight extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombres de Vuelos"};
+		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +128,7 @@ public class GUIConsultFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 459, 183);
+			scrollPane.setBounds(10, 163, 875, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -143,7 +143,11 @@ public class GUIConsultFlight extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(895, 309, 72, 23);
 		}
 		return bExit;
 	}
@@ -155,7 +159,7 @@ public class GUIConsultFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(330, 107, 141, 23);
+			bCheckHistory.setBounds(760, 143, 141, 23);
 		}
 		return bCheckHistory;
 	}
@@ -164,14 +168,14 @@ public class GUIConsultFlight extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Consultar Vuelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(366, 11, 279, 29);
 		}
 		return tTitule;
 	}
 	public JTextField getTConsultNameVuelo() {
 		if (tConsultNameVuelo == null) {
 			tConsultNameVuelo = new JTextField();
-			tConsultNameVuelo.setBounds(34, 79, 146, 29);
+			tConsultNameVuelo.setBounds(44, 95, 146, 29);
 			tConsultNameVuelo.setColumns(10);
 		}
 		return tConsultNameVuelo;
@@ -180,7 +184,7 @@ public class GUIConsultFlight extends JFrame {
 	public JLabel getLConsultNameVuelo() {
 		if (lConsultNameVuelo == null) {
 			lConsultNameVuelo = new JLabel("Ingrese el Nombre del Vuelo");
-			lConsultNameVuelo.setBounds(34, 59, 166, 20);
+			lConsultNameVuelo.setBounds(44, 64, 185, 20);
 		}
 		return lConsultNameVuelo;
 	}
@@ -188,7 +192,11 @@ public class GUIConsultFlight extends JFrame {
 	public JButton getBSearch() {
 		if (bSearch == null) {
 			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+			bSearch.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bSearch.setBounds(269, 98, 89, 23);
 		}
 		return bSearch;
 	}

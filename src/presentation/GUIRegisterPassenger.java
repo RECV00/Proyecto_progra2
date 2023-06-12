@@ -192,7 +192,7 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLPassportPassenger() {
 		if (lPassportPassenger == null) {
 			lPassportPassenger = new JLabel("Pasaporte");
-			lPassportPassenger.setBounds(20, 60, 49, 14);
+			lPassportPassenger.setBounds(20, 60, 96, 14);
 		}
 		return lPassportPassenger;
 	}
@@ -217,7 +217,7 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLLastNamePassenger() {
 		if (lLastNamePassenger == null) {
 			lLastNamePassenger = new JLabel("Apellido");
-			lLastNamePassenger.setBounds(154, 60, 61, 14);
+			lLastNamePassenger.setBounds(154, 60, 80, 14);
 		}
 		return lLastNamePassenger;
 	}
@@ -285,14 +285,14 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLGmailPassenger() {
 		if (lGmailPassenger == null) {
 			lGmailPassenger = new JLabel("Correo");
-			lGmailPassenger.setBounds(287, 60, 49, 14);
+			lGmailPassenger.setBounds(287, 60, 71, 14);
 		}
 		return lGmailPassenger;
 	}
 	public JLabel getLPhonePassenger() {
 		if (lPhonePassenger == null) {
 			lPhonePassenger = new JLabel("Celular");
-			lPhonePassenger.setBounds(287, 116, 49, 14);
+			lPhonePassenger.setBounds(287, 116, 71, 14);
 		}
 		return lPhonePassenger;
 	}

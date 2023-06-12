@@ -180,7 +180,7 @@ public class GUIConsultAirline extends JFrame {
 	public JLabel getLConsultAerolinea() {
 		if (lConsultAerolinea == null) {
 			lConsultAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
-			lConsultAerolinea.setBounds(34, 59, 166, 20);
+			lConsultAerolinea.setBounds(34, 59, 292, 20);
 		}
 		return lConsultAerolinea;
 	}

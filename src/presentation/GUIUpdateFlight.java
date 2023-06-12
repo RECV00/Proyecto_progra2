@@ -57,7 +57,7 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTUpdateVuelo());
 		getContentPane().add(getLUpdateVueloName());
-		setSize(563,368);
+		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIUpdateFlight extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Nombres de Vuelos"};
+		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIUpdateFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 414, 183);
+			scrollPane.setBounds(10, 167, 873, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -141,7 +141,11 @@ public class GUIUpdateFlight extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(434, 283, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(892, 312, 84, 23);
 		}
 		return bExit;
 	}
@@ -149,7 +153,11 @@ public class GUIUpdateFlight extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bUpdate.setBounds(755, 144, 128, 23);
 		}
 		return bUpdate;
 	}
@@ -158,7 +166,7 @@ public class GUIUpdateFlight extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Actualizar Vuelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(154, 12, 279, 29);
+			tTitule.setBounds(347, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -166,7 +174,7 @@ public class GUIUpdateFlight extends JFrame {
 	public JTextField getTUpdateVuelo() {
 		if (tUpdateVuelo == null) {
 			tUpdateVuelo = new JTextField();
-			tUpdateVuelo.setBounds(27, 74, 132, 20);
+			tUpdateVuelo.setBounds(76, 112, 157, 20);
 			tUpdateVuelo.setColumns(10);
 		}
 		return tUpdateVuelo;
@@ -174,8 +182,8 @@ public class GUIUpdateFlight extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getLUpdateVueloName() {
 		if (lUpdateVueloName == null) {
-			lUpdateVueloName = new JLabel("Ingrese el Vuelo a Actualizar");
-			lUpdateVueloName.setBounds(27, 52, 172, 23);
+			lUpdateVueloName = new JLabel("Ingrese el Numero de Vuelo a Actualizar");
+			lUpdateVueloName.setBounds(77, 78, 255, 23);
 		}
 		return lUpdateVueloName;
 	}

@@ -149,7 +149,11 @@ public class GUIUpdatePassenger extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(187, 73, 94, 23);
+			bUpdate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bUpdate.setBounds(413, 109, 104, 23);
 		}
 		return bUpdate;
 	}
@@ -158,7 +162,7 @@ public class GUIUpdatePassenger extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Actualizar Pasajeros");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(238, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -166,7 +170,7 @@ public class GUIUpdatePassenger extends JFrame {
 	public JTextField getTNamePassengerUpdate() {
 		if (tNamePassengerUpdate == null) {
 			tNamePassengerUpdate = new JTextField();
-			tNamePassengerUpdate.setBounds(27, 74, 132, 20);
+			tNamePassengerUpdate.setBounds(37, 82, 132, 20);
 			tNamePassengerUpdate.setColumns(10);
 		}
 		return tNamePassengerUpdate;
@@ -175,7 +179,7 @@ public class GUIUpdatePassenger extends JFrame {
 	public JLabel getLUpdatePassenger() {
 		if (lUpdatePassenger == null) {
 			lUpdatePassenger = new JLabel("Ingrese el Pasaporte a Actualizar");
-			lUpdatePassenger.setBounds(27, 52, 172, 23);
+			lUpdatePassenger.setBounds(37, 52, 204, 23);
 		}
 		return lUpdatePassenger;
 	}

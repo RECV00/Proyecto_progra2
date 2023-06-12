@@ -160,9 +160,9 @@ public class GUIUpdateModel extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Usuarios");
+			tTitule = new JLabel("Actualizar Modelo");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(308, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -179,7 +179,7 @@ public class GUIUpdateModel extends JFrame {
 	public JLabel getLUpdateModel() {
 		if (lUpdateModel == null) {
 			lUpdateModel = new JLabel("Ingrese el Nombre a Actualizar");
-			lUpdateModel.setBounds(36, 52, 172, 23);
+			lUpdateModel.setBounds(36, 52, 226, 23);
 		}
 		return lUpdateModel;
 	}

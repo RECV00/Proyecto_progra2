@@ -149,7 +149,7 @@ public class GUIDeleteAirline extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(162, 81, 94, 23);
+			bDelete.setBounds(375, 108, 142, 23);
 		}
 		return bDelete;
 	}
@@ -175,7 +175,7 @@ public class GUIDeleteAirline extends JFrame {
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
 			lNameDelete = new JLabel("Nombre de la Aerolinea");
-			lNameDelete.setBounds(27, 57, 157, 14);
+			lNameDelete.setBounds(27, 57, 197, 14);
 		}
 		return lNameDelete;
 	}

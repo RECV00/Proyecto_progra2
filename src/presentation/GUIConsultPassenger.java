@@ -59,7 +59,7 @@ public class GUIConsultPassenger extends JFrame {
 		getContentPane().add(getTConsultPasspotPassenger());
 		getContentPane().add(getLPassportPassengerConsult());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		setSize(656,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -164,7 +164,7 @@ public class GUIConsultPassenger extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Consultar Pasajeros");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(194, 11, 279, 29);
+			tTitule.setBounds(221, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -180,7 +180,7 @@ public class GUIConsultPassenger extends JFrame {
 	public JLabel getLPassportPassengerConsult() {
 		if (lPassportPassengerConsult == null) {
 			lPassportPassengerConsult = new JLabel("Ingrese el Pasaporte del Pasajero");
-			lPassportPassengerConsult.setBounds(34, 59, 194, 20);
+			lPassportPassengerConsult.setBounds(34, 59, 245, 20);
 		}
 		return lPassportPassengerConsult;
 	}

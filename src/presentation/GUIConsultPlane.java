@@ -164,7 +164,7 @@ public class GUIConsultPlane extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Consultar Aviones");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(211, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -180,7 +180,7 @@ public class GUIConsultPlane extends JFrame {
 	public JLabel getLConsultAvionPlane() {
 		if (lConsultAvionPlane == null) {
 			lConsultAvionPlane = new JLabel("Ingrese el Nombre del Avión");
-			lConsultAvionPlane.setBounds(34, 59, 166, 20);
+			lConsultAvionPlane.setBounds(34, 59, 202, 20);
 		}
 		return lConsultAvionPlane;
 	}

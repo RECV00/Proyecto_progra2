@@ -188,7 +188,7 @@ public class GUIRegisterModel extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Registrar Modelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(276, 11, 279, 29);
+			tTitule.setBounds(304, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -221,7 +221,7 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLnumAsientosModelEJE() {
 		if (lnumAsientosModelEJE == null) {
 			lnumAsientosModelEJE = new JLabel("Cantidad de Asientos Ejecutivos");
-			lnumAsientosModelEJE.setBounds(156, 60, 180, 14);
+			lnumAsientosModelEJE.setBounds(156, 60, 209, 14);
 		}
 		return lnumAsientosModelEJE;
 	}
@@ -258,7 +258,7 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLnumAsientosModelTUR() {
 		if (lnumAsientosModelTUR == null) {
 			lnumAsientosModelTUR = new JLabel("Cantidad de Asientos Turista");
-			lnumAsientosModelTUR.setBounds(156, 116, 180, 14);
+			lnumAsientosModelTUR.setBounds(156, 116, 209, 14);
 		}
 		return lnumAsientosModelTUR;
 	}
@@ -274,7 +274,7 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLnumAsientosModelEco() {
 		if (lnumAsientosModelEco == null) {
 			lnumAsientosModelEco = new JLabel("Cantidad de Asientos Económicos");
-			lnumAsientosModelEco.setBounds(375, 60, 180, 14);
+			lnumAsientosModelEco.setBounds(375, 60, 209, 14);
 		}
 		return lnumAsientosModelEco;
 	}

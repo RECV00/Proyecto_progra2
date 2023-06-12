@@ -14,7 +14,8 @@ public class ControllerConsultPassenger implements ActionListener{
 	private Passenger passenger;
 	
 	public ControllerConsultPassenger() {
-		
+		guiCP = new GUIConsultPassenger();
+;		passenger= new Passenger();
 	initializer();
 	}
 	private void initializer() {
