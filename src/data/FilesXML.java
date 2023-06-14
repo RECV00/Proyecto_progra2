@@ -112,7 +112,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 		}
 }
 	
-	public void deleteLine(String archive, String wordDelete) {
+	public void deleteLine(String archive, String wordDelete) {//3parametros
 	    try {
 	        // Leer el archivo XML y cargarlo en un objeto Document
 	        File xmlFile = new File(archive);
@@ -145,7 +145,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 	}
 
 public String getValidateUser(String fileName,String elementType,String userName, String password) throws Exception {
-	
+		String type=null;
 	    File inputfile = new File(fileName);
 	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -154,37 +154,42 @@ public String getValidateUser(String fileName,String elementType,String userName
 
 	    // Get the list of user nodes
 	    NodeList userList = doc.getElementsByTagName(elementType);
-
+	    System.out.print("tamaño"+userList.getLength());
 	    // Loop through each user
 	    for (int i = 0; i < userList.getLength(); i++) {
+	    	System.out.print(",VACA");
 	        Node userNode = userList.item(i);
 	        if (userNode.getNodeType() == Node.ELEMENT_NODE) {
+	        	System.out.print(",SAPA");
 	            Element eUser = (Element) userNode;
 
 	            // Get the user's credentials and status
 	            String name = eUser.getAttribute("userName");
 	            String pass = eUser.getElementsByTagName("password").item(0).getTextContent();
 	            String sta = eUser.getElementsByTagName("state").item(0).getTextContent();
-	            String type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
+	            		type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
 	            // valida username and password 
-	           
+	            		//System.out.print(name+pass);
 	            if (userName.equals(name) && password.equals(pass)) {
-	            	//valida si esta activo
-	            	System.out.print(name+"\n");
-	            	 //System.out.print(pass+"\n");
+	            	System.out.print(",YEGUA");
+	            	//System.out.print(name+"\n");
+	            	//System.out.print(pass+"\n");
 	            	
-	            	if(sta.equals("activo")) {
+	            	if(sta.equals("activo")) {//valida si esta activo
 	            		// Return the user's type
+	            		System.out.print(",PUTA");
 	                    return type;
 	                    
 	            	}else {
 	                    throw new Exception("User is not active");
+	                    
 	                }
 	            	
 	            }
 	        }
 	    }
-	    throw new Exception("User not found");
+	    //throw new Exception("User is not encontrado");
+	    return type;
 }
 
 public String readXMLString(String FileName, String elementType) {

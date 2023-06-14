@@ -75,6 +75,7 @@ public class User {
 	public String toString() {
 		return userName+"\n"+password+"\n"+typeUser+"\n"+state;
 	}
+	
 	public ArrayList<User> readXMLArrayList(String FileName, String elementType) {
 		ArrayList<User> arrayLPeople = new ArrayList<User>();
 		
