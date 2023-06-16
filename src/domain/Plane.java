@@ -1,7 +1,18 @@
 package domain;
 
+import java.io.File;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Plane {
+	ArrayList<Plane> arrayLPlane;
 	String plate;
 	String airline;
 	String model;
@@ -72,4 +83,47 @@ public class Plane {
 		return plate +"-"+ airline +"-"+ model+"-"+ year;
 	}
 	
+public ArrayList<Plane> readXMLArrayList(String FileName, String elementType,String[]dataName) {
+	String plate="";
+	String airline="";
+	String model="";
+	String year="";
+	String info="";
+	Plane pl;
+	arrayLPlane= new ArrayList<>();
+	try {
+		File inputFile = new File(FileName); //new 
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		System.out.println("Raíz de los Elementos:" + doc.getDocumentElement().getNodeName());
+		NodeList nList = doc.getElementsByTagName(elementType);
+		System.out.println("----------------------------");
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+			System.out.println("\nDatos de las Facturas: " + nNode.getNodeName());
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
+				Plane p =new Plane(eElement.getAttribute(dataName[0]),
+						eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
+						eElement.getElementsByTagName(dataName[2]).item(0).getTextContent(),
+						eElement.getElementsByTagName(dataName[3]).item(0).getTextContent());
+				pl=new Plane(plate,airline,model,year);
+				arrayLPlane.add(pl);
+				
+				for(int i=1;i<dataName.length;i++) {
+					info+=dataName[i] +":"+eElement.getElementsByTagName(dataName[i]).item(0).getTextContent();
+				}
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLPlane;
+}
 }

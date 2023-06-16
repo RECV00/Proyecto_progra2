@@ -21,7 +21,7 @@ public class ControllerRegisterTicket implements ActionListener{
 	guiRT= new GUIRegisterTicket();
 	fXML = new FilesXML();
 	ticket = new Ticket();
-	fXML.createXML("Ticket", "Tickets.xml");
+	fXML.createXML("Tickets", "Tickets.xml");
 	initializer();
 	}
 
@@ -38,9 +38,9 @@ public class ControllerRegisterTicket implements ActionListener{
 			ticket = new Ticket(guiRT.getTNumTicket().getText(),
 					guiRT.getTPassportTicket().getText(),
 					guiRT.getTNumFlightTicket().getText());
-			fXML.writeXML("Users.xml","User",ticket.getDataName(),ticket.getData());
+			fXML.writeXML("Tickets.xml","Ticket",ticket.getDataName(),ticket.getData());
 			
-			arrayLTicket = ticket.readXMLArrayList("Users.xml","User",ticket.getDataName());
+			arrayLTicket = ticket.readXMLArrayList("Tickets.xml","Ticket",ticket.getDataName());
 			guiRT.cleanForm();
 			
 				guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});
