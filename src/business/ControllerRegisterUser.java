@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import domain.User;
@@ -12,7 +13,7 @@ public class ControllerRegisterUser implements ActionListener{
 	private FilesXML fXML;
 	private User user;
 	
-	//ArrayListUser<User> arrayLUser;
+	private ArrayList<User> arrayLUser;
 	public ControllerRegisterUser() {
 	guiRU= new GUIRegisterUser();
 	fXML = new FilesXML();
@@ -30,18 +31,19 @@ public class ControllerRegisterUser implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	//	System.out.println(guiRU.getArrayListUser().size());
-		//guiRU.print(guiRU.getTUser());//pdf
-		
 		if(e.getSource()== guiRU.getBRegister()) {
 			
 			user = new User(guiRU.getTName().getText(),guiRU.getTContrasena().getText(),
 					guiRU.getTTypeUser().getText(),guiRU.getComboBoxState().getSelectedItem().toString());
-			
+
 			//arrayLP.addPerson(per);
+
 			fXML.writeXML("Users.xml","User",user.getDataName(),user.getData());
-			//guiRU.print(user);
+			
+			arrayLUser = user.readXMLArrayList("Users.xml","User",user.getDataName());
 			guiRU.cleanForm();
+			
+				guiRU.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
 		}
 		if(e.getSource()== guiRU.getBExit()) {
 			//meter la pagina anterior
