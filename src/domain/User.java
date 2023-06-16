@@ -19,11 +19,11 @@ public class User {
 	private String typeUser;
 	private String state;
 //contructores
-	public User() {	
+public User() {	
 		
-	}
+}
 	
-	public User(String userName, String password, String typeUser, String state) {
+public User(String userName, String password, String typeUser, String state) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -73,7 +73,7 @@ public class User {
 	
 //toString
 	@Override
-	public String toString() {
+public String toString() {
 		return userName+"\n"+password+"\n"+typeUser+"\n"+state;
 	}
 	

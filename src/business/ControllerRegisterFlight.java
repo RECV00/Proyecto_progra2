@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import domain.Flight;
@@ -12,13 +13,13 @@ public class ControllerRegisterFlight implements ActionListener{
 	private GUIRegisterFlight guiRF;
 	private FilesXML fXML;
 	private Flight flight;
-	//ArrayListUser<User> arrayLUser;
+	ArrayList<Flight> arrayLFlight;
 	
 	public ControllerRegisterFlight() {
 	guiRF= new GUIRegisterFlight();
 	fXML = new FilesXML();
 	flight = new Flight();
-	fXML.createXML("Flight", "Flights.xml");
+	fXML.createXML("Flights", "Flights.xml");
 	initializer();
 	}
 
@@ -29,9 +30,7 @@ public class ControllerRegisterFlight implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-	//	System.out.println(guiRA.getArrayListUser().size());
-		//guiRA.print(guiRA.getTUser());//pdf
+	
 		
 		if(e.getSource()== guiRF.getBRegister()) {
 			
@@ -42,12 +41,12 @@ public class ControllerRegisterFlight implements ActionListener{
 					guiRF.getComboBoxState().getSelectedItem().toString(),
 					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
 			
+			fXML.writeXML("Flights.xml","Flight",flight.getDataName(),flight.getData());
+			arrayLFlight=flight.readXMLArrayList("Flights.xml","Flight",flight.getDataName());
 			guiRF.cleanForm();
-			fXML.writeXML("Brands.xml","Brand",flight.getDataName(),flight.getData());
-			//guiRU.getComboBoxState().getSelectedItem().toString());
-			//guiRF.getArrayListFlight().add(flight);
-			
-			//guiRA.getDTMTAirline().addRow(air);
+			guiRF.getDTMTFlight().addRow(new Object [] {flight.getNumFlight(),flight.getDepartureCity(),
+					flight.getDepartureDateTime(),flight.getArrivalCity(),flight.getArrivalDateTime(),
+					flight.getFlight(),flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
 			
 		}
 		if(e.getSource()== guiRF.getBExit()) {
