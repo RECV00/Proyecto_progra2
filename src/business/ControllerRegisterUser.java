@@ -18,7 +18,7 @@ public class ControllerRegisterUser implements ActionListener{
 	guiRU= new GUIRegisterUser();
 	fXML = new FilesXML();
 	user = new User();
-	fXML.createXML("Users", "User.xml");
+	fXML.createXML("Users", "Users.xml");
 	initializer();
 	}
 
@@ -36,7 +36,6 @@ public class ControllerRegisterUser implements ActionListener{
 			user = new User(guiRU.getTName().getText(),guiRU.getTContrasena().getText(),
 					guiRU.getTTypeUser().getText(),guiRU.getComboBoxState().getSelectedItem().toString());
 
-			//arrayLP.addPerson(per);
 
 			fXML.writeXML("Users.xml","User",user.getDataName(),user.getData());
 			

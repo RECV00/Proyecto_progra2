@@ -237,6 +237,7 @@ public class GUIRegisterPlane extends JFrame {
 		tAvionRegisterPlane.setText("");
 		tAirplaneRegisterPalne.setText("");
 		tModelRegisterPlane.setText("");
+		tYearRegisterPlane.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
