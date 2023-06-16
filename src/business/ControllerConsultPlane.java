@@ -29,7 +29,7 @@ public class ControllerConsultPlane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCPlane.getBCheckHistory()) {
-			fXML.readXMLString("Planes.xml","Plane");
+			//fXML.readXMLString("Planes.xml","Plane");
 		}
 		if(e.getSource()==guiCPlane.getBSearch()) {
 		try {
