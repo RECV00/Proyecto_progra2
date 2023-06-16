@@ -2,7 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 
 import data.FilesXML;
 import domain.Airline;
@@ -10,7 +10,7 @@ import presentation.GUIRegisterAirline;
 
 
 public class ControllerRegisterAirline implements ActionListener{
-
+	private ArrayList<Airline>arrayLAirline;
 	private GUIRegisterAirline guiRA;
 	private FilesXML fXML;
 	private Airline air;
@@ -20,7 +20,7 @@ public class ControllerRegisterAirline implements ActionListener{
 	guiRA= new GUIRegisterAirline();
 	fXML = new FilesXML();
 	air = new Airline();
-	fXML.createXML("Airline", "Airlines.xml");
+	fXML.createXML("Airlines", "Airlines.xml");
 	initializer();
 	}
 
@@ -33,17 +33,14 @@ public class ControllerRegisterAirline implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	//	System.out.println(guiRA.getArrayListUser().size());
-		//guiRA.print(guiRA.getTUser());//pdf
-		
-		if(e.getSource()== guiRA.getBRegister()) {
+	if(e.getSource()== guiRA.getBRegister()) {
 			
 			air = new Airline(guiRA.getTNameAerolinea().getText(),guiRA.getTContry().getText());
-			guiRA.cleanForm();
+			
 			fXML.writeXML("Airlines.xml","Airline",air.getDataName(),air.getData());
-			//guiRU.getComboBoxState().getSelectedItem().toString());
-			guiRA.getArrayListAirline().add(air);
-			//guiRA.getDTMTAirline().addRow(air);
+			arrayLAirline= air.readXMLArrayList("Users.xml","User",air.getDataName());
+			guiRA.cleanForm();
+			guiRA.getDTMTAirline().addRow(new Object[] {air.getName(),air.getContry()});
 		}
 		if(e.getSource()== guiRA.getBExit()) {
 			//meter la pagina anterior

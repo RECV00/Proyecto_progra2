@@ -98,10 +98,7 @@ public class Ticket {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
-					Ticket t =new Ticket(eElement.getAttribute(dataName[0]),
-							eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[2]).item(0).getTextContent());
-							
+					
 					ti=new Ticket(numTicket,passport,numFlight);
 					arrayLTicket.add(ti);
 					
