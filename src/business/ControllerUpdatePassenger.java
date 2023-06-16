@@ -27,7 +27,7 @@ public class ControllerUpdatePassenger implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiUP.getBUpdate()) {
 			try {
-				fXML.updateXML("Passengers.xml",guiUP.getTNamePassengerUpdate().getText(),"hola");
+				fXML.updateXML("Passengers.xml",guiUP.getTPassportPassenger().getText(),"hola");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

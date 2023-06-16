@@ -11,8 +11,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+
 public class User {
-	//ArrayList<User> listaUser;
+	ArrayList<User> arrayLUser;
 	String userName;
 	String password;
 	String typeUser;
@@ -76,9 +77,14 @@ public class User {
 		return userName+"\n"+password+"\n"+typeUser+"\n"+state;
 	}
 	
-	public ArrayList<User> readXMLArrayList(String FileName, String elementType) {
-		ArrayList<User> arrayLPeople = new ArrayList<User>();
-		
+	public ArrayList<User> readXMLArrayList(String FileName, String elementType,String[]dataName) {
+		String userName="";
+		String password="";
+		String typeUser="";
+		String state="";
+		String info="";
+		User us;
+		arrayLUser= new ArrayList<>();
 		try {
 			File inputFile = new File(FileName); //new 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -96,16 +102,22 @@ public class User {
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
+					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
+					User u =new User(eElement.getAttribute(dataName[0]),
+							eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
+							eElement.getElementsByTagName(dataName[2]).item(0).getTextContent(),
+							eElement.getElementsByTagName(dataName[3]).item(0).getTextContent());
+					us=new User(userName,password,typeUser,state);
+					arrayLUser.add(us);
 					
-					User u =new User(eElement.getAttribute(userName),eElement.getElementsByTagName(password).item(0).getTextContent(),
-							eElement.getElementsByTagName(typeUser).item(0).getTextContent(),
-							eElement.getElementsByTagName(state).item(0).getTextContent());
-					arrayLPeople.add(u);
+					for(int i=1;i<dataName.length;i++) {
+						info+=dataName[i] +":"+eElement.getElementsByTagName(dataName[i]).item(0).getTextContent();
+					}
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return arrayLPeople;
+		return arrayLUser;
 	}
 }

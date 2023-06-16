@@ -245,6 +245,7 @@ public class GUIRegisterUser extends JFrame {
 		tName.setText("");
 		tContrasena.setText("");
 		tTypeUser.setText("");
+		comboBoxState.setToolTipText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {

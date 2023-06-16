@@ -27,7 +27,7 @@ public class ControllerUpdateModel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiUM.getBUpdate()) {
 			try {
-				fXML.updateXML("Models.xml",guiUM.getTNameModelUpdate().getText(),"hola");
+				fXML.updateXML("Models.xml",guiUM.getTNameModel().getText(),"hola");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

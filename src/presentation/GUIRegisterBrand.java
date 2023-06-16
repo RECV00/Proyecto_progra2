@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -42,8 +43,8 @@ public class GUIRegisterBrand extends JFrame {
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
-	private JLabel lNameMarca;
-	private JTextField tNameRegisterMarca;
+	private JLabel lNameRegisterBrand;
+	private JTextField tNameRegisterBrand;
 
 	public GUIRegisterBrand() {
 		
@@ -58,9 +59,9 @@ public class GUIRegisterBrand extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLNameMarca());
-		getContentPane().add(getTNameRegisterMarca());
-		setSize(460,368);
+		getContentPane().add(getLNameRegisterBrand());
+		getContentPane().add(getTNameRegisterBrand());
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -102,7 +103,7 @@ public class GUIRegisterBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Nombres de las Marcas"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -131,7 +132,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -146,7 +147,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(319, 290, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -154,35 +155,44 @@ public class GUIRegisterBrand extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(217, 96, 94, 23);
+			bRegister.setBounds(377, 109, 140, 23);
 		}
 		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Marca");
+			tTitule = new JLabel("Registrar Usuarios");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(100, 11, 279, 29);
+			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JLabel getLNameMarca() {
-		if (lNameMarca == null) {
-			lNameMarca = new JLabel("Nombre de la Marca");
-			lNameMarca.setBounds(86, 79, 147, 14);
+//------------------------------------------------------------------------------------
+	public JLabel getLNameRegisterBrand() {
+		if (lNameRegisterBrand == null) {
+			lNameRegisterBrand = new JLabel("Nombre de la Marca");
+			lNameRegisterBrand.setBounds(33, 61, 140, 14);
 		}
-		return lNameMarca;
+		return lNameRegisterBrand;
 	}
-	public JTextField getTNameRegisterMarca() {
-		if (tNameRegisterMarca == null) {
-			tNameRegisterMarca = new JTextField();
-			tNameRegisterMarca.setBounds(83, 96, 118, 23);
-			tNameRegisterMarca.setColumns(10);
+//------------------------------------------------------------------------------------
+	public JTextField getTNameRegisterBrand() {
+		if (tNameRegisterBrand == null) {
+			tNameRegisterBrand = new JTextField();
+			tNameRegisterBrand.setBounds(33, 87, 140, 20);
+			tNameRegisterBrand.setColumns(10);
 		}
-		return tNameRegisterMarca;
+		return tNameRegisterBrand;
 	}
+//-----------------------------------------------------------------------------------
 	public void cleanForm() {
-		tNameRegisterMarca.setText("");
+		tNameRegisterBrand.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
 	}
 }
+

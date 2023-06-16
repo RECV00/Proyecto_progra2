@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -21,6 +22,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class GUIUpdatePlane extends JFrame {
 
@@ -32,6 +35,7 @@ public class GUIUpdatePlane extends JFrame {
 	private DefaultTableModel dtmTPlane;
 	private JTable tPlane;
 	
+	
 	private JScrollPane spTPlane;
 	
 	private ArrayList<Plane> arrayLPlane;
@@ -39,8 +43,14 @@ public class GUIUpdatePlane extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField tNamePlaneUpdate;
-	private JLabel lUpdateAvionPlane;
+	private JLabel lAvionUpdatePlane;
+	private JTextField tAvionUpdatePlane;
+	private JLabel lAirplaneUpdatePalne;
+	private JLabel lModelUpdatePlane;
+	private JTextField tAirplaneUpdatePalne;
+	private JTextField tModelUpdatePlane;
+	private JTextField tYearUpdatePlane;
+	private JLabel lYearUpdatePlane;
 
 	public GUIUpdatePlane() {
 		
@@ -55,14 +65,22 @@ public class GUIUpdatePlane extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNamePlaneUpdate());
-		getContentPane().add(getLUpdateAvionPlane());
-		setSize(688,368);
+		getContentPane().add(getLAvionUpdatePlane());
+		getContentPane().add(getTAvionUpdatePlane());
+		getContentPane().add(getLAirplaneUpdatePalne());
+		getContentPane().add(getLModelUpdatePlane());
+		getContentPane().add(getTAirplaneUpdatePalne());
+		getContentPane().add(getTModelUpdatePlane());
+		getContentPane().add(getTYearUpdatePlane());
+		getContentPane().add(getLYearUpdatePlane());
+		setSize(661,420);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
 //------------------------------------------------------------------------------------
 	public void setDTMTPlane(Object data[][],String[] columnsNames) {
 		dtmTPlane = new DefaultTableModel(data,columnsNames);
@@ -126,7 +144,7 @@ public class GUIUpdatePlane extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 189, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -141,7 +159,7 @@ public class GUIUpdatePlane extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(527, 349, 94, 23);
 		}
 		return bExit;
 	}
@@ -149,34 +167,95 @@ public class GUIUpdatePlane extends JFrame {
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(378, 108, 139, 23);
+			bUpdate.setBounds(373, 166, 144, 23);
 		}
 		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Aviones");
+			tTitule = new JLabel("Actualizar Avión");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNamePlaneUpdate() {
-		if (tNamePlaneUpdate == null) {
-			tNamePlaneUpdate = new JTextField();
-			tNamePlaneUpdate.setBounds(27, 74, 132, 20);
-			tNamePlaneUpdate.setColumns(10);
+	public JLabel getLAvionUpdatePlane() {
+		if (lAvionUpdatePlane == null) {
+			lAvionUpdatePlane = new JLabel("Avión");
+			lAvionUpdatePlane.setBounds(27, 60, 49, 14);
 		}
-		return tNamePlaneUpdate;
+		return lAvionUpdatePlane;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLUpdateAvionPlane() {
-		if (lUpdateAvionPlane == null) {
-			lUpdateAvionPlane = new JLabel("Ingrese del Avión a Actualizar");
-			lUpdateAvionPlane.setBounds(27, 52, 209, 23);
+	public JTextField getTAvionUpdatePlane() {
+		if (tAvionUpdatePlane == null) {
+			tAvionUpdatePlane = new JTextField();
+			tAvionUpdatePlane.setBounds(27, 89, 96, 20);
+			tAvionUpdatePlane.setColumns(10);
 		}
-		return lUpdateAvionPlane;
+		return tAvionUpdatePlane;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLAirplaneUpdatePalne() {
+		if (lAirplaneUpdatePalne == null) {
+			lAirplaneUpdatePalne = new JLabel("Aerolinea");
+			lAirplaneUpdatePalne.setBounds(27, 120, 80, 14);
+		}
+		return lAirplaneUpdatePalne;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLModelUpdatePlane() {
+		if (lModelUpdatePlane == null) {
+			lModelUpdatePlane = new JLabel("Modelo");
+			lModelUpdatePlane.setBounds(160, 60, 96, 14);
+		}
+		return lModelUpdatePlane;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTAirplaneUpdatePalne() {
+		if (tAirplaneUpdatePalne == null) {
+			tAirplaneUpdatePalne = new JTextField();
+			tAirplaneUpdatePalne.setBounds(27, 150, 96, 20);
+			tAirplaneUpdatePalne.setColumns(10);
+		}
+		return tAirplaneUpdatePalne;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTModelUpdatePlane() {
+		if (tModelUpdatePlane == null) {
+			tModelUpdatePlane = new JTextField();
+			tModelUpdatePlane.setText("");
+			tModelUpdatePlane.setBounds(160, 89, 96, 20);
+			tModelUpdatePlane.setColumns(10);
+		}
+		return tModelUpdatePlane;
+	}
+//-----------------------------------------------------------------------------------
+	public void cleanForm() {
+		tAvionUpdatePlane.setText("");
+		tAirplaneUpdatePalne.setText("");
+		tModelUpdatePlane.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
+	}
+	public JTextField getTYearUpdatePlane() {
+		if (tYearUpdatePlane == null) {
+			tYearUpdatePlane = new JTextField();
+			tYearUpdatePlane.setBounds(160, 150, 96, 20);
+			tYearUpdatePlane.setColumns(10);
+		}
+		return tYearUpdatePlane;
+	}
+	public JLabel getLYearUpdatePlane() {
+		if (lYearUpdatePlane == null) {
+			lYearUpdatePlane = new JLabel("Año");
+			lYearUpdatePlane.setBounds(160, 120, 49, 14);
+		}
+		return lYearUpdatePlane;
 	}
 }

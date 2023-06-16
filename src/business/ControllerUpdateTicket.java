@@ -27,7 +27,7 @@ public class ControllerUpdateTicket implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource() == guiUT.getBUpdate()) {
 			try {
-				fXML.updateXML("Tickets.xml",guiUT.getTNameTicketUpdate().getText(),"hola");
+				fXML.updateXML("Tickets.xml",guiUT.getTNumTicket().getText(),"hola");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

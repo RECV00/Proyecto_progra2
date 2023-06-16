@@ -21,8 +21,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class GUIUpdateBrand extends JFrame {
 
@@ -34,16 +32,15 @@ public class GUIUpdateBrand extends JFrame {
 	private DefaultTableModel dtmTBrand;
 	private JTable tBrand;
 	
-	
 	private JScrollPane spTBrand;
 	
 	private ArrayList<Brand> arrayLBrand;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bUpdateBrand;
+	private JButton bUpdate;
 	private JLabel tTitule;
-	private JLabel lNameUpdateMarca;
-	private JTextField tNameMarcaUpdate;
+	private JTextField tNameBrandUpdate;
+	private JLabel lUpdateBrand;
 
 	public GUIUpdateBrand() {
 		
@@ -56,18 +53,16 @@ public class GUIUpdateBrand extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBUpdateBrand());
+		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getLNameUpdateMarca());
-		getContentPane().add(getTNameMarcaUpdate());
-		setSize(460,368);
+		getContentPane().add(getTNameBrandUpdate());
+		getContentPane().add(getLUpdateBrand());
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
-	
 //------------------------------------------------------------------------------------
 	public void setDTMTBrand(Object data[][],String[] columnsNames) {
 		dtmTBrand = new DefaultTableModel(data,columnsNames);
@@ -102,7 +97,7 @@ public class GUIUpdateBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Nombres de las Marcas"};;
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -131,7 +126,7 @@ public class GUIUpdateBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -146,40 +141,47 @@ public class GUIUpdateBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(319, 290, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBUpdateBrand() {
-		if (bUpdateBrand == null) {
-			bUpdateBrand = new JButton("Actualizar");
-			bUpdateBrand.setBounds(319, 134, 94, 23);
+	public JButton getBUpdate() {
+		if (bUpdate == null) {
+			bUpdate = new JButton("Actualizar");
+			bUpdate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bUpdate.setBounds(397, 112, 120, 23);
 		}
-		return bUpdateBrand;
+		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Marca");
+			tTitule = new JLabel("Actualizar Marcas");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(100, 11, 279, 29);
+			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JLabel getLNameUpdateMarca() {
-		if (lNameUpdateMarca == null) {
-			lNameUpdateMarca = new JLabel("Marca a Atualizar");
-			lNameUpdateMarca.setBounds(51, 65, 146, 23);
+//------------------------------------------------------------------------------------
+	public JTextField getTNameBrandUpdate() {
+		if (tNameBrandUpdate == null) {
+			tNameBrandUpdate = new JTextField();
+			tNameBrandUpdate.setBounds(27, 74, 151, 20);
+			tNameBrandUpdate.setColumns(10);
 		}
-		return lNameUpdateMarca;
+		return tNameBrandUpdate;
 	}
-	public JTextField getTNameMarcaUpdate() {
-		if (tNameMarcaUpdate == null) {
-			tNameMarcaUpdate = new JTextField();
-			tNameMarcaUpdate.setBounds(51, 99, 126, 20);
-			tNameMarcaUpdate.setColumns(10);
+//------------------------------------------------------------------------------------
+	public JLabel getLUpdateBrand() {
+		if (lUpdateBrand == null) {
+			lUpdateBrand = new JLabel("Ingrese el Nombre a Actualizar");
+			lUpdateBrand.setBounds(27, 52, 236, 23);
 		}
-		return tNameMarcaUpdate;
+		return lUpdateBrand;
 	}
 }
+

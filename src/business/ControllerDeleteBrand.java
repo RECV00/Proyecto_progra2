@@ -31,7 +31,7 @@ public class ControllerDeleteBrand implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDB.getBDelete()) {
-			fXML.deleteLine("Brands.xml", guiDB.getTNameDeleteMarca().getText());
+			fXML.deleteLine("Brands.xml", guiDB.getTNameDelete().getText());
 		}
 		if(e.getSource()== guiDB.getBExit()) {
 			guiDB.dispose();
