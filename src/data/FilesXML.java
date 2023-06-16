@@ -20,7 +20,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FilesXML {
 
@@ -112,7 +116,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 		}
 }
 	
-	public void deleteLine(String archive, String wordDelete) {//3parametros
+public void deleteLine(String archive, String wordDelete) {//3parametros
 	    try {
 	        // Leer el archivo XML y cargarlo en un objeto Document
 	        File xmlFile = new File(archive);
@@ -151,33 +155,26 @@ public String getValidateUser(String fileName,String elementType,String userName
 	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	    Document doc = dBuilder.parse(inputfile);
 	    doc.getDocumentElement().normalize();
-
 	    // Get the list of user nodes
 	    NodeList userList = doc.getElementsByTagName(elementType);
+	    
 	    System.out.print("tamaño"+userList.getLength());
 	    // Loop through each user
 	    for (int i = 0; i < userList.getLength(); i++) {
-	    	System.out.print(",VACA");
 	        Node userNode = userList.item(i);
 	        if (userNode.getNodeType() == Node.ELEMENT_NODE) {
-	        	System.out.print(",SAPA");
 	            Element eUser = (Element) userNode;
 
 	            // Get the user's credentials and status
 	            String name = eUser.getAttribute("userName");
 	            String pass = eUser.getElementsByTagName("password").item(0).getTextContent();
 	            String sta = eUser.getElementsByTagName("state").item(0).getTextContent();
-	            		type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
+	            type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
 	            // valida username and password 
-	            		//System.out.print(name+pass);
 	            if (userName.equals(name) && password.equals(pass)) {
-	            	System.out.print(",YEGUA");
-	            	//System.out.print(name+"\n");
-	            	//System.out.print(pass+"\n");
-	            	
 	            	if(sta.equals("activo")) {//valida si esta activo
 	            		// Return the user's type
-	            		System.out.print(",PUTA");
+	            		System.out.print("\n"+type);
 	                    return type;
 	                    
 	            	}else {
@@ -188,10 +185,49 @@ public String getValidateUser(String fileName,String elementType,String userName
 	            }
 	        }
 	    }
-	    //throw new Exception("User is not encontrado");
-	    return type;
+	    throw new Exception("User is not encontrado");
+	    //return type;
 }
+public String validateUser(String fileName, String elementType, String userName, String password) throws Exception {
+    File inputFile = new File(fileName);
+    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    Document doc = dBuilder.parse(inputFile);
+    doc.getDocumentElement().normalize();
+//verificar si el usuario esta repetido
+    NodeList userList = doc.getElementsByTagName(elementType);
+    Set<String> encounteredUserNames = new HashSet<>();
+    Set<String> encounteredPasswords = new HashSet<>();
 
+    for (int i = 0; i < userList.getLength(); i++) {
+        Node userNode = userList.item(i);
+        if (userNode.getNodeType() == Node.ELEMENT_NODE) {
+            Element eUser = (Element) userNode;
+
+            String name = eUser.getAttribute("userName");
+            String pass = eUser.getElementsByTagName("password").item(0).getTextContent();
+            String sta = eUser.getElementsByTagName("state").item(0).getTextContent();
+            String userType = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
+
+            if (encounteredUserNames.contains(name) || encounteredPasswords.contains(pass)) {
+                throw new Exception("Duplicate user or password found");
+            }
+
+            encounteredUserNames.add(name);
+            encounteredPasswords.add(pass);
+
+            if (userName.equals(name) && password.equals(pass)) {
+                if (sta.equals("activo")) {
+                	//System.out.print(userType);
+                    return userType;
+                } else {
+                    throw new Exception("User is not active");
+                }
+            }
+        }
+    }
+    throw new Exception("User not found");
+}
 public String readXMLString(String FileName, String elementType) {
 	String dato = " ";
 	

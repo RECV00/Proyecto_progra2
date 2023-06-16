@@ -30,25 +30,27 @@ public class ControllerLogin implements ActionListener{
 		
 		if(e.getSource()==guiL.getBLogin()) {
 			//
-			//u= new User("keyna","1234","administrador","activo");
-		    //fXML.writeXML("Users.xml","User",u.getDataName(),u.getData());
+			//u= new User("admin","admin","administrador","activo");
+		   //fXML.writeXML("Users.xml","User",u.getDataName(),u.getData());
 			System.out.print(fXML.readXMLString("Users.xml", "User"));
-				try {
-					if(fXML.getValidateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword()))=="administrador") {
-						//System.out.print("hola"+fXML.getValidateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword())));
+			
+			
+			try {
+				String userType = fXML.validateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword()));
+				System.out.println(userType);
+					if(userType =="administrador") {
 						new ControllerAdmin();
-						guiL.dispose();
 					}
-					else if(fXML.getValidateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword()))=="colaborador") {
+					if(userType=="colaborador") {
 						new ControllerColaborador();
-						guiL.dispose();
-					}else {
+					}
+					else {
 						guiL.showMessage("Acceso Inválido");
 					}
-					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					
 				}
 		
 	}
