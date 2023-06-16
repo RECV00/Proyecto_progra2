@@ -30,9 +30,7 @@ public class ControllerLogin implements ActionListener{
 		
 		if(e.getSource()==guiL.getBLogin()) {
 			
-			
 			System.out.print(fXML.readXMLString("Users.xml", "User"));
-
 			//u = new User("admin","admin","administrador","Activo");
 			//fXML.writeXML("Users.xml", "User", u.getDataName(), u.getData());
 
