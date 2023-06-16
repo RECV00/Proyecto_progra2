@@ -39,7 +39,7 @@ public class GUIConsultBrand extends JFrame {
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
-	private JTextField TNameConsultMarca;
+	private JTextField tConsultBrandName;
 	private JLabel lConsultName;
 	private JButton bSearch;
 
@@ -56,10 +56,10 @@ public class GUIConsultBrand extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameConsultMarca());
+		getContentPane().add(getTConsultBrandName());
 		getContentPane().add(getLConsultName());
 		getContentPane().add(getBSearch());
-		setSize(473,368);
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -99,7 +99,7 @@ public class GUIConsultBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Nombres de las Marcas"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -128,7 +128,7 @@ public class GUIConsultBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -143,7 +143,7 @@ public class GUIConsultBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(306, 290, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -155,32 +155,32 @@ public class GUIConsultBrand extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(306, 134, 141, 23);
+			bCheckHistory.setBounds(376, 107, 141, 23);
 		}
 		return bCheckHistory;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Marca");
+			tTitule = new JLabel("Consultar Marcas");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(121, 11, 279, 29);
+			tTitule.setBounds(182, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTNameConsultMarca() {
-		if (TNameConsultMarca == null) {
-			TNameConsultMarca = new JTextField();
-			TNameConsultMarca.setBounds(34, 79, 146, 29);
-			TNameConsultMarca.setColumns(10);
+	public JTextField getTConsultBrandName() {
+		if (tConsultBrandName == null) {
+			tConsultBrandName = new JTextField();
+			tConsultBrandName.setBounds(34, 79, 175, 29);
+			tConsultBrandName.setColumns(10);
 		}
-		return TNameConsultMarca;
+		return tConsultBrandName;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLConsultName() {
 		if (lConsultName == null) {
-			lConsultName = new JLabel("Ingrese la Marca");
-			lConsultName.setBounds(34, 59, 166, 20);
+			lConsultName = new JLabel("Ingrese el Nombre de la Marca");
+			lConsultName.setBounds(34, 59, 213, 20);
 		}
 		return lConsultName;
 	}
@@ -188,7 +188,7 @@ public class GUIConsultBrand extends JFrame {
 	public JButton getBSearch() {
 		if (bSearch == null) {
 			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+			bSearch.setBounds(219, 82, 89, 23);
 		}
 		return bSearch;
 	}

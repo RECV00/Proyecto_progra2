@@ -27,7 +27,7 @@ public class ControllerUpdatePlane implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiUPlane.getBUpdate()) {
 			try {
-				fXML.updateXML("Planes.xml",guiUPlane.getTNamePlaneUpdate().getText(),"hola");
+				fXML.updateXML("Planes.xml",guiUPlane.getTAvionUpdatePlane().getText(),"hola");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

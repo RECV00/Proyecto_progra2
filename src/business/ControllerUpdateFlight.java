@@ -27,7 +27,7 @@ public class ControllerUpdateFlight implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiUF.getBUpdate()) {
 			try {
-				fXML.updateXML("Flights.xml",guiUF.getTUpdateVuelo().getText(),"hola");
+				fXML.updateXML("Flights.xml",guiUF.getTNumFlight().getText(),"hola");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -21,7 +22,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
+@SuppressWarnings("serial")
 public class GUIUpdateFlight extends JFrame {
 
 	private JPanel contentPane;
@@ -32,6 +36,7 @@ public class GUIUpdateFlight extends JFrame {
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
 	
+	
 	private JScrollPane spTUser;
 	
 	private ArrayList<User> arrayLUser;
@@ -39,8 +44,20 @@ public class GUIUpdateFlight extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField tUpdateVuelo;
-	private JLabel lUpdateVueloName;
+	private JLabel lNumFlight;
+	private JTextField tNumFlight;
+	private JLabel lDepartureCity;
+	private JLabel lDepartureDateTime;
+	private JTextField tDepartureCity;
+	private JTextField tDepartureDateTime;
+	
+	private JComboBox comboBoxState;
+	private JLabel lArrivalCity;
+	private JLabel lArrivalDateTime;
+	private JLabel lFlight;
+	private JTextField tArrivalCity;
+	private JTextField tArrivalDateTime;
+	private JTextField tFlight;
 
 	public GUIUpdateFlight() {
 		
@@ -55,14 +72,27 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTUpdateVuelo());
-		getContentPane().add(getLUpdateVueloName());
+		getContentPane().add(getLNumFlight());
+		getContentPane().add(getTNumFlight());
+		getContentPane().add(getLDepartureCity());
+		getContentPane().add(getLDepartureDateTime());
+		getContentPane().add(getTDepartureCity());
+		getContentPane().add(getTDepartureDateTime());
+		getContentPane().add(getComboBoxState());
+		getContentPane().add(getLArrivalCity());
+		getContentPane().add(getLArrivalDateTime());
+		getContentPane().add(getLFlight());
+		getContentPane().add(getTArrivalCity());
+		getContentPane().add(getTArrivalDateTime());
+		getContentPane().add(getTFlight());
 		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -126,7 +156,7 @@ public class GUIUpdateFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 167, 873, 183);
+			scrollPane.setBounds(10, 209, 874, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -145,7 +175,7 @@ public class GUIUpdateFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(892, 312, 84, 23);
+			bExit.setBounds(894, 358, 75, 23);
 		}
 		return bExit;
 	}
@@ -157,7 +187,7 @@ public class GUIUpdateFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(755, 144, 128, 23);
+			bUpdate.setBounds(755, 189, 129, 23);
 		}
 		return bUpdate;
 	}
@@ -166,26 +196,125 @@ public class GUIUpdateFlight extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Actualizar Vuelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(347, 11, 279, 29);
+			tTitule.setBounds(346, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTUpdateVuelo() {
-		if (tUpdateVuelo == null) {
-			tUpdateVuelo = new JTextField();
-			tUpdateVuelo.setBounds(76, 112, 157, 20);
-			tUpdateVuelo.setColumns(10);
+	public JLabel getLNumFlight() {
+		if (lNumFlight == null) {
+			lNumFlight = new JLabel("Numero de Vuelo");
+			lNumFlight.setBounds(20, 60, 130, 14);
 		}
-		return tUpdateVuelo;
+		return lNumFlight;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLUpdateVueloName() {
-		if (lUpdateVueloName == null) {
-			lUpdateVueloName = new JLabel("Ingrese el Numero de Vuelo a Actualizar");
-			lUpdateVueloName.setBounds(77, 78, 255, 23);
+	public JTextField getTNumFlight() {
+		if (tNumFlight == null) {
+			tNumFlight = new JTextField();
+			tNumFlight.setBounds(20, 85, 96, 20);
+			tNumFlight.setColumns(10);
 		}
-		return lUpdateVueloName;
+		return tNumFlight;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLDepartureCity() {
+		if (lDepartureCity == null) {
+			lDepartureCity = new JLabel("Ciudad de Salidad");
+			lDepartureCity.setBounds(20, 116, 130, 14);
+		}
+		return lDepartureCity;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLDepartureDateTime() {
+		if (lDepartureDateTime == null) {
+			lDepartureDateTime = new JLabel("Salida:Hora/Fecha");
+			lDepartureDateTime.setBounds(160, 116, 133, 14);
+		}
+		return lDepartureDateTime;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTDepartureCity() {
+		if (tDepartureCity == null) {
+			tDepartureCity = new JTextField();
+			tDepartureCity.setBounds(20, 141, 96, 20);
+			tDepartureCity.setColumns(10);
+		}
+		return tDepartureCity;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTDepartureDateTime() {
+		if (tDepartureDateTime == null) {
+			tDepartureDateTime = new JTextField();
+			tDepartureDateTime.setText("");
+			tDepartureDateTime.setBounds(160, 141, 96, 20);
+			tDepartureDateTime.setColumns(10);
+		}
+		return tDepartureDateTime;
+	}
+//------------------------------------------------------------------------------------
+	public JComboBox getComboBoxState() {
+		if (comboBoxState == null) {
+			comboBoxState = new JComboBox();
+			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
+			comboBoxState.setBounds(438, 140, 87, 22);
+		}
+		return comboBoxState;
+	}
+//-----------------------------------------------------------------------------------
+	public void cleanForm() {
+		tNumFlight.setText("");
+		tDepartureCity.setText("");
+		tDepartureDateTime.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
+	}
+	public JLabel getLArrivalCity() {
+		if (lArrivalCity == null) {
+			lArrivalCity = new JLabel("Ciudad de Arribo");
+			lArrivalCity.setBounds(160, 60, 133, 14);
+		}
+		return lArrivalCity;
+	}
+	public JLabel getLArrivalDateTime() {
+		if (lArrivalDateTime == null) {
+			lArrivalDateTime = new JLabel("Arribo:Hora/Fecha");
+			lArrivalDateTime.setBounds(303, 60, 129, 14);
+		}
+		return lArrivalDateTime;
+	}
+	public JLabel getLFlight() {
+		if (lFlight == null) {
+			lFlight = new JLabel("Avión");
+			lFlight.setBounds(303, 116, 68, 14);
+		}
+		return lFlight;
+	}
+	public JTextField getTArrivalCity() {
+		if (tArrivalCity == null) {
+			tArrivalCity = new JTextField();
+			tArrivalCity.setBounds(160, 85, 96, 20);
+			tArrivalCity.setColumns(10);
+		}
+		return tArrivalCity;
+	}
+	public JTextField getTArrivalDateTime() {
+		if (tArrivalDateTime == null) {
+			tArrivalDateTime = new JTextField();
+			tArrivalDateTime.setBounds(303, 85, 96, 20);
+			tArrivalDateTime.setColumns(10);
+		}
+		return tArrivalDateTime;
+	}
+	public JTextField getTFlight() {
+		if (tFlight == null) {
+			tFlight = new JTextField();
+			tFlight.setBounds(303, 141, 96, 20);
+			tFlight.setColumns(10);
+		}
+		return tFlight;
 	}
 }
-

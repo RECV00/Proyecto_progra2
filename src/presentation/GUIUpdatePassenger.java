@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -21,6 +22,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class GUIUpdatePassenger extends JFrame {
 
@@ -32,6 +35,7 @@ public class GUIUpdatePassenger extends JFrame {
 	private DefaultTableModel dtmTPassenger;
 	private JTable tPassenger;
 	
+	
 	private JScrollPane spTPassenger;
 	
 	private ArrayList<Passenger> arrayLPassenger;
@@ -39,8 +43,18 @@ public class GUIUpdatePassenger extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField tNamePassengerUpdate;
-	private JLabel lUpdatePassenger;
+	private JLabel lPassportPassenger;
+	private JTextField tPassportPassenger;
+	private JLabel lNamePassenger;
+	private JLabel lLastNamePassenger;
+	private JTextField tNamePassenger;
+	private JTextField tLastNamePassenger;
+	private JTextField tBirthdatePassenger;
+	private JLabel lBirthdatePassenger;
+	private JTextField tGmailPassenger;
+	private JTextField tPhonePassenger;
+	private JLabel lGmailPassenger;
+	private JLabel lPhonePassenger;
 
 	public GUIUpdatePassenger() {
 		
@@ -55,14 +69,26 @@ public class GUIUpdatePassenger extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNamePassengerUpdate());
-		getContentPane().add(getLUpdatePassenger());
-		setSize(688,368);
+		getContentPane().add(getLPassportPassenger());
+		getContentPane().add(getTPassportPassenger());
+		getContentPane().add(getLNamePassenger());
+		getContentPane().add(getLLastNamePassenger());
+		getContentPane().add(getTNamePassenger());
+		getContentPane().add(getTLastNamePassenger());
+		getContentPane().add(getTBirthdatePassenger());
+		getContentPane().add(getLBirthdatePassenger());
+		getContentPane().add(getTGmailPassenger());
+		getContentPane().add(getTPhonePassenger());
+		getContentPane().add(getLGmailPassenger());
+		getContentPane().add(getLPhonePassenger());
+		setSize(891,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
 //------------------------------------------------------------------------------------
 	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		dtmTPassenger = new DefaultTableModel(data,columnsNames);
@@ -126,7 +152,7 @@ public class GUIUpdatePassenger extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 179, 745, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -141,7 +167,7 @@ public class GUIUpdatePassenger extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(765, 325, 94, 23);
 		}
 		return bExit;
 	}
@@ -153,7 +179,7 @@ public class GUIUpdatePassenger extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(413, 109, 104, 23);
+			bUpdate.setBounds(611, 157, 144, 23);
 		}
 		return bUpdate;
 	}
@@ -162,25 +188,116 @@ public class GUIUpdatePassenger extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Actualizar Pasajeros");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(238, 11, 279, 29);
+			tTitule.setBounds(307, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNamePassengerUpdate() {
-		if (tNamePassengerUpdate == null) {
-			tNamePassengerUpdate = new JTextField();
-			tNamePassengerUpdate.setBounds(37, 82, 132, 20);
-			tNamePassengerUpdate.setColumns(10);
+	public JLabel getLPassportPassenger() {
+		if (lPassportPassenger == null) {
+			lPassportPassenger = new JLabel("Pasaporte");
+			lPassportPassenger.setBounds(20, 60, 96, 14);
 		}
-		return tNamePassengerUpdate;
+		return lPassportPassenger;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLUpdatePassenger() {
-		if (lUpdatePassenger == null) {
-			lUpdatePassenger = new JLabel("Ingrese el Pasaporte a Actualizar");
-			lUpdatePassenger.setBounds(37, 52, 204, 23);
+	public JTextField getTPassportPassenger() {
+		if (tPassportPassenger == null) {
+			tPassportPassenger = new JTextField();
+			tPassportPassenger.setBounds(20, 85, 96, 20);
+			tPassportPassenger.setColumns(10);
 		}
-		return lUpdatePassenger;
+		return tPassportPassenger;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLNamePassenger() {
+		if (lNamePassenger == null) {
+			lNamePassenger = new JLabel("Nombre");
+			lNamePassenger.setBounds(20, 116, 80, 14);
+		}
+		return lNamePassenger;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLLastNamePassenger() {
+		if (lLastNamePassenger == null) {
+			lLastNamePassenger = new JLabel("Apellido");
+			lLastNamePassenger.setBounds(154, 60, 80, 14);
+		}
+		return lLastNamePassenger;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTNamePassenger() {
+		if (tNamePassenger == null) {
+			tNamePassenger = new JTextField();
+			tNamePassenger.setBounds(20, 133, 96, 20);
+			tNamePassenger.setColumns(10);
+		}
+		return tNamePassenger;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTLastNamePassenger() {
+		if (tLastNamePassenger == null) {
+			tLastNamePassenger = new JTextField();
+			tLastNamePassenger.setText("");
+			tLastNamePassenger.setBounds(154, 85, 96, 20);
+			tLastNamePassenger.setColumns(10);
+		}
+		return tLastNamePassenger;
+	}
+//-----------------------------------------------------------------------------------
+	public void cleanForm() {
+		tPassportPassenger.setText("");
+		tNamePassenger.setText("");
+		tLastNamePassenger.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
+	}
+	public JTextField getTBirthdatePassenger() {
+		if (tBirthdatePassenger == null) {
+			tBirthdatePassenger = new JTextField();
+			tBirthdatePassenger.setBounds(154, 133, 96, 20);
+			tBirthdatePassenger.setColumns(10);
+		}
+		return tBirthdatePassenger;
+	}
+	public JLabel getLBirthdatePassenger() {
+		if (lBirthdatePassenger == null) {
+			lBirthdatePassenger = new JLabel("Cumpleaños");
+			lBirthdatePassenger.setBounds(154, 116, 96, 14);
+		}
+		return lBirthdatePassenger;
+	}
+	public JTextField getTGmailPassenger() {
+		if (tGmailPassenger == null) {
+			tGmailPassenger = new JTextField();
+			tGmailPassenger.setBounds(287, 85, 219, 20);
+			tGmailPassenger.setColumns(10);
+		}
+		return tGmailPassenger;
+	}
+	public JTextField getTPhonePassenger() {
+		if (tPhonePassenger == null) {
+			tPhonePassenger = new JTextField();
+			tPhonePassenger.setBounds(287, 133, 96, 20);
+			tPhonePassenger.setColumns(10);
+		}
+		return tPhonePassenger;
+	}
+	public JLabel getLGmailPassenger() {
+		if (lGmailPassenger == null) {
+			lGmailPassenger = new JLabel("Correo");
+			lGmailPassenger.setBounds(287, 60, 71, 14);
+		}
+		return lGmailPassenger;
+	}
+	public JLabel getLPhonePassenger() {
+		if (lPhonePassenger == null) {
+			lPhonePassenger = new JLabel("Celular");
+			lPhonePassenger.setBounds(287, 116, 71, 14);
+		}
+		return lPhonePassenger;
 	}
 }

@@ -39,7 +39,7 @@ public class GUIDeleteBrand extends JFrame {
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
-	private JTextField tNameDeleteMarca;
+	private JTextField tNameDelete;
 	private JLabel lNameDelete;
 
 	public GUIDeleteBrand() {
@@ -55,9 +55,9 @@ public class GUIDeleteBrand extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameDeleteMarca());
+		getContentPane().add(getTNameDelete());
 		getContentPane().add(getLNameDelete());
-		setSize(434,368);
+		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class GUIDeleteBrand extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Marca"};
+		String columnsNames[] = {"Nombres de las Marcas"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -126,7 +126,7 @@ public class GUIDeleteBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(83, 130, 213, 183);
+			scrollPane.setBounds(10, 130, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -141,11 +141,7 @@ public class GUIDeleteBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			bExit.setBounds(306, 278, 94, 23);
+			bExit.setBounds(527, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -153,31 +149,37 @@ public class GUIDeleteBrand extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(162, 81, 94, 23);
+			bDelete.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bDelete.setBounds(388, 109, 129, 23);
 		}
 		return bDelete;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Eliminar Marca");
+			tTitule = new JLabel("Eliminar Marcas");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(107, 11, 279, 29);
+			tTitule.setBounds(199, 11, 279, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTNameDeleteMarca() {
-		if (tNameDeleteMarca == null) {
-			tNameDeleteMarca = new JTextField();
-			tNameDeleteMarca.setBounds(27, 82, 112, 20);
-			tNameDeleteMarca.setColumns(10);
+//------------------------------------------------------------------------------------
+	public JTextField getTNameDelete() {
+		if (tNameDelete == null) {
+			tNameDelete = new JTextField();
+			tNameDelete.setBounds(27, 82, 145, 20);
+			tNameDelete.setColumns(10);
 		}
-		return tNameDeleteMarca;
+		return tNameDelete;
 	}
+//------------------------------------------------------------------------------------
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
-			lNameDelete = new JLabel("Ingrese la Marca a Eliminar");
-			lNameDelete.setBounds(27, 57, 157, 14);
+			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
+			lNameDelete.setBounds(27, 57, 176, 14);
 		}
 		return lNameDelete;
 	}

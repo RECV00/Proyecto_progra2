@@ -19,15 +19,15 @@ public class ControllerUpdateBrand implements ActionListener{
 	}
 	private void initializer() {
 		// TODO Auto-generated method stub
-		guiUB.getBUpdateBrand().addActionListener(this);
+		guiUB.getBUpdate().addActionListener(this);
 		guiUB.getBExit().addActionListener(this);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==guiUB.getBUpdateBrand()) {
+		if(e.getSource()==guiUB.getBUpdate()) {
 			try {
-				fXML.updateXML("Brands.xml",guiUB.getTNameMarcaUpdate().getText(),"hola");
+				fXML.updateXML("Brands.xml",guiUB.getTNameBrandUpdate().getText(),"hola");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

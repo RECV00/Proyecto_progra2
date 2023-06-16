@@ -2,9 +2,11 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import domain.Ticket;
+import domain.User;
 import presentation.GUIRegisterTicket;
 
 
@@ -13,7 +15,7 @@ public class ControllerRegisterTicket implements ActionListener{
 	private GUIRegisterTicket guiRT;
 	private FilesXML fXML;
 	private Ticket ticket;
-	//ArrayListUser<User> arrayLUser;
+	private ArrayList<Ticket> arrayLTicket;
 	
 	public ControllerRegisterTicket() {
 	guiRT= new GUIRegisterTicket();
@@ -31,21 +33,18 @@ public class ControllerRegisterTicket implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	//	System.out.println(guiRA.getArrayListUser().size());
-		//guiRA.print(guiRA.getTUser());//pdf
-		
 		if(e.getSource()== guiRT.getBRegister()) {
 			//creando en objeto
 			ticket = new Ticket(guiRT.getTNumTicket().getText(),
 					guiRT.getTPassportTicket().getText(),
 					guiRT.getTNumFlightTicket().getText());
+			fXML.writeXML("Users.xml","User",ticket.getDataName(),ticket.getData());
 			
+			arrayLTicket = ticket.readXMLArrayList("Users.xml","User",ticket.getDataName());
 			guiRT.cleanForm();
-			//escribiendo en el XML Tiquetes
-			fXML.writeXML("Tickets.xml","Ticket",
-					ticket.getDataName(),ticket.getData());
-			//guiRF.getArrayListFlight().add(flight);
-			//guiRA.getDTMTAirline().addRow(air);
+			
+				guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});
+		
 		}
 		if(e.getSource()== guiRT.getBExit()) {
 			//meter la pagina anterior

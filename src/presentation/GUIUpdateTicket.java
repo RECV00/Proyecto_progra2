@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
@@ -21,6 +22,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class GUIUpdateTicket extends JFrame {
 
@@ -32,6 +35,7 @@ public class GUIUpdateTicket extends JFrame {
 	private DefaultTableModel dtmTTicket;
 	private JTable tTicket;
 	
+	
 	private JScrollPane spTTicket;
 	
 	private ArrayList<Ticket> arrayLTicket;
@@ -39,8 +43,12 @@ public class GUIUpdateTicket extends JFrame {
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
-	private JTextField tNameTicketUpdate;
-	private JLabel lUpdateTicket;
+	private JLabel lNumTicket;
+	private JTextField tNumTicket;
+	private JLabel lPassportTicket;
+	private JLabel lNumFlightTicket;
+	private JTextField tPassportTicket;
+	private JTextField tNumFlightTicket;
 
 	public GUIUpdateTicket() {
 		
@@ -55,14 +63,20 @@ public class GUIUpdateTicket extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTNameTicketUpdate());
-		getContentPane().add(getLUpdateTicket());
-		setSize(688,368);
+		getContentPane().add(getLNumTicket());
+		getContentPane().add(getTNumTicket());
+		getContentPane().add(getLPassportTicket());
+		getContentPane().add(getLNumFlightTicket());
+		getContentPane().add(getTPassportTicket());
+		getContentPane().add(getTNumFlightTicket());
+		setSize(691,417);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
 //------------------------------------------------------------------------------------
 	public void setDTMTTicket(Object data[][],String[] columnsNames) {
 		dtmTTicket = new DefaultTableModel(data,columnsNames);
@@ -126,7 +140,7 @@ public class GUIUpdateTicket extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 175, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -153,35 +167,80 @@ public class GUIUpdateTicket extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(386, 105, 131, 23);
+			bUpdate.setBounds(332, 153, 185, 23);
 		}
 		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Tiquete");
+			tTitule = new JLabel("Actualizar Tiquetes");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(217, 11, 279, 29);
 		}
 		return tTitule;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTNameTicketUpdate() {
-		if (tNameTicketUpdate == null) {
-			tNameTicketUpdate = new JTextField();
-			tNameTicketUpdate.setBounds(27, 74, 132, 20);
-			tNameTicketUpdate.setColumns(10);
+	public JLabel getLNumTicket() {
+		if (lNumTicket == null) {
+			lNumTicket = new JLabel("Número de Tiquete");
+			lNumTicket.setBounds(26, 60, 116, 14);
 		}
-		return tNameTicketUpdate;
+		return lNumTicket;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLUpdateTicket() {
-		if (lUpdateTicket == null) {
-			lUpdateTicket = new JLabel("Ingrese el Número de Tiquete a Actualizar");
-			lUpdateTicket.setBounds(27, 52, 284, 23);
+	public JTextField getTNumTicket() {
+		if (tNumTicket == null) {
+			tNumTicket = new JTextField();
+			tNumTicket.setBounds(26, 82, 96, 20);
+			tNumTicket.setColumns(10);
 		}
-		return lUpdateTicket;
+		return tNumTicket;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLPassportTicket() {
+		if (lPassportTicket == null) {
+			lPassportTicket = new JLabel("Pasaporte");
+			lPassportTicket.setBounds(26, 108, 80, 14);
+		}
+		return lPassportTicket;
+	}
+//------------------------------------------------------------------------------------
+	public JLabel getLNumFlightTicket() {
+		if (lNumFlightTicket == null) {
+			lNumFlightTicket = new JLabel("Número de Vuelo");
+			lNumFlightTicket.setBounds(164, 60, 116, 14);
+		}
+		return lNumFlightTicket;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTPassportTicket() {
+		if (tPassportTicket == null) {
+			tPassportTicket = new JTextField();
+			tPassportTicket.setBounds(26, 133, 96, 20);
+			tPassportTicket.setColumns(10);
+		}
+		return tPassportTicket;
+	}
+//------------------------------------------------------------------------------------
+	public JTextField getTNumFlightTicket() {
+		if (tNumFlightTicket == null) {
+			tNumFlightTicket = new JTextField();
+			tNumFlightTicket.setText("");
+			tNumFlightTicket.setBounds(164, 82, 96, 20);
+			tNumFlightTicket.setColumns(10);
+		}
+		return tNumFlightTicket;
+	}
+//-----------------------------------------------------------------------------------
+	public void cleanForm() {
+		tNumTicket.setText("");
+		tPassportTicket.setText("");
+		tNumFlightTicket.setText("");
+	}
+//------------------------------------------------------------------------------------
+	public void showMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
 	}
 }
-

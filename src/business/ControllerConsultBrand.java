@@ -28,7 +28,7 @@ public class ControllerConsultBrand implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCB.getBSearch()) {
 			try {
-				fXML.searchXML("Brands.xml", guiCB.getTNameConsultMarca().getText());
+				fXML.searchXML("Brands.xml", guiCB.getTConsultBrandName().getText());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

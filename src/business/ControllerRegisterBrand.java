@@ -36,7 +36,7 @@ public class ControllerRegisterBrand implements ActionListener{
 		
 		if(e.getSource()== guiRB.getBRegister()) {
 			
-			brand = new Brand(guiRB.getTNameRegisterMarca().getText());
+			brand = new Brand(guiRB.getTNameRegisterBrand().getText());
 			
 			guiRB.cleanForm();
 			fXML.writeXML("Brands.xml","Brand",brand.getDataName(),brand.getData());
