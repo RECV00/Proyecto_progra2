@@ -1,13 +1,18 @@
 package presentation;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import java.awt.Color;
 
 @SuppressWarnings({ "serial", "unused" })
 public class GUIAdmin extends JFrame {
@@ -20,6 +25,7 @@ public class GUIAdmin extends JFrame {
 	private JMenuItem miiExit;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
+	private JLabel li;
 	
 	private int resultAcces;
 	private JMenu mnUser;
@@ -74,16 +80,30 @@ public class GUIAdmin extends JFrame {
 		setBounds(100, 100, 550, 400);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 204, 255));
 		contentPane.setBorder(new EmptyBorder(5 ,5, 5,5));
 		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.add(getImagen());
 		setVisible(true);
 		//setSize(getMaximumSize());
+	}
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(0, 0, 534, 339);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/airline-.jpg")));
+		getContentPane().add(li);
+		}
+		return li;
 	}
 	public JMenuBar getMenuBar_1() {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
+			menuBar.setBackground(new Color(153, 153, 204));
 			menuBar.add(getMFile());
 			menuBar.add(getMOperations());
 			menuBar.add(getMHelp());
@@ -102,6 +122,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMOperations() {
 		if (mOperations == null) {
 			mOperations = new JMenu("Operaciones");
+			mOperations.setBackground(new Color(204, 204, 255));
 			mOperations.add(getMnUser());
 			mOperations.add(getMnBrand());
 			mOperations.add(getMnModel());

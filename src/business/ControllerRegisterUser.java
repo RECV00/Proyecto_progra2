@@ -37,6 +37,7 @@ public class ControllerRegisterUser implements ActionListener{
 			
 			user = new User(guiRU.getTName().getText(),guiRU.getTContrasena().getText(),
 					guiRU.getTTypeUser().getText(),guiRU.getComboBoxState().getSelectedItem().toString());
+			
 			//arrayLP.addPerson(per);
 			fXML.writeXML("Users.xml","User",user.getDataName(),user.getData());
 			//guiRU.print(user);

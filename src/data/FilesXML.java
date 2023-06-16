@@ -172,7 +172,7 @@ public String getValidateUser(String fileName,String elementType,String userName
 	            type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
 	            // valida username and password 
 	            if (userName.equals(name) && password.equals(pass)) {
-	            	if(sta.equals("activo")) {//valida si esta activo
+	            	if(sta.equals("Activo")) {//valida si esta activo
 	            		// Return the user's type
 	            		System.out.print("\n"+type);
 	                    return type;
@@ -189,7 +189,8 @@ public String getValidateUser(String fileName,String elementType,String userName
 	    //return type;
 }
 public String validateUser(String fileName, String elementType, String userName, String password) throws Exception {
-    File inputFile = new File(fileName);
+   try {
+	File inputFile = new File(fileName);
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
     Document doc = dBuilder.parse(inputFile);
@@ -217,7 +218,7 @@ public String validateUser(String fileName, String elementType, String userName,
             encounteredPasswords.add(pass);
 
             if (userName.equals(name) && password.equals(pass)) {
-                if (sta.equals("activo")) {
+                if (sta.equals("Activo")) {
                 	//System.out.print(userType);
                     return userType;
                 } else {
@@ -226,7 +227,13 @@ public String validateUser(String fileName, String elementType, String userName,
             }
         }
     }
-    throw new Exception("User not found");
+    
+   throw new Exception("User not found");
+}catch(Exception e) {
+    e.printStackTrace();
+    return "Error: "+e.getMessage();
+    }
+   	  
 }
 public String readXMLString(String FileName, String elementType) {
 	String dato = " ";

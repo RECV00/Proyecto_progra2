@@ -19,48 +19,121 @@ public class ControllerColaborador implements ActionListener{
 	}
 
 	private void initializer() {
-		// TODO Auto-generated method stub
-		guiC.getMnBrand().addActionListener(this);
-		guiC.getMnModel().addActionListener(this);
-		guiC.getMnAeroline().addActionListener(this);
-		guiC.getMnPlane().addActionListener(this);
-		guiC.getMnFlight().addActionListener(this);
-		guiC.getMnPass().addActionListener(this);
-		guiC.getMnTicket().addActionListener(this);
-		guiC.getMnImpresionT().addActionListener(this);
-		guiC.getMnVuelos().addActionListener(this);
+		// opciones del menu bar
+		
+		guiC.getMiiExit().addActionListener(this);
+		guiC.getMHelp().addActionListener(this);
+		guiC.getMiAboutSystem().addActionListener(this);
+		//opciones marcas
+				guiC.getMiRegisterBrand().addActionListener(this);
+				guiC.getMiConsultBrand().addActionListener(this);
+				
+				//opciones modelo
+				guiC.getMiRegisterModel().addActionListener(this);
+				guiC.getMiConsultModel().addActionListener(this);
+				
+				//aerolinea
+				guiC.getMiRegisterAeroline().addActionListener(this);
+				guiC.getMiConsultAeroline().addActionListener(this);
+				
+				//aviones
+				guiC.getMiRegisterPlane().addActionListener(this);
+				guiC.getMiConsultPlane().addActionListener(this);
+				
+				//opciones vuelos
+				guiC.getMiRegisterFlight().addActionListener(this);
+				guiC.getMiConsultFlight().addActionListener(this);
+				
+				//opciones pasajero
+				guiC.getMiRegisterPass().addActionListener(this);
+				guiC.getMiConsultPass().addActionListener(this);
+				
+				//opciones tiquetes
+				guiC.getMiRegisterTicket().addActionListener(this);
+				guiC.getMiConsultTicket().addActionListener(this);
+				
+				//impresion
+				guiC.getMnImpresionT().addActionListener(this);
+				guiC.getMnHistorialT().addActionListener(this);
+				guiC.getMnVuelos().addActionListener(this);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == guiC.getMnBrand()) {
+		if(e.getSource()== guiC.getMHelp()) {
+			
+		}
+		//marca
+		if(e.getSource() == guiC.getMiRegisterBrand()) {
 			new ControllerRegisterBrand();
 		}
-		if(e.getSource() == guiC.getMnModel()) {
+		if(e.getSource() == guiC.getMiConsultBrand()) {
+			new ControllerConsultBrand();
+		}
+		
+		//modelo
+		if(e.getSource() == guiC.getMiRegisterModel()) {
 			new ControllerRegisterModel();
 		}
-		if(e.getSource() == guiC.getMnAeroline()) {
+		if(e.getSource() == guiC.getMiConsultModel()) {
+			new ControllerConsultModel();
+		}
+		
+		//aerolinea
+		if(e.getSource() == guiC.getMiRegisterAeroline()) {
 			new ControllerRegisterAirline();
 		}
-		if(e.getSource() == guiC.getMnPlane()) {
-			new ControllerRegisterPlane();
+		if(e.getSource() == guiC.getMiConsultAeroline()) {
+			new ControllerConsultAirline();
 		}
-		if(e.getSource() == guiC.getMnFlight()) {
+		
+		//vuelos
+		if(e.getSource() == guiC.getMiRegisterFlight()) {
 			new ControllerRegisterFlight();
 		}
-		if(e.getSource() == guiC.getMnPass()) {
+		if(e.getSource() == guiC.getMiConsultFlight()) {
+			new ControllerConsultFlight();
+		}
+		
+		//aviones
+		if(e.getSource() == guiC.getMiRegisterPlane()) {
+			new ControllerRegisterPlane();
+		}
+		if(e.getSource() == guiC.getMiConsultPlane()) {
+			new ControllerConsultPlane();
+		}
+		
+		//pasajeros
+		if(e.getSource() == guiC.getMiRegisterPass()) {
 			new ControllerRegisterPassenger();
 		}
-		if(e.getSource() == guiC.getMnTicket()) {
+		if(e.getSource() == guiC.getMiConsultPass()) {
+			new ControllerConsultPassenger();
+		}
+		
+		//tiquetes
+		if(e.getSource() == guiC.getMiRegisterTicket()) {
 			new ControllerRegisterTicket();
 		}
+		if(e.getSource() == guiC.getMiConsultTicket()) {
+			new ControllerConsultTicket();
+		}
+		
+		//otras opciones
 		if(e.getSource() == guiC.getMnImpresionT()) {
 			new ControllerImpresionT();
 		}
+		if(e.getSource() == guiC.getMnHistorialT()) {
+			new ControllerHistorialT();
+		}
 		if(e.getSource() == guiC.getMnVuelos()) {
 			new ControllerVuelos();
+		}
+		else if(e.getSource()== guiC.getMiiExit()) {
+			guiC.dispose();
+			new ControllerLogin();
 		}
 		
 		

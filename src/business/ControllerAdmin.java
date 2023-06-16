@@ -19,6 +19,9 @@ public class ControllerAdmin implements ActionListener{
 
 	private void initializer() {
 		// TODO Auto-generated method stub
+		guiA.getMiiExit().addActionListener(this);
+		guiA.getMHelp().addActionListener(this);
+		guiA.getMiAboutSystem().addActionListener(this);
 		//opciones usuario
 		guiA.getMiRegister().addActionListener(this);
 		guiA.getMiConsult().addActionListener(this);
@@ -184,7 +187,6 @@ public class ControllerAdmin implements ActionListener{
 			new ControllerVuelos();
 		}
 		else if(e.getSource()== guiA.getMiiExit()) {
-			//System.exit(0);
 			guiA.dispose();
 			new ControllerLogin();
 		}

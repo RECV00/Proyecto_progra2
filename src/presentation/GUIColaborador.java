@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import java.awt.Color;
 
 @SuppressWarnings({ "serial", "unused" })
 public class GUIColaborador extends JFrame {
@@ -17,7 +18,7 @@ public class GUIColaborador extends JFrame {
 	private JMenu mHelp;
 	private JMenuItem miOpen;
 	private JMenuItem miSave;
-	private JMenuItem miExit;
+	private JMenuItem miiExit;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
 	
@@ -30,15 +31,15 @@ public class GUIColaborador extends JFrame {
 	private JMenu mnPass;
 	private JMenu mnTicket;
 	private JMenuItem miRegisterBrand;
-	private JMenuItem mnConsultBrand;
+	private JMenuItem miConsultBrand;
 	private JMenuItem miRegisterModel;
-	private JMenuItem mnConsultModel;
+	private JMenuItem miConsultModel;
 	private JMenuItem miRegisterAeroline;
-	private JMenuItem mnConsultAeroline;
+	private JMenuItem miConsultAeroline;
 	private JMenuItem miRegisterPlane;
-	private JMenuItem mnConsultPlane;
+	private JMenuItem miConsultPlane;
 	private JMenuItem miRegisterFlight;
-	private JMenuItem mnConsultFlight;
+	private JMenuItem miConsultFlight;
 	private JMenuItem miRegisterPass;
 	private JMenuItem miConsultPass;
 	private JMenuItem miRegisterTicket;
@@ -55,6 +56,7 @@ public class GUIColaborador extends JFrame {
 		setBounds(100, 100, 550, 400);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(153, 204, 204));
 		contentPane.setBorder(new EmptyBorder(5 ,5, 5,5));
 		
 		setContentPane(contentPane);
@@ -65,6 +67,7 @@ public class GUIColaborador extends JFrame {
 	public JMenuBar getMenuBar_1() {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
+			menuBar.setBackground(new Color(102, 204, 204));
 			menuBar.add(getMFile());
 			menuBar.add(getMOperations());
 			menuBar.add(getMHelp());
@@ -76,7 +79,7 @@ public class GUIColaborador extends JFrame {
 			mFile = new JMenu("Archivo");
 			mFile.add(getMiOpen());
 			mFile.add(getMiSave());
-			mFile.add(getMiExit());
+			mFile.add(getMiiExit());
 		}
 		return mFile;
 	}
@@ -115,11 +118,11 @@ public class GUIColaborador extends JFrame {
 		}
 		return miSave;
 	}
-	public JMenuItem getMiExit() {
-		if (miExit == null) {
-			miExit = new JMenuItem("Salir");
+	public JMenuItem getMiiExit() {
+		if (miiExit == null) {
+			miiExit = new JMenuItem("Salir");
 		}
-		return miExit;
+		return miiExit;
 	}
 	public JMenuItem getMiAboutSystem() {
 		if (miAboutSystem == null) {
@@ -131,7 +134,7 @@ public class GUIColaborador extends JFrame {
 		if (mnBrand == null) {
 			mnBrand = new JMenu("Gestión de Marcas");
 			mnBrand.add(getMiRegisterBrand());
-			mnBrand.add(getMnConsultBrand());
+			mnBrand.add(getMiConsultBrand());
 		}
 		return mnBrand;
 	}
@@ -139,7 +142,7 @@ public class GUIColaborador extends JFrame {
 		if (mnModel == null) {
 			mnModel = new JMenu("Gestión de Modelos");
 			mnModel.add(getMiRegisterModel());
-			mnModel.add(getMnConsultModel());
+			mnModel.add(getMiConsultModel());
 		}
 		return mnModel;
 	}
@@ -147,7 +150,7 @@ public class GUIColaborador extends JFrame {
 		if (mnAeroline == null) {
 			mnAeroline = new JMenu("Gestión de Aerolíneas");
 			mnAeroline.add(getMiRegisterAeroline());
-			mnAeroline.add(getMnConsultAeroline());
+			mnAeroline.add(getMiConsultAeroline());
 		}
 		return mnAeroline;
 	}
@@ -155,7 +158,7 @@ public class GUIColaborador extends JFrame {
 		if (mnPlane == null) {
 			mnPlane = new JMenu("Gestión de Aviones");
 			mnPlane.add(getMiRegisterPlane());
-			mnPlane.add(getMnConsultPlane());
+			mnPlane.add(getMiConsultPlane());
 		}
 		return mnPlane;
 	}
@@ -163,7 +166,7 @@ public class GUIColaborador extends JFrame {
 		if (mnFlight == null) {
 			mnFlight = new JMenu("Gestión de Vuelos");
 			mnFlight.add(getMiRegisterFlight());
-			mnFlight.add(getMnConsultFlight());
+			mnFlight.add(getMiConsultFlight());
 		}
 		return mnFlight;
 	}
@@ -189,11 +192,11 @@ public class GUIColaborador extends JFrame {
 		}
 		return miRegisterBrand;
 	}
-	public JMenuItem getMnConsultBrand() {
-		if (mnConsultBrand == null) {
-			mnConsultBrand = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultBrand() {
+		if (miConsultBrand == null) {
+			miConsultBrand = new JMenuItem("Consultar");
 		}
-		return mnConsultBrand;
+		return miConsultBrand;
 	}
 	public JMenuItem getMiRegisterModel() {
 		if (miRegisterModel == null) {
@@ -201,11 +204,11 @@ public class GUIColaborador extends JFrame {
 		}
 		return miRegisterModel;
 	}
-	public JMenuItem getMnConsultModel() {
-		if (mnConsultModel == null) {
-			mnConsultModel = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultModel() {
+		if (miConsultModel == null) {
+			miConsultModel = new JMenuItem("Consultar");
 		}
-		return mnConsultModel;
+		return miConsultModel;
 	}
 	public JMenuItem getMiRegisterAeroline() {
 		if (miRegisterAeroline == null) {
@@ -213,11 +216,11 @@ public class GUIColaborador extends JFrame {
 		}
 		return miRegisterAeroline;
 	}
-	public JMenuItem getMnConsultAeroline() {
-		if (mnConsultAeroline == null) {
-			mnConsultAeroline = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultAeroline() {
+		if (miConsultAeroline == null) {
+			miConsultAeroline = new JMenuItem("Consultar");
 		}
-		return mnConsultAeroline;
+		return miConsultAeroline;
 	}
 	public JMenuItem getMiRegisterPlane() {
 		if (miRegisterPlane == null) {
@@ -225,11 +228,11 @@ public class GUIColaborador extends JFrame {
 		}
 		return miRegisterPlane;
 	}
-	public JMenuItem getMnConsultPlane() {
-		if (mnConsultPlane == null) {
-			mnConsultPlane = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultPlane() {
+		if (miConsultPlane == null) {
+			miConsultPlane = new JMenuItem("Consultar");
 		}
-		return mnConsultPlane;
+		return miConsultPlane;
 	}
 	public JMenuItem getMiRegisterFlight() {
 		if (miRegisterFlight == null) {
@@ -237,11 +240,11 @@ public class GUIColaborador extends JFrame {
 		}
 		return miRegisterFlight;
 	}
-	public JMenuItem getMnConsultFlight() {
-		if (mnConsultFlight == null) {
-			mnConsultFlight = new JMenuItem("Consultar");
+	public JMenuItem getMiConsultFlight() {
+		if (miConsultFlight == null) {
+			miConsultFlight = new JMenuItem("Consultar");
 		}
-		return mnConsultFlight;
+		return miConsultFlight;
 	}
 	public JMenuItem getMiRegisterPass() {
 		if (miRegisterPass == null) {

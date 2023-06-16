@@ -27,25 +27,24 @@ public class ControllerLogin implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
 		if(e.getSource()==guiL.getBLogin()) {
-			//
-			//u= new User("admin","admin","administrador","activo");
-		   //fXML.writeXML("Users.xml","User",u.getDataName(),u.getData());
-			System.out.print(fXML.readXMLString("Users.xml", "User"));
 			
+			System.out.print(fXML.readXMLString("Users.xml", "User"));
 			
 			try {
 				String userType = fXML.validateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword()));
-				System.out.println(userType);
-					if(userType =="administrador") {
+				//System.out.println("-"+userType+"-");
+					if(userType.equals("administrador")) {
+						guiL.dispose();
 						new ControllerAdmin();
 					}
-					if(userType=="colaborador") {
+					else if(userType.equals("colaborador")) {
+						guiL.dispose();
 						new ControllerColaborador();
 					}
+					
 					else {
-						guiL.showMessage("Acceso Inválido");
+						guiL.showMessage("Acceso Inválido,verifique si los datos son correctos..");
 					}
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
