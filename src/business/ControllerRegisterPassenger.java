@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import domain.Passenger;
@@ -13,13 +14,13 @@ public class ControllerRegisterPassenger implements ActionListener{
 	private GUIRegisterPassenger guiRP;
 	private FilesXML fXML;
 	private Passenger passenger;
-	//ArrayListUser<User> arrayLUser;
+	private ArrayList<Passenger> arrayLPassenger;
 	
 	public ControllerRegisterPassenger() {
 	guiRP= new GUIRegisterPassenger();
 	fXML = new FilesXML();
 	passenger = new Passenger();
-	fXML.createXML("Passenger", "Passengers.xml");
+	fXML.createXML("Passengers", "Passengers.xml");
 	initializer();
 	}
 
@@ -40,11 +41,10 @@ public class ControllerRegisterPassenger implements ActionListener{
 					guiRP.getTGmailPassenger().getText(),
 					Integer.valueOf(guiRP.getTPhonePassenger().getText()));
 			
+			fXML.writeXML("Passengers.xml", "Passenger", passenger.getDataName(),passenger.getData());
+			arrayLPassenger = passenger.readXMLArrayList("Passengers.xml", "Passenger", passenger.getData());
 			guiRP.cleanForm();
-			fXML.writeXML("Passengers.xml","Passenger",
-					passenger.getDataName(),passenger.getData());
-			//guiRF.getArrayListFlight().add(flight);
-			//guiRA.getDTMTAirline().addRow(air);
+			guiRP.getDTMTPassenger().addRow(new Objecto[] {passenger.getName(),passenger.getPassport()});
 		}
 		if(e.getSource()== guiRP.getBExit()) {
 			//meter la pagina anterior
