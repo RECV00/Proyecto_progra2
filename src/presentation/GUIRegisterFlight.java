@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Flight;
 import domain.User;
 
 import javax.swing.JTextField;
@@ -33,13 +34,13 @@ public class GUIRegisterFlight extends JFrame {
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTUser;
-	private JTable tUser;
+	private DefaultTableModel dtmTFlight;
+	private JTable tFlight;
 	
 	
-	private JScrollPane spTUser;
+	private JScrollPane spTFlight;
 	
-	private ArrayList<User> arrayLUser;
+	private ArrayList<Flight> arrayLFlight;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bRegister;
@@ -57,13 +58,13 @@ public class GUIRegisterFlight extends JFrame {
 	private JLabel lFlight;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
-	private JTextField tFlight;
+	private JTextField tFlights;
 
 	public GUIRegisterFlight() {
 		
-		setDTMTUser(dataTable,getColumnsNames());
-		setUser(dtmTUser);
-		setSPTUser(tUser);
+		setDTMTFlight(dataTable,getColumnsNames());
+		setFlight(dtmTFlight);
+		setSPTUser(tFlight);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -94,36 +95,36 @@ public class GUIRegisterFlight extends JFrame {
 	
 	
 //------------------------------------------------------------------------------------
-	public void setDTMTUser(Object data[][],String[] columnsNames) {
-		dtmTUser = new DefaultTableModel(data,columnsNames);
+	public void setDTMTFlight(Object data[][],String[] columnsNames) {
+		dtmTFlight = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTUser() {
-		return dtmTUser;
+	public DefaultTableModel getDTMTFlight() {
+		return dtmTFlight;
 	}
 //------------------------------------------------------------------------------------
-	public void setUser(DefaultTableModel dtmTUser) {
-		tUser = new JTable(dtmTUser);
+	public void setFlight(DefaultTableModel dtmTFlight) {
+		tFlight = new JTable(dtmTFlight);
 		//No poder editar los valores de la tabla
-		tUser.setEnabled(false);
+		tFlight.setEnabled(false);
 		//no poder mover las columnas
-		tUser.getTableHeader().setReorderingAllowed(false);
+		tFlight.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tUser.getTableHeader().setResizingAllowed(false);
+		tFlight.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
 	public JTable getTUser() {
-		return this.tUser;
+		return this.tFlight;
 	}
 	
-	public void setSPTUser(JTable tUser) {
-		spTUser = new JScrollPane(tUser);
-		spTUser.setBounds(10,70,460,80);
+	public void setSPTUser(JTable tFlight) {
+		spTFlight = new JScrollPane(tFlight);
+		spTFlight.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTUser() {
-		return this.spTUser;
+	public JScrollPane getSPTFlight() {
+		return this.spTFlight;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
@@ -131,13 +132,13 @@ public class GUIRegisterFlight extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<User>getArrayListUser(){
-		return arrayLUser;
+	public ArrayList<Flight>getArrayListFlight(){
+		return arrayLFlight;
 	}
 //------------------------------------------------------------------------------------
-	public void print(JTable tUser) {
+	public void print(JTable tFlight) {
 		try {
-			if(!tUser.print()) {
+			if(!tFlight.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -158,12 +159,12 @@ public class GUIRegisterFlight extends JFrame {
 			scrollPane = new JScrollPane();
 			scrollPane.setBounds(10, 209, 874, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tUser=new JTable(dtmTUser);
-			tUser.setEnabled(false);
-			tUser.getTableHeader().setReorderingAllowed(false);
-			tUser.getTableHeader().setResizingAllowed(false);	
-			spTUser = new JScrollPane(tUser);
-			scrollPane.setColumnHeaderView(spTUser);
+			tFlight=new JTable(dtmTFlight);
+			tFlight.setEnabled(false);
+			tFlight.getTableHeader().setReorderingAllowed(false);
+			tFlight.getTableHeader().setResizingAllowed(false);	
+			spTFlight = new JScrollPane(tFlight);
+			scrollPane.setColumnHeaderView(spTFlight);
 		}
 		return scrollPane;
 	}
@@ -306,11 +307,11 @@ public class GUIRegisterFlight extends JFrame {
 		return tArrivalDateTime;
 	}
 	public JTextField getTFlight() {
-		if (tFlight == null) {
-			tFlight = new JTextField();
-			tFlight.setBounds(303, 141, 96, 20);
-			tFlight.setColumns(10);
+		if (tFlights == null) {
+			tFlights = new JTextField();
+			tFlights.setBounds(303, 141, 96, 20);
+			tFlights.setColumns(10);
 		}
-		return tFlight;
+		return tFlights;
 	}
 }
