@@ -125,13 +125,6 @@ public class Passenger {
 					Element eElement = (Element) nNode;
 					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
 					
-					Passenger p =new Passenger(eElement.getAttribute(dataName[0]),
-							eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[2]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[3]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[4]).item(0).getTextContent(),
-							Integer.parseInt(eElement.getElementsByTagName(dataName[5]).item(0).getTextContent()));
-					
 					pa =new Passenger(passport,name,lastName,birthdate,gmail,phone);
 					arrayLPassenger.add(pa);
 					

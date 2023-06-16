@@ -62,12 +62,12 @@ public Brand(String name) {
 
 			for (int indice = 0; indice < nList.getLength(); indice++) {
 				Node nNode = nList.item(indice);
-				System.out.println("\nDatos de las Facturas: " + nNode.getNodeName());
+				System.out.println("\nDatos de Marca: " + nNode.getNodeName());
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
-					Brand b =new Brand(eElement.getAttribute(dataName[0]));
+					
 					br=new Brand(name);
 					arrayLBrand.add(br);
 					

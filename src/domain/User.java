@@ -100,10 +100,7 @@ public class User {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
-					/*User u =new User(eElement.getAttribute(dataName[0]),
-							eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[2]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[3]).item(0).getTextContent());*/
+					
 					us=new User(userName,password,typeUser,state);
 					arrayLUser.add(us);
 					
