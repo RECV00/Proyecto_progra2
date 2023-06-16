@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import domain.Model;
@@ -12,13 +13,13 @@ public class ControllerRegisterModel implements ActionListener{
 	private GUIRegisterModel guiRM;
 	private FilesXML fXML;
 	private Model model;
-	//ArrayListUser<User> arrayLUser;
+	ArrayList<Model> arrayLModel;
 	
 	public ControllerRegisterModel() {
 	guiRM= new GUIRegisterModel();
 	fXML = new FilesXML();
 	model = new Model();
-	fXML.createXML("Model", "Models.xml");
+	fXML.createXML("Models", "Models.xml");
 	initializer();
 	}
 
@@ -30,8 +31,6 @@ public class ControllerRegisterModel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	//	System.out.println(guiRA.getArrayListUser().size());
-		//guiRA.print(guiRA.getTUser());//pdf
 		
 		if(e.getSource()== guiRM.getBRegister()) {
 			
@@ -40,10 +39,11 @@ public class ControllerRegisterModel implements ActionListener{
 					Integer.valueOf(guiRM.getTCanAsientosECO().getText()),
 					Integer.valueOf(guiRM.getTCanAsientosTUR().getText()));
 			
-			guiRM.cleanForm();
 			fXML.writeXML("Models.xml","Model",model.getDataName(),model.getData());
-			//guiRF.getArrayListFlight().add(flight);
-			//guiRA.getDTMTAirline().addRow(air);
+			arrayLModel= model.readXMLArrayList("Models.xml","Model", model.getDataName());
+		    guiRM.cleanForm();
+			guiRM.getDTMTModel().addRow(new Object [] {model.getName(),model.getMarca(),
+			model.getCantSeatExecutive(),model.getCantSeatEconomic(),model.getCantSeatTourist()});
 			
 		}
 		if(e.getSource()== guiRM.getBExit()) {

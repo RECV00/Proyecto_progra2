@@ -12,8 +12,8 @@ public class ControllerRegisterUser implements ActionListener{
 	private GUIRegisterUser guiRU;
 	private FilesXML fXML;
 	private User user;
-	
 	private ArrayList<User> arrayLUser;
+	
 	public ControllerRegisterUser() {
 	guiRU= new GUIRegisterUser();
 	fXML = new FilesXML();
