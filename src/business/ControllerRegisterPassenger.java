@@ -31,9 +31,6 @@ public class ControllerRegisterPassenger implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	//	System.out.println(guiRA.getArrayListUser().size());
-		//guiRA.print(guiRA.getTUser());//pdf
-		
 		if(e.getSource()== guiRP.getBRegister()) {
 			
 			passenger = new Passenger(guiRP.getTPassportPassenger().getText(),

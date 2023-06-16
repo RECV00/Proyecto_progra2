@@ -13,10 +13,10 @@ import org.w3c.dom.NodeList;
 
 public class Plane {
 	ArrayList<Plane> arrayLPlane;
-	String plate;
-	String airline;
-	String model;
-	String year;
+	private String plate;
+	private String airline;
+	private String model;
+	private String year;
 	
 	public Plane() {
 		// TODO Auto-generated constructor stub
@@ -84,10 +84,7 @@ public class Plane {
 	}
 	
 public ArrayList<Plane> readXMLArrayList(String FileName, String elementType,String[]dataName) {
-	String plate="";
-	String airline="";
-	String model="";
-	String year="";
+	
 	String info="";
 	Plane pl;
 	arrayLPlane= new ArrayList<>();
@@ -104,7 +101,7 @@ public ArrayList<Plane> readXMLArrayList(String FileName, String elementType,Str
 
 		for (int indice = 0; indice < nList.getLength(); indice++) {
 			Node nNode = nList.item(indice);
-			System.out.println("\nDatos de las Facturas: " + nNode.getNodeName());
+			System.out.println("\nDatos de Aviones: " + nNode.getNodeName());
 
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
