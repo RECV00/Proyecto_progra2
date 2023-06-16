@@ -19,7 +19,7 @@ public class ControllerRegisterBrand implements ActionListener{
 	guiRB= new GUIRegisterBrand();
 	fXML = new FilesXML();
 	brand = new Brand();
-	fXML.createXML("Brand", "Brands.xml");
+	fXML.createXML("Brands", "Brands.xml");
 	initializer();
 	}
 
