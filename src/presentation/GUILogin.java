@@ -34,9 +34,9 @@ public class GUILogin extends JFrame {
 	public GUILogin() {
 		setBackground(new Color(255, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 497, 371);
+		setBounds(100, 100, 525, 398);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 0, 0));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -54,7 +54,7 @@ public class GUILogin extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, 0, 534, 339);
+		li.setBounds(0, 0, 509, 359);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUILogin.class.getResource("/media/airline-.png")));
@@ -91,10 +91,10 @@ public class GUILogin extends JFrame {
 	}
 	public JButton getBLogin() {
 		if (bLogin == null) {
-			bLogin = new JButton("Ingresar");
+			bLogin = new JButton("Iniciar Sesión");
 			bLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
-			bLogin.setBackground(UIManager.getColor("Button.light"));
-			bLogin.setBounds(38, 279, 89, 23);
+			bLogin.setBackground(UIManager.getColor("Button.shadow"));
+			bLogin.setBounds(31, 302, 124, 23);
 		}
 		return bLogin;
 	}
@@ -115,7 +115,7 @@ public class GUILogin extends JFrame {
 			bExit = new JButton("Salir");
 			bExit.setFont(new Font("Tahoma", Font.BOLD, 11));
 			bExit.setBackground(UIManager.getColor("Button.light"));
-			bExit.setBounds(356, 279, 89, 23);
+			bExit.setBounds(429, 11, 70, 23);
 		}
 		return bExit;
 	}

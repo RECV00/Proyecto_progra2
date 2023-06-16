@@ -1,8 +1,12 @@
 package presentation;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenu;
@@ -21,7 +25,7 @@ public class GUIColaborador extends JFrame {
 	private JMenuItem miiExit;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
-	
+	private JLabel li;
 	private int resultAcces;
 	private JMenu mnBrand;
 	private JMenu mnModel;
@@ -53,16 +57,28 @@ public class GUIColaborador extends JFrame {
 	public GUIColaborador() {
 		setTitle("Privilegios del Colaborador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 400);
+		setBounds(100, 100, 636, 483);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(153, 204, 204));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5 ,5, 5,5));
 		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.add(getImagen());
 		setVisible(true);
 		//setSize(getMaximumSize());
+	}
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-23, 0, 730, 435);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/4.png")));
+		getContentPane().add(li);
+		}
+		return li;
 	}
 	public JMenuBar getMenuBar_1() {
 		if (menuBar == null) {

@@ -77,10 +77,10 @@ public class GUIAdmin extends JFrame {
 	public GUIAdmin() {
 		setTitle("Privilegios del Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 400);
+		setBounds(100, 100, 633, 494);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(204, 204, 255));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5 ,5, 5,5));
 		
 		setContentPane(contentPane);
@@ -92,10 +92,10 @@ public class GUIAdmin extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, 0, 534, 339);
+		li.setBounds(0, 0, 617, 433);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/airline-.jpg")));
+		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/4.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -103,7 +103,7 @@ public class GUIAdmin extends JFrame {
 	public JMenuBar getMenuBar_1() {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
-			menuBar.setBackground(new Color(153, 153, 204));
+			menuBar.setBackground(new Color(255, 255, 255));
 			menuBar.add(getMFile());
 			menuBar.add(getMOperations());
 			menuBar.add(getMHelp());

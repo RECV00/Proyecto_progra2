@@ -22,6 +22,7 @@ public class ControllerLogin implements ActionListener{
 
 	private void initalizer() {
 		guiL.getBLogin().addActionListener(this);
+		guiL.getBExit().addActionListener(this);
 	}
 
 	@Override
@@ -30,7 +31,8 @@ public class ControllerLogin implements ActionListener{
 		if(e.getSource()==guiL.getBLogin()) {
 			
 			System.out.print(fXML.readXMLString("Users.xml", "User"));
-			
+			u = new User("admin","admin","administrador","Activo");
+			fXML.writeXML("Users.xml", "User", u.getDataName(), u.getData());
 			try {
 				String userType = fXML.validateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword()));
 				//System.out.println("-"+userType+"-");
@@ -51,7 +53,9 @@ public class ControllerLogin implements ActionListener{
 					e1.printStackTrace();
 					
 				}
-		
-	}
+		}
+		if(e.getSource()==guiL.getBExit()) {
+			System.exit(0);
+		}
 	}
 }
