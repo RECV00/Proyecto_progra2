@@ -44,7 +44,7 @@ public class ControllerRegisterPassenger implements ActionListener{
 			fXML.writeXML("Passengers.xml", "Passenger", passenger.getDataName(),passenger.getData());
 			arrayLPassenger = passenger.readXMLArrayList("Passengers.xml", "Passenger", passenger.getData());
 			guiRP.cleanForm();
-			guiRP.getDTMTPassenger().addRow(new Objecto[] {passenger.getPassport(),passenger.getName(),passenger.getLastName(),passenger.getBirthdate(),passenger.getGmail(),passenger.getPhone()});
+			guiRP.getDTMTPassenger().addRow(new Object[] {passenger.getPassport(),passenger.getName(),passenger.getLastName(),passenger.getBirthdate(),passenger.getGmail(),passenger.getPhone()});
 		}
 		if(e.getSource()== guiRP.getBExit()) {
 			//meter la pagina anterior
