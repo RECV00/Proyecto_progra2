@@ -76,9 +76,7 @@ public class Ticket {
 	}
 	 
 	public ArrayList<Ticket> readXMLArrayList(String FileName, String elementType,String[]dataName) {
-		String numTicket="";
-		String passport="";
-		String numFlight="";
+		
 		String info="";
 		Ticket ti;
 		arrayLTicket= new ArrayList<>();
@@ -95,7 +93,7 @@ public class Ticket {
 
 			for (int indice = 0; indice < nList.getLength(); indice++) {
 				Node nNode = nList.item(indice);
-				System.out.println("\nDatos de las Facturas: " + nNode.getNodeName());
+				System.out.println("\nDatos de Tiquetes: " + nNode.getNodeName());
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;

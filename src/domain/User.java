@@ -14,10 +14,10 @@ import org.w3c.dom.NodeList;
 
 public class User {
 	ArrayList<User> arrayLUser;
-	String userName;
-	String password;
-	String typeUser;
-	String state;
+	private String userName;
+	private String password;
+	private String typeUser;
+	private String state;
 //contructores
 	public User() {	
 		
@@ -78,10 +78,7 @@ public class User {
 	}
 	
 	public ArrayList<User> readXMLArrayList(String FileName, String elementType,String[]dataName) {
-		String userName="";
-		String password="";
-		String typeUser="";
-		String state="";
+	
 		String info="";
 		User us;
 		arrayLUser= new ArrayList<>();
@@ -98,15 +95,15 @@ public class User {
 
 			for (int indice = 0; indice < nList.getLength(); indice++) {
 				Node nNode = nList.item(indice);
-				System.out.println("\nDatos de las Facturas: " + nNode.getNodeName());
+				System.out.println("\nDatos de Usuario: " + nNode.getNodeName());
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
-					User u =new User(eElement.getAttribute(dataName[0]),
+					/*User u =new User(eElement.getAttribute(dataName[0]),
 							eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
 							eElement.getElementsByTagName(dataName[2]).item(0).getTextContent(),
-							eElement.getElementsByTagName(dataName[3]).item(0).getTextContent());
+							eElement.getElementsByTagName(dataName[3]).item(0).getTextContent());*/
 					us=new User(userName,password,typeUser,state);
 					arrayLUser.add(us);
 					
