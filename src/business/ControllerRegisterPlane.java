@@ -36,8 +36,8 @@ public class ControllerRegisterPlane implements ActionListener{
 		if(e.getSource()== guiRPlane.getBRegister()) {
 			
 			plane = new Plane(guiRPlane.getTAvionRegisterPlane().getText(),
-					guiRPlane.getTModelRegisterPlane().getText(),
 					guiRPlane.getTAirplaneRegisterPalne().getText(),
+					guiRPlane.getTModelRegisterPlane().getText(),
 					guiRPlane.getTYearRegisterPlane().getText());
 			
 			fXML.writeXML("Planes.xml","Plane",plane.getDataName(),plane.getData());
