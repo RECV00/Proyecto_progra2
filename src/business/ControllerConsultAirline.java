@@ -39,6 +39,7 @@ public class ControllerConsultAirline implements ActionListener{
 		//guiCA.getDTMTAirline().addRow(air.readXMLVector2("Airlines.xml","Airline",air.getDataName()));
 			//System.out.print(air.readXMLVector2("Airlines.xml","Airline",air.getDataName()));
 		guiCA.getDTMTAirline().addRow(fXML.mostrarDatoVector("Airlines.xml","Airline"));
+		System.out.print(fXML.mostrarDatoVector("Airlines.xml","Airline"));
 		}
 		if(e.getSource()==guiCA.getBSearch()) {
 		try {
