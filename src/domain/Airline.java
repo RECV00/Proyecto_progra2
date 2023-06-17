@@ -2,6 +2,7 @@ package domain;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,11 +13,19 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Airline {
+	
 	ArrayList<Airline> arrayLAirline;
+	Vector<Airline[]>vect;
 	private String name;
 	private String contry;
+	private String[] words;
+
 //contructores
 public Airline() {}
+
+public Airline(String[] words) {
+    this.words = words;
+}
 	public Airline(String name, String contry) {
 		super();
 		this.name = name;
@@ -46,10 +55,10 @@ public Airline() {}
 //toString
 	@Override
 	public String toString() {
-		return name +"\n"+ contry;
+		return name +":"+ contry;
 	}
 	
-	public ArrayList<Airline> readXMLArrayList(String FileName, String elementType,String[]dataName) {
+public ArrayList<Airline> readXMLArrayList(String FileName, String elementType,String[]dataName) {
 		
 		String info="";
 		Airline ar;
@@ -86,5 +95,46 @@ public Airline() {}
 			e.printStackTrace();
 		}
 		return arrayLAirline;
+	}
+public Vector<Airline[]> readXMLVector2(String address, String elementType, String[] dataName) {
+		String info = "";
+	    Vector<Airline[]> vect = new Vector<>();
+	    Airline ar;
+
+	    try {
+	        File inputFile = new File(address);
+	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	        Document doc = dBuilder.parse(inputFile);
+
+	        NodeList nList = doc.getElementsByTagName(elementType);
+
+	        for (int i = 0; i < nList.getLength(); i++) {
+	            Node nNode = nList.item(i);
+
+	            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+	                Element eElement = (Element) nNode;
+	                info += (dataName[0] + ":" + eElement.getAttribute(dataName[0]) + "\n");
+	                ar = new Airline(eElement.getAttribute("name"),
+	                        eElement.getElementsByTagName("contry").item(0).getTextContent());
+	                
+	                vect.add(new Airline[dataName.length]);
+	                vect.get(i)[0] = ar;
+
+	                for (int in = 1; in < dataName.length; in++) {
+	                    String[] words = eElement.getElementsByTagName(dataName[in]).item(0).getTextContent().split(" ");
+	                    vect.get(i)[in] = new Airline(words);//words
+	                    info += dataName[in] + ":";
+	                    for (String word : words) {
+	                        info += " " + word;
+	                    }
+	                    info += "\n";
+	                }
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return vect;
 	}
 }

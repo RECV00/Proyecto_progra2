@@ -162,7 +162,7 @@ public void deleteXML(String archive, String wordDelete) {//3parametros
 	    }
 	}
 
-
+//--------------------------------------------------------------------------------------------------
 public String validateUser(String fileName, String elementType, String userName, String password) throws Exception {
    try {
 	File inputFile = new File(fileName);
@@ -210,7 +210,7 @@ public String validateUser(String fileName, String elementType, String userName,
     }
    	  
 }
-
+//--------------------------------------------------------------------------------------------------
 public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType) {
 	String dato = " ";
 	ArrayList<Airline> arrayLAirline= new ArrayList<>();
@@ -243,7 +243,7 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
-//------------------------------------------------------------
+//-------------------------------------------------------------------------------
 public static String readXML(String archivo) {
     StringBuilder result = new StringBuilder();
 
@@ -267,6 +267,7 @@ public static String readXML(String archivo) {
 
     return result.toString();
 }
+//--------------------------------------------------------------------------------------------------
 public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombreEtiqueta) {
     try {
        File archivoXml = new File(nombreArchivoXml);
@@ -325,6 +326,7 @@ public  String searchXML(String archive, String searchWord)throws Exception {
 	    }
 	    return null; // Si no se encontró la línea, retorna null
 	}
+//--------------------------------------------------------------------------------------------------
 public Vector<String> searchXMLVector(String archive, String searchWord) throws Exception {
     Vector<String> result = new Vector<>();
 
@@ -348,13 +350,51 @@ public Vector<String> searchXMLVector(String archive, String searchWord) throws 
                 // Obtener el contenido del nodo padre
                 String line = parent.getTextContent().trim();
                 result.add(line);
+                
             }
         }
     }
 
     return result;
 }
-public Vector<Airline> readXML(String address,String elementType,String[]dataName) {
+public List<Airline[]> readXMLVector2(String address, String elementType, String[] dataName) {
+    List<Airline[]> list = new ArrayList<>();
+
+    try {
+        File inputFile = new File(address);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(inputFile);
+
+        NodeList nList = doc.getElementsByTagName(elementType);
+
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+
+                Airline ar = new Airline(eElement.getAttribute("name"),
+                        eElement.getElementsByTagName("contry").item(0).getTextContent());
+
+                Airline[] airlines = new Airline[dataName.length];
+                airlines[0] = ar;
+
+                for (int in = 1; in < dataName.length; in++) {
+                    String[] words = eElement.getElementsByTagName(dataName[in]).item(0).getTextContent().split(" ");
+                    airlines[in] = new Airline(words);
+                }
+
+                list.add(airlines);
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return list;
+}
+public Vector<Airline> readXMLVector(String address,String elementType,String[]dataName) {
 
     Vector<Airline> vect = new Vector<>();
     String info="";
@@ -388,6 +428,7 @@ public Vector<Airline> readXML(String address,String elementType,String[]dataNam
     }
     return vect;
 }
+
 public void updateXML(String archive, String word, String update) throws Exception {
     // Cargar el documento XML desde el archivo
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
