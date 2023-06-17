@@ -279,7 +279,7 @@ public String mostrarDato(String archivo, String item) {
 	     // Agregar una coma si no es el último elemento
 	        
 	        if (i < nodeList.getLength() - 1) {
-	                datos.append(",");
+	                datos.append("*");
 	              }
 	            }
 	      return datos.toString();
@@ -290,6 +290,7 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
+
 public String[] mostrarDatoVector(String archivo, String item) {
     try {
         // Cargar y parsear el archivo XML
@@ -392,6 +393,7 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
  }
 
 //----------------------------------------------------------------------------
+
 
 public  String searchXML(String archive, String searchWord)throws Exception {
 

@@ -68,7 +68,7 @@ public class GUIDeleteUser extends JFrame {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTUser() {
+	public DefaultTableModel getDTMTUser(String data) {
 		return dtmTUser;
 	}
 //------------------------------------------------------------------------------------
