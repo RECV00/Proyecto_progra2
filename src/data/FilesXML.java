@@ -455,43 +455,7 @@ public Vector<String> searchXMLVector(String archive, String searchWord) throws 
 
     return result;
 }
-public List<Airline[]> readXMLVector2(String address, String elementType, String[] dataName) {
-    List<Airline[]> list = new ArrayList<>();
 
-    try {
-        File inputFile = new File(address);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(inputFile);
-
-        NodeList nList = doc.getElementsByTagName(elementType);
-
-        for (int i = 0; i < nList.getLength(); i++) {
-            Node nNode = nList.item(i);
-
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element eElement = (Element) nNode;
-
-                Airline ar = new Airline(eElement.getAttribute("name"),
-                        eElement.getElementsByTagName("contry").item(0).getTextContent());
-
-                Airline[] airlines = new Airline[dataName.length];
-                airlines[0] = ar;
-
-                for (int in = 1; in < dataName.length; in++) {
-                    String[] words = eElement.getElementsByTagName(dataName[in]).item(0).getTextContent().split(" ");
-                    airlines[in] = new Airline(words);
-                }
-
-                list.add(airlines);
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-    return list;
-}
 public Vector<Airline> readXMLVector(String address,String elementType,String[]dataName) {
 
     Vector<Airline> vect = new Vector<>();

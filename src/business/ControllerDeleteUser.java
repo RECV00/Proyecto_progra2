@@ -20,21 +20,21 @@ public class ControllerDeleteUser implements ActionListener{
 		initializer();
 	}
 
-	private void initializer() {
+private void initializer() {
 		// TODO Auto-generated method stub
 		guiDU.getBDelete().addActionListener(this);
 		guiDU.getBExit().addActionListener(this);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDU.getBDelete()) {
 			//Object data = fXML.readXML("Users.xml");
 			//guiDU.getDTMTUser().addRow((Vector<?>) data);
 			//System.out.println(fXML.readXML("Users.xml"));
-			fXML.mostrarDato("Users.xml","User");
-			//System.out.println(dato);
+			
+			System.out.println(fXML.mostrarDato("Users.xml","User"));
 		//	guiDU.getDTMTUser();
 			//fXML.deleteXML("Users.xml", guiDU.getTNameDelete().getText());
 			
