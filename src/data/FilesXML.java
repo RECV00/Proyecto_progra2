@@ -243,10 +243,7 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 21cc9d83389db87dde4fcc720a0521a60fcc4b12
 //------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -281,7 +278,6 @@ public String mostrarDato(String archivo, String item) {
 	            }
 	     // Agregar una coma si no es el último elemento
 	        
-	        
 	        if (i < nodeList.getLength() - 1) {
 	                datos.append(",");
 	              }
@@ -294,6 +290,54 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
+public String[] mostrarDatoVector(String archivo, String item) {
+    try {
+        // Cargar y parsear el archivo XML
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(archivo);
+
+        // Obtener todos los nodos con la etiqueta "item"
+        NodeList nodeList = doc.getElementsByTagName(item);
+
+        // Crear un vector para almacenar los datos
+        List<String> datosList = new ArrayList<>();
+
+        // Iterar sobre los nodos
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            NodeList childNodes = node.getChildNodes();
+            
+            StringBuilder datos = new StringBuilder();
+            
+            for (int j = 0; j < childNodes.getLength(); j++){
+                Node childNode = childNodes.item(j);
+                // Verificar si el nodo hijo es de tipo ELEMENT_NODE
+                if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+                    // Obtener el contenido del nodo hijo
+                    String contenido = childNode.getTextContent();
+                    // Agregar el contenido a la cadena de datos
+                    datos.append(contenido);
+                    // Agregar una coma si no es el último elemento
+                    if (j < childNodes.getLength() - 1) {
+                        datos.append(",");
+                    }
+                }
+            }
+            
+            datosList.add(datos.toString());
+        }
+
+        // Convertir la lista a un vector
+        String[] datosArray = new String[datosList.size()];
+        datosArray = datosList.toArray(datosArray);
+
+        return datosArray;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 //-------------------------------------------------------------------------------
 public static String readXML(String archivo) {
     StringBuilder result = new StringBuilder();
@@ -346,10 +390,7 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
     }
     return null;
  }
-<<<<<<< HEAD
 
-=======
->>>>>>> 21cc9d83389db87dde4fcc720a0521a60fcc4b12
 //----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
