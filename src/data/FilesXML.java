@@ -279,7 +279,7 @@ public String mostrarDato(String archivo, String item) {
 	        
 	        
 	        if (i < nodeList.getLength() - 1) {
-	                datos.append(",");
+	                datos.append("*");
 	              }
 	            }
 	      return datos.toString();
