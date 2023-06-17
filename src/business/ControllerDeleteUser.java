@@ -33,9 +33,9 @@ public class ControllerDeleteUser implements ActionListener{
 			//Object data = fXML.readXML("Users.xml");
 			//guiDU.getDTMTUser().addRow((Vector<?>) data);
 			//System.out.println(fXML.readXML("Users.xml"));
-			
-			String data =fXML.mostrarDato("Users.xml","User");
-			guiDU.getDTMTUser(data);
+			fXML.mostrarDato("Users.xml","User");
+			//System.out.println(dato);
+		//	guiDU.getDTMTUser();
 			//fXML.deleteXML("Users.xml", guiDU.getTNameDelete().getText());
 			
 			

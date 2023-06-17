@@ -243,10 +243,6 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 21cc9d83389db87dde4fcc720a0521a60fcc4b12
 //------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -294,63 +290,6 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
-//-------------------------------------------------------------------------------
-public static String readXML(String archivo) {
-    StringBuilder result = new StringBuilder();
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            sb.append(line.trim());
-        }
-
-        String xmlContent = sb.toString();
-        Pattern pattern = Pattern.compile("<(.*?)>(.*?)</\\1>");
-        Matcher matcher = pattern.matcher(xmlContent);
-        while (matcher.find()) {
-            String value = matcher.group(2);
-            result.append(value).append("\n");
-        }
-    } catch (IOException e) {
-        System.out.println("Error en la lectura del archivo XML!");
-    }
-
-    return result.toString();
-}
-//--------------------------------------------------------------------------------------------------
-public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombreEtiqueta) {
-    try {
-       File archivoXml = new File(nombreArchivoXml);
-       DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-       DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-       Document documentoXml = dBuilder.parse(archivoXml);
-       
-       // Opcional: normalizar el documento para evitar espacios en blanco innecesarios
-       documentoXml.getDocumentElement().normalize();
-       
-       // Obtener una lista de nodos que coinciden con el nombre de la etiqueta
-       NodeList listaDeNodos = documentoXml.getElementsByTagName(nombreEtiqueta);
-       
-       // Obtener el primer nodo de la lista (suponiendo que solo hay un nodo con ese nombre)
-       Node nodo = listaDeNodos.item(0);
-       
-       if (nodo.getNodeType() == Node.ELEMENT_NODE) {
-          Element elemento = (Element) nodo;
-          // Obtener el valor del nodo de texto hijo del elemento
-          String valor = elemento.getTextContent();
-          return valor;
-       }
-    } catch (Exception e) {
-       e.printStackTrace();
-    }
-    return null;
- }
-<<<<<<< HEAD
-
-=======
->>>>>>> 21cc9d83389db87dde4fcc720a0521a60fcc4b12
-//----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
 
