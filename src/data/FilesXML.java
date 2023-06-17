@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import data.Data;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -37,11 +36,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-<<<<<<< HEAD
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-=======
->>>>>>> a4da808a54724fe8c4b49309544af0eae13a8458
 
 public class FilesXML {
 
@@ -246,11 +242,9 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
-
-<<<<<<< HEAD
-public static List<String> readXML(String archivo) {
-	 
-    List<String> dataVector = new ArrayList<>();
+//------------------------------------------------------------
+public static String readXML(String archivo) {
+    StringBuilder result = new StringBuilder();
 
     try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
         StringBuilder sb = new StringBuilder();
@@ -263,21 +257,38 @@ public static List<String> readXML(String archivo) {
         Pattern pattern = Pattern.compile("<(.*?)>(.*?)</\\1>");
         Matcher matcher = pattern.matcher(xmlContent);
         while (matcher.find()) {
-            String tag = matcher.group(1);
             String value = matcher.group(2);
-
-            // Agregar los datos a la lista
-            Data data = new Data();
-            data.tag = tag;
-            data.value = value;
-            dataVector.addAll((Collection<? extends String>) data);
+            result.append(value).append("\n");
         }
     } catch (IOException e) {
         System.out.println("Error en la lectura del archivo XML!");
     }
 
-    return dataVector;
+    return result.toString();
 }
+public static String[] extraerDatos(String etiqueta) {
+    List<String> datos = new ArrayList<>();
+
+    int inicio = 0;
+    int fin = 0;
+
+    while (inicio != -1 && fin != -1) {
+        inicio = etiqueta.indexOf(">");
+        fin = etiqueta.indexOf("<", inicio + 1);
+
+        if (inicio != -1 && fin != -1) {
+            datos.add(etiqueta.substring(inicio + 1, fin));
+        }
+
+        etiqueta = etiqueta.substring(fin + 1);
+    }
+
+    String[] vectorDatos = new String[datos.size()];
+    vectorDatos = datos.toArray(vectorDatos);
+
+    return vectorDatos;
+}
+//----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
 
