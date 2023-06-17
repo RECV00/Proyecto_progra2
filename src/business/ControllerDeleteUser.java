@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import data.FilesXML;
 import domain.User;
@@ -29,7 +30,13 @@ public class ControllerDeleteUser implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDU.getBDelete()) {
-			fXML.deleteLine("Users", guiDU.getTNameDelete().getText());
+			//Object data = fXML.readXML("Users.xml");
+			//guiDU.getDTMTUser().addRow((Vector<?>) data);
+			System.out.println(fXML.readXML("Users.xml"));
+		//	guiDU.getDTMTUser();
+			//fXML.deleteXML("Users.xml", guiDU.getTNameDelete().getText());
+			
+			
 		}
 		if(e.getSource()== guiDU.getBExit()) {
 			guiDU.dispose();

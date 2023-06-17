@@ -2,7 +2,12 @@ package data;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+
+import data.Data;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,10 +26,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.w3c.dom.*;
+
+
 import javax.xml.parsers.*;
 import java.io.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FilesXML {
 
@@ -116,7 +127,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 		}
 }
 	
-public void deleteLine(String archive, String wordDelete) {//3parametros
+public void deleteXML(String archive, String wordDelete) {//3parametros
 	    try {
 	        // Leer el archivo XML y cargarlo en un objeto Document
 	        File xmlFile = new File(archive);
@@ -269,6 +280,38 @@ public String readXMLString(String FileName, String elementType) {
 	}
 	return dato;
 }
+
+public static List<String> readXML(String archivo) {
+	 
+    List<String> dataVector = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line.trim());
+        }
+
+        String xmlContent = sb.toString();
+        Pattern pattern = Pattern.compile("<(.*?)>(.*?)</\\1>");
+        Matcher matcher = pattern.matcher(xmlContent);
+        while (matcher.find()) {
+            String tag = matcher.group(1);
+            String value = matcher.group(2);
+
+            // Agregar los datos a la lista
+            Data data = new Data();
+            data.tag = tag;
+            data.value = value;
+            dataVector.addAll((Collection<? extends String>) data);
+        }
+    } catch (IOException e) {
+        System.out.println("Error en la lectura del archivo XML!");
+    }
+
+    return dataVector;
+}
+
 public  String searchXML(String archive, String searchWord)throws Exception {
 
 	    // Crear un objeto DocumentBuilderFactory y un objeto DocumentBuilder para obtener el archivo XML

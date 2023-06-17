@@ -31,7 +31,7 @@ public class ControllerDeletePlane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDPlane.getBDelete()) {
-			fXML.deleteLine("Planes.xml", guiDPlane.getTPlaneDeletePlane().getText());
+			fXML.deleteXML("Planes.xml", guiDPlane.getTPlaneDeletePlane().getText());
 		}
 		if(e.getSource()== guiDPlane.getBExit()) {
 			guiDPlane.dispose();

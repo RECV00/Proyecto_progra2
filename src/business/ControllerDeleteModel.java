@@ -31,7 +31,7 @@ public class ControllerDeleteModel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDM.getBDelete()) {
-			fXML.deleteLine("Models.xml", guiDM.getTNameDeleteModelo().getText());
+			fXML.deleteXML("Models.xml", guiDM.getTNameDeleteModelo().getText());
 		}
 		if(e.getSource()== guiDM.getBExit()) {
 			guiDM.dispose();
