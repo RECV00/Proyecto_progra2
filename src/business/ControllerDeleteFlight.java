@@ -32,7 +32,7 @@ public class ControllerDeleteFlight implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDF.getBDelete()) {
-			fXML.deleteLine("Flights.xml", guiDF.getTVueloDelete().getText());
+			fXML.deleteXML("Flights.xml", guiDF.getTVueloDelete().getText());
 		}
 		if(e.getSource()== guiDF.getBExit()) {
 			guiDF.dispose();

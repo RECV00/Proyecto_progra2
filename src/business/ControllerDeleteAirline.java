@@ -30,7 +30,7 @@ public class ControllerDeleteAirline implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDA.getBDelete()) {
-			fXML.deleteLine("Airlines.xml", guiDA.getTNameDeleteAero().getText());
+			fXML.deleteXML("Airlines.xml", guiDA.getTNameDeleteAero().getText());
 		}
 		if(e.getSource()== guiDA.getBExit()) {
 			guiDA.dispose();
