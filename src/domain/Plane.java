@@ -22,8 +22,6 @@ public class Plane {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public Plane(String plate, String airline, String model, String year) {
 		super();
 		this.plate = plate;

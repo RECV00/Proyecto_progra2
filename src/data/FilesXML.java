@@ -313,6 +313,7 @@ public Vector<Airline> readXML(String address,String elementType,String[]dataNam
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
                 info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
+               
                 ar = new Airline(eElement.getAttribute("name"), 
                 		eElement.getElementsByTagName("contry").item(0).getTextContent());
                 vect.add(ar);
