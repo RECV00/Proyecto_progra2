@@ -243,7 +243,6 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
-<<<<<<< HEAD
 //------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -260,15 +259,29 @@ public String mostrarDato(String archivo, String item) {
 	      // Iterar sobre los nodos
 	      for (int i = 0; i < nodeList.getLength(); i++) {
 	        Node node = nodeList.item(i);
-	        System.out.println(nodeList.getLength());
-	        // Obtener el contenido del nodo
-	        String contenido = node.getTextContent();
-	        datos.append(contenido);
-	        if (i < nodeList.getLength() - 1) {
-	            datos.append(",");
-	          }
+	        NodeList childNodes = node.getChildNodes();
+	        for (int j = 0; j < childNodes.getLength(); j++){
+	        	Node childNode = childNodes.item(j);
+	        	// Verificar si el nodo hijo es de tipo ELEMENT_NODE
+	            
+	        	if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+	        	    // Obtener el contenido del nodo hijo
+	        	    String contenido = childNode.getTextContent();
+	        	    // Agregar el contenido a la cadena de datos
+	                datos.append(contenido);
+	             // Agregar una coma si no es el último elemento
+	                if (j < childNodes.getLength() - 1) {
+	                  datos.append(",");
+	                }
+	              }
+	            }
+	     // Agregar una coma si no es el último elemento
 	        
-	      }
+	        
+	        if (i < nodeList.getLength() - 1) {
+	                datos.append(",");
+	              }
+	            }
 	      return datos.toString();
 	   
 	    } catch (Exception e) {
@@ -277,7 +290,6 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
-=======
 //-------------------------------------------------------------------------------
 public static String readXML(String archivo) {
     StringBuilder result = new StringBuilder();
@@ -330,7 +342,6 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
     }
     return null;
  }
->>>>>>> 7be9c2220353f5996bcb5f004898747a11841dd4
 //----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
