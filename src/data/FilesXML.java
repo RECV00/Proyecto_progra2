@@ -34,6 +34,7 @@ import javax.xml.parsers.*;
 import java.io.*;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 import java.util.regex.Matcher;
@@ -266,28 +267,33 @@ public static String readXML(String archivo) {
 
     return result.toString();
 }
-public static String[] extraerDatos(String etiqueta) {
-    List<String> datos = new ArrayList<>();
-
-    int inicio = 0;
-    int fin = 0;
-
-    while (inicio != -1 && fin != -1) {
-        inicio = etiqueta.indexOf(">");
-        fin = etiqueta.indexOf("<", inicio + 1);
-
-        if (inicio != -1 && fin != -1) {
-            datos.add(etiqueta.substring(inicio + 1, fin));
-        }
-
-        etiqueta = etiqueta.substring(fin + 1);
+public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombreEtiqueta) {
+    try {
+       File archivoXml = new File(nombreArchivoXml);
+       DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+       DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+       Document documentoXml = dBuilder.parse(archivoXml);
+       
+       // Opcional: normalizar el documento para evitar espacios en blanco innecesarios
+       documentoXml.getDocumentElement().normalize();
+       
+       // Obtener una lista de nodos que coinciden con el nombre de la etiqueta
+       NodeList listaDeNodos = documentoXml.getElementsByTagName(nombreEtiqueta);
+       
+       // Obtener el primer nodo de la lista (suponiendo que solo hay un nodo con ese nombre)
+       Node nodo = listaDeNodos.item(0);
+       
+       if (nodo.getNodeType() == Node.ELEMENT_NODE) {
+          Element elemento = (Element) nodo;
+          // Obtener el valor del nodo de texto hijo del elemento
+          String valor = elemento.getTextContent();
+          return valor;
+       }
+    } catch (Exception e) {
+       e.printStackTrace();
     }
-
-    String[] vectorDatos = new String[datos.size()];
-    vectorDatos = datos.toArray(vectorDatos);
-
-    return vectorDatos;
-}
+    return null;
+ }
 //----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
@@ -368,7 +374,6 @@ public Vector<Airline> readXML(String address,String elementType,String[]dataNam
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
                 info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
-               
                 ar = new Airline(eElement.getAttribute("name"), 
                 		eElement.getElementsByTagName("contry").item(0).getTextContent());
                 vect.add(ar);
