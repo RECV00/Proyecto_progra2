@@ -162,7 +162,7 @@ public void deleteXML(String archive, String wordDelete) {//3parametros
 	    }
 	}
 
-
+//--------------------------------------------------------------------------------------------------
 public String validateUser(String fileName, String elementType, String userName, String password) throws Exception {
    try {
 	File inputFile = new File(fileName);
@@ -210,7 +210,7 @@ public String validateUser(String fileName, String elementType, String userName,
     }
    	  
 }
-
+//--------------------------------------------------------------------------------------------------
 public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType) {
 	String dato = " ";
 	ArrayList<Airline> arrayLAirline= new ArrayList<>();
@@ -243,6 +243,7 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
+<<<<<<< HEAD
 //------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -276,6 +277,60 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
+=======
+//-------------------------------------------------------------------------------
+public static String readXML(String archivo) {
+    StringBuilder result = new StringBuilder();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line.trim());
+        }
+
+        String xmlContent = sb.toString();
+        Pattern pattern = Pattern.compile("<(.*?)>(.*?)</\\1>");
+        Matcher matcher = pattern.matcher(xmlContent);
+        while (matcher.find()) {
+            String value = matcher.group(2);
+            result.append(value).append("\n");
+        }
+    } catch (IOException e) {
+        System.out.println("Error en la lectura del archivo XML!");
+    }
+
+    return result.toString();
+}
+//--------------------------------------------------------------------------------------------------
+public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombreEtiqueta) {
+    try {
+       File archivoXml = new File(nombreArchivoXml);
+       DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+       DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+       Document documentoXml = dBuilder.parse(archivoXml);
+       
+       // Opcional: normalizar el documento para evitar espacios en blanco innecesarios
+       documentoXml.getDocumentElement().normalize();
+       
+       // Obtener una lista de nodos que coinciden con el nombre de la etiqueta
+       NodeList listaDeNodos = documentoXml.getElementsByTagName(nombreEtiqueta);
+       
+       // Obtener el primer nodo de la lista (suponiendo que solo hay un nodo con ese nombre)
+       Node nodo = listaDeNodos.item(0);
+       
+       if (nodo.getNodeType() == Node.ELEMENT_NODE) {
+          Element elemento = (Element) nodo;
+          // Obtener el valor del nodo de texto hijo del elemento
+          String valor = elemento.getTextContent();
+          return valor;
+       }
+    } catch (Exception e) {
+       e.printStackTrace();
+    }
+    return null;
+ }
+>>>>>>> 7be9c2220353f5996bcb5f004898747a11841dd4
 //----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
@@ -307,6 +362,7 @@ public  String searchXML(String archive, String searchWord)throws Exception {
 	    }
 	    return null; // Si no se encontró la línea, retorna null
 	}
+//--------------------------------------------------------------------------------------------------
 public Vector<String> searchXMLVector(String archive, String searchWord) throws Exception {
     Vector<String> result = new Vector<>();
 
@@ -330,13 +386,51 @@ public Vector<String> searchXMLVector(String archive, String searchWord) throws 
                 // Obtener el contenido del nodo padre
                 String line = parent.getTextContent().trim();
                 result.add(line);
+                
             }
         }
     }
 
     return result;
 }
-public Vector<Airline> readXML(String address,String elementType,String[]dataName) {
+public List<Airline[]> readXMLVector2(String address, String elementType, String[] dataName) {
+    List<Airline[]> list = new ArrayList<>();
+
+    try {
+        File inputFile = new File(address);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(inputFile);
+
+        NodeList nList = doc.getElementsByTagName(elementType);
+
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+
+                Airline ar = new Airline(eElement.getAttribute("name"),
+                        eElement.getElementsByTagName("contry").item(0).getTextContent());
+
+                Airline[] airlines = new Airline[dataName.length];
+                airlines[0] = ar;
+
+                for (int in = 1; in < dataName.length; in++) {
+                    String[] words = eElement.getElementsByTagName(dataName[in]).item(0).getTextContent().split(" ");
+                    airlines[in] = new Airline(words);
+                }
+
+                list.add(airlines);
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return list;
+}
+public Vector<Airline> readXMLVector(String address,String elementType,String[]dataName) {
 
     Vector<Airline> vect = new Vector<>();
     String info="";
@@ -370,6 +464,7 @@ public Vector<Airline> readXML(String address,String elementType,String[]dataNam
     }
     return vect;
 }
+
 public void updateXML(String archive, String word, String update) throws Exception {
     // Cargar el documento XML desde el archivo
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
