@@ -27,7 +27,7 @@ private void initializer() {
 public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCM.getBCheckHistory()) {
-			fXML.readXMLString("Models.xml","Model");
+			//fXML.readXMLString("Models.xml","Model");
 		}
 		if(e.getSource()==guiCM.getBSearch()) {
 		try {

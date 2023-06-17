@@ -26,7 +26,7 @@ public class ControllerConsultFlight implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiCF.getBCheckHistory()) {
-			fXML.readXMLString("Flights.xml", "Flight");
+			//fXML.readXMLString("Flights.xml", "Flight");
 		}
 		if(e.getSource()== guiCF.getBSearch()) {
 			try {

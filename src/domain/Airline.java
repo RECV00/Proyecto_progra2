@@ -46,7 +46,7 @@ public Airline() {}
 //toString
 	@Override
 	public String toString() {
-		return name +"-"+ contry;
+		return name +"\n"+ contry;
 	}
 	
 	public ArrayList<Airline> readXMLArrayList(String FileName, String elementType,String[]dataName) {
@@ -72,6 +72,7 @@ public Airline() {}
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
+					
 					
 					ar=new Airline(name,contry);
 					arrayLAirline.add(ar);

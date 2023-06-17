@@ -28,7 +28,7 @@ public class ControllerConsultPassenger implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCP.getBCheckHistory()) {
-			fXML.readXMLString("Passengers.xml","Passenger");
+			//fXML.readXMLString("Passengers.xml","Passenger");
 		}
 		if(e.getSource()==guiCP.getBSearch()) {
 		try {

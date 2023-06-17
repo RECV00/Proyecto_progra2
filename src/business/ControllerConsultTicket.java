@@ -29,7 +29,7 @@ public class ControllerConsultTicket implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCT.getBCheckHistory()) {
-			fXML.readXMLString("Tickets.xml","Ticket");
+			//fXML.readXMLString("Tickets.xml","Ticket");
 		}
 		if(e.getSource()==guiCT.getBSearch()) {
 		try {

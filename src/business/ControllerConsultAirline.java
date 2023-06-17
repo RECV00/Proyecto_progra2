@@ -2,6 +2,8 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import data.FilesXML;
 import domain.Airline;
@@ -12,11 +14,14 @@ public class ControllerConsultAirline implements ActionListener{
 	private GUIConsultAirline guiCA;
 	private Airline air;
 	private FilesXML fXML;
+	ArrayList<Airline>arrayLAirline;
+	ArrayList<String>listAirline;
 	
 	public ControllerConsultAirline() {
 		guiCA= new GUIConsultAirline();
 		air = new Airline();
 		fXML = new FilesXML();
+		
 		initializer();
 	}
 	private void initializer() {
@@ -30,11 +35,16 @@ public class ControllerConsultAirline implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCA.getBCheckHistory()) {
-			fXML.readXMLString("Airlines.xml","Airline");
+			
+		//arrayLAirline=fXML.readXMLToArrayList("Airlines.xml", "Airline");
+		//guiCA.getDTMTAirline().addRow(new Object[] {air.getName(),air.getContry()});
+		guiCA.getDTMTAirline().addRow(fXML.readXML("Airlines.xml","Airline",air.getDataName()));
+		
 		}
 		if(e.getSource()==guiCA.getBSearch()) {
 		try {
-			fXML.searchXML("Airlines.xml",guiCA.getTConsultAirline().getText());
+			//listAirline = fXML.searchXMLVector("Airlines.xml",guiCA.getTConsultAirline().getText());
+			guiCA.getDTMTAirline().addRow(fXML.searchXMLVector("Airlines.xml",guiCA.getTConsultAirline().getText()));
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

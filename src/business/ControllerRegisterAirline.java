@@ -14,7 +14,6 @@ public class ControllerRegisterAirline implements ActionListener{
 	private GUIRegisterAirline guiRA;
 	private FilesXML fXML;
 	private Airline air;
-	//ArrayListUser<User> arrayLUser;
 	
 	public ControllerRegisterAirline() {
 	guiRA= new GUIRegisterAirline();
@@ -38,7 +37,7 @@ public class ControllerRegisterAirline implements ActionListener{
 			air = new Airline(guiRA.getTNameAerolinea().getText(),guiRA.getTContry().getText());
 			
 			fXML.writeXML("Airlines.xml","Airline",air.getDataName(),air.getData());
-			arrayLAirline= air.readXMLArrayList("Users.xml","User",air.getDataName());
+			arrayLAirline= air.readXMLArrayList("Airlines.xml","Airline",air.getDataName());
 			guiRA.cleanForm();
 			guiRA.getDTMTAirline().addRow(new Object[] {air.getName(),air.getContry()});
 		}

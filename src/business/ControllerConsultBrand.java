@@ -35,7 +35,7 @@ public class ControllerConsultBrand implements ActionListener{
 			}
 		}
 		if(e.getSource()==guiCB.getBCheckHistory()) {
-			fXML.readXMLString("Brands.xml", "Brand");
+			//fXML.readXMLString("Brands.xml", "Brand");
 		}
 		if(e.getSource()==guiCB.getBExit()) {
 			guiCB.dispose();
