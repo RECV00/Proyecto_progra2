@@ -243,7 +243,7 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
-<<<<<<< HEAD
+
 //------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -277,7 +277,6 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
-=======
 //-------------------------------------------------------------------------------
 public static String readXML(String archivo) {
     StringBuilder result = new StringBuilder();
@@ -330,7 +329,7 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
     }
     return null;
  }
->>>>>>> 7be9c2220353f5996bcb5f004898747a11841dd4
+
 //----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
