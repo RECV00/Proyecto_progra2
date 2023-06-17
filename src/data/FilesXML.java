@@ -25,6 +25,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import domain.Airline;
+
 import org.w3c.dom.*;
 
 
@@ -34,8 +37,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+<<<<<<< HEAD
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+=======
+>>>>>>> a4da808a54724fe8c4b49309544af0eae13a8458
 
 public class FilesXML {
 
@@ -159,46 +165,7 @@ public void deleteXML(String archive, String wordDelete) {//3parametros
 	    }
 	}
 
-public String getValidateUser(String fileName,String elementType,String userName, String password) throws Exception {
-		String type=null;
-	    File inputfile = new File(fileName);
-	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    Document doc = dBuilder.parse(inputfile);
-	    doc.getDocumentElement().normalize();
-	    // Get the list of user nodes
-	    NodeList userList = doc.getElementsByTagName(elementType);
-	    
-	    System.out.print("tamaño"+userList.getLength());
-	    // Loop through each user
-	    for (int i = 0; i < userList.getLength(); i++) {
-	        Node userNode = userList.item(i);
-	        if (userNode.getNodeType() == Node.ELEMENT_NODE) {
-	            Element eUser = (Element) userNode;
 
-	            // Get the user's credentials and status
-	            String name = eUser.getAttribute("userName");
-	            String pass = eUser.getElementsByTagName("password").item(0).getTextContent();
-	            String sta = eUser.getElementsByTagName("state").item(0).getTextContent();
-	            type = eUser.getElementsByTagName("typeUser").item(0).getTextContent();
-	            // valida username and password 
-	            if (userName.equals(name) && password.equals(pass)) {
-	            	if(sta.equals("Activo")) {//valida si esta activo
-	            		// Return the user's type
-	            		System.out.print("\n"+type);
-	                    return type;
-	                    
-	            	}else {
-	                    throw new Exception("User is not active");
-	                    
-	                }
-	            	
-	            }
-	        }
-	    }
-	    throw new Exception("User is not encontrado");
-	    //return type;
-}
 public String validateUser(String fileName, String elementType, String userName, String password) throws Exception {
    try {
 	File inputFile = new File(fileName);
@@ -246,9 +213,11 @@ public String validateUser(String fileName, String elementType, String userName,
     }
    	  
 }
-public String readXMLString(String FileName, String elementType) {
+
+public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType) {
 	String dato = " ";
-	
+	ArrayList<Airline> arrayLAirline= new ArrayList<>();
+	Airline a = new Airline();
 	try {
 		File inputFile = new File(FileName);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -262,25 +231,23 @@ public String readXMLString(String FileName, String elementType) {
 
 		for (int indice = 0; indice < nList.getLength(); indice++) {
 			Node nNode = nList.item(indice);
-			System.out.println("\nDatos de los usuarios: " + nNode.getNodeName());
+			System.out.println("\nDatos de las Aerolineas: " + nNode.getNodeName());
 
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-				dato += ("\nUsuario: " + eElement.getAttribute("userName"));         
-				dato += ("\nContraseña: " + eElement.getElementsByTagName("password").
-						item(0).getTextContent());
-				dato +=("\nTipo de Usuario: "  + eElement.getElementsByTagName("typeUser").
-						item(0).getTextContent());
-				dato+=("\nEstado: "  + eElement.getElementsByTagName("state").
-						item(0).getTextContent())+"\n"; 
+				
+				a.setName(eElement.getAttribute("name"));
+				a.setContry(eElement.getElementsByTagName("contry").item(0).getTextContent());
+				arrayLAirline.add(a);
 			}
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
-	return dato;
+	return arrayLAirline;
 }
 
+<<<<<<< HEAD
 public static List<String> readXML(String archivo) {
 	 
     List<String> dataVector = new ArrayList<>();
@@ -341,7 +308,69 @@ public  String searchXML(String archive, String searchWord)throws Exception {
 	    }
 	    return null; // Si no se encontró la línea, retorna null
 	}
+public Vector<String> searchXMLVector(String archive, String searchWord) throws Exception {
+    Vector<String> result = new Vector<>();
 
+    // Crear un objeto DocumentBuilderFactory y un objeto DocumentBuilder para obtener el archivo XML
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    // Crear un objeto Document a partir del archivo XML
+    Document doc = builder.parse(archive);
+
+    // Obtener una lista de todos los elementos del documento XML
+    NodeList nodes = doc.getElementsByTagName("*");
+
+    // Iterar a través de los nodos y buscar la línea que contiene la palabra buscada
+    for (int i = 0; i < nodes.getLength(); i++) {
+        Node node = nodes.item(i);
+        if (node.getNodeType() == Node.TEXT_NODE) {
+            String text = node.getNodeValue().trim();
+            if (text.equals(searchWord)) {
+                // Obtener el nodo padre que contiene la línea
+                Node parent = node.getParentNode();
+                // Obtener el contenido del nodo padre
+                String line = parent.getTextContent().trim();
+                result.add(line);
+            }
+        }
+    }
+
+    return result;
+}
+public Vector<Airline> readXML(String address,String elementType,String[]dataName) {
+
+    Vector<Airline> vect = new Vector<>();
+    String info="";
+    Airline ar;
+
+    try {
+        File inputFile = new File(address);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(inputFile);
+
+        NodeList nList = doc.getElementsByTagName(elementType);
+
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
+                ar = new Airline(eElement.getAttribute("name"), 
+                		eElement.getElementsByTagName("contry").item(0).getTextContent());
+                vect.add(ar);
+                
+                for(int in=1;in<dataName.length;in++) {
+					info+=dataName[in] +":"+eElement.getElementsByTagName(dataName[in]).item(0).getTextContent();
+				}
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return vect;
+}
 public void updateXML(String archive, String word, String update) throws Exception {
     // Cargar el documento XML desde el archivo
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
