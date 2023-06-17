@@ -243,6 +243,10 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	}
 	return arrayLAirline;
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 21cc9d83389db87dde4fcc720a0521a60fcc4b12
 //------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -342,6 +346,10 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
     }
     return null;
  }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 21cc9d83389db87dde4fcc720a0521a60fcc4b12
 //----------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
