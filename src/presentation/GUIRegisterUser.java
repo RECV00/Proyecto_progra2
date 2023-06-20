@@ -239,7 +239,7 @@ public class GUIRegisterUser extends JFrame {
 	public void cleanForm() {
 		tName.setText("");
 		tContrasena.setText("");
-		tTypeUser.setText("");
+		comboBoxTypeUser.setToolTipText("");
 		comboBoxState.setToolTipText("");
 	}
 //------------------------------------------------------------------------------------
