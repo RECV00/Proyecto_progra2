@@ -37,7 +37,7 @@ public class ControllerRegisterFlight implements ActionListener{
 			flight = new Flight(guiRF.getTNumFlight().getText(),
 					guiRF.getTDepartureCity().getText(),guiRF.getTDepartureDateTime().getText(),
 					guiRF.getTArrivalCity().getText(),guiRF.getTArrivalDateTime().getText(),
-					guiRF.getTFlight().getText(),
+					guiRF.getComboBoxAvion().getSelectedItem().toString(),
 					guiRF.getComboBoxState().getSelectedItem().toString(),
 					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
 			
