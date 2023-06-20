@@ -43,10 +43,11 @@ public class GUIRegisterUser extends JFrame {
 	private JLabel lContrasena;
 	private JLabel lTypeUser;
 	private JTextField tContrasena;
-	private JTextField tTypeUser;
 	
 	private JComboBox comboBoxState;
-
+	private JComboBox comboBoxTypeUser;
+	private JLabel lState;
+	
 	public GUIRegisterUser() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
@@ -55,7 +56,7 @@ public class GUIRegisterUser extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -65,8 +66,9 @@ public class GUIRegisterUser extends JFrame {
 		getContentPane().add(getLContrasena());
 		getContentPane().add(getLTypeUser());
 		getContentPane().add(getTContrasena());
-		getContentPane().add(getTTypeUser());
 		getContentPane().add(getComboBoxState());
+		getContentPane().add(getComboBoxTypeUser());
+		getContentPane().add(getLState());
 		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -217,16 +219,6 @@ public class GUIRegisterUser extends JFrame {
 		return tContrasena;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTTypeUser() {
-		if (tTypeUser == null) {
-			tTypeUser = new JTextField();
-			tTypeUser.setText("");
-			tTypeUser.setBounds(222, 85, 96, 20);
-			tTypeUser.setColumns(10);
-		}
-		return tTypeUser;
-	}
-//------------------------------------------------------------------------------------
 	public JComboBox getComboBoxState() {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
@@ -234,6 +226,14 @@ public class GUIRegisterUser extends JFrame {
 			comboBoxState.setBounds(342, 84, 87, 22);
 		}
 		return comboBoxState;
+	}
+	public JComboBox getComboBoxTypeUser() {
+		if (comboBoxTypeUser == null) {
+			comboBoxTypeUser = new JComboBox();
+			comboBoxTypeUser.setModel(new DefaultComboBoxModel(new String[] {"Opciones","Administrador", "Colaborador"}));
+			comboBoxTypeUser.setBounds(222, 84, 110, 22);
+		}
+		return comboBoxTypeUser;
 	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
@@ -246,5 +246,12 @@ public class GUIRegisterUser extends JFrame {
 	public void showMessage(String message) {
 		
 		JOptionPane.showMessageDialog(null, message);
+	}
+	public JLabel getLState() {
+		if (lState == null) {
+			lState = new JLabel("Estado");
+			lState.setBounds(343, 60, 55, 14);
+		}
+		return lState;
 	}
 }

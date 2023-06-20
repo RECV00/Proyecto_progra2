@@ -3,8 +3,11 @@ package data;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import org.xml.sax.InputSource;
+=======
+>>>>>>> ec091972b4de7060b9734275495885c7eeea606e
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -31,7 +34,7 @@ import java.util.Set;
 import java.util.Vector;
 
 public class FilesXML {
-
+//-----------------------------------------------------------------------------------------------------
 public void createXML(String objectName,String fileName) {
 
 		File file = new File(fileName);
@@ -61,6 +64,7 @@ public void createXML(String objectName,String fileName) {
 			}
 		}
 	}
+//-----------------------------------------------------------------------------------------------------
 
 public void writeXML(String FileName, String elementType, String[] dataName, String[] data) {
 
@@ -119,6 +123,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 			e.printStackTrace();
 		}
 }
+//-----------------------------------------------------------------------------------------------------
 	
 public void deleteXML(String archive, String wordDelete) {//3parametros
 	    try {
@@ -234,6 +239,129 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	return arrayLAirline;
 }
 
+<<<<<<< HEAD
+=======
+//-----------------------------------------------------------------------------------------------------
+public String mostrarDato(String archivo, String item) {
+	  try {
+	      // Cargar y parsear el archivo XML
+	      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	      DocumentBuilder builder = factory.newDocumentBuilder();
+	      Document doc = builder.parse(archivo);
+
+	      // Obtener todos los nodos con la etiqueta "item"
+	      NodeList nodeList = doc.getElementsByTagName(item);
+	      
+	   // Crear un vector para almacenar los datos
+	      StringBuilder datos = new StringBuilder();
+	      // Iterar sobre los nodos
+	      for (int i = 0; i < nodeList.getLength(); i++) {
+	        Node node = nodeList.item(i);
+	        NodeList childNodes = node.getChildNodes();
+	        for (int j = 0; j < childNodes.getLength(); j++){
+	        	Node childNode = childNodes.item(j);
+	        	// Verificar si el nodo hijo es de tipo ELEMENT_NODE
+	            
+	        	if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+	        	    // Obtener el contenido del nodo hijo
+	        	    String contenido = childNode.getTextContent();
+	        	    // Agregar el contenido a la cadena de datos
+	                datos.append(contenido);
+	             // Agregar una coma si no es el último elemento
+	                if (j < childNodes.getLength() - 1) {
+	                  datos.append(",");
+	                }
+	              }
+	            }
+	     // Agregar una coma si no es el último elemento
+	        
+	        if (i < nodeList.getLength() - 1) {
+	                datos.append("*");
+	              }
+	            }
+	      return datos.toString();
+	   
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	      return null;
+	    }
+	  
+	  }
+//-----------------------------------------------------------------------------------------------------
+
+public String[] mostrarDatoVector(String archivo, String item) {
+    try {
+        // Cargar y parsear el archivo XML
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(archivo);
+
+        // Obtener todos los nodos con la etiqueta "item"
+        NodeList nodeList = doc.getElementsByTagName(item);
+
+        // Crear un vector para almacenar los datos
+        List<String> datosList = new ArrayList<>();
+
+        // Iterar sobre los nodos
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            NodeList childNodes = node.getChildNodes();
+            
+            StringBuilder datos = new StringBuilder();
+            
+            for (int j = 0; j < childNodes.getLength(); j++){
+                Node childNode = childNodes.item(j);
+                // Verificar si el nodo hijo es de tipo ELEMENT_NODE
+                if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+                    // Obtener el contenido del nodo hijo
+                    String contenido = childNode.getTextContent();
+                    // Agregar el contenido a la cadena de datos
+                    datos.append(contenido);
+                    // Agregar una coma si no es el último elemento
+                    if (j < childNodes.getLength() - 1) {
+                        datos.append(",");
+                    }
+                }
+            }
+            
+            datosList.add(datos.toString());
+        }
+
+        // Convertir la lista a un vector
+        String[] datosArray = new String[datosList.size()];
+        datosArray = datosList.toArray(datosArray);
+
+        return datosArray;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+//------------------------------------------------------------------------------------------------------------
+public static String readXML(String archivo) {
+    StringBuilder result = new StringBuilder();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line.trim());
+        }
+
+        String xmlContent = sb.toString();
+        Pattern pattern = Pattern.compile("<(.*?)>(.*?)</\\1>");
+        Matcher matcher = pattern.matcher(xmlContent);
+        while (matcher.find()) {
+            String value = matcher.group(2);
+            result.append(value).append("\n");
+        }
+    } catch (IOException e) {
+        System.out.println("Error en la lectura del archivo XML!");
+    }
+
+    return result.toString();
+}
+>>>>>>> ec091972b4de7060b9734275495885c7eeea606e
 //--------------------------------------------------------------------------------------------------
 public static String extraerDatoDeEtiqueta(String contenidoXml, String nombreEtiqueta) {
     try {
@@ -262,9 +390,13 @@ public static String extraerDatoDeEtiqueta(String contenidoXml, String nombreEti
     return null;
  }
 
+<<<<<<< HEAD
 
 //----------------------------------------------------------------------------
 
+=======
+//----------------------------------------------------------------------------------------------------------
+>>>>>>> ec091972b4de7060b9734275495885c7eeea606e
 
 public  String searchXML(String archive, String searchWord)throws Exception {
 
@@ -326,43 +458,8 @@ public Vector<String> searchXMLVector(String archive, String searchWord) throws 
 
     return result;
 }
-public List<Airline[]> readXMLVector2(String address, String elementType, String[] dataName) {
-    List<Airline[]> list = new ArrayList<>();
+//-----------------------------------------------------------------------------------------------------
 
-    try {
-        File inputFile = new File(address);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(inputFile);
-
-        NodeList nList = doc.getElementsByTagName(elementType);
-
-        for (int i = 0; i < nList.getLength(); i++) {
-            Node nNode = nList.item(i);
-
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element eElement = (Element) nNode;
-
-                Airline ar = new Airline(eElement.getAttribute("name"),
-                        eElement.getElementsByTagName("contry").item(0).getTextContent());
-
-                Airline[] airlines = new Airline[dataName.length];
-                airlines[0] = ar;
-
-                for (int in = 1; in < dataName.length; in++) {
-                    String[] words = eElement.getElementsByTagName(dataName[in]).item(0).getTextContent().split(" ");
-                    airlines[in] = new Airline(words);
-                }
-
-                list.add(airlines);
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-    return list;
-}
 public Vector<Airline> readXMLVector(String address,String elementType,String[]dataName) {
 
     Vector<Airline> vect = new Vector<>();
@@ -397,6 +494,7 @@ public Vector<Airline> readXMLVector(String address,String elementType,String[]d
     }
     return vect;
 }
+//-----------------------------------------------------------------------------------------------------
 
 public void updateXML(String archive, String word, String update) throws Exception {
     // Cargar el documento XML desde el archivo
@@ -418,6 +516,7 @@ public void updateXML(String archive, String word, String update) throws Excepti
     Source input = new DOMSource(doc);
     transformer.transform(input, output);
 }
+//-----------------------------------------------------------------------------------------------------
 
 
 }

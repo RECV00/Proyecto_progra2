@@ -13,6 +13,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 @SuppressWarnings({ "serial", "unused" })
 public class GUIAdmin extends JFrame {
@@ -77,7 +81,7 @@ public class GUIAdmin extends JFrame {
 	public GUIAdmin() {
 		setTitle("Privilegios del Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 633, 494);
+		setBounds(100, 100, 730, 501);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -92,7 +96,7 @@ public class GUIAdmin extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, 0, 617, 433);
+		li.setBounds(0, 0, 714, 482);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/4.png")));
@@ -113,6 +117,9 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMFile() {
 		if (mFile == null) {
 			mFile = new JMenu("Archivo");
+			mFile.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 14));
+			mFile.setHorizontalAlignment(SwingConstants.CENTER);
+			mFile.setBackground(UIManager.getColor("MenuBar.background"));
 			mFile.add(getMiOpen());
 			mFile.add(getMiSave());
 			mFile.add(getMiiExit());
@@ -122,7 +129,8 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMOperations() {
 		if (mOperations == null) {
 			mOperations = new JMenu("Operaciones");
-			mOperations.setBackground(new Color(204, 204, 255));
+			mOperations.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 14));
+			mOperations.setBackground(UIManager.getColor("MenuItem.background"));
 			mOperations.add(getMnUser());
 			mOperations.add(getMnBrand());
 			mOperations.add(getMnModel());
@@ -140,6 +148,8 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMHelp() {
 		if (mHelp == null) {
 			mHelp = new JMenu("Ayuda");
+			mHelp.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 14));
+			mHelp.setBackground(UIManager.getColor("MenuBar.background"));
 			mHelp.add(getMiAboutSystem());
 		}
 		return mHelp;
@@ -147,30 +157,35 @@ public class GUIAdmin extends JFrame {
 	public JMenuItem getMiOpen() {
 		if (miOpen == null) {
 			miOpen = new JMenuItem("Abrir");
+			miOpen.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miOpen;
 	}
 	public JMenuItem getMiSave() {
 		if (miSave == null) {
 			miSave = new JMenuItem("Guardar");
+			miSave.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miSave;
 	}
 	public JMenuItem getMiiExit() {
 		if (miiExit == null) {
 			miiExit = new JMenuItem("Salir");
+			miiExit.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miiExit;
 	}
 	public JMenuItem getMiAboutSystem() {
 		if (miAboutSystem == null) {
 			miAboutSystem = new JMenuItem("Acerca del Sistema");
+			miAboutSystem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miAboutSystem;
 	}
 	public JMenu getMnUser() {
 		if (mnUser == null) {
 			mnUser = new JMenu("Gestión de Usuarios");
+			mnUser.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnUser.add(getMiRegister());
 			mnUser.add(getMiRemove());
 			mnUser.add(getMiConsult());
@@ -178,15 +193,10 @@ public class GUIAdmin extends JFrame {
 		}
 		return mnUser;
 	}
-	public JMenuItem getMiRegister() {
-		if (miRegister == null) {
-			miRegister = new JMenuItem("Registrar");
-		}
-		return miRegister;
-	}
-	public JMenu getMnBrand() {
+		public JMenu getMnBrand() {
 		if (mnBrand == null) {
 			mnBrand = new JMenu("Gestión de Marcas");
+			mnBrand.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnBrand.add(getMiRegisterBrand());
 			mnBrand.add(getMiRemoveBrand());
 			mnBrand.add(getMiConsultBrand());
@@ -197,6 +207,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMnModel() {
 		if (mnModel == null) {
 			mnModel = new JMenu("Gestión de Modelos");
+			mnModel.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnModel.add(getMiRegisterModel());
 			mnModel.add(getMiRemoveModel());
 			mnModel.add(getMiConsultModel());
@@ -207,6 +218,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMnAeroline() {
 		if (mnAeroline == null) {
 			mnAeroline = new JMenu("Gestión de Aerolíneas");
+			mnAeroline.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnAeroline.add(getMiRegisterAeroline());
 			mnAeroline.add(getMiRemoveAeroline());
 			mnAeroline.add(getMiConsultAeroline());
@@ -217,6 +229,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMnPlane() {
 		if (mnPlane == null) {
 			mnPlane = new JMenu("Gestión de Aviones");
+			mnPlane.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnPlane.add(getMiRegisterPlane());
 			mnPlane.add(getMiRemovePlane());
 			mnPlane.add(getMiConsultPlane());
@@ -227,6 +240,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMnFlight() {
 		if (mnFlight == null) {
 			mnFlight = new JMenu("Gestión de Vuelos");
+			mnFlight.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnFlight.add(getMiRegisterFlight());
 			mnFlight.add(getMiRemoveFlight());
 			mnFlight.add(getMiConsultFlight());
@@ -237,6 +251,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMnPass() {
 		if (mnPass == null) {
 			mnPass = new JMenu("Gestión de Pasajeros");
+			mnPass.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnPass.add(getMiRegisterPass());
 			mnPass.add(getMiRemovePass());
 			mnPass.add(getMiConsultPass());
@@ -247,6 +262,7 @@ public class GUIAdmin extends JFrame {
 	public JMenu getMnTicket() {
 		if (mnTicket == null) {
 			mnTicket = new JMenu("Gestión de Tiquetes");
+			mnTicket.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 			mnTicket.add(getMiRegisterTicket());
 			mnTicket.add(getMiRemoveTicket());
 			mnTicket.add(getMiConsultTicket());
@@ -254,207 +270,249 @@ public class GUIAdmin extends JFrame {
 		}
 		return mnTicket;
 	}
+	public JMenuItem getMiRegister() {
+		if (miRegister == null) {
+			miRegister = new JMenuItem("Registrar");
+			miRegister.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		}
+		return miRegister;
+	}
+
 	public JMenuItem getMiRemove() {
 		if (miRemove == null) {
 			miRemove = new JMenuItem("Eliminar");
+			miRemove.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemove;
 	}
 	public JMenuItem getMiConsult() {
 		if (miConsult == null) {
 			miConsult = new JMenuItem("Consultar");
+			miConsult.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsult;
 	}
 	public JMenuItem getMiUpdate() {
 		if (miUpdate == null) {
 			miUpdate = new JMenuItem("Actualizar");
+			miUpdate.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdate;
 	}
 	public JMenuItem getMiRegisterBrand() {
 		if (miRegisterBrand == null) {
 			miRegisterBrand = new JMenuItem("Registrar");
+			miRegisterBrand.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterBrand;
 	}
 	public JMenuItem getMiRemoveBrand() {
 		if (miRemoveBrand == null) {
 			miRemoveBrand = new JMenuItem("Eliminar");
+			miRemoveBrand.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemoveBrand;
 	}
 	public JMenuItem getMiConsultBrand() {
 		if (miConsultBrand == null) {
 			miConsultBrand = new JMenuItem("Consultar");
+			miConsultBrand.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultBrand;
 	}
 	public JMenuItem getMiUpdateBrand() {
 		if (miUpdateBrand == null) {
 			miUpdateBrand = new JMenuItem("Actualizar");
+			miUpdateBrand.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdateBrand;
 	}
 	public JMenuItem getMiRegisterModel() {
 		if (miRegisterModel == null) {
 			miRegisterModel = new JMenuItem("Registrar");
+			miRegisterModel.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterModel;
 	}
 	public JMenuItem getMiRemoveModel() {
 		if (miRemoveModel == null) {
 			miRemoveModel = new JMenuItem("Eliminar");
+			miRemoveModel.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemoveModel;
 	}
 	public JMenuItem getMiConsultModel() {
 		if (miConsultModel == null) {
 			miConsultModel = new JMenuItem("Consultar");
+			miConsultModel.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultModel;
 	}
 	public JMenuItem getMiUpdateModel() {
 		if (miUpdateModel == null) {
 			miUpdateModel = new JMenuItem("Actualizar");
+			miUpdateModel.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdateModel;
 	}
 	public JMenuItem getMiRegisterAeroline() {
 		if (miRegisterAeroline == null) {
 			miRegisterAeroline = new JMenuItem("Registrar");
+			miRegisterAeroline.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterAeroline;
 	}
 	public JMenuItem getMiRemoveAeroline() {
 		if (miRemoveAeroline == null) {
 			miRemoveAeroline = new JMenuItem("Eliminar");
+			miRemoveAeroline.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemoveAeroline;
 	}
 	public JMenuItem getMiConsultAeroline() {
 		if (miConsultAeroline == null) {
 			miConsultAeroline = new JMenuItem("Consultar");
+			miConsultAeroline.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultAeroline;
 	}
 	public JMenuItem getMiUpdateAeroline() {
 		if (miUpdateAeroline == null) {
 			miUpdateAeroline = new JMenuItem("Actualizar");
+			miUpdateAeroline.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdateAeroline;
 	}
 	public JMenuItem getMiRegisterPlane() {
 		if (miRegisterPlane == null) {
 			miRegisterPlane = new JMenuItem("Registrar");
+			miRegisterPlane.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterPlane;
 	}
 	public JMenuItem getMiRemovePlane() {
 		if (miRemovePlane == null) {
 			miRemovePlane = new JMenuItem("Eliminar");
+			miRemovePlane.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemovePlane;
 	}
 	public JMenuItem getMiConsultPlane() {
 		if (miConsultPlane == null) {
 			miConsultPlane = new JMenuItem("Consultar");
+			miConsultPlane.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultPlane;
 	}
 	public JMenuItem getMiUpdatePlane() {
 		if (miUpdatePlane == null) {
 			miUpdatePlane = new JMenuItem("Actualizar");
+			miUpdatePlane.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdatePlane;
 	}
 	public JMenuItem getMiRegisterFlight() {
 		if (miRegisterFlight == null) {
 			miRegisterFlight = new JMenuItem("Registrar");
+			miRegisterFlight.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterFlight;
 	}
 	public JMenuItem getMiRemoveFlight() {
 		if (miRemoveFlight == null) {
 			miRemoveFlight = new JMenuItem("Eliminar");
+			miRemoveFlight.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemoveFlight;
 	}
 	public JMenuItem getMiConsultFlight() {
 		if (miConsultFlight == null) {
 			miConsultFlight = new JMenuItem("Consultar");
+			miConsultFlight.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultFlight;
 	}
 	public JMenuItem getMiUpdateFlight() {
 		if (miUpdateFlight == null) {
 			miUpdateFlight = new JMenuItem("Actualizar");
+			miUpdateFlight.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdateFlight;
 	}
 	public JMenuItem getMiRegisterPass() {
 		if (miRegisterPass == null) {
 			miRegisterPass = new JMenuItem("Registrar");
+			miRegisterPass.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterPass;
 	}
 	public JMenuItem getMiRemovePass() {
 		if (miRemovePass == null) {
 			miRemovePass = new JMenuItem("Eliminar");
+			miRemovePass.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemovePass;
 	}
 	public JMenuItem getMiConsultPass() {
 		if (miConsultPass == null) {
 			miConsultPass = new JMenuItem("Consultar");
+			miConsultPass.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultPass;
 	}
 	public JMenuItem getMiUpdatePass() {
 		if (miUpdatePass == null) {
 			miUpdatePass = new JMenuItem("Actualizar");
+			miUpdatePass.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdatePass;
 	}
 	public JMenuItem getMiRegisterTicket() {
 		if (miRegisterTicket == null) {
 			miRegisterTicket = new JMenuItem("Registrar");
+			miRegisterTicket.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRegisterTicket;
 	}
 	public JMenuItem getMiRemoveTicket() {
 		if (miRemoveTicket == null) {
 			miRemoveTicket = new JMenuItem("Eliminar");
+			miRemoveTicket.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miRemoveTicket;
 	}
 	public JMenuItem getMiConsultTicket() {
 		if (miConsultTicket == null) {
 			miConsultTicket = new JMenuItem("Consultar");
+			miConsultTicket.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miConsultTicket;
 	}
 	public JMenuItem getMiUpdateTicket() {
 		if (miUpdateTicket == null) {
 			miUpdateTicket = new JMenuItem("Actualizar");
+			miUpdateTicket.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miUpdateTicket;
 	}
 	public JMenuItem getMnImpresionT() {
 		if (mnImpresionT == null) {
 			mnImpresionT = new JMenuItem("Imprimir Tiquetes");
+			mnImpresionT.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 		}
 		return mnImpresionT;
 	}
 	public JMenuItem getMnHistorialT() {
 		if (mnHistorialT == null) {
 			mnHistorialT = new JMenuItem("Historial de Tiquetes");
+			mnHistorialT.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 		}
 		return mnHistorialT;
 	}
 	public JMenuItem getMnVuelos() {
 		if (mnVuelos == null) {
 			mnVuelos = new JMenuItem("Consultar Vuelos");
+			mnVuelos.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 		}
 		return mnVuelos;
 	}

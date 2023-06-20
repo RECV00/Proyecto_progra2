@@ -67,7 +67,7 @@ public class GUILogin extends JFrame {
 			lUser = new JLabel("Usuario");
 			lUser.setBackground(UIManager.getColor("Button.focus"));
 			lUser.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lUser.setBounds(38, 86, 70, 23);
+			lUser.setBounds(38, 86, 74, 23);
 		}
 		return lUser;
 	}
