@@ -268,7 +268,9 @@ public class GUIRegisterFlight extends JFrame {
 		tDepartureDateTime.setText("");
 		tArrivalCity.setText("");
 		tArrivalDateTime.setText("");
-		tFlights.setText("");
+		comboBoxState.setToolTipText("");
+		//comboBoxAvion.setToolTipText("");
+		comboBoxState.setToolTipText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {

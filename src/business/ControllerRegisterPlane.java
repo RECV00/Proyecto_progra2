@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Plane;
 import domain.User;
 import presentation.GUIRegisterPlane;
@@ -15,11 +16,13 @@ public class ControllerRegisterPlane implements ActionListener{
 	private GUIRegisterPlane guiRPlane;
 	private FilesXML fXML;
 	private Plane plane;
+	private Logic lo;
 	private ArrayList<Plane> arrayLUser;
 	
 	public ControllerRegisterPlane() {
 	guiRPlane= new GUIRegisterPlane();
 	fXML = new FilesXML();
+	lo=new Logic();
 	plane = new Plane();
 	fXML.createXML("Planes", "Planes.xml");
 	initializer();
@@ -42,7 +45,7 @@ public class ControllerRegisterPlane implements ActionListener{
 			
 			fXML.writeXML("Planes.xml","Plane",plane.getDataName(),plane.getData());
 			
-			arrayLUser = plane.readXMLArrayList("Planes.xml","Plane",plane.getDataName());
+			arrayLUser = lo.readXMLArrayListPlane("Planes.xml","Plane",plane.getDataName());
 			guiRPlane.cleanForm();
 			
 				guiRPlane.getDTMTPlane().addRow(new Object [] {plane.getPlate(),plane.getAirline(),plane.getModel(),plane.getYear()});

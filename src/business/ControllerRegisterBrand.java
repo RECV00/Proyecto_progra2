@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Brand;
 import domain.User;
 import presentation.GUIRegisterBrand;
@@ -15,11 +16,13 @@ public class ControllerRegisterBrand implements ActionListener{
 	private GUIRegisterBrand guiRB;
 	private FilesXML fXML;
 	private Brand brand;
+	private Logic lo;
 	private ArrayList<Brand> arrayLBrand;
 	
 	public ControllerRegisterBrand() {
 	guiRB= new GUIRegisterBrand();
 	fXML = new FilesXML();
+	lo = new Logic(); 
 	brand = new Brand();
 	fXML.createXML("Brands", "Brands.xml");
 	initializer();
@@ -37,7 +40,7 @@ public class ControllerRegisterBrand implements ActionListener{
 			
 			brand = new Brand (guiRB.getTNameRegisterBrand().getText());
 			fXML.writeXML("Brands.xml","Brand",brand.getDataName(),brand.getData());
-			arrayLBrand = brand.readXMLArrayList("Brands.xml","Brand",brand.getDataName());
+			arrayLBrand = lo.readXMLArrayListBrand("Brands.xml","Brand",brand.getDataName());
 			guiRB.cleanForm();
 			guiRB.getDTMTBrand().addRow(new Object [] {brand.getName(),});
 				
