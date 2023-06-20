@@ -207,59 +207,47 @@ public String validateUser(String fileName, String elementType, String userName,
    	  
 }
 
-//-----------------------------------------------------------------------------------------------------
 
-public  String searchXML(String archive, String searchWord)throws Exception {
-
-	    // Crear un objeto DocumentBuilderFactory y un objeto DocumentBuilder para obtener el archivo XML
-	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	    DocumentBuilder builder = factory.newDocumentBuilder();
-
-	    // Crear un objeto Document a partir del archivo XML
-	    File archivo = new File(archive);
-	    Document doc = builder.parse(archivo);
-
-	    // Obtener una lista de todos los elementos del documento XML
-	    NodeList nodos = doc.getElementsByTagName("*");
-
-	    // Iterar a través de los nodos y buscar la línea que contiene la palabra buscada
-	    for (int i = 0; i < nodos.getLength(); i++) {
-	        Node nodo = nodos.item(i);
-	        if (nodo.getNodeType() == Node.TEXT_NODE) {
-	            String texto = nodo.getNodeValue().trim();
-	            if (texto.equals(searchWord)) {
-	                // Obtener el nodo padre que contiene la línea
-	                Node padre = nodo.getParentNode();
-	                // Obtener el contenido del nodo padre
-	                String linea = padre.getNodeValue().trim();
-	                return linea;
-	            }
-	        }
-	    }
-	    return null; // Si no se encontró la línea, retorna null
-	}
 
 //-----------------------------------------------------------------------------------------------------
 
-public void updateXML(String archive, String word, String update) throws Exception {
-    // Cargar el documento XML desde el archivo
-    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-    Document doc = dBuilder.parse(archive);
+public void updateXML(String FileName, String elementType, String dataName[], String data[]) {
 
-    // Buscar el primer elemento "nombre"
-    NodeList lista = doc.getElementsByTagName(word);
-    if (lista.getLength() > 0) {
-        Element elem = (Element) lista.item(0);
-        // Modificar el valor de la etiqueta
-        elem.setTextContent(update);
+    try {
+        File inputFile = new File(FileName);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(inputFile);
+        doc.getDocumentElement().normalize();
+
+        NodeList nList = doc.getElementsByTagName(elementType);
+        Element eElement;
+
+        for (int i = 0; i < nList.getLength(); i++) {
+
+            eElement = (Element) nList.item(i);
+
+            if (eElement.getAttribute(dataName[0]).equals(data[0])) {
+
+                for (int j = 1; j < data.length; j++) {
+
+                    eElement.getElementsByTagName(dataName[j]).item(0).setTextContent(data[j]);
+                }
+            }
+        }
+        //Actualizamos el contenido en un archivo xml
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+
+        DOMSource source = new DOMSource(doc);
+
+        StreamResult result = new StreamResult(new File(FileName));
+        transformer.transform(source, result);
+
+        System.out.println("Registro Actualizado");
+    } catch (Exception e) {
+        e.printStackTrace();
     }
-
-    // Escribir el contenido del documento modificado en el archivo
-    Transformer transformer = TransformerFactory.newInstance().newTransformer();
-    StreamResult output = new StreamResult(new java.io.File(archive));
-    Source input = new DOMSource(doc);
-    transformer.transform(input, output);
 }
 //-----------------------------------------------------------------------------------------------------
 
