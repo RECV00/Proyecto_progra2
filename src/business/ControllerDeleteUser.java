@@ -31,19 +31,22 @@ private void initializer() {
 		// TODO Auto-generated method stub
 		guiDU.getBDelete().addActionListener(this);
 		guiDU.getBExit().addActionListener(this);
-	}
-
-	@Override
-public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		guiDU.getDTMTUser().setRowCount(0);
 		guiDU.setArrayListUser(lo.getListUser("Users.xml","User"));
 		guiDU.fillTable(guiDU.getArrayListUser());
+	}
+	
+	@Override
+public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stubnada
 		
 		if(e.getSource()== guiDU.getBDelete()) {
 			
-		fXML.deleteXML("Users.xml","User",guiDU.getTNameDelete().getText());
-			
+		fXML.deleteXML("Users.xml","User","userName",guiDU.getTNameDelete().getText());
+		guiDU.getDTMTUser().setRowCount(0);
+		guiDU.setArrayListUser(lo.getListUser("Users.xml","User"));
+		guiDU.fillTable(guiDU.getArrayListUser());
 		}
 		if(e.getSource()== guiDU.getBExit()) {
 			guiDU.dispose();

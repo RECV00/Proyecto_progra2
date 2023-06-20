@@ -122,8 +122,8 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 }
 //-----------------------------------------------------------------------------------------------------
 	
-public void deleteXML(String FileName, String elementType, String wordDelete) {
-	String data="";
+public void deleteXML(String FileName, String elementType,String data, String wordDelete) {
+	
     try {
         File inputFile = new File(FileName);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -137,7 +137,7 @@ public void deleteXML(String FileName, String elementType, String wordDelete) {
 
             element = (Element) nList.item(i);
 
-            if (element.getAttribute(wordDelete).equals(data)) {
+            if (element.getAttribute(data).equals(wordDelete)) {
 
                 element.getParentNode().removeChild(element);
 

@@ -46,8 +46,8 @@ public class ControllerRegisterUser implements ActionListener{
 			//guiRU.setArrayListUser(lo.getListUser("Users.xml","User"));
 			//guiRU.fillTable(guiRU.getArrayListUser());
 			arrayLUser = lo.readXMLArrayListUser("Users.xml","User",user.getDataName());
-			guiRU.cleanForm();
 			guiRU.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
+			guiRU.cleanForm();
 		}
 		if(e.getSource()== guiRU.getBExit()) {
 			//meter la pagina anterior
