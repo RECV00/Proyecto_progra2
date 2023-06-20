@@ -36,7 +36,7 @@ public class ControllerRegisterUser implements ActionListener{
 		
 		if(e.getSource()== guiRU.getBRegister()) {
 			
-			user = new User(guiRU.getTName().getText(),guiRU.getTContrasena().getText(),
+		user = new User(guiRU.getTName().getText(),guiRU.getTContrasena().getText(),
 					guiRU.getComboBoxTypeUser().getSelectedItem().toString(),
 					guiRU.getComboBoxState().getSelectedItem().toString());
 
