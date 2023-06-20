@@ -13,7 +13,7 @@ import org.w3c.dom.NodeList;
 
 
 public class User {
-	ArrayList<User> arrayLUser;
+	
 	private String userName;
 	private String password;
 	private String typeUser;
@@ -81,7 +81,7 @@ public String toString() {
 	
 		String info="";
 		User us;
-		arrayLUser= new ArrayList<>();
+		ArrayList<User> arrayLUser = new ArrayList<User>();
 		try {
 			File inputFile = new File(FileName); //new 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

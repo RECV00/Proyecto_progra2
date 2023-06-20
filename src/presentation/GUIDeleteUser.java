@@ -58,6 +58,14 @@ public class GUIDeleteUser extends JFrame {
 		setVisible(true);
 		
 	}
+	
+public void fillTable(ArrayList <User> list) {
+		
+		for(User user : list) {
+			dtmTUser.addRow(new Object[] {user.getUserName(), user.getPassword(), user.getTypeUser(), user.getState()});
+		}
+		setUser(dtmTUser);
+	}
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
