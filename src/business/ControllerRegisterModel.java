@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Model;
 import presentation.GUIRegisterModel;
 
@@ -13,11 +14,13 @@ public class ControllerRegisterModel implements ActionListener{
 	private GUIRegisterModel guiRM;
 	private FilesXML fXML;
 	private Model model;
+	private Logic lo;
 	ArrayList<Model> arrayLModel;
 	
 	public ControllerRegisterModel() {
 	guiRM= new GUIRegisterModel();
 	fXML = new FilesXML();
+	lo=new Logic();
 	model = new Model();
 	fXML.createXML("Models", "Models.xml");
 	initializer();
@@ -40,7 +43,7 @@ public class ControllerRegisterModel implements ActionListener{
 					Integer.valueOf(guiRM.getTCanAsientosTUR().getText()));
 			
 			fXML.writeXML("Models.xml","Model",model.getDataName(),model.getData());
-			arrayLModel= model.readXMLArrayList("Models.xml","Model", model.getDataName());
+			arrayLModel= lo.readXMLArrayListModel("Models.xml","Model", model.getDataName());
 		    guiRM.cleanForm();
 			guiRM.getDTMTModel().addRow(new Object [] {model.getName(),model.getMarca(),
 			model.getCantSeatExecutive(),model.getCantSeatEconomic(),model.getCantSeatTourist()});

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Ticket;
 import domain.User;
 import presentation.GUIRegisterTicket;
@@ -15,12 +16,14 @@ public class ControllerRegisterTicket implements ActionListener{
 	private GUIRegisterTicket guiRT;
 	private FilesXML fXML;
 	private Ticket ticket;
+	private Logic lo;
 	private ArrayList<Ticket> arrayLTicket;
 	
 	public ControllerRegisterTicket() {
 	guiRT= new GUIRegisterTicket();
 	fXML = new FilesXML();
 	ticket = new Ticket();
+	lo= new Logic();
 	fXML.createXML("Tickets", "Tickets.xml");
 	initializer();
 	}
@@ -40,7 +43,7 @@ public class ControllerRegisterTicket implements ActionListener{
 					guiRT.getTNumFlightTicket().getText());
 			fXML.writeXML("Tickets.xml","Ticket",ticket.getDataName(),ticket.getData());
 			
-			arrayLTicket = ticket.readXMLArrayList("Tickets.xml","Ticket",ticket.getDataName());
+			arrayLTicket = lo.readXMLArrayListTicket("Tickets.xml","Ticket",ticket.getDataName());
 			guiRT.cleanForm();
 			
 				guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.User;
 import presentation.GUIRegisterUser;
 
@@ -12,11 +13,13 @@ public class ControllerRegisterUser implements ActionListener{
 	private GUIRegisterUser guiRU;
 	private FilesXML fXML;
 	private User user;
+	private Logic lo;
 	private ArrayList<User> arrayLUser;
 	
 	public ControllerRegisterUser() {
 	guiRU= new GUIRegisterUser();
 	fXML = new FilesXML();
+	lo= new Logic();
 	user = new User();
 	fXML.createXML("Users", "Users.xml");
 	initializer();
@@ -39,7 +42,7 @@ public class ControllerRegisterUser implements ActionListener{
 
 
 			fXML.writeXML("Users.xml","User",user.getDataName(),user.getData());
-			arrayLUser = user.readXMLArrayList("Users.xml","User",user.getDataName());
+			arrayLUser = lo.readXMLArrayListUser("Users.xml","User",user.getDataName());
 			guiRU.cleanForm();
 			guiRU.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
 		}

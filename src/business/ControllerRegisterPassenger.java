@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Passenger;
 import presentation.GUIRegisterPassenger;
 
@@ -14,11 +15,13 @@ public class ControllerRegisterPassenger implements ActionListener{
 	private GUIRegisterPassenger guiRP;
 	private FilesXML fXML;
 	private Passenger passenger;
+	private Logic lo;
 	private ArrayList<Passenger> arrayLPassenger;
 	
 	public ControllerRegisterPassenger() {
 	guiRP= new GUIRegisterPassenger();
 	fXML = new FilesXML();
+	lo= new Logic();
 	passenger = new Passenger();
 	fXML.createXML("Passengers", "Passengers.xml");
 	initializer();
@@ -42,7 +45,7 @@ public class ControllerRegisterPassenger implements ActionListener{
 					Integer.valueOf(guiRP.getTPhonePassenger().getText()));
 			
 			fXML.writeXML("Passengers.xml", "Passenger", passenger.getDataName(),passenger.getData());
-			arrayLPassenger = passenger.readXMLArrayList("Passengers.xml", "Passenger", passenger.getData());
+			arrayLPassenger = lo.readXMLArrayListPassenger("Passengers.xml", "Passenger", passenger.getData());
 			guiRP.cleanForm();
 			guiRP.getDTMTPassenger().addRow(new Object[] {passenger.getPassport(),passenger.getName(),passenger.getLastName(),passenger.getBirthdate(),passenger.getGmail(),passenger.getPhone()});
 		}

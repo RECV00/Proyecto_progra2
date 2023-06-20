@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Flight;
 import presentation.GUIRegisterFlight;
 
@@ -13,11 +14,13 @@ public class ControllerRegisterFlight implements ActionListener{
 	private GUIRegisterFlight guiRF;
 	private FilesXML fXML;
 	private Flight flight;
+	private Logic lo;
 	ArrayList<Flight> arrayLFlight;
 	
 	public ControllerRegisterFlight() {
 	guiRF= new GUIRegisterFlight();
 	fXML = new FilesXML();
+	lo= new Logic();
 	flight = new Flight();
 	fXML.createXML("Flights", "Flights.xml");
 	initializer();
@@ -42,7 +45,7 @@ public class ControllerRegisterFlight implements ActionListener{
 					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
 			
 			fXML.writeXML("Flights.xml","Flight",flight.getDataName(),flight.getData());
-			arrayLFlight=flight.readXMLArrayList("Flights.xml","Flight",flight.getDataName());
+			arrayLFlight= lo.readXMLArrayListFlight("Flights.xml","Flight",flight.getDataName());
 			guiRF.cleanForm();
 			guiRF.getDTMTFlight().addRow(new Object [] {flight.getNumFlight(),flight.getDepartureCity(),
 					flight.getDepartureDateTime(),flight.getArrivalCity(),flight.getArrivalDateTime(),

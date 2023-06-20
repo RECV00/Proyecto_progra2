@@ -13,7 +13,6 @@ import org.w3c.dom.NodeList;
 
 public class Ticket {
 
-	ArrayList<Ticket> arrayLTicket;
 	private String numTicket;
 	private String passport;
 	private String numFlight;
@@ -75,41 +74,5 @@ public class Ticket {
 		return numTicket + "\n" + passport + "\n" + numFlight;
 	}
 	 
-	public ArrayList<Ticket> readXMLArrayList(String FileName, String elementType,String[]dataName) {
-		
-		String info="";
-		Ticket ti;
-		arrayLTicket= new ArrayList<>();
-		try {
-			File inputFile = new File(FileName); //new 
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
-			doc.getDocumentElement().normalize();
 
-			System.out.println("Raíz de los Elementos:" + doc.getDocumentElement().getNodeName());
-			NodeList nList = doc.getElementsByTagName(elementType);
-			System.out.println("----------------------------");
-
-			for (int indice = 0; indice < nList.getLength(); indice++) {
-				Node nNode = nList.item(indice);
-				System.out.println("\nDatos de Tiquetes: " + nNode.getNodeName());
-
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
-					
-					ti=new Ticket(numTicket,passport,numFlight);
-					arrayLTicket.add(ti);
-					
-					for(int i=1;i<dataName.length;i++) {
-						info+=dataName[i] +":"+eElement.getElementsByTagName(dataName[i]).item(0).getTextContent();
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return arrayLTicket;
-	}
 }
