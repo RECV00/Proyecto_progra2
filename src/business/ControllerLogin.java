@@ -36,11 +36,11 @@ public class ControllerLogin implements ActionListener{
 
 			try {
 				String userType = fXML.validateUser("Users.xml","User",guiL.getTUser().getText(),String.valueOf(guiL.getPfPassword().getPassword()));
-					if(userType.equals("administrador")) {
+					if(userType.equals("Administrador")) {
 						guiL.dispose();
 						new ControllerAdmin();
 					}
-					else if(userType.equals("colaborador")) {
+					else if(userType.equals("Colaborador")) {
 						guiL.dispose();
 						new ControllerColaborador();
 					}

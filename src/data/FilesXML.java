@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
-
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -41,7 +38,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FilesXML {
-
+//-----------------------------------------------------------------------------------------------------
 public void createXML(String objectName,String fileName) {
 
 		File file = new File(fileName);
@@ -71,6 +68,7 @@ public void createXML(String objectName,String fileName) {
 			}
 		}
 	}
+//-----------------------------------------------------------------------------------------------------
 
 public void writeXML(String FileName, String elementType, String[] dataName, String[] data) {
 
@@ -129,6 +127,7 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 			e.printStackTrace();
 		}
 }
+//-----------------------------------------------------------------------------------------------------
 	
 public void deleteXML(String archive, String wordDelete) {//3parametros
 	    try {
@@ -244,7 +243,7 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	return arrayLAirline;
 }
 
-//------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
 	      // Cargar y parsear el archivo XML
@@ -290,6 +289,7 @@ public String mostrarDato(String archivo, String item) {
 	    }
 	  
 	  }
+//-----------------------------------------------------------------------------------------------------
 
 public String[] mostrarDatoVector(String archivo, String item) {
     try {
@@ -339,7 +339,7 @@ public String[] mostrarDatoVector(String archivo, String item) {
         return null;
     }
 }
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 public static String readXML(String archivo) {
     StringBuilder result = new StringBuilder();
 
@@ -392,8 +392,7 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
     return null;
  }
 
-//----------------------------------------------------------------------------
-
+//----------------------------------------------------------------------------------------------------------
 
 public  String searchXML(String archive, String searchWord)throws Exception {
 
@@ -455,6 +454,7 @@ public Vector<String> searchXMLVector(String archive, String searchWord) throws 
 
     return result;
 }
+//-----------------------------------------------------------------------------------------------------
 
 public Vector<Airline> readXMLVector(String address,String elementType,String[]dataName) {
 
@@ -490,6 +490,7 @@ public Vector<Airline> readXMLVector(String address,String elementType,String[]d
     }
     return vect;
 }
+//-----------------------------------------------------------------------------------------------------
 
 public void updateXML(String archive, String word, String update) throws Exception {
     // Cargar el documento XML desde el archivo
@@ -511,6 +512,7 @@ public void updateXML(String archive, String word, String update) throws Excepti
     Source input = new DOMSource(doc);
     transformer.transform(input, output);
 }
+//-----------------------------------------------------------------------------------------------------
 
 
 }

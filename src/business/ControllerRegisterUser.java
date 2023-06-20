@@ -34,7 +34,8 @@ public class ControllerRegisterUser implements ActionListener{
 		if(e.getSource()== guiRU.getBRegister()) {
 			
 			user = new User(guiRU.getTName().getText(),guiRU.getTContrasena().getText(),
-					guiRU.getTTypeUser().getText(),guiRU.getComboBoxState().getSelectedItem().toString());
+					guiRU.getComboBoxTypeUser().getSelectedItem().toString(),
+					guiRU.getComboBoxState().getSelectedItem().toString());
 
 
 			fXML.writeXML("Users.xml","User",user.getDataName(),user.getData());
