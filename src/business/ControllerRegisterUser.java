@@ -42,9 +42,6 @@ public class ControllerRegisterUser implements ActionListener{
 
 
 			fXML.writeXML("Users.xml","User",user.getDataName(),user.getData());
-			//guiRU.getDTMTUser().setRowCount(0);
-			//guiRU.setArrayListUser(lo.getListUser("Users.xml","User"));
-			//guiRU.fillTable(guiRU.getArrayListUser());
 			arrayLUser = lo.readXMLArrayListUser("Users.xml","User",user.getDataName());
 			guiRU.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
 			guiRU.cleanForm();
