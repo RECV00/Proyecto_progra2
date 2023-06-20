@@ -76,7 +76,6 @@ public class Logic {
 		return arrayLUser;
 	}
 	
-
 public ArrayList<User> getListUser(String FileName, String elementType) {
 		
 		String info="";
@@ -102,7 +101,6 @@ public ArrayList<User> getListUser(String FileName, String elementType) {
 							eElement.getElementsByTagName("password").item(0).getTextContent(),
 							eElement.getElementsByTagName("typeUser").item(0).getTextContent(), 
 							eElement.getElementsByTagName("state").item(0).getTextContent());
-
 
 					arrayLUser.add(us);
 					

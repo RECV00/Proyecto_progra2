@@ -73,6 +73,13 @@ public class GUIConsultUser extends JFrame {
 	public DefaultTableModel getDTMTUser() {
 		return dtmTUser;
 	}
+public void fillTable(ArrayList <User> list) {
+		
+		for(User user : list) {
+			dtmTUser.addRow(new Object[] {user.getUserName(), user.getPassword(), user.getTypeUser(), user.getState()});
+		}
+		setUser(dtmTUser);
+	}
 //------------------------------------------------------------------------------------
 	public void setUser(DefaultTableModel dtmTUser) {
 		tUser = new JTable(dtmTUser);
@@ -105,6 +112,10 @@ public class GUIConsultUser extends JFrame {
 //------------------------------------------------------------------------------------		
 	public ArrayList<User>getArrayListUser(){
 		return arrayLUser;
+	}
+	public void setArrayListUser(ArrayList<User> arrayLUser) {
+		// TODO Auto-generated method stub
+		this.arrayLUser= arrayLUser;
 	}
 //------------------------------------------------------------------------------------
 	public void print(JTable tUser) {
@@ -192,4 +203,5 @@ public class GUIConsultUser extends JFrame {
 		}
 		return bSearch;
 	}
+	
 }
