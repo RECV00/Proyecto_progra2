@@ -3,11 +3,8 @@ package data;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-
 import org.xml.sax.InputSource;
-=======
->>>>>>> ec091972b4de7060b9734275495885c7eeea606e
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -32,6 +29,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FilesXML {
 //-----------------------------------------------------------------------------------------------------
@@ -239,8 +238,7 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	return arrayLAirline;
 }
 
-<<<<<<< HEAD
-=======
+
 //-----------------------------------------------------------------------------------------------------
 public String mostrarDato(String archivo, String item) {
 	  try {
@@ -361,7 +359,7 @@ public static String readXML(String archivo) {
 
     return result.toString();
 }
->>>>>>> ec091972b4de7060b9734275495885c7eeea606e
+
 //--------------------------------------------------------------------------------------------------
 public static String extraerDatoDeEtiqueta(String contenidoXml, String nombreEtiqueta) {
     try {
@@ -390,13 +388,7 @@ public static String extraerDatoDeEtiqueta(String contenidoXml, String nombreEti
     return null;
  }
 
-<<<<<<< HEAD
 
-//----------------------------------------------------------------------------
-
-=======
-//----------------------------------------------------------------------------------------------------------
->>>>>>> ec091972b4de7060b9734275495885c7eeea606e
 
 public  String searchXML(String archive, String searchWord)throws Exception {
 
