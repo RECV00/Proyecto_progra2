@@ -42,7 +42,7 @@ public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()== guiDU.getBDelete()) {
 			
-		fXML.deleteXML("Users.xml",guiDU.getTNameDelete().getText());
+		fXML.deleteXML("Users.xml","User",guiDU.getTNameDelete().getText());
 			
 		}
 		if(e.getSource()== guiDU.getBExit()) {

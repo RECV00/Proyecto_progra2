@@ -122,37 +122,41 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 }
 //-----------------------------------------------------------------------------------------------------
 	
-public void deleteXML(String archive, String wordDelete) {//3parametros
-	    try {
-	        // Leer el archivo XML y cargarlo en un objeto Document
-	        File xmlFile = new File(archive);
-	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	        org.w3c.dom.Document doc = dBuilder.parse(xmlFile);
+public void deleteXML(String FileName, String elementType, String wordDelete) {
+	String data="";
+    try {
+        File inputFile = new File(FileName);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(inputFile);
 
-	        // Buscar la línea que contenga la palabra a eliminar
-	        NodeList nodeList = doc.getElementsByTagName("*");
-	        for (int i = 0; i < nodeList.getLength(); i++) {
-	            Node node = nodeList.item(i);
-	            String lineaActual = node.getTextContent().trim();
-	            if (lineaActual.contains(wordDelete)) {
-	                // Si la línea contiene la palabra a eliminar, removerla del Document
-	                node.getParentNode().removeChild(node);
-	            }
-	        }
+        NodeList nList = doc.getElementsByTagName(elementType);
+        Element element;
 
-	        // Escribir el nuevo contenido del Document en el archivo original
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        DOMSource source = new DOMSource(doc);
-	        StreamResult result = new StreamResult(new File(archive));
-	        transformer.transform(source, result);
-	        
-	        System.out.println("La línea que contiene la palabra \"" + wordDelete + "\" ha sido eliminada del archivo.");
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}
+        for (int i = 0; i < nList.getLength(); i++) {
+
+            element = (Element) nList.item(i);
+
+            if (element.getAttribute(wordDelete).equals(data)) {
+
+                element.getParentNode().removeChild(element);
+
+            }
+        }
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+
+        DOMSource source = new DOMSource(doc);
+
+        StreamResult result = new StreamResult(new File(FileName));
+        transformer.transform(source, result);
+
+        System.out.println("Registro Eliminado");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 
 //--------------------------------------------------------------------------------------------------
 public String validateUser(String fileName, String elementType, String userName, String password) throws Exception {
