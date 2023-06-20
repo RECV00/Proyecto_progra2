@@ -18,6 +18,7 @@ public class ControllerConsultUser implements ActionListener{
 		// TODO Auto-generated constructor stub
 		guiCU= new GUIConsultUser();
 		fXML= new FilesXML();
+		lo = new Logic();
 		initializer();
 	}
 	private void initializer() {
@@ -29,13 +30,12 @@ public class ControllerConsultUser implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		guiCU.getDTMTUser().setRowCount(0);
-			guiCU.setArrayListUser(lo.getListUser("Users.xml","User"));
-			guiCU.fillTable(guiCU.getArrayListUser());
-			
+		
 		if(e.getSource()== guiCU.getBCheckHistory()) {
 			
-			
+			guiCU.getDTMTUser().setRowCount(0);
+			guiCU.setArrayListUser(lo.getListUser("Users.xml","User"));
+			guiCU.fillTable(guiCU.getArrayListUser());
 		}
 		if(e.getSource()== guiCU.getBSearch()) {
 			try {

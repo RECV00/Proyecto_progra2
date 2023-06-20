@@ -249,8 +249,9 @@ public void fillTable(ArrayList <User> list) {
 	public void cleanForm() {
 		tName.setText("");
 		tContrasena.setText("");
-		comboBoxTypeUser.setToolTipText("");
-		comboBoxState.setToolTipText("");
+		this.comboBoxTypeUser.setSelectedIndex(0);
+		this.comboBoxState.setSelectedIndex(0);
+		
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {

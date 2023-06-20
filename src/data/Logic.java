@@ -78,7 +78,6 @@ public class Logic {
 	
 public ArrayList<User> getListUser(String FileName, String elementType) {
 		
-		String info="";
 		User us = new User();
 		arrayLUser= new ArrayList<User>();
 		try {
@@ -111,39 +110,8 @@ public ArrayList<User> getListUser(String FileName, String elementType) {
 		}
 		return arrayLUser;
 	}
+
 	//Aerolinea
-	public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType) {
-		String dato = " ";
-		 arrayLAirline= new ArrayList<>();
-		Airline a = new Airline();
-		try {
-			File inputFile = new File(FileName);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
-			doc.getDocumentElement().normalize();
-
-			System.out.println("Raíz de los Elementos:" + doc.getDocumentElement().getNodeName());
-			NodeList nList = doc.getElementsByTagName(elementType);
-			System.out.println("----------------------------");
-
-			for (int indice = 0; indice < nList.getLength(); indice++) {
-				Node nNode = nList.item(indice);
-				System.out.println("\nDatos de las Aerolineas: " + nNode.getNodeName());
-
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					
-					a.setName(eElement.getAttribute("name"));
-					a.setContry(eElement.getElementsByTagName("contry").item(0).getTextContent());
-					arrayLAirline.add(a);
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return arrayLAirline;
-	}
 	
 public ArrayList<Airline> readXMLArrayListAirline(String FileName, String elementType,String[]dataName) {
 		
@@ -183,47 +151,37 @@ public ArrayList<Airline> readXMLArrayListAirline(String FileName, String elemen
 		}
 		return arrayLAirline;
 	}
-public Vector<Airline[]> readXMLVector2(String address, String elementType, String[] dataName) {
-		String info = "";
-	    vect = new Vector<>();
-	    Airline ar;
+public ArrayList<Airline> getListAirline(String FileName, String elementType) {
+	 arrayLAirline= new ArrayList<>();
+	Airline air = new Airline();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
 
-	    try {
-	        File inputFile = new File(address);
-	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	        Document doc = dBuilder.parse(inputFile);
+		NodeList nList = doc.getElementsByTagName(elementType);
 
-	        NodeList nList = doc.getElementsByTagName(elementType);
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
 
-	        for (int i = 0; i < nList.getLength(); i++) {
-	            Node nNode = nList.item(i);
-
-	            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-	                Element eElement = (Element) nNode;
-	                info += (dataName[0] + ":" + eElement.getAttribute(dataName[0]) + "\n");
-	                ar = new Airline(eElement.getAttribute("name"),
-	                        eElement.getElementsByTagName("contry").item(0).getTextContent());
-	                
-	                vect.add(new Airline[dataName.length]);
-	                vect.get(i)[0] = ar;
-
-	                for (int in = 1; in < dataName.length; in++) {
-	                    String[] words = eElement.getElementsByTagName(dataName[in]).item(0).getTextContent().split(" ");
-	                    vect.get(i)[in] = new Airline(words);//words
-	                    info += dataName[in] + ":";
-	                    for (String word : words) {
-	                        info += " " + word;
-	                    }
-	                    info += "\n";
-	                }
-	            }
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return vect;
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				air = new Airline(eElement.getAttribute("name"),
+				eElement.getElementsByTagName("contry").item(0).getTextContent());
+				
+				arrayLAirline.add(air);
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
 	}
+	return arrayLAirline;
+}
+
+
 //BRAND
 public ArrayList<Brand> readXMLArrayListBrand(String FileName, String elementType,String[]dataName) {
 	String name="";
@@ -262,6 +220,35 @@ public ArrayList<Brand> readXMLArrayListBrand(String FileName, String elementTyp
 	}
 	return arrayLBrand;
 }
+public ArrayList<Brand> getListBrand(String FileName, String elementType) {
+	 arrayLBrand= new ArrayList<>();
+	Brand b = new Brand();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		NodeList nList = doc.getElementsByTagName(elementType);
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				b = new Brand(eElement.getAttribute("name"));
+				
+				arrayLBrand.add(b);
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLBrand;
+}
+
 //FLIGHT
 public ArrayList<Flight> readXMLArrayListFlight(String FileName, String elementType,String[]dataName) {
 	
@@ -304,6 +291,41 @@ public ArrayList<Flight> readXMLArrayListFlight(String FileName, String elementT
 				for(int i=1;i<dataName.length;i++) {
 					info+=dataName[i] +":"+eElement.getElementsByTagName(dataName[i]).item(0).getTextContent();
 				}
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLFlight;
+}
+public ArrayList<Flight> getListFlight(String FileName, String elementType) {
+	 arrayLFlight= new ArrayList<>();
+	Flight f = new Flight();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		NodeList nList = doc.getElementsByTagName(elementType);
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				f = new Flight(eElement.getAttribute("numFlight"),
+						eElement.getElementsByTagName("departureCity").item(0).getTextContent(),
+						eElement.getElementsByTagName("departureDateTime").item(0).getTextContent(),
+						eElement.getElementsByTagName("arrivalCity").item(0).getTextContent(),
+						eElement.getElementsByTagName("arrivalDateTime").item(0).getTextContent(),
+						eElement.getElementsByTagName("flight").item(0).getTextContent(),
+						eElement.getElementsByTagName("seat").item(0).getTextContent(),
+						Integer.parseInt(eElement.getElementsByTagName("amount").item(0).getTextContent()));
+				
+				arrayLFlight.add(f);
 			}
 		}
 	} catch (Exception e) {
@@ -356,6 +378,38 @@ public ArrayList<Model> readXMLArrayListModel(String FileName, String elementTyp
 	}
 	return arrayLModel;
 }
+public ArrayList<Model> getListModel(String FileName, String elementType) {
+	 arrayLModel= new ArrayList<>();
+	Model m = new Model();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		NodeList nList = doc.getElementsByTagName(elementType);
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				m = new Model(eElement.getAttribute("name"),
+						eElement.getElementsByTagName("marca").item(0).getTextContent(),
+						Integer.parseInt(eElement.getElementsByTagName("cantSeatExecutive").item(0).getTextContent()),
+						Integer.parseInt(eElement.getElementsByTagName("cantSeatTourist").item(0).getTextContent()),
+						Integer.parseInt(eElement.getElementsByTagName("cantSeatEconomic").item(0).getTextContent()));
+				
+				arrayLModel.add(m);
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLModel;
+}
 //PASSENGER
 public ArrayList<Passenger> readXMLArrayListPassenger(String FileName, String elementType,String[]dataName) {
 	
@@ -388,6 +442,39 @@ public ArrayList<Passenger> readXMLArrayListPassenger(String FileName, String el
 				for(int i=1;i<dataName.length;i++) {
 					info+=dataName[i] +":"+eElement.getElementsByTagName(dataName[i]).item(0).getTextContent();
 				}
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLPassenger;
+}
+public ArrayList<Passenger> getListPassenger(String FileName, String elementType) {
+	 arrayLPassenger= new ArrayList<>();
+	Passenger pa = new Passenger();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		NodeList nList = doc.getElementsByTagName(elementType);
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				pa = new Passenger(eElement.getAttribute("passport"),
+						eElement.getElementsByTagName("name").item(0).getTextContent(),
+						eElement.getElementsByTagName("lastName").item(0).getTextContent(),
+						eElement.getElementsByTagName("birthdate").item(0).getTextContent(),
+						eElement.getElementsByTagName("gmail").item(0).getTextContent(),
+						Integer.parseInt(eElement.getElementsByTagName("phone").item(0).getTextContent()));
+				
+				arrayLPassenger.add(pa);
 			}
 		}
 	} catch (Exception e) {
@@ -433,6 +520,37 @@ public ArrayList<Plane> readXMLArrayListPlane(String FileName, String elementTyp
 	}
 	return arrayLPlane;
 }
+public ArrayList<Plane> getListPlane(String FileName, String elementType) {
+	 arrayLPlane= new ArrayList<>();
+	Plane p = new Plane();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		NodeList nList = doc.getElementsByTagName(elementType);
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				p = new Plane(eElement.getAttribute("plate"),
+						eElement.getElementsByTagName("airline").item(0).getTextContent(),
+						eElement.getElementsByTagName("model").item(0).getTextContent(),
+						eElement.getElementsByTagName("year").item(0).getTextContent());
+				
+				arrayLPlane.add(p);
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLPlane;
+}
 //TICKET
 public ArrayList<Ticket> readXMLArrayListTicket(String FileName, String elementType,String[]dataName) {
 	
@@ -464,6 +582,37 @@ public ArrayList<Ticket> readXMLArrayListTicket(String FileName, String elementT
 				for(int i=1;i<dataName.length;i++) {
 					info+=dataName[i] +":"+eElement.getElementsByTagName(dataName[i]).item(0).getTextContent();
 				}
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return arrayLTicket;
+}
+public ArrayList<Ticket> getListTicket(String FileName, String elementType) {
+	 arrayLTicket= new ArrayList<>();
+	Ticket t = new Ticket();
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		NodeList nList = doc.getElementsByTagName(elementType);
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				
+				t = new Ticket(eElement.getAttribute("numTicket"),
+						eElement.getElementsByTagName("passport").item(0).getTextContent(),
+						eElement.getElementsByTagName("numFlight").item(0).getTextContent());
+						
+				
+				arrayLTicket.add(t);
 			}
 		}
 	} catch (Exception e) {
