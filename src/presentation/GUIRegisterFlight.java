@@ -263,6 +263,9 @@ public class GUIRegisterFlight extends JFrame {
 		tNumFlight.setText("");
 		tDepartureCity.setText("");
 		tDepartureDateTime.setText("");
+		tArrivalCity.setText("");
+		tArrivalDateTime.setText("");
+		tFlights.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {

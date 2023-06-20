@@ -210,6 +210,7 @@ public class GUIRegisterAirline extends JFrame {
 	public void cleanForm() {
 		tNameAerolinea.setText("");
 		tContry.setText("");
+	
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
