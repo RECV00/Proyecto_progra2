@@ -30,19 +30,14 @@ private void initializer() {
 	@Override
 public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
+		
 		if(e.getSource()== guiDU.getBDelete()) {
 			//Object data = fXML.readXML("Users.xml");
 			
-			
-			
-			//String dato = fXML.mostrarDato("Users.xml","User");
-			//System.out.println(dato);
-			//System.out.println("!!!"+fXML.procesarCadena(vaco));
-			//ArrayList<String[]> vaca=fXML.divideCadenas(dato);
-			//guiDU.getDTMTUser().addRow(new Object[] {fXML.procesarCadena(fXML.mostrarDato("Users.xml","User"))});
-			//guiDU.getDTMTUser().addRow((Vector<?>) data);
-			//System.out.println(fXML.readXML("Users.xml"));
-			//fXML.deleteXML("Users.xml", guiDU.getTNameDelete().getText());
+			guiDU.getDTMTUser().setRowCount(0);
+			//guiDU.getArrayListUser().remove(0);
+			guiDU.fillTable(guiDU.getArrayListUser());
 			
 			
 		}

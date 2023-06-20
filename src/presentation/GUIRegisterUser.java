@@ -77,6 +77,13 @@ public class GUIRegisterUser extends JFrame {
 	}
 	
 	
+public void fillTable(ArrayList <User> list) {
+		
+		for(User user : list) {
+			dtmTUser.addRow(new Object[] {user.getUserName(), user.getPassword(), user.getTypeUser(), user.getState()});
+		}
+		setUser(dtmTUser);
+	}
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -117,6 +124,9 @@ public class GUIRegisterUser extends JFrame {
 //------------------------------------------------------------------------------------		
 	public ArrayList<User>getArrayListUser(){
 		return arrayLUser;
+	}
+	public void setArrayListUser(ArrayList<User> arrayLUser){
+		this.arrayLUser= arrayLUser;
 	}
 //------------------------------------------------------------------------------------
 	public void print(JTable tUser) {

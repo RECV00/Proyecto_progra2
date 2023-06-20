@@ -75,6 +75,44 @@ public class Logic {
 		}
 		return arrayLUser;
 	}
+	
+
+public ArrayList<User> getListUser(String FileName, String elementType) {
+		
+		String info="";
+		User us = new User();
+		arrayLUser= new ArrayList<User>();
+		try {
+			File inputFile = new File(FileName); //new 
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+
+			
+			NodeList nList = doc.getElementsByTagName(elementType);
+
+			for (int indice = 0; indice < nList.getLength(); indice++) {
+				Node nNode = nList.item(indice);
+				
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					
+					us = new User(eElement.getAttribute("userName"),
+							eElement.getElementsByTagName("password").item(0).getTextContent(),
+							eElement.getElementsByTagName("typeUser").item(0).getTextContent(), 
+							eElement.getElementsByTagName("state").item(0).getTextContent());
+
+
+					arrayLUser.add(us);
+					
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return arrayLUser;
+	}
 	//Aerolinea
 	public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType) {
 		String dato = " ";
