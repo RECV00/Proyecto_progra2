@@ -31,7 +31,7 @@ public class ControllerDeletePassenger implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiDP.getBDelete()) {
-			fXML.deleteXML("Passengers.xml", guiDP.getTPassportDelete().getText());
+			fXML.deleteXML("Passengers.xml","Passenger", guiDP.getTPassportDelete().getText());
 		}
 		if(e.getSource()== guiDP.getBExit()) {
 			guiDP.dispose();
