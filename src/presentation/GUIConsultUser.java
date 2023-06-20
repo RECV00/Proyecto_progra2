@@ -81,13 +81,7 @@ public void fillTable(ArrayList <User> list) {
 		}
 		setUser(dtmTUser);
 	}
-public void fillTableObject(ArrayList <Object> list) {
-	
-	for(Object user : list) {
-		dtmTUser.addRow(new Object[] {((User) user).getUserName(), ((User) user).getPassword(), ((User) user).getTypeUser(), ((User) user).getState()});
-	}
-	setUser(dtmTUser);
-}
+
 //------------------------------------------------------------------------------------
 	public void setUser(DefaultTableModel dtmTUser) {
 		tUser = new JTable(dtmTUser);
@@ -121,13 +115,7 @@ public void fillTableObject(ArrayList <Object> list) {
 	public ArrayList<User>getArrayListUser(){
 		return arrayLUser;
 	}
-	public ArrayList<Object>getArrayListObject(){
-		return user;
-	}
-	public void setArrayListUserO(ArrayList<Object> user) {
-		// TODO Auto-generated method stub
-		this.user= user;
-	}
+	
 	public void setArrayListUser(ArrayList<User> arrayLUser) {
 		// TODO Auto-generated method stub
 		this.arrayLUser= arrayLUser;

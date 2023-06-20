@@ -625,7 +625,7 @@ public ArrayList<Ticket> getListTicket(String FileName, String elementType) {
 }
 	//------------------------------------------------------------------------------------------------
 
-public ArrayList<User> searchXMLUser(String fileName, String username) {
+public ArrayList<User> searchXMLUser(String fileName,String elementType, String data,String word) {
     arrayLUser = new ArrayList<>();
     User user= new User();
     
@@ -640,25 +640,25 @@ public ArrayList<User> searchXMLUser(String fileName, String username) {
         Document documento = builder.parse(new File(fileName));
 
         // Obtener la lista de nodos con etiqueta "usuario"
-        NodeList listaUser = documento.getElementsByTagName("User");
+        NodeList listaUser = documento.getElementsByTagName(elementType);
 
         // Recorrer la lista de usuarios
         for (int i = 0; i < listaUser.getLength(); i++) {
             Node nodoUser = listaUser.item(i);
 
             if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
-                Element elementUser = (Element) nodoUser;
+                Element eElement = (Element) nodoUser;
 
                 // Obtener el nombre de usuario del elemento "username"
-                String userName = elementUser.getAttribute(username);
+                String userName = eElement.getAttribute(data);
 
-                if (userName.equals(username)) {
-                    // Obtener los datos del usuario
-                	user = new User(elementUser.getAttribute("userName"),
-                			elementUser.getElementsByTagName("password").item(0).getTextContent(),
-                			elementUser.getElementsByTagName("typeUser").item(0).getTextContent(), 
-                			elementUser.getElementsByTagName("state").item(0).getTextContent());
-                   
+                if (userName.equals(word)) {
+                	
+                	user = new User(eElement.getAttribute("userName"),
+							eElement.getElementsByTagName("password").item(0).getTextContent(),
+							eElement.getElementsByTagName("typeUser").item(0).getTextContent(), 
+							eElement.getElementsByTagName("state").item(0).getTextContent());
+
                     arrayLUser.add(user);
                 }
             }

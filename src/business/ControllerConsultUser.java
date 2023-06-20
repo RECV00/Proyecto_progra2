@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
@@ -13,7 +14,7 @@ public class ControllerConsultUser implements ActionListener{
 	private Logic lo;
 	private FilesXML fXML;
 	private User user;
-	
+	ArrayList<User>arrayLUser;
 	public ControllerConsultUser() {
 		// TODO Auto-generated constructor stub
 		guiCU= new GUIConsultUser();
@@ -39,11 +40,11 @@ public class ControllerConsultUser implements ActionListener{
 		}
 		if(e.getSource()== guiCU.getBSearch()) {
 			try {
-				
-				guiCU.getDTMTUser().setRowCount(0);
-				guiCU.setArrayListUser(lo.searchXMLUser("Users.xml",guiCU.getTConsultName().getText()));
+				arrayLUser = lo.searchXMLUser("Users.xml","User","userName",guiCU.getTConsultName().getText());
+			    guiCU.getDTMTUser().setRowCount(0);
+				guiCU.setArrayListUser(arrayLUser);
 				guiCU.fillTable(guiCU.getArrayListUser());
-				System.out.print(lo.searchXMLUser("Users.xml",guiCU.getTConsultName().getText()));
+				System.out.print(arrayLUser);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
