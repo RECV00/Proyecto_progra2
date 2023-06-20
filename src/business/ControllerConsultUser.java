@@ -39,7 +39,11 @@ public class ControllerConsultUser implements ActionListener{
 		}
 		if(e.getSource()== guiCU.getBSearch()) {
 			try {
-				fXML.searchXML("Users", guiCU.getTConsultName().getText());
+				
+				guiCU.getDTMTUser().setRowCount(0);
+				guiCU.setArrayListUser(lo.searchXMLUser("Users.xml",guiCU.getTConsultName().getText()));
+				guiCU.fillTable(guiCU.getArrayListUser());
+				System.out.print(lo.searchXMLUser("Users.xml",guiCU.getTConsultName().getText()));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -84,6 +85,7 @@ public void fillTable(ArrayList <User> list) {
 		}
 		setUser(dtmTUser);
 	}
+
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);

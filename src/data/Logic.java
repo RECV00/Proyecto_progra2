@@ -6,6 +6,9 @@ import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -621,35 +624,49 @@ public ArrayList<Ticket> getListTicket(String FileName, String elementType) {
 	return arrayLTicket;
 }
 	//------------------------------------------------------------------------------------------------
-	public Vector<String> searchXMLVector(String archive, String searchWord) throws Exception {
-	    Vector<String> result = new Vector<>();
 
-	    // Crear un objeto DocumentBuilderFactory y un objeto DocumentBuilder para obtener el archivo XML
-	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	    DocumentBuilder builder = factory.newDocumentBuilder();
-	    // Crear un objeto Document a partir del archivo XML
-	    Document doc = builder.parse(archive);
+public ArrayList<User> searchXMLUser(String fileName, String username) {
+    arrayLUser = new ArrayList<>();
+    User user= new User();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-	    // Obtener una lista de todos los elementos del documento XML
-	    NodeList nodes = doc.getElementsByTagName("*");
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
 
-	    // Iterar a través de los nodos y buscar la línea que contiene la palabra buscada
-	    for (int i = 0; i < nodes.getLength(); i++) {
-	        Node node = nodes.item(i);
-	        if (node.getNodeType() == Node.TEXT_NODE) {
-	            String text = node.getNodeValue().trim();
-	            if (text.equals(searchWord)) {
-	                // Obtener el nodo padre que contiene la línea
-	                Node parent = node.getParentNode();
-	                // Obtener el contenido del nodo padre
-	                String line = parent.getTextContent().trim();
-	                result.add(line);
-	                
-	            }
-	        }
-	    }
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
 
-	    return result;
-	}
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName("User");
 
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element elementUser = (Element) nodoUser;
+
+                // Obtener el nombre de usuario del elemento "username"
+                String userName = elementUser.getAttribute(username);
+
+                if (userName.equals(username)) {
+                    // Obtener los datos del usuario
+                	user = new User(elementUser.getAttribute("userName"),
+                			elementUser.getElementsByTagName("password").item(0).getTextContent(),
+                			elementUser.getElementsByTagName("typeUser").item(0).getTextContent(), 
+                			elementUser.getElementsByTagName("state").item(0).getTextContent());
+                   
+                    arrayLUser.add(user);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLUser;
+}
 }
