@@ -46,10 +46,9 @@ public class ControllerUpdateUser implements ActionListener{
 				fXML.updateXML("Users.xml","User",user.getDataName(),user.getData());
 				
 				guiUu.getDTMTUser().setRowCount(0);
-				
 				guiUu.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
 				guiUu.setArrayListUser(lo.getListUser("Users.xml","User"));
-				//guiUu.fillTable(guiUu.getArrayListUser());
+				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
