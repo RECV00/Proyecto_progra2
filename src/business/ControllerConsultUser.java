@@ -29,12 +29,15 @@ public class ControllerConsultUser implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()== guiCU.getBCheckHistory()) {
-			guiCU.getDTMTUser().setRowCount(0);
+		guiCU.getDTMTUser().setRowCount(0);
 			guiCU.setArrayListUser(lo.getListUser("Users.xml","User"));
 			guiCU.fillTable(guiCU.getArrayListUser());
+			
+		if(e.getSource()== guiCU.getBCheckHistory()) {
+			
+			
 		}
-		if(e.getSource()==guiCU.getBSearch()) {
+		if(e.getSource()== guiCU.getBSearch()) {
 			try {
 				fXML.searchXML("Users", guiCU.getTConsultName().getText());
 			} catch (Exception e1) {
