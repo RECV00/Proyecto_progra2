@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Airline;
 import domain.Brand;
 
 import javax.swing.JTextField;
@@ -65,6 +66,19 @@ public class GUIConsultBrand extends JFrame {
 		setVisible(true);
 		
 	}
+public void fillTable(ArrayList <Brand> list) {
+		
+		for(Brand b : list) {
+			dtmTBrand.addRow(new Object[] {b.getName()});
+		}
+		setBrand(dtmTBrand);
+	}
+public ArrayList<Brand>getArrayListBrand(){
+	return arrayLBrand;
+}
+public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
+	this.arrayLBrand = arrayLBrand;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTBrand(Object data[][],String[] columnsNames) {
 		dtmTBrand = new DefaultTableModel(data,columnsNames);
@@ -103,9 +117,7 @@ public class GUIConsultBrand extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<Brand>getArrayListBrand(){
-		return arrayLBrand;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tBrand) {
 		try {

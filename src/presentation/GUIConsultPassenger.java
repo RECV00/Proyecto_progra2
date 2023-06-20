@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Airline;
 import domain.Passenger;
 
 import javax.swing.JTextField;
@@ -65,6 +66,20 @@ public class GUIConsultPassenger extends JFrame {
 		setVisible(true);
 		
 	}
+public void fillTable(ArrayList <Passenger> list) {
+		
+		for(Passenger p : list) {
+			dtmTPassenger.addRow(new Object[] {p.getPassport(),p.getName(),p.getLastName(),
+					p.getBirthdate(),p.getGmail(),p.getPhone()});
+		}
+		setPassenger(dtmTPassenger);
+	}
+public ArrayList<Passenger>getArrayListPassenger(){
+	return arrayLPassenger;
+}
+public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
+	this.arrayLPassenger = arrayLPassenger;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		dtmTPassenger = new DefaultTableModel(data,columnsNames);
@@ -102,10 +117,7 @@ public class GUIConsultPassenger extends JFrame {
 		String columnsNames[] = {"Pasaporte", "Nombre", "Apellido", "Cumpleaños","Correo","Celular"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Passenger>getArrayListPassenger(){
-		return arrayLPassenger;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tPassenger) {
 		try {

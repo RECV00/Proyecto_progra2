@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
+import data.Logic;
 import domain.Plane;
 import presentation.GUIConsultPlane;
 
@@ -12,10 +13,13 @@ public class ControllerConsultPlane implements ActionListener{
 	private GUIConsultPlane guiCPlane;
 	private Plane plane;
 	private FilesXML fXML;
+	private Logic lo;
+
 	
 	public ControllerConsultPlane() {
 		guiCPlane= new GUIConsultPlane();
 		fXML = new FilesXML();
+		lo= new Logic();
 		initializer();
 	}
 	private void initializer() {
@@ -29,12 +33,15 @@ public class ControllerConsultPlane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCPlane.getBCheckHistory()) {
-			//fXML.readXMLString("Planes.xml","Plane");
+			guiCPlane.getDTMTPlane().setRowCount(0);
+			guiCPlane.setArrayListPlane(lo.getListPlane("Planes.xml", "Plane"));
+			guiCPlane.fillTable(guiCPlane.getArrayListPlane());
 		}
 		if(e.getSource()==guiCPlane.getBSearch()) {
-		try {
-			fXML.searchXML("Planes.xml",guiCPlane.getTConsultPlane().getText());
-		} catch (Exception e1) {
+		try {//cambiar metodo
+			guiCPlane.getDTMTPlane().setRowCount(0);
+			guiCPlane.setArrayListPlane(lo.getListPlane("Planes.xml", "Plane"));
+			guiCPlane.fillTable(guiCPlane.getArrayListPlane());		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}

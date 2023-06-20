@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Airline;
 import domain.Ticket;
 
 import javax.swing.JTextField;
@@ -65,6 +66,19 @@ public class GUIConsultTicket extends JFrame {
 		setVisible(true);
 		
 	}
+public void fillTable(ArrayList <Ticket> list) {
+		
+		for(Ticket t : list) {
+			dtmTTicket.addRow(new Object[] {t.getNumTicket(),t.getPassport(),t.getNumFlight()});
+		}
+		setTicket(dtmTTicket);
+	}
+public ArrayList<Ticket>getArrayListTicket(){
+	return arrayLTicket;
+}
+public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
+	this.arrayLTicket = arrayLTicket;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTTicket(Object data[][],String[] columnsNames) {
 		dtmTTicket = new DefaultTableModel(data,columnsNames);
@@ -102,10 +116,7 @@ public class GUIConsultTicket extends JFrame {
 		String columnsNames[] = {"Número de Tiquete", "Pasaporte", "Número de Vuelo"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Ticket>getArrayListTicket(){
-		return arrayLTicket;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tTicket) {
 		try {
