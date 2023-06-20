@@ -1,21 +1,17 @@
 package presentation;
 
-import java.awt.Color;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Flight;
-import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -53,12 +49,14 @@ public class GUIRegisterFlight extends JFrame {
 	private JTextField tDepartureDateTime;
 	
 	private JComboBox comboBoxState;
+	private JComboBox comboBoxStateAvion;
 	private JLabel lArrivalCity;
 	private JLabel lArrivalDateTime;
 	private JLabel lFlight;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
-	private JTextField tFlights;
+	private JLabel lTypeAsiento;
+	private JComboBox comboBoxAvion;
 
 	public GUIRegisterFlight() {
 		
@@ -85,7 +83,8 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getLFlight());
 		getContentPane().add(getTArrivalCity());
 		getContentPane().add(getTArrivalDateTime());
-		getContentPane().add(getTFlight());
+		getContentPane().add(getLTypeAsiento());
+		getContentPane().add(getComboBoxAvion());
 		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,7 +156,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 209, 874, 183);
+			scrollPane.setBounds(10, 209, 886, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -176,7 +175,7 @@ public class GUIRegisterFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(894, 358, 75, 23);
+			bExit.setBounds(901, 358, 75, 23);
 		}
 		return bExit;
 	}
@@ -184,7 +183,11 @@ public class GUIRegisterFlight extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(755, 189, 129, 23);
+			bRegister.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bRegister.setBounds(767, 189, 129, 23);
 		}
 		return bRegister;
 	}
@@ -254,7 +257,7 @@ public class GUIRegisterFlight extends JFrame {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
 			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
-			comboBoxState.setBounds(438, 140, 87, 22);
+			comboBoxState.setBounds(429, 140, 143, 22);
 		}
 		return comboBoxState;
 	}
@@ -286,7 +289,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLFlight() {
 		if (lFlight == null) {
 			lFlight = new JLabel("Avión");
-			lFlight.setBounds(303, 116, 68, 14);
+			lFlight.setBounds(438, 60, 68, 14);
 		}
 		return lFlight;
 	}
@@ -306,12 +309,19 @@ public class GUIRegisterFlight extends JFrame {
 		}
 		return tArrivalDateTime;
 	}
-	public JTextField getTFlight() {
-		if (tFlights == null) {
-			tFlights = new JTextField();
-			tFlights.setBounds(303, 141, 96, 20);
-			tFlights.setColumns(10);
+	public JLabel getLTypeAsiento() {
+		if (lTypeAsiento == null) {
+			lTypeAsiento = new JLabel("Asiento");
+			lTypeAsiento.setBounds(438, 116, 49, 14);
 		}
-		return tFlights;
+		return lTypeAsiento;
+	}
+	public JComboBox getComboBoxAvion() {
+		if (comboBoxAvion == null) {
+			comboBoxAvion = new JComboBox();
+			comboBoxAvion.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Aqui van los Aviones"}));
+			comboBoxAvion.setBounds(429, 84, 143, 22);
+		}
+		return comboBoxAvion;
 	}
 }

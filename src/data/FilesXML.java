@@ -2,12 +2,9 @@ package data;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 
-
+import org.xml.sax.InputSource;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,18 +24,11 @@ import org.xml.sax.SAXException;
 
 import domain.Airline;
 
-import org.w3c.dom.*;
-
-
-import javax.xml.parsers.*;
 import java.io.*;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class FilesXML {
 
@@ -244,136 +234,16 @@ public ArrayList<Airline> readXMLToArrayList(String FileName, String elementType
 	return arrayLAirline;
 }
 
-//------------------------------------------------------------
-public String mostrarDato(String archivo, String item) {
-	  try {
-	      // Cargar y parsear el archivo XML
-	      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	      DocumentBuilder builder = factory.newDocumentBuilder();
-	      Document doc = builder.parse(archivo);
-
-	      // Obtener todos los nodos con la etiqueta "item"
-	      NodeList nodeList = doc.getElementsByTagName(item);
-	      
-	   // Crear un vector para almacenar los datos
-	      StringBuilder datos = new StringBuilder();
-	      // Iterar sobre los nodos
-	      for (int i = 0; i < nodeList.getLength(); i++) {
-	        Node node = nodeList.item(i);
-	        NodeList childNodes = node.getChildNodes();
-	        for (int j = 0; j < childNodes.getLength(); j++){
-	        	Node childNode = childNodes.item(j);
-	        	// Verificar si el nodo hijo es de tipo ELEMENT_NODE
-	            
-	        	if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-	        	    // Obtener el contenido del nodo hijo
-	        	    String contenido = childNode.getTextContent();
-	        	    // Agregar el contenido a la cadena de datos
-	                datos.append(contenido);
-	             // Agregar una coma si no es el último elemento
-	                if (j < childNodes.getLength() - 1) {
-	                  datos.append(",");
-	                }
-	              }
-	            }
-	     // Agregar una coma si no es el último elemento
-	        
-	        if (i < nodeList.getLength() - 1) {
-	                datos.append("*");
-	              }
-	            }
-	      return datos.toString();
-	   
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	      return null;
-	    }
-	  
-	  }
-
-public String[] mostrarDatoVector(String archivo, String item) {
-    try {
-        // Cargar y parsear el archivo XML
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(archivo);
-
-        // Obtener todos los nodos con la etiqueta "item"
-        NodeList nodeList = doc.getElementsByTagName(item);
-
-        // Crear un vector para almacenar los datos
-        List<String> datosList = new ArrayList<>();
-
-        // Iterar sobre los nodos
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            Node node = nodeList.item(i);
-            NodeList childNodes = node.getChildNodes();
-            
-            StringBuilder datos = new StringBuilder();
-            
-            for (int j = 0; j < childNodes.getLength(); j++){
-                Node childNode = childNodes.item(j);
-                // Verificar si el nodo hijo es de tipo ELEMENT_NODE
-                if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                    // Obtener el contenido del nodo hijo
-                    String contenido = childNode.getTextContent();
-                    // Agregar el contenido a la cadena de datos
-                    datos.append(contenido);
-                    // Agregar una coma si no es el último elemento
-                    if (j < childNodes.getLength() - 1) {
-                        datos.append(",");
-                    }
-                }
-            }
-            
-            datosList.add(datos.toString());
-        }
-
-        // Convertir la lista a un vector
-        String[] datosArray = new String[datosList.size()];
-        datosArray = datosList.toArray(datosArray);
-
-        return datosArray;
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
-    }
-}
-//-------------------------------------------------------------------------------
-public static String readXML(String archivo) {
-    StringBuilder result = new StringBuilder();
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            sb.append(line.trim());
-        }
-
-        String xmlContent = sb.toString();
-        Pattern pattern = Pattern.compile("<(.*?)>(.*?)</\\1>");
-        Matcher matcher = pattern.matcher(xmlContent);
-        while (matcher.find()) {
-            String value = matcher.group(2);
-            result.append(value).append("\n");
-        }
-    } catch (IOException e) {
-        System.out.println("Error en la lectura del archivo XML!");
-    }
-
-    return result.toString();
-}
 //--------------------------------------------------------------------------------------------------
-public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombreEtiqueta) {
+public static String extraerDatoDeEtiqueta(String contenidoXml, String nombreEtiqueta) {
     try {
-       File archivoXml = new File(nombreArchivoXml);
+       
        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-       Document documentoXml = dBuilder.parse(archivoXml);
        
-       // Opcional: normalizar el documento para evitar espacios en blanco innecesarios
-       documentoXml.getDocumentElement().normalize();
        
+       InputSource inputSource = new InputSource(new StringReader(contenidoXml));
+       Document documentoXml = dBuilder.parse(inputSource);
        // Obtener una lista de nodos que coinciden con el nombre de la etiqueta
        NodeList listaDeNodos = documentoXml.getElementsByTagName(nombreEtiqueta);
        
@@ -391,6 +261,7 @@ public static String extraerDatoDeEtiqueta(String nombreArchivoXml, String nombr
     }
     return null;
  }
+
 
 //----------------------------------------------------------------------------
 
