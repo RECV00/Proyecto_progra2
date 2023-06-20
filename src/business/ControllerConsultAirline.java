@@ -36,16 +36,16 @@ public class ControllerConsultAirline implements ActionListener{
 		if(e.getSource()==guiCA.getBCheckHistory()) {
 		//guiCA.getDTMTAirline().addRow(air.readXMLVector2("Airlines.xml","Airline",air.getDataName()));
 			//System.out.print(air.readXMLVector2("Airlines.xml","Airline",air.getDataName()));
-		guiCA.getDTMTAirline().addRow(fXML.mostrarDatoVector("Airlines.xml","Airline"));
-		System.out.print(fXML.mostrarDatoVector("Airlines.xml","Airline"));
+	
 		}
 		if(e.getSource()==guiCA.getBSearch()) {
-		try {
-			guiCA.getDTMTAirline().addRow(fXML.searchXMLVector("Airlines.xml",guiCA.getTConsultAirline().getText()));
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			try {
+				guiCA.getDTMTAirline().addRow(fXML.searchXMLVector("Airlines.xml",guiCA.getTConsultAirline().getText()));
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 		if(e.getSource()==guiCA.getBExit()) {
 			guiCA.dispose();
