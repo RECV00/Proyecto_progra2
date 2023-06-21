@@ -65,6 +65,19 @@ public class GUIConsultAirline extends JFrame {
 		setVisible(true);
 		
 	}
+public void fillTable(ArrayList <Airline> list) {
+		
+		for(Airline air : list) {
+			dtmTAirline.addRow(new Object[] {air.getName(), air.getContry()});
+		}
+		setAirline(dtmTAirline);
+	}
+public ArrayList<Airline>getArrayListAirline(){
+	return arrayLAirline;
+}
+public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
+	this.arrayLAirline = arrayLAirline;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTAirline(Object data[][],String[] columnsNames) {
 		dtmTAirline = new DefaultTableModel(data,columnsNames);
@@ -103,9 +116,6 @@ public class GUIConsultAirline extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<Airline>getArrayListAirline(){
-		return arrayLAirline;
-	}
 //------------------------------------------------------------------------------------
 	public void print(JTable tAirline) {
 		try {

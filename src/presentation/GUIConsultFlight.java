@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Airline;
 import domain.Flight;
 
 import javax.swing.JTextField;
@@ -65,6 +66,20 @@ public class GUIConsultFlight extends JFrame {
 		setVisible(true);
 		
 	}
+public void fillTable(ArrayList <Flight> list) {
+		
+		for(Flight f : list) {
+			dtmTFlight.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
+					f.getArrivalCity(),f.getArrivalDateTime(),f.getSeat(),f.getAmount(f.getSeat())});
+		}
+		setFlight(dtmTFlight);
+	}
+public ArrayList<Flight>getArrayListFlight(){
+	return arrayLFlight;
+}
+public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
+	this.arrayLFlight = arrayLFlight;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTFlight(Object data[][],String[] columnsNames) {
 		dtmTFlight = new DefaultTableModel(data,columnsNames);
@@ -102,10 +117,7 @@ public class GUIConsultFlight extends JFrame {
 		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Flight>getArrayListFlight(){
-		return arrayLFlight;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tFlight) {
 		try {

@@ -37,13 +37,17 @@ public class ControllerConsultAirline implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiCA.getBCheckHistory()) {
-		//guiCA.getDTMTAirline().addRow(air.readXMLVector2("Airlines.xml","Airline",air.getDataName()));
-			//System.out.print(air.readXMLVector2("Airlines.xml","Airline",air.getDataName()));
+		
+		guiCA.getDTMTAirline().setRowCount(0);
+		guiCA.setArrayListAirline(lo.getListAirline("Airlines.xml", "Airline"));
+		guiCA.fillTable(guiCA.getArrayListAirline());
 	
 		}
 		if(e.getSource()==guiCA.getBSearch()) {
-			try {
-				guiCA.getDTMTAirline().addRow(lo.searchXMLVector("Airlines.xml",guiCA.getTConsultAirline().getText()));
+			try {//cambiar por el metodo buscar
+				guiCA.getDTMTAirline().setRowCount(0);
+				guiCA.setArrayListAirline(lo.getListAirline("Airlines.xml", "Airline"));
+				guiCA.fillTable(guiCA.getArrayListAirline());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

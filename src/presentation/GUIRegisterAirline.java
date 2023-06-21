@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Airline;
+import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -38,7 +39,7 @@ public class GUIRegisterAirline extends JFrame {
 	
 	private JScrollPane spTAirline;
 	
-	private ArrayList<Airline> arrayLAirline;
+	private ArrayList<Airline>arrayLAirline;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bRegister;
@@ -71,7 +72,13 @@ public class GUIRegisterAirline extends JFrame {
 		setVisible(true);
 		
 	}
-	
+public void fillTable(ArrayList <Airline> list) {
+		
+		for(Airline air : list) {
+			dtmTAirline.addRow(new Object[] {air.getName(), air.getContry()});
+		}
+		setAirline(dtmTAirline);
+	}
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTAirline(Object data[][],String[] columnsNames) {
@@ -113,6 +120,9 @@ public class GUIRegisterAirline extends JFrame {
 //------------------------------------------------------------------------------------		
 	public ArrayList<Airline>getArrayListAirline(){
 		return arrayLAirline;
+	}
+	public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
+		this.arrayLAirline = arrayLAirline;
 	}
 //------------------------------------------------------------------------------------
 	public void print(JTable tAirline) {

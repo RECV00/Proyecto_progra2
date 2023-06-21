@@ -44,7 +44,7 @@ public class ControllerConsultUser implements ActionListener{
 			    guiCU.getDTMTUser().setRowCount(0);
 				guiCU.setArrayListUser(arrayLUser);
 				guiCU.fillTable(guiCU.getArrayListUser());
-				System.out.print(arrayLUser);
+				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
