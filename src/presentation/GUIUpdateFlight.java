@@ -55,7 +55,6 @@ public class GUIUpdateFlight extends JFrame {
 	private JLabel lFlights;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
-	private JTextField tFlights;
 
 	public GUIUpdateFlight() {
 		
@@ -79,10 +78,8 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getLArrivalCity());
 		getContentPane().add(getLArrivalDateTime());
-		getContentPane().add(getTFlights());
 		getContentPane().add(getTArrivalCity());
 		getContentPane().add(getTArrivalDateTime());
-		getContentPane().add(getTFlights());
 		getContentPane().add(getComboBoxAvion());
 		setSize(1000,440);
 		setLocationRelativeTo(null);
@@ -266,7 +263,7 @@ public JComboBox getComboBoxState() {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
 			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
-			comboBoxState.setBounds(438, 140, 87, 22);
+			comboBoxState.setBounds(482, 140, 143, 22);
 		}
 		return comboBoxState;
 	}
@@ -274,7 +271,7 @@ public JComboBox getComboBoxAvion() {
 		if (comboBoxAvion == null) {
 			comboBoxAvion = new JComboBox();
 			comboBoxAvion.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Aqui van los Aviones"}));
-			comboBoxAvion.setBounds(429, 84, 143, 22);
+			comboBoxAvion.setBounds(482, 84, 143, 22);
 		}
 		return comboBoxAvion;
 }
@@ -325,13 +322,5 @@ public JComboBox getComboBoxAvion() {
 			tArrivalDateTime.setColumns(10);
 		}
 		return tArrivalDateTime;
-	}
-	public JTextField getTFlights() {
-		if (tFlights == null) {
-			tFlights = new JTextField();
-			tFlights.setBounds(303, 141, 96, 20);
-			tFlights.setColumns(10);
-		}
-		return tFlights;
 	}
 }

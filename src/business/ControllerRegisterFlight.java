@@ -38,8 +38,10 @@ public class ControllerRegisterFlight implements ActionListener{
 		if(e.getSource()== guiRF.getBRegister()) {
 			
 			flight = new Flight(guiRF.getTNumFlight().getText(),
-					guiRF.getTDepartureCity().getText(),guiRF.getTDepartureDateTime().getText(),
-					guiRF.getTArrivalCity().getText(),guiRF.getTArrivalDateTime().getText(),
+					guiRF.getTDepartureCity().getText(),
+					guiRF.getTDepartureDateTime().getText(),
+					guiRF.getTArrivalCity().getText(),
+					guiRF.getTArrivalDateTime().getText(),
 					guiRF.getComboBoxAvion().getSelectedItem().toString(),
 					guiRF.getComboBoxState().getSelectedItem().toString(),
 					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
@@ -47,9 +49,14 @@ public class ControllerRegisterFlight implements ActionListener{
 			fXML.writeXML("Flights.xml","Flight",flight.getDataName(),flight.getData());
 			arrayLFlight= lo.readXMLArrayListFlight("Flights.xml","Flight",flight.getDataName());
 			guiRF.cleanForm();
-			guiRF.getDTMTFlight().addRow(new Object [] {flight.getNumFlight(),flight.getDepartureCity(),
-					flight.getDepartureDateTime(),flight.getArrivalCity(),flight.getArrivalDateTime(),
-					flight.getFlight(),flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
+			guiRF.getDTMTFlight().addRow(new Object [] {flight.getNumFlight(),
+					flight.getDepartureCity(),
+					flight.getDepartureDateTime(),
+					flight.getArrivalCity(),
+					flight.getArrivalDateTime(),
+					guiRF.getComboBoxAvion().getSelectedItem().toString(),
+					guiRF.getComboBoxState().getSelectedItem().toString(),
+					flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
 			
 		}
 		if(e.getSource()== guiRF.getBExit()) {

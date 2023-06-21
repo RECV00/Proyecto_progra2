@@ -89,13 +89,13 @@ public class Flight {
 	}
 
 	public int getAmount(String typeSeat) {
+		int precio=5381;
 		if (typeSeat=="Clase Ejecutiva") {
-			return 48429;
+			precio=48429;
 		}else if (typeSeat=="Clase Turista") {
-			return 16143;
-		}else {
-			return 5381;
+			precio=16143;
 		}
+		return precio;
 	}
 
 	public void setAmount(int amount) {
@@ -117,7 +117,7 @@ public class Flight {
 	}
 	public String[] getData() {
 		String[] data = {numFlight,departureCity,departureDateTime,
-				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(amount)};
+				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(getAmount(getSeat()) )};
 		return data;
 	}
 	@Override

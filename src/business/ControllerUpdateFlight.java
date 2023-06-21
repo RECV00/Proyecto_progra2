@@ -37,18 +37,25 @@ public class ControllerUpdateFlight implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiUF.getBUpdate()) {
 			flight = new Flight(guiUF.getTNumFlight().getText(),
-					guiUF.getTDepartureCity().getText(),guiUF.getTDepartureDateTime().getText(),
-					guiUF.getTArrivalCity().getText(),guiUF.getTArrivalDateTime().getText(),
-					guiUF.getTFlights().getText(),//cambiar a combobox avion
+					guiUF.getTDepartureCity().getText(),
+					guiUF.getTDepartureDateTime().getText(),
+					guiUF.getTArrivalCity().getText(),
+					guiUF.getTArrivalDateTime().getText(),
+					guiUF.getComboBoxAvion().getSelectedItem().toString(),
 					guiUF.getComboBoxState().getSelectedItem().toString(),
 					Integer.valueOf(flight.getAmount(guiUF.getComboBoxState().getSelectedItem().toString())));
 			try {
 				fXML.updateXML("Flights.xml","Flight",flight.getDataName(),flight.getData());
 				
 				guiUF.getDTMTFlight().setRowCount(0);
-				guiUF.getDTMTFlight().addRow(new Object [] {flight.getNumFlight(),flight.getDepartureCity(),
-					flight.getDepartureDateTime(),flight.getArrivalCity(),flight.getArrivalDateTime(),
-					flight.getFlight(),flight.getAmount(guiUF.getComboBoxState().getSelectedItem().toString())});
+				guiUF.getDTMTFlight().addRow(new Object [] {flight.getNumFlight(),
+					flight.getDepartureCity(),
+					flight.getDepartureDateTime(),
+					flight.getArrivalCity(),
+					flight.getArrivalDateTime(),
+					guiUF.getComboBoxAvion().getSelectedItem().toString(),
+					guiUF.getComboBoxState().getSelectedItem().toString(),
+					flight.getAmount(guiUF.getComboBoxState().getSelectedItem().toString())});
 				
 				guiUF.setArrayListFlight(lo.getListFlight("Flights.xml","Flight"));
 				

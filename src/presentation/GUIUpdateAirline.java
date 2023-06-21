@@ -192,7 +192,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JLabel getLUpdateContry() {
 		if (lUpdateContry == null) {
 			lUpdateContry = new JLabel("Ingrese el pais a Actualizar");
-			lUpdateContry.setBounds(275, 56, 141, 14);
+			lUpdateContry.setBounds(262, 56, 173, 14);
 		}
 		return lUpdateContry;
 	}
