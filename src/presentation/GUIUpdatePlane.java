@@ -72,7 +72,19 @@ public class GUIUpdatePlane extends JFrame {
 		setVisible(true);
 		
 	}
-	
+public void fillTable(ArrayList <Plane> list) {
+		
+		for(Plane pl : list) {
+			dtmTPlane.addRow(new Object[] {pl.getPlate(),pl.getAirline(),pl.getModel(),pl.getYear()});
+		}
+		setPlane(dtmTPlane);
+	}
+public ArrayList<Plane>getArrayListPlane(){
+	return arrayLPlane;
+}
+public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
+	this.arrayLPlane = arrayLPlane;
+}	
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTPlane(Object data[][],String[] columnsNames) {
@@ -111,10 +123,7 @@ public class GUIUpdatePlane extends JFrame {
 		String columnsNames[] = {"Avión", "Aerolinea", "Modelo", "Año"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Plane>getArrayListPlane(){
-		return arrayLPlane;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tPlane) {
 		try {

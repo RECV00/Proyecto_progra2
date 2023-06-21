@@ -60,6 +60,19 @@ public class GUIUpdateBrand extends JFrame {
 		setVisible(true);
 		
 	}
+public void fillTable(ArrayList <Brand> list) {
+		
+		for(Brand b : list) {
+			dtmTBrand.addRow(new Object[] {b.getName()});
+		}
+		setBrand(dtmTBrand);
+	}
+public ArrayList<Brand>getArrayListBrand(){
+	return arrayLBrand;
+}
+public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
+	this.arrayLBrand = arrayLBrand;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTBrand(Object data[][],String[] columnsNames) {
 		dtmTBrand = new DefaultTableModel(data,columnsNames);
@@ -97,10 +110,7 @@ public class GUIUpdateBrand extends JFrame {
 		String columnsNames[] = {"Nombres de las Marcas"};;
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Brand>getArrayListBrand(){
-		return arrayLBrand;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tBrand) {
 		try {

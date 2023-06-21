@@ -42,7 +42,7 @@ public class ControllerRegisterBrand implements ActionListener{
 			fXML.writeXML("Brands.xml","Brand",brand.getDataName(),brand.getData());
 			arrayLBrand = lo.readXMLArrayListBrand("Brands.xml","Brand",brand.getDataName());
 			guiRB.cleanForm();
-			guiRB.getDTMTBrand().addRow(new Object [] {brand.getName(),});
+			guiRB.getDTMTBrand().addRow(new Object [] {brand.getName()});
 				
 			}
 		if(e.getSource()== guiRB.getBExit()) {

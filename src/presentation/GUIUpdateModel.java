@@ -78,7 +78,20 @@ public class GUIUpdateModel extends JFrame {
 		setVisible(true);
 		
 	}
-	
+public void fillTable(ArrayList <Model> list) {
+		
+		for(Model m : list) {
+			dtmTModel.addRow(new Object[] {m.getName(),m.getMarca(),
+					m.getCantSeatExecutive(),m.getCantSeatEconomic(),m.getCantSeatTourist()});
+		}
+		setModel(dtmTModel);
+	}
+public ArrayList<Model>getArrayListModel(){
+	return arrayLModel;
+}
+public void setArrayListModel(ArrayList<Model> arrayLModel){
+	this.arrayLModel = arrayLModel;
+}	
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTModel(Object data[][],String[] columnsNames) {
@@ -117,10 +130,7 @@ public class GUIUpdateModel extends JFrame {
 		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Model>getArrayListModel(){
-		return arrayLModel;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tModel) {
 		try {

@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import domain.User;
+import domain.Flight;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -30,13 +30,13 @@ public class GUIUpdateFlight extends JFrame {
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	
-	private DefaultTableModel dtmTUser;
-	private JTable tUser;
+	private DefaultTableModel dtmTFlight;
+	private JTable tFlight;
 	
 	
-	private JScrollPane spTUser;
+	private JScrollPane spTFlight;
 	
-	private ArrayList<User> arrayLUser;
+	private ArrayList<Flight> arrayLFlight;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bUpdate;
@@ -49,18 +49,19 @@ public class GUIUpdateFlight extends JFrame {
 	private JTextField tDepartureDateTime;
 	
 	private JComboBox comboBoxState;
+	private JComboBox comboBoxAvion;
 	private JLabel lArrivalCity;
 	private JLabel lArrivalDateTime;
-	private JLabel lFlight;
+	private JLabel lFlights;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
-	private JTextField tFlight;
+	private JTextField tFlights;
 
 	public GUIUpdateFlight() {
 		
-		setDTMTUser(dataTable,getColumnsNames());
-		setUser(dtmTUser);
-		setSPTUser(tUser);
+		setDTMTFlight(dataTable,getColumnsNames());
+		setFlight(dtmTFlight);
+		setSPTFlight(tFlight);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -78,63 +79,74 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getLArrivalCity());
 		getContentPane().add(getLArrivalDateTime());
-		getContentPane().add(getLFlight());
+		getContentPane().add(getTFlights());
 		getContentPane().add(getTArrivalCity());
 		getContentPane().add(getTArrivalDateTime());
-		getContentPane().add(getTFlight());
+		getContentPane().add(getTFlights());
+		getContentPane().add(getComboBoxAvion());
 		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+public void fillTable(ArrayList <Flight> list) {
+		
+		for(Flight f : list) {
+			dtmTFlight.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
+					f.getArrivalCity(),f.getArrivalDateTime(),f.getSeat(),f.getAmount(f.getSeat())});
+		}
+		setFlight(dtmTFlight);
+	}
+public ArrayList<Flight>getArrayListFlight(){
+	return arrayLFlight;
+}
+public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
+	this.arrayLFlight = arrayLFlight;
+}
 	
 //------------------------------------------------------------------------------------
-	public void setDTMTUser(Object data[][],String[] columnsNames) {
-		dtmTUser = new DefaultTableModel(data,columnsNames);
+	public void setDTMTFlight(Object data[][],String[] columnsNames) {
+		dtmTFlight = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTUser() {
-		return dtmTUser;
+	public DefaultTableModel getDTMTFlight() {
+		return dtmTFlight;
 	}
 //------------------------------------------------------------------------------------
-	public void setUser(DefaultTableModel dtmTUser) {
-		tUser = new JTable(dtmTUser);
+	public void setFlight(DefaultTableModel dtmTFlight) {
+		tFlight = new JTable(dtmTFlight);
 		//No poder editar los valores de la tabla
-		tUser.setEnabled(false);
+		tFlight.setEnabled(false);
 		//no poder mover las columnas
-		tUser.getTableHeader().setReorderingAllowed(false);
+		tFlight.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tUser.getTableHeader().setResizingAllowed(false);
+		tFlight.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTUser() {
-		return this.tUser;
+	public JTable getTFlight() {
+		return this.tFlight;
 	}
 	
-	public void setSPTUser(JTable tUser) {
-		spTUser = new JScrollPane(tUser);
-		spTUser.setBounds(10,70,460,80);
+	public void setSPTFlight(JTable tFlight) {
+		spTFlight = new JScrollPane(tFlight);
+		spTFlight.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTUser() {
-		return this.spTUser;
+	public JScrollPane getSPTFlight() {
+		return this.spTFlight;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
 		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<User>getArrayListUser(){
-		return arrayLUser;
-	}
+
 //------------------------------------------------------------------------------------
-	public void print(JTable tUser) {
+	public void print(JTable tFlight) {
 		try {
-			if(!tUser.print()) {
+			if(!tFlight.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -155,12 +167,12 @@ public class GUIUpdateFlight extends JFrame {
 			scrollPane = new JScrollPane();
 			scrollPane.setBounds(10, 209, 874, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tUser=new JTable(dtmTUser);
-			tUser.setEnabled(false);
-			tUser.getTableHeader().setReorderingAllowed(false);
-			tUser.getTableHeader().setResizingAllowed(false);	
-			spTUser = new JScrollPane(tUser);
-			scrollPane.setColumnHeaderView(spTUser);
+			tFlight=new JTable(dtmTFlight);
+			tFlight.setEnabled(false);
+			tFlight.getTableHeader().setReorderingAllowed(false);
+			tFlight.getTableHeader().setResizingAllowed(false);	
+			spTFlight = new JScrollPane(tFlight);
+			scrollPane.setColumnHeaderView(spTFlight);
 		}
 		return scrollPane;
 	}
@@ -250,7 +262,7 @@ public class GUIUpdateFlight extends JFrame {
 		return tDepartureDateTime;
 	}
 //------------------------------------------------------------------------------------
-	public JComboBox getComboBoxState() {
+public JComboBox getComboBoxState() {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
 			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
@@ -258,6 +270,14 @@ public class GUIUpdateFlight extends JFrame {
 		}
 		return comboBoxState;
 	}
+public JComboBox getComboBoxAvion() {
+		if (comboBoxAvion == null) {
+			comboBoxAvion = new JComboBox();
+			comboBoxAvion.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Aqui van los Aviones"}));
+			comboBoxAvion.setBounds(429, 84, 143, 22);
+		}
+		return comboBoxAvion;
+}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNumFlight.setText("");
@@ -283,12 +303,12 @@ public class GUIUpdateFlight extends JFrame {
 		}
 		return lArrivalDateTime;
 	}
-	public JLabel getLFlight() {
-		if (lFlight == null) {
-			lFlight = new JLabel("Avión");
-			lFlight.setBounds(303, 116, 68, 14);
+	public JLabel getLFlights() {
+		if (lFlights == null) {
+			lFlights = new JLabel("Avión");
+			lFlights.setBounds(303, 116, 68, 14);
 		}
-		return lFlight;
+		return lFlights;
 	}
 	public JTextField getTArrivalCity() {
 		if (tArrivalCity == null) {
@@ -306,12 +326,12 @@ public class GUIUpdateFlight extends JFrame {
 		}
 		return tArrivalDateTime;
 	}
-	public JTextField getTFlight() {
-		if (tFlight == null) {
-			tFlight = new JTextField();
-			tFlight.setBounds(303, 141, 96, 20);
-			tFlight.setColumns(10);
+	public JTextField getTFlights() {
+		if (tFlights == null) {
+			tFlights = new JTextField();
+			tFlights.setBounds(303, 141, 96, 20);
+			tFlights.setColumns(10);
 		}
-		return tFlight;
+		return tFlights;
 	}
 }

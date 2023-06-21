@@ -39,8 +39,8 @@ public class ControllerRegisterModel implements ActionListener{
 			
 			model = new Model(guiRM.getTNameModel().getText(),guiRM.getTMarcaModel().getText(),
 					Integer.valueOf(guiRM.getTCanMarcaModelEJE().getText()),
-					Integer.valueOf(guiRM.getTCanAsientosECO().getText()),
-					Integer.valueOf(guiRM.getTCanAsientosTUR().getText()));
+					Integer.valueOf(guiRM.getTCanAsientosTUR().getText()),
+					Integer.valueOf(guiRM.getTCanAsientosECO().getText()));
 			
 			fXML.writeXML("Models.xml","Model",model.getDataName(),model.getData());
 			arrayLModel= lo.readXMLArrayListModel("Models.xml","Model", model.getDataName());

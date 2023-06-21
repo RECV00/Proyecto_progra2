@@ -70,7 +70,19 @@ public class GUIUpdateTicket extends JFrame {
 		setVisible(true);
 		
 	}
-	
+public void fillTable(ArrayList <Ticket> list) {
+		
+		for(Ticket t : list) {
+			dtmTTicket.addRow(new Object[] {t.getNumTicket(),t.getPassport(),t.getNumFlight()});
+		}
+		setTicket(dtmTTicket);
+	}
+public ArrayList<Ticket>getArrayListTicket(){
+	return arrayLTicket;
+}
+public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
+	this.arrayLTicket = arrayLTicket;
+}
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTTicket(Object data[][],String[] columnsNames) {
@@ -109,10 +121,7 @@ public class GUIUpdateTicket extends JFrame {
 		String columnsNames[] = {"Número de Tiquete", "Pasaporte", "Número de Vuelo"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Ticket>getArrayListTicket(){
-		return arrayLTicket;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tTicket) {
 		try {

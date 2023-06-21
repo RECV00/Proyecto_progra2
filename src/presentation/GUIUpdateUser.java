@@ -86,6 +86,12 @@ public void fillTable(ArrayList <User> list) {
 		}
 		setUser(dtmTUser);
 	}
+public ArrayList<User>getArrayListUser(){
+	return arrayLUser;
+}
+public void setArrayListUser(ArrayList<User> arrayLUser){
+	this.arrayLUser= arrayLUser;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -123,13 +129,7 @@ public void fillTable(ArrayList <User> list) {
 		String columnsNames[] = {"Nombre", "Contrase\u00F1a", "Tipo de Usuario", "Estado"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<User>getArrayListUser(){
-		return arrayLUser;
-	}
-	public void setArrayListUser(ArrayList<User> arrayLUser){
-		this.arrayLUser= arrayLUser;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tUser) {
 		try {

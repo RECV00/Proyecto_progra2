@@ -82,7 +82,20 @@ public class GUIUpdatePassenger extends JFrame {
 		setVisible(true);
 		
 	}
-	
+public void fillTable(ArrayList <Passenger> list) {
+		
+		for(Passenger p : list) {
+			dtmTPassenger.addRow(new Object[] {p.getPassport(),p.getName(),p.getLastName(),
+					p.getBirthdate(),p.getGmail(),p.getPhone()});
+		}
+		setPassenger(dtmTPassenger);
+	}
+public ArrayList<Passenger>getArrayListPassenger(){
+	return arrayLPassenger;
+}
+public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
+	this.arrayLPassenger = arrayLPassenger;
+}
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
@@ -121,10 +134,7 @@ public class GUIUpdatePassenger extends JFrame {
 		String columnsNames[] = {"Pasaporte", "Nombre", "Apellido", "Cumpleaños","Correo","Celular"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Passenger>getArrayListPassenger(){
-		return arrayLPassenger;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tPassenger) {
 		try {
