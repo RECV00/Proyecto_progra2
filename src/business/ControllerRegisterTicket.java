@@ -41,13 +41,12 @@ public class ControllerRegisterTicket implements ActionListener{
 			ticket = new Ticket(guiRT.getTNumTicket().getText(),
 					guiRT.getTPassportTicket().getText(),
 					guiRT.getTNumFlightTicket().getText());
-			fXML.writeXML("Tickets.xml","Ticket",ticket.getDataName(),ticket.getData());
 			
+			fXML.writeXML("Tickets.xml","Ticket",ticket.getDataName(),ticket.getData());
 			arrayLTicket = lo.readXMLArrayListTicket("Tickets.xml","Ticket",ticket.getDataName());
+			guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});
 			guiRT.cleanForm();
 			
-				guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});
-		
 		}
 		if(e.getSource()== guiRT.getBExit()) {
 			//meter la pagina anterior

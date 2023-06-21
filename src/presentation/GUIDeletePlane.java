@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Plane;
+import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -63,6 +64,20 @@ public class GUIDeletePlane extends JFrame {
 		setVisible(true);
 		
 	}
+	
+public void fillTable(ArrayList <Plane> list) {
+		
+		for(Plane plane : list) {
+			dtmTPlane.addRow(new Object[] {plane.getPlate(),plane.getAirline(),plane.getModel(),plane.getYear()});
+		}
+		setPlane(dtmTPlane);
+	}
+	public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
+		this.arrayLPlane= arrayLPlane;
+	}
+	public ArrayList<Plane>getArrayListPlane(){
+		return arrayLPlane;
+	}
 //------------------------------------------------------------------------------------
 	public void setDTMTPlane(Object data[][],String[] columnsNames) {
 		dtmTPlane = new DefaultTableModel(data,columnsNames);
@@ -101,9 +116,7 @@ public class GUIDeletePlane extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<Plane>getArrayListPlane(){
-		return arrayLPlane;
-	}
+	
 //------------------------------------------------------------------------------------
 	public void print(JTable tPlane) {
 		try {

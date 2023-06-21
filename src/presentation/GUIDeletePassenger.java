@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Passenger;
+import domain.Passenger;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -57,12 +58,27 @@ public class GUIDeletePassenger extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTPassportDelete());
 		getContentPane().add(getLNameDelete());
-		setSize(658,368);
+		setSize(1000,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	
+	
+public void fillTable(ArrayList <Passenger> list) {
+		
+		for(Passenger passenger : list) {
+			dtmTPassenger.addRow(new Object[] {passenger.getPassport(), passenger.getName(), passenger.getLastName(), passenger.getBirthdate(),passenger.getGmail(),passenger.getPhone()});
+		}
+		setPassenger(dtmTPassenger);
+	}
+public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
+	this.arrayLPassenger= arrayLPassenger;
+}
+public ArrayList<Passenger>getArrayListPassenger(){
+	return arrayLPassenger;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		dtmTPassenger = new DefaultTableModel(data,columnsNames);
@@ -101,9 +117,7 @@ public class GUIDeletePassenger extends JFrame {
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
-	public ArrayList<Passenger>getArrayListPassenger(){
-		return arrayLPassenger;
-	}
+	
 //------------------------------------------------------------------------------------
 	public void print(JTable tPassenger) {
 		try {
@@ -126,7 +140,7 @@ public class GUIDeletePassenger extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 130, 862, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -141,7 +155,11 @@ public class GUIDeletePassenger extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(882, 290, 94, 23);
 		}
 		return bExit;
 	}
@@ -149,7 +167,11 @@ public class GUIDeletePassenger extends JFrame {
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(413, 108, 104, 23);
+			bDelete.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bDelete.setBounds(712, 112, 160, 23);
 		}
 		return bDelete;
 	}
