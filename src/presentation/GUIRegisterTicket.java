@@ -158,10 +158,6 @@ public class GUIRegisterTicket extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
 			bRegister.setBounds(332, 153, 185, 23);
 		}
 		return bRegister;

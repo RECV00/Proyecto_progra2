@@ -29,7 +29,7 @@ public class ControllerConsultBrand implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==guiCB.getBCheckHistory()) {
+	if(e.getSource()==guiCB.getBCheckHistory()) {
 			guiCB.getDTMTBrand().setRowCount(0);
 			guiCB.setArrayListBrand(lo.getListBrand("Brands.xml", "Brand"));
 			guiCB.fillTable(guiCB.getArrayListBrand());

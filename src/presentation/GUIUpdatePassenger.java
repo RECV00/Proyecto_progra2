@@ -76,7 +76,7 @@ public class GUIUpdatePassenger extends JFrame {
 		getContentPane().add(getTPhonePassenger());
 		getContentPane().add(getLGmailPassenger());
 		getContentPane().add(getLPhonePassenger());
-		setSize(891,410);
+		setSize(1000,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

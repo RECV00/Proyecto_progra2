@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Ticket;
+import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -63,6 +64,20 @@ public class GUIDeleteTicket extends JFrame {
 		setVisible(true);
 		
 	}
+	
+public void fillTable(ArrayList <Ticket> list) {
+		
+		for(Ticket ticket : list) {
+			dtmTTicket.addRow(new Object[] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});
+		}
+		setTicket(dtmTTicket);
+	}
+public ArrayList<Ticket>getArrayListTicket(){
+	return arrayLTicket;
+}
+public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
+	this.arrayLTicket= arrayLTicket;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTTicket(Object data[][],String[] columnsNames) {
 		dtmTTicket = new DefaultTableModel(data,columnsNames);
@@ -100,10 +115,7 @@ public class GUIDeleteTicket extends JFrame {
 		String columnsNames[] = {"Número de Tiquete", "Pasaporte", "Número de Vuelo"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Ticket>getArrayListTicket(){
-		return arrayLTicket;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tTicket) {
 		try {
@@ -153,7 +165,7 @@ public class GUIDeleteTicket extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bDelete.setBounds(388, 110, 129, 23);
+			bDelete.setBounds(359, 106, 158, 23);
 		}
 		return bDelete;
 	}

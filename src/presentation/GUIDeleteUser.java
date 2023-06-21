@@ -66,11 +66,11 @@ public void fillTable(ArrayList <User> list) {
 		}
 		setUser(dtmTUser);
 	}
-public ArrayList<User>getArrayListUser(){
-	return arrayLUser;
-}
 public void setArrayListUser(ArrayList<User> arrayLUser){
 	this.arrayLUser= arrayLUser;
+}
+public ArrayList<User>getArrayListUser(){
+	return arrayLUser;
 }
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {

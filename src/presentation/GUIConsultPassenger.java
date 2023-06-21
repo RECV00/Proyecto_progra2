@@ -60,7 +60,7 @@ public class GUIConsultPassenger extends JFrame {
 		getContentPane().add(getTConsultPasspotPassenger());
 		getContentPane().add(getLPassportPassengerConsult());
 		getContentPane().add(getBSearch());
-		setSize(656,368);
+		setSize(1000,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
