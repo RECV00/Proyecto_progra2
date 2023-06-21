@@ -261,6 +261,14 @@ public class GUIRegisterFlight extends JFrame {
 		}
 		return comboBoxState;
 	}
+	public JComboBox getComboBoxAvion() {
+		if (comboBoxAvion == null) {
+			comboBoxAvion = new JComboBox();
+			comboBoxAvion.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Aqui van los Aviones"}));
+			comboBoxAvion.setBounds(429, 84, 143, 22);
+		}
+		return comboBoxAvion;
+	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNumFlight.setText("");
@@ -321,12 +329,5 @@ public class GUIRegisterFlight extends JFrame {
 		}
 		return lTypeAsiento;
 	}
-	public JComboBox getComboBoxAvion() {
-		if (comboBoxAvion == null) {
-			comboBoxAvion = new JComboBox();
-			comboBoxAvion.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Aqui van los Aviones"}));
-			comboBoxAvion.setBounds(429, 84, 143, 22);
-		}
-		return comboBoxAvion;
-	}
+
 }

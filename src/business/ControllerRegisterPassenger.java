@@ -16,6 +16,7 @@ public class ControllerRegisterPassenger implements ActionListener{
 	private FilesXML fXML;
 	private Passenger passenger;
 	private Logic lo;
+	@SuppressWarnings("unused")
 	private ArrayList<Passenger> arrayLPassenger;
 	
 	public ControllerRegisterPassenger() {
