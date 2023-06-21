@@ -252,7 +252,7 @@ public void updateXML(String FileName, String elementType, String dataName[], St
 }
 //-----------------------------------------------------------------------------------------------------
 
-public List<String> buscarAtributos(String rutaArchivo) {
+public List<String> buscarAtributos(String rutaArchivo,String elementType) {
     List<String> atributos = new ArrayList<>();
 
     try {
@@ -267,7 +267,7 @@ public List<String> buscarAtributos(String rutaArchivo) {
         Document documento = builder.parse(archivoXML);
 
         // Obtener la lista de nodos del documento
-        NodeList nodos = documento.getElementsByTagName("*");
+        NodeList nodos = documento.getElementsByTagName(elementType);
 
         // Recorrer los nodos y obtener los atributos
         for (int i = 0; i < nodos.getLength(); i++) {
