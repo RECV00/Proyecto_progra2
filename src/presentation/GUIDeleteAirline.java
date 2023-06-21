@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Airline;
+import domain.Airline;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -63,6 +64,20 @@ public class GUIDeleteAirline extends JFrame {
 		setVisible(true);
 		
 	}
+	
+public void fillTable(ArrayList <Airline> list) {
+		
+		for(Airline a : list) {
+			dtmTAirline.addRow(new Object[] {a.getName(),a.getContry()});
+		}
+		setAirline(dtmTAirline);
+	}
+public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
+	this.arrayLAirline= arrayLAirline;
+}
+public ArrayList<Airline>getArrayListAirline(){
+	return arrayLAirline;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTAirline(Object data[][],String[] columnsNames) {
 		dtmTAirline = new DefaultTableModel(data,columnsNames);
@@ -99,10 +114,6 @@ public class GUIDeleteAirline extends JFrame {
 	public String[] getColumnsNames() {
 		String columnsNames[] = {"Nombre", "País"};
 		return columnsNames;
-	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Airline>getArrayListAirline(){
-		return arrayLAirline;
 	}
 //------------------------------------------------------------------------------------
 	public void print(JTable tAirline) {

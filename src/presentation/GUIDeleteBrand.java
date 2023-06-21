@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Brand;
+import domain.Brand;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -63,6 +64,20 @@ public class GUIDeleteBrand extends JFrame {
 		setVisible(true);
 		
 	}
+	
+public void fillTable(ArrayList <Brand> list) {
+		
+		for(Brand b : list) {
+			dtmTBrand.addRow(new Object[] {b.getName()});
+		}
+		setBrand(dtmTBrand);
+	}
+public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
+	this.arrayLBrand= arrayLBrand;
+}
+public ArrayList<Brand>getArrayListBrand(){
+	return arrayLBrand;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTBrand(Object data[][],String[] columnsNames) {
 		dtmTBrand = new DefaultTableModel(data,columnsNames);
@@ -99,10 +114,6 @@ public class GUIDeleteBrand extends JFrame {
 	public String[] getColumnsNames() {
 		String columnsNames[] = {"Nombres de las Marcas"};
 		return columnsNames;
-	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Brand>getArrayListBrand(){
-		return arrayLBrand;
 	}
 //------------------------------------------------------------------------------------
 	public void print(JTable tBrand) {

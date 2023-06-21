@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Model;
+import domain.Model;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -63,6 +64,20 @@ public class GUIDeleteModel extends JFrame {
 		setVisible(true);
 		
 	}
+	
+public void fillTable(ArrayList <Model> list) {
+		
+		for(Model model : list) {
+			dtmTModel.addRow(new Object[] {model.getName(), model.getMarca(),model.getCantSeatExecutive(),model.getCantSeatTourist(),model.getCantSeatEconomic()});
+		}
+		setModel(dtmTModel);
+	}
+public void setArrayListModel(ArrayList<Model> arrayLModel){
+	this.arrayLModel= arrayLModel;
+}
+public ArrayList<Model>getArrayListModel(){
+	return arrayLModel;
+}
 //------------------------------------------------------------------------------------
 	public void setDTMTModel(Object data[][],String[] columnsNames) {
 		dtmTModel = new DefaultTableModel(data,columnsNames);
@@ -100,10 +115,7 @@ public class GUIDeleteModel extends JFrame {
 		String columnsNames[] = {"Nombre", "Marca", "Asientos Ejecutivos", "Asientos Turista", "Asientos Económicos"};
 		return columnsNames;
 	}
-//------------------------------------------------------------------------------------		
-	public ArrayList<Model>getArrayListModel(){
-		return arrayLModel;
-	}
+
 //------------------------------------------------------------------------------------
 	public void print(JTable tModel) {
 		try {
