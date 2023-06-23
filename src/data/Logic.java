@@ -389,15 +389,6 @@ public ArrayList<Flight> readXMLArrayListFlight(String FileName, String elementT
 				Element eElement = (Element) nNode;
 				info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
 				
-				Flight f =new Flight(eElement.getAttribute(dataName[0]),
-						eElement.getElementsByTagName(dataName[1]).item(0).getTextContent(),
-						eElement.getElementsByTagName(dataName[2]).item(0).getTextContent(),
-						eElement.getElementsByTagName(dataName[3]).item(0).getTextContent(),
-						eElement.getElementsByTagName(dataName[4]).item(0).getTextContent(),
-						eElement.getElementsByTagName(dataName[5]).item(0).getTextContent(),
-						eElement.getElementsByTagName(dataName[6]).item(0).getTextContent(),
-						Integer.parseInt(eElement.getElementsByTagName(dataName[7]).item(0).getTextContent()));
-				
 				flights = new Flight(flights.getNumFlight(),flights.getDepartureCity(),flights.getDepartureDateTime(),
 						flights.getArrivalCity(),flights.getArrivalDateTime(),flights.getFlight(),flights.getSeat(),flights.getAmount(flights.getSeat()));
 				
