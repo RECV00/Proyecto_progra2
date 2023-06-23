@@ -40,6 +40,7 @@ public class ControllerConsultFlight implements ActionListener{
 				guiCF.getDTMTFlight().setRowCount(0);
 				guiCF.setArrayListFlight(lo.searchXMLFlight("Flights.xml", "Flight", "numFlight", guiCF.getTConsultNameVuelo().getText()));
 				guiCF.fillTable(guiCF.getArrayListFlight());
+				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

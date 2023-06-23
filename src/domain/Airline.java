@@ -16,13 +16,13 @@ public class Airline {
 	
 	private String name;
 	private String contry;
-	private String[] words;
+
 
 //contructores
 public Airline() {}
 
-public Airline(String[] words) {
-    this.words = words;
+public Airline(String name) {
+    this.name = name;
 }
 	public Airline(String name, String contry) {
 		super();

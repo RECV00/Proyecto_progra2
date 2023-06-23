@@ -23,6 +23,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import domain.Plane;
+
 import java.io.*;
 import java.util.HashSet;
 import java.util.List;
@@ -252,39 +255,7 @@ public void updateXML(String FileName, String elementType, String dataName[], St
 }
 //-----------------------------------------------------------------------------------------------------
 
-public List<String> buscarAtributos(String rutaArchivo,String elementType) {
-    List<String> atributos = new ArrayList<>();
 
-    try {
-        // Crear el objeto DocumentBuilderFactory
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-        // Crear el objeto DocumentBuilder
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        // Parsear el archivo XML y obtener el objeto Document
-        File archivoXML = new File(rutaArchivo);
-        Document documento = builder.parse(archivoXML);
-
-        // Obtener la lista de nodos del documento
-        NodeList nodos = documento.getElementsByTagName(elementType);
-
-        // Recorrer los nodos y obtener los atributos
-        for (int i = 0; i < nodos.getLength(); i++) {
-            Node nodo = nodos.item(i);
-            if (nodo.getNodeType() == Node.ELEMENT_NODE) {
-                NamedNodeMap atributosNodo = nodo.getAttributes();
-                for (int j = 0; j < atributosNodo.getLength(); j++) {
-                    Node atributo = atributosNodo.item(j);
-                    atributos.add(atributo.getNodeName());
-                }
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-    return atributos;
-}
 
 }
