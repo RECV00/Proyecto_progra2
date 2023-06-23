@@ -18,6 +18,7 @@ private String name;
 
 //contructores
 public Brand() {}
+
 public Brand(String name) {
 		super();
 		this.name = name;

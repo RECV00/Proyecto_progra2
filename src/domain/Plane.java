@@ -29,6 +29,11 @@ public class Plane {
 		this.year = year;
 	}
 
+	public Plane(String plate) {
+		// TODO Auto-generated constructor stub
+		this.plate=plate;
+	}
+
 	public String getPlate() {
 		return plate;
 	}

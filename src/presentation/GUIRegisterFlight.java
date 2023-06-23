@@ -11,7 +11,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import data.FilesXML;
 import domain.Flight;
+import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.List;
 
 @SuppressWarnings("serial")
 public class GUIRegisterFlight extends JFrame {
@@ -29,7 +32,7 @@ public class GUIRegisterFlight extends JFrame {
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
-	
+	private FilesXML fXML;
 	private DefaultTableModel dtmTFlight;
 	private JTable tFlight;
 	
@@ -49,17 +52,20 @@ public class GUIRegisterFlight extends JFrame {
 	private JTextField tDepartureDateTime;
 	
 	private JComboBox comboBoxState;
-	private JComboBox comboBoxStateAvion;
-	private JLabel lArrivalCity;
+	
+	private JComboBox<String>comboBoxAvion1;//Combobox para cargar los lenguajes
+    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+	
+    private JLabel lArrivalCity;
 	private JLabel lArrivalDateTime;
 	private JLabel lFlight;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
 	private JLabel lTypeAsiento;
-	private JComboBox comboBoxAvion;
-
-	public GUIRegisterFlight() {
+	ArrayList<Plane>arrayLP;
+	public GUIRegisterFlight(ArrayList<Plane>arrayLP) {
 		
+		llenarComboBoxAviones(arrayLP,getComboBoxAvion1());
 		setDTMTFlight(dataTable,getColumnsNames());
 		setFlight(dtmTFlight);
 		setSPTUser(tFlight);
@@ -84,14 +90,14 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getTArrivalCity());
 		getContentPane().add(getTArrivalDateTime());
 		getContentPane().add(getLTypeAsiento());
-		getContentPane().add(getComboBoxAvion());
+		getContentPane().add(getComboBoxAvion1());
 		setSize(1000,440);
+		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTFlight(Object data[][],String[] columnsNames) {
@@ -257,18 +263,41 @@ public class GUIRegisterFlight extends JFrame {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
 			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
-			comboBoxState.setBounds(429, 140, 143, 22);
+			comboBoxState.setBounds(436, 140, 143, 22);
 		}
 		return comboBoxState;
 	}
-	public JComboBox getComboBoxAvion() {
-		if (comboBoxAvion == null) {
-			comboBoxAvion = new JComboBox();
-			comboBoxAvion.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Aqui van los Aviones"}));
-			comboBoxAvion.setBounds(429, 84, 143, 22);
-		}
-		return comboBoxAvion;
+
+	public JComboBox<String> getComboBoxAvion1() {
+	    if (comboBoxAvion1 == null) {
+	    	comboBoxAvion1 = new JComboBox<String>();
+	    	 comboBoxAvion1.setBounds(436, 84, 143, 22);
+	        // Obtener el ArrayList de aviones
+	    	 comboBoxAvion1.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+	    	
+	    }
+	    return comboBoxAvion1;
 	}
+	public ArrayList<Plane>getArrayListPlane(){
+		return arrayLP;
+	}
+	public void setArrayListPlane(ArrayList<Plane> arrayLP){
+		this.arrayLP = arrayLP;
+	}
+	public void llenarComboBoxAviones(ArrayList<Plane>arrayLP,JComboBox<String> comboBox) {
+		String[] placas = new String[arrayLP.size()];
+		for(int i=0; i<arrayLP.size(); i++) {
+			placas[i]=arrayLP.get(i).getPlate();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(placas);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+	    public void setcomboBoxAvion1(JComboBox<String> comboBoxAvion1) {
+	        this.comboBoxAvion1 = comboBoxAvion1;
+	    }
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNumFlight.setText("");
@@ -329,5 +358,4 @@ public class GUIRegisterFlight extends JFrame {
 		}
 		return lTypeAsiento;
 	}
-
 }

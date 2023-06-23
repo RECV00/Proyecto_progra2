@@ -23,7 +23,10 @@ public class Model {
 	public Model() {
 		// TODO Auto-generated constructor stub
 	}
-
+	public Model(String name) {
+		// TODO Auto-generated constructor stub
+		this.name=name;
+	}
 	public Model(String name, String marca, int cantSeatExecutive, int cantSeatTourist, int cantSeatEconomic) {
 		super();
 		this.name = name;

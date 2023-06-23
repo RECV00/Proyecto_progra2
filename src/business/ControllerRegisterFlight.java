@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import data.FilesXML;
 import data.Logic;
 import domain.Flight;
+import domain.Plane;
 import presentation.GUIRegisterFlight;
 
 public class ControllerRegisterFlight implements ActionListener{
@@ -15,14 +16,16 @@ public class ControllerRegisterFlight implements ActionListener{
 	private FilesXML fXML;
 	private Flight flight;
 	private Logic lo;
+	ArrayList<Plane> arrayLP;
 	ArrayList<Flight> arrayLFlight;
 	
 	public ControllerRegisterFlight() {
-	guiRF= new GUIRegisterFlight();
 	fXML = new FilesXML();
 	lo= new Logic();
 	flight = new Flight();
 	fXML.createXML("Flights", "Flights.xml");
+	arrayLP= lo.getNamePlane("Planes.xml", "Plane");
+	guiRF= new GUIRegisterFlight(arrayLP);
 	initializer();
 	}
 
@@ -36,13 +39,13 @@ public class ControllerRegisterFlight implements ActionListener{
 	
 		
 		if(e.getSource()== guiRF.getBRegister()) {
-			
+			//int indice=guiRF.getComboBoxAvion().getSelectedIndex();
 			flight = new Flight(guiRF.getTNumFlight().getText(),
 					guiRF.getTDepartureCity().getText(),
 					guiRF.getTDepartureDateTime().getText(),
 					guiRF.getTArrivalCity().getText(),
 					guiRF.getTArrivalDateTime().getText(),
-					guiRF.getComboBoxAvion().getSelectedItem().toString(),
+					guiRF.getComboBoxAvion1().getSelectedItem().toString(),
 					guiRF.getComboBoxState().getSelectedItem().toString(),
 					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
 			
@@ -54,7 +57,7 @@ public class ControllerRegisterFlight implements ActionListener{
 					flight.getDepartureDateTime(),
 					flight.getArrivalCity(),
 					flight.getArrivalDateTime(),
-					guiRF.getComboBoxAvion().getSelectedItem().toString(),
+					guiRF.getComboBoxAvion1().getSelectedItem().toString(),
 					guiRF.getComboBoxState().getSelectedItem().toString(),
 					flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
 			

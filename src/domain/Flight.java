@@ -122,8 +122,8 @@ public class Flight {
 	}
 	@Override
 	public String toString() {
-		return numFlight + "-" + departureCity + "-"+ departureDateTime + "-" + arrivalCity + "-"
-				+ arrivalDateTime+ "-" + flight + "-" + seat + "-" + amount;
+		return numFlight + "\n" + departureCity + "\n"+ departureDateTime + "\n" + arrivalCity + "\n"
+				+ arrivalDateTime+ "\n" + flight + "\n" + seat + "-" + getAmount(seat);
 	}
 	
 	
