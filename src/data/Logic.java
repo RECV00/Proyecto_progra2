@@ -113,7 +113,50 @@ public ArrayList<User> getListUser(String FileName, String elementType) {
 		}
 		return arrayLUser;
 	}
+public ArrayList<User> searchXMLUser(String fileName,String elementType, String data,String word) {
+    arrayLUser = new ArrayList<>();
+    User user= new User();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+
+                // Obtener el nombre de usuario del elemento "username"
+                String userName = eElement.getAttribute(data);
+
+                if (userName.equals(word)) {
+                	
+                	user = new User(eElement.getAttribute("userName"),
+							eElement.getElementsByTagName("password").item(0).getTextContent(),
+							eElement.getElementsByTagName("typeUser").item(0).getTextContent(), 
+							eElement.getElementsByTagName("state").item(0).getTextContent());
+
+                    arrayLUser.add(user);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLUser;
+}
 	//Aerolinea
 	
 public ArrayList<Airline> readXMLArrayListAirline(String FileName, String elementType,String[]dataName) {
@@ -183,7 +226,42 @@ public ArrayList<Airline> getListAirline(String FileName, String elementType) {
 	}
 	return arrayLAirline;
 }
+public ArrayList<Airline> searchXMLAirline(String fileName,String elementType, String data,String word) {
+    arrayLAirline = new ArrayList<>();
+    Airline a = new Airline();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener el nombre de la Aerolinea del elemento "name"
+                String name = eElement.getAttribute(data);
 
+                if (name.equals(word)) {
+                	
+                	a = new Airline(eElement.getAttribute("name"),
+							eElement.getElementsByTagName("contry").item(0).getTextContent());
+
+                    arrayLAirline.add(a);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLAirline;
+}
 
 //BRAND
 public ArrayList<Brand> readXMLArrayListBrand(String FileName, String elementType,String[]dataName) {
@@ -251,7 +329,41 @@ public ArrayList<Brand> getListBrand(String FileName, String elementType) {
 	}
 	return arrayLBrand;
 }
+public ArrayList<Brand> searchXMLBrand(String fileName,String elementType, String data,String word) {
+    arrayLBrand = new ArrayList<>();
+    Brand b = new Brand();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener el nombre de la marca del elemento "name"
+                String name = eElement.getAttribute(data);
 
+                if (name.equals(word)) {
+                	
+                	b = new Brand(eElement.getAttribute("name"));
+
+                    arrayLBrand.add(b);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLBrand;
+}
 //FLIGHT
 public ArrayList<Flight> readXMLArrayListFlight(String FileName, String elementType,String[]dataName) {
 	
@@ -336,6 +448,49 @@ public ArrayList<Flight> getListFlight(String FileName, String elementType) {
 	}
 	return arrayLFlight;
 }
+public ArrayList<Flight> searchXMLFlight(String fileName,String elementType, String data,String word) {
+    arrayLFlight = new ArrayList<>();
+    Flight f = new Flight();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener el nombre de la marca del elemento "name"
+                String numFlight = eElement.getAttribute(data);
+
+                if (numFlight.equals(word)) {
+                	
+                	f = new Flight(eElement.getAttribute("numFlight"),
+    						eElement.getElementsByTagName("departureCity").item(0).getTextContent(),
+    						eElement.getElementsByTagName("departureDateTime").item(0).getTextContent(),
+    						eElement.getElementsByTagName("arrivalCity").item(0).getTextContent(),
+    						eElement.getElementsByTagName("arrivalDateTime").item(0).getTextContent(),
+    						eElement.getElementsByTagName("flight").item(0).getTextContent(),
+    						eElement.getElementsByTagName("seat").item(0).getTextContent(),
+    						Integer.parseInt(eElement.getElementsByTagName("amount").item(0).getTextContent()));
+
+                    arrayLFlight.add(f);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLFlight;
+}
+
 //MODEL
 public ArrayList<Model> readXMLArrayListModel(String FileName, String elementType,String[]dataName) {
 	
@@ -413,6 +568,45 @@ public ArrayList<Model> getListModel(String FileName, String elementType) {
 	}
 	return arrayLModel;
 }
+public ArrayList<Model> searchXMLModel(String fileName,String elementType, String data,String word) {
+    arrayLModel = new ArrayList<>();
+    Model m = new Model();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener el nombre de la model del elemento "name"
+                String nameModel = eElement.getAttribute(data);
+
+                if (nameModel.equals(word)) {
+                	
+                	m = new Model(eElement.getAttribute("name"),
+    						eElement.getElementsByTagName("marca").item(0).getTextContent(),
+    						Integer.parseInt(eElement.getElementsByTagName("cantSeatExecutive").item(0).getTextContent()),
+    						Integer.parseInt(eElement.getElementsByTagName("cantSeatTourist").item(0).getTextContent()),
+    						Integer.parseInt(eElement.getElementsByTagName("cantSeatEconomic").item(0).getTextContent()));
+    				
+    				arrayLModel.add(m);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLModel;
+}
 //PASSENGER
 public ArrayList<Passenger> readXMLArrayListPassenger(String FileName, String elementType,String[]dataName) {
 	
@@ -485,6 +679,47 @@ public ArrayList<Passenger> getListPassenger(String FileName, String elementType
 	}
 	return arrayLPassenger;
 }
+public ArrayList<Passenger> searchXMLPassenger(String fileName,String elementType, String data,String word) {
+    arrayLPassenger = new ArrayList<>();
+    Passenger p = new Passenger();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener el  Pasaporte del elemento "name"
+                String passaport = eElement.getAttribute(data);
+
+                if (passaport.equals(word)) {
+                	
+                	p = new Passenger(eElement.getAttribute("passport"),
+    						eElement.getElementsByTagName("name").item(0).getTextContent(),
+    						eElement.getElementsByTagName("lastName").item(0).getTextContent(),
+    						eElement.getElementsByTagName("birthdate").item(0).getTextContent(),
+    						eElement.getElementsByTagName("gmail").item(0).getTextContent(),
+    						Integer.parseInt(eElement.getElementsByTagName("phone").item(0).getTextContent()));
+    				
+    				arrayLPassenger.add(p);
+    				
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLPassenger;
+}
 //PLANE
 public ArrayList<Plane> readXMLArrayListPlane(String FileName, String elementType,String[]dataName) {
 	
@@ -553,6 +788,45 @@ public ArrayList<Plane> getListPlane(String FileName, String elementType) {
 		e.printStackTrace();
 	}
 	return arrayLPlane;
+}
+public ArrayList<Plane> searchXMLPlane(String fileName,String elementType, String data,String word) {
+    arrayLPlane = new ArrayList<>();
+    Plane p = new Plane();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener la placa del elemento "plate"
+                String plate = eElement.getAttribute(data);
+
+                if (plate.equals(word)) {
+                	
+    				p = new Plane(eElement.getAttribute("plate"),
+    						eElement.getElementsByTagName("airline").item(0).getTextContent(),
+    						eElement.getElementsByTagName("model").item(0).getTextContent(),
+    						eElement.getElementsByTagName("year").item(0).getTextContent());
+    				
+    				arrayLPlane.add(p);
+    				
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLPlane;
 }
 //TICKET
 public ArrayList<Ticket> readXMLArrayListTicket(String FileName, String elementType,String[]dataName) {
@@ -624,42 +898,34 @@ public ArrayList<Ticket> getListTicket(String FileName, String elementType) {
 	return arrayLTicket;
 }
 	//------------------------------------------------------------------------------------------------
-
-public ArrayList<User> searchXMLUser(String fileName,String elementType, String data,String word) {
-    arrayLUser = new ArrayList<>();
-    User user= new User();
+public ArrayList<Ticket> searchXMLTicket(String fileName,String elementType, String data,String word) {
+    arrayLTicket = new ArrayList<>();
+    Ticket t = new Ticket();
     
     try {
         // Crear el objeto DocumentBuilderFactory
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
         // Crear el objeto DocumentBuilder
         DocumentBuilder builder = factory.newDocumentBuilder();
-
         // Parsear el archivo XML y obtener el documento
         Document documento = builder.parse(new File(fileName));
-
         // Obtener la lista de nodos con etiqueta "usuario"
         NodeList listaUser = documento.getElementsByTagName(elementType);
-
         // Recorrer la lista de usuarios
         for (int i = 0; i < listaUser.getLength(); i++) {
             Node nodoUser = listaUser.item(i);
-
             if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nodoUser;
+                // Obtener el numero tiquete del elemento "numTicket"
+                String numTicket = eElement.getAttribute(data);
 
-                // Obtener el nombre de usuario del elemento "username"
-                String userName = eElement.getAttribute(data);
-
-                if (userName.equals(word)) {
+                if (numTicket.equals(word)) {
                 	
-                	user = new User(eElement.getAttribute("userName"),
-							eElement.getElementsByTagName("password").item(0).getTextContent(),
-							eElement.getElementsByTagName("typeUser").item(0).getTextContent(), 
-							eElement.getElementsByTagName("state").item(0).getTextContent());
-
-                    arrayLUser.add(user);
+                	t = new Ticket(eElement.getAttribute("numTicket"),
+    						eElement.getElementsByTagName("passport").item(0).getTextContent(),
+    						eElement.getElementsByTagName("numFlight").item(0).getTextContent());
+    				arrayLTicket.add(t);
+    				
                 }
             }
         }
@@ -667,6 +933,6 @@ public ArrayList<User> searchXMLUser(String fileName,String elementType, String 
         e.printStackTrace();
     }
 
-    return arrayLUser;
+    return arrayLTicket;
 }
 }
