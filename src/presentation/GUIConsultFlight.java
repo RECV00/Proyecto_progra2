@@ -53,7 +53,7 @@ public class GUIConsultFlight extends JFrame {
 	
 	
 	public GUIConsultFlight() {
-		guiRF= new GUIRegisterFlight();
+		//guiRF= new GUIRegisterFlight();
 		
 		setDTMTFlight(dataTable,getColumnsNames());
 		setFlight(dtmTFlight);
