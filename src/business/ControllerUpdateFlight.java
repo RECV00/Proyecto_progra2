@@ -53,9 +53,9 @@ public class ControllerUpdateFlight implements ActionListener{
 					flight.getDepartureDateTime(),
 					flight.getArrivalCity(),
 					flight.getArrivalDateTime(),
-					guiUF.getComboBoxAvion().getSelectedItem().toString(),
-					guiUF.getComboBoxState().getSelectedItem().toString(),
-					flight.getAmount(guiUF.getComboBoxState().getSelectedItem().toString())});
+					flight.getFlight(),
+					flight.getSeat(),
+					flight.getAmount(flight.getSeat())});
 				
 				guiUF.setArrayListFlight(lo.getListFlight("Flights.xml","Flight"));
 				
