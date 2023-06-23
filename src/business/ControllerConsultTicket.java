@@ -39,8 +39,10 @@ public class ControllerConsultTicket implements ActionListener{
 		if(e.getSource()==guiCT.getBSearch()) {
 		try {//cambiar metodo
 			guiCT.getDTMTTicket().setRowCount(0);
-			guiCT.setArrayListTicket(lo.getListTicket("Tickets.xml", "Ticket"));
-			guiCT.fillTable(guiCT.getArrayListTicket());		} catch (Exception e1) {
+			guiCT.setArrayListTicket(lo.searchXMLTicket("Tickets.xml", "Ticket", "numTicket", 
+			guiCT.getTConsultNumTicket().getText()));
+			guiCT.fillTable(guiCT.getArrayListTicket());	
+			} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}

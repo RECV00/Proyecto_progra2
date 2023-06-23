@@ -40,7 +40,8 @@ public class ControllerConsultPlane implements ActionListener{
 		if(e.getSource()==guiCPlane.getBSearch()) {
 		try {//cambiar metodo
 			guiCPlane.getDTMTPlane().setRowCount(0);
-			guiCPlane.setArrayListPlane(lo.getListPlane("Planes.xml", "Plane"));
+			guiCPlane.setArrayListPlane(lo.searchXMLPlane("Planes.xml", "Plane", "plate", 
+			guiCPlane.getTConsultPlane().getText()));
 			guiCPlane.fillTable(guiCPlane.getArrayListPlane());		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

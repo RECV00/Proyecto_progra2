@@ -37,7 +37,8 @@ public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiCM.getBSearch()) {
 		try {
 			guiCM.getDTMTModel().setRowCount(0);
-			guiCM.setArrayListModel(lo.getListModel("Models.xml", "Model"));
+			guiCM.setArrayListModel(lo.searchXMLModel("Models.xml", "Model", "name",
+			guiCM.getTConsultName().getText()));
 			guiCM.fillTable(guiCM.getArrayListModel());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

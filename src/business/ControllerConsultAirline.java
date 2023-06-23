@@ -46,7 +46,8 @@ public class ControllerConsultAirline implements ActionListener{
 		if(e.getSource()==guiCA.getBSearch()) {
 			try {//cambiar por el metodo buscar
 				guiCA.getDTMTAirline().setRowCount(0);
-				guiCA.setArrayListAirline(lo.getListAirline("Airlines.xml", "Airline"));
+				guiCA.setArrayListAirline(lo.searchXMLAirline("Airlines.xml", "Airline", "name", 
+				guiCA.getTConsultAirline().getText()));
 				guiCA.fillTable(guiCA.getArrayListAirline());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

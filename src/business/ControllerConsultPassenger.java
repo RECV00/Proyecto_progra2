@@ -38,8 +38,9 @@ public class ControllerConsultPassenger implements ActionListener{
 		if(e.getSource()==guiCP.getBSearch()) {
 		try {//cambiar metodo getlispassenger
 			guiCP.getDTMTPassenger().setRowCount(0);
-			guiCP.setArrayListPassenger(lo.getListPassenger("Passengers.xml", "Passenger"));
-			guiCP.fillTable(guiCP.getArrayListPassenger());		} catch (Exception e1) {
+			guiCP.setArrayListPassenger(lo.searchXMLPassenger("Passengers.xml", "Passenger", "passport", guiCP.getTConsultPasspotPassenger().getText()));
+			guiCP.fillTable(guiCP.getArrayListPassenger());		
+			} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
