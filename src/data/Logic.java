@@ -414,7 +414,7 @@ public ArrayList<Flight> readXMLArrayListFlight(String FileName, String elementT
 	return arrayLFlight;
 }
 public ArrayList<Flight> getListFlight(String FileName, String elementType) {
-	 arrayLFlight= new ArrayList<>();
+	 arrayLFlight= new ArrayList<Flight>();
 	Flight f = new Flight();
 	try {
 		File inputFile = new File(FileName);
