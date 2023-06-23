@@ -117,7 +117,7 @@ public class Flight {
 	}
 	public String[] getData() {
 		String[] data = {numFlight,departureCity,departureDateTime,
-				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(getAmount(getSeat()) )};
+				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(getAmount(seat))};
 		return data;
 	}
 	@Override
