@@ -29,14 +29,16 @@ public class ControllerConsultFlight implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiCF.getBCheckHistory()) {
+			
 			guiCF.getDTMTFlight().setRowCount(0);
 			guiCF.setArrayListFlight(lo.getListFlight("Flights.xml", "Flight"));
 			guiCF.fillTable(guiCF.getArrayListFlight());
 		}
 		if(e.getSource()== guiCF.getBSearch()) {
 			try {
+				
 				guiCF.getDTMTFlight().setRowCount(0);
-				guiCF.setArrayListFlight(lo.getListFlight("Airlines.xml", "Airline"));
+				guiCF.setArrayListFlight(lo.searchXMLFlight("Flights.xml", "Flight", "numFlight", guiCF.getTConsultNameVuelo().getText()));
 				guiCF.fillTable(guiCF.getArrayListFlight());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
