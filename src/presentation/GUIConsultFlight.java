@@ -79,7 +79,7 @@ public void fillTable(ArrayList <Flight> list) {
 		
 		for(Flight f : list) {
 			dtmTFlight.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
-					f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
+					f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(f.getSeat())});
 		}
 		setFlight(dtmTFlight);
 	}
