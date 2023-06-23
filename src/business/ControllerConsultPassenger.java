@@ -2,10 +2,12 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
 import domain.Passenger;
+import domain.User;
 import presentation.GUIConsultPassenger;
 
 public class ControllerConsultPassenger implements ActionListener{
@@ -14,7 +16,7 @@ public class ControllerConsultPassenger implements ActionListener{
 	private FilesXML fXML;
 	private Passenger passenger;
 	private Logic lo;
-
+	ArrayList<Passenger>arrayLPassenger;
 	public ControllerConsultPassenger() {
 		guiCP = new GUIConsultPassenger();
 		passenger= new Passenger();
@@ -37,10 +39,13 @@ public class ControllerConsultPassenger implements ActionListener{
 		}
 		if(e.getSource()==guiCP.getBSearch()) {
 		try {//cambiar metodo getlispassenger
+			arrayLPassenger = lo.searchXMLPassenger("Passengers.xml", "Passenger","passport", guiCP.getTConsultPasspotPassenger().getText());
 			guiCP.getDTMTPassenger().setRowCount(0);
 			guiCP.setArrayListPassenger(lo.searchXMLPassenger("Passengers.xml", "Passenger", "passport", guiCP.getTConsultPasspotPassenger().getText()));
 			guiCP.fillTable(guiCP.getArrayListPassenger());		
-			} catch (Exception e1) {
+			
+		} catch (Exception e1) {
+
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
