@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class GUIConsultPassenger extends JFrame {
+public class GUIImpresionTiquete extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -38,13 +38,13 @@ public class GUIConsultPassenger extends JFrame {
 	private ArrayList<Passenger> arrayLPassenger;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bCheckHistory;
+	private JButton bImprimir;
 	private JLabel tTitule;
-	private JTextField tConsultPasspotPassenger;
+	private JTextField tDatosPasajero;
 	private JLabel lPassportPassengerConsult;
-	private JButton bSearch;
+	private JButton bFiltrar;
 
-	public GUIConsultPassenger() {
+	public GUIImpresionTiquete() {
 		
 		setDTMTPassenger(dataTable,getColumnsNames());
 		setPassenger(dtmTPassenger);
@@ -55,11 +55,11 @@ public class GUIConsultPassenger extends JFrame {
 		setTitle("Sistema de Aereolineas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBCheckHistory());
+		getContentPane().add(getBImprimir());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTConsultPasspotPassenger());
+		getContentPane().add(getTDatosPasajero());
 		getContentPane().add(getLPassportPassengerConsult());
-		getContentPane().add(getBSearch());
+		getContentPane().add(getBFiltrar());
 		setSize(1000,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,7 +115,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Pasaporte", "Nombre", "Apellido", "Cumpleaños","Correo","Celular"};
+		String columnsNames[] = {"DATOS DEL PASAJERO"};
 		return columnsNames;
 	}
 
@@ -161,16 +161,16 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBCheckHistory() {
-		if (bCheckHistory == null) {
-			bCheckHistory = new JButton("Consultar Historial");
-			bCheckHistory.addActionListener(new ActionListener() {
+	public JButton getBImprimir() {
+		if (bImprimir == null) {
+			bImprimir = new JButton("Imprimir");
+			bImprimir.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bImprimir.setBounds(376, 107, 141, 23);
 		}
-		return bCheckHistory;
+		return bImprimir;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
@@ -181,13 +181,13 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 		}
 		return tTitule;
 	}
-	public JTextField getTConsultPasspotPassenger() {
-		if (tConsultPasspotPassenger == null) {
-			tConsultPasspotPassenger = new JTextField();
-			tConsultPasspotPassenger.setBounds(34, 79, 146, 29);
-			tConsultPasspotPassenger.setColumns(10);
+	public JTextField getTDatosPasajero() {
+		if (tDatosPasajero == null) {
+			tDatosPasajero = new JTextField();
+			tDatosPasajero.setBounds(34, 79, 146, 29);
+			tDatosPasajero.setColumns(10);
 		}
-		return tConsultPasspotPassenger;
+		return tDatosPasajero;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getLPassportPassengerConsult() {
@@ -198,11 +198,11 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 		return lPassportPassengerConsult;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBSearch() {
-		if (bSearch == null) {
-			bSearch = new JButton("Buscar");
-			bSearch.setBounds(190, 82, 89, 23);
+	public JButton getBFiltrar() {
+		if (bFiltrar == null) {
+			bFiltrar = new JButton("Filtrar");
+			bFiltrar.setBounds(190, 82, 89, 23);
 		}
-		return bSearch;
+		return bFiltrar;
 	}
 }

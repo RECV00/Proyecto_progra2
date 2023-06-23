@@ -33,6 +33,7 @@ public class ControllerConsultFlight implements ActionListener{
 			guiCF.getDTMTFlight().setRowCount(0);
 			guiCF.setArrayListFlight(lo.getListFlight("Flights.xml", "Flight"));
 			guiCF.fillTable(guiCF.getArrayListFlight());
+			
 		}
 		if(e.getSource()== guiCF.getBSearch()) {
 			try {

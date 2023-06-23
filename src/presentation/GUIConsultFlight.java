@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import data.FilesXML;
+import data.Logic;
 import domain.Airline;
 import domain.Flight;
 
@@ -22,6 +24,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+
+import presentation.GUIRegisterFlight;
 
 public class GUIConsultFlight extends JFrame {
 
@@ -44,7 +48,12 @@ public class GUIConsultFlight extends JFrame {
 	private JLabel lConsultNameVuelo;
 	private JButton bSearch;
 
+	
+	private GUIRegisterFlight guiRF;
+	
+	
 	public GUIConsultFlight() {
+		//guiRF= new GUIRegisterFlight();
 		
 		setDTMTFlight(dataTable,getColumnsNames());
 		setFlight(dtmTFlight);
@@ -70,7 +79,7 @@ public void fillTable(ArrayList <Flight> list) {
 		
 		for(Flight f : list) {
 			dtmTFlight.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
-					f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(f.getSeat())});
+					f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
 		}
 		setFlight(dtmTFlight);
 	}
