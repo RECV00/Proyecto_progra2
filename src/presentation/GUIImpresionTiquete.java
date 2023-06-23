@@ -175,7 +175,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Pasajeros");
+			tTitule = new JLabel("Imprimir Tiquete");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(221, 11, 279, 29);
 		}

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class GUIUpdateFlight extends JFrame {
@@ -55,6 +56,8 @@ public class GUIUpdateFlight extends JFrame {
 	private JLabel lFlights;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
+	private JLabel lAvion;
+	private JLabel lAsiento;
 
 	public GUIUpdateFlight() {
 		
@@ -81,6 +84,8 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getTArrivalCity());
 		getContentPane().add(getTArrivalDateTime());
 		getContentPane().add(getComboBoxAvion());
+		getContentPane().add(getLAvion());
+		getContentPane().add(getLAsiento());
 		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -322,5 +327,19 @@ public JComboBox getComboBoxAvion() {
 			tArrivalDateTime.setColumns(10);
 		}
 		return tArrivalDateTime;
+	}
+	public JLabel getLAvion() {
+		if (lAvion == null) {
+			lAvion = new JLabel("Avión");
+			lAvion.setBounds(485, 60, 49, 14);
+		}
+		return lAvion;
+	}
+	public JLabel getLAsiento() {
+		if (lAsiento == null) {
+			lAsiento = new JLabel("Asiento");
+			lAsiento.setBounds(482, 116, 75, 14);
+		}
+		return lAsiento;
 	}
 }
