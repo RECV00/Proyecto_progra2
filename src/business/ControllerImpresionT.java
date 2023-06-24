@@ -34,8 +34,10 @@ public class ControllerImpresionT implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==guiIT.getBFiltrar()) {
-			System.out.print(lo.searchXMLPassenger("Passengers.xml","Passenger", null, null));
-			
+			guiIT.getDTMTPassenger().setRowCount(0);
+			guiIT.setArrayListPassenger(lo.searchXMLPassenger("Passengers.xml","Passenger", "passport", guiIT.getTDatosPasajero().getText()));
+			System.out.print(lo.searchXMLPassenger("Passengers.xml","Passenger", "passport", guiIT.getTDatosPasajero().getText()));
+			guiIT.fillTable(guiIT.getArrayListPassenger());
 		}
 		if(e.getSource() == guiIT.getBImprimir()) {
 			guiIT.print(guiIT.getTPassenger());//pdf

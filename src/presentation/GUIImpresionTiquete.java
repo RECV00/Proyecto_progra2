@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Airline;
+import domain.Brand;
 import domain.Passenger;
 
 import javax.swing.JTextField;
@@ -89,10 +90,14 @@ public class GUIImpresionTiquete extends JFrame {
 	}
 public void fillTable(ArrayList <Passenger> list) {
 		
-		for(Passenger p : list) {
-			dtmTPassenger.addRow(new Object[] {p.getPassport(),p.getName(),p.getLastName(),
-					p.getBirthdate(),p.getGmail(),p.getPhone()});
-		}
+		for (Passenger p : list) {
+			dtmTPassenger.addRow(new Object[]{p.getPassport()});
+	        dtmTPassenger.addRow(new Object[]{p.getName()});
+	        dtmTPassenger.addRow(new Object[]{p.getLastName()});
+	        dtmTPassenger.addRow(new Object[]{p.getBirthdate()});
+	        dtmTPassenger.addRow(new Object[]{p.getGmail()});
+	        dtmTPassenger.addRow(new Object[]{p.getPhone()});
+	    }
 		setPassenger(dtmTPassenger);
 	}
 
@@ -162,7 +167,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(10, 130, 222, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -177,7 +182,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(870, 20, 94, 23);
 		}
 		return bExit;
 	}
@@ -198,7 +203,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 		if (tTitule == null) {
 			tTitule = new JLabel("Imprimir Tiquete");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(221, 11, 279, 29);
+			tTitule.setBounds(335, 11, 279, 29);
 		}
 		return tTitule;
 	}

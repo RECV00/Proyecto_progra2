@@ -37,8 +37,7 @@ public class ControllerConsultBrand implements ActionListener{
 		if(e.getSource()==guiCB.getBSearch()) {
 			try {//cambiar por el metodo buscar
 				guiCB.getDTMTBrand().setRowCount(0);
-				guiCB.setArrayListBrand(lo.searchXMLBrand("Brands.xml", "Brand", "name", 
-				guiCB.getTConsultBrandName().getText()));
+				guiCB.setArrayListBrand(lo.searchXMLBrand("Brands.xml", "Brand", "name",guiCB.getTConsultBrandName().getText()));
 				guiCB.fillTable(guiCB.getArrayListBrand());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
