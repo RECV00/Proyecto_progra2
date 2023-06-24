@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import domain.Airline;
 import domain.Passenger;
+import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -40,7 +41,7 @@ public class GUIImpresionTiquete extends JFrame {
 	private JScrollPane spTPassenger;
 	
 	private ArrayList<Passenger> arrayLPassenger;
-	private ArrayList <Airplane> listA;
+	private ArrayList <Airline> listA;
 	private ArrayList <Plane> listP;
 	private Object dataTable[][];
 	private JButton bExit;
@@ -76,9 +77,7 @@ public class GUIImpresionTiquete extends JFrame {
 		setVisible(true);
 		
 	}
-<<<<<<< HEAD
-public void fillTable(ArrayList <Passenger> list,ArrayList <Airplane> listA,ArrayList <Plane> listP) {
-=======
+
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
@@ -92,8 +91,7 @@ public void fillTable(ArrayList <Passenger> list,ArrayList <Airplane> listA,Arra
 		}
 		return li;
 	}
-public void fillTable(ArrayList <Passenger> list) {
->>>>>>> 28698201537a63bc99d767b610c3522a0c963a44
+public void fillTable(ArrayList <Passenger> list,ArrayList <Airline> listA,ArrayList <Plane> listP) {
 		
 		for (Passenger p : list) {
 			dtmTPassenger.addRow(new Object[]{p.getPassport()});
@@ -236,4 +234,13 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 		}
 		return bFiltrar;
 	}
+	
+
+	
+	
+//---------------------------AEROLINEAS----------------------------------------------------------
+	
+	
+	
+	
 }
