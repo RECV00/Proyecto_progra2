@@ -11,12 +11,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Airline;
+import domain.Model;
 import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 public class GUIRegisterPlane extends JFrame {
 
@@ -40,13 +44,20 @@ public class GUIRegisterPlane extends JFrame {
 	private JTextField tAvionRegisterPlane;
 	private JLabel lAirplaneRegisterPalne;
 	private JLabel lModelRegisterPlane;
-	private JTextField tAirplaneRegisterPalne;
-	private JTextField tModelRegisterPlane;
 	private JTextField tYearRegisterPlane;
 	private JLabel lYearRegisterPlane;
-
-	public GUIRegisterPlane() {
+	
+	private JComboBox<String> comboBoxAirline;
+    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+	private JComboBox<String> comboBoxModel;
+	ArrayList<Airline>arrayLA;
+	ArrayList<Model>arrayLM;
+	
+	public GUIRegisterPlane(ArrayList<Airline>arrayLA,ArrayList<Model>arrayLM) {
 		
+		llenarComboBoxModel(arrayLM,getComboBoxModel());
+		llenarComboBoxAirline(arrayLA,getComboBoxAirline());
+
 		setDTMTPlane(dataTable,getColumnsNames());
 		setPlane(dtmTPlane);
 		setSPTPlane(tPlane);
@@ -62,10 +73,10 @@ public class GUIRegisterPlane extends JFrame {
 		getContentPane().add(getTAvionRegisterPlane());
 		getContentPane().add(getLAirplaneRegisterPalne());
 		getContentPane().add(getLModelRegisterPlane());
-		getContentPane().add(getTAirplaneRegisterPalne());
-		getContentPane().add(getTModelRegisterPlane());
 		getContentPane().add(getTYearRegisterPlane());
 		getContentPane().add(getLYearRegisterPlane());
+		getContentPane().add(getComboBoxAirline());
+		getContentPane().add(getComboBoxModel());
 		setSize(661,420);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -206,30 +217,11 @@ public class GUIRegisterPlane extends JFrame {
 		}
 		return lModelRegisterPlane;
 	}
-//------------------------------------------------------------------------------------
-	public JTextField getTAirplaneRegisterPalne() {
-		if (tAirplaneRegisterPalne == null) {
-			tAirplaneRegisterPalne = new JTextField();
-			tAirplaneRegisterPalne.setBounds(27, 150, 96, 20);
-			tAirplaneRegisterPalne.setColumns(10);
-		}
-		return tAirplaneRegisterPalne;
-	}
-//------------------------------------------------------------------------------------
-	public JTextField getTModelRegisterPlane() {
-		if (tModelRegisterPlane == null) {
-			tModelRegisterPlane = new JTextField();
-			tModelRegisterPlane.setText("");
-			tModelRegisterPlane.setBounds(160, 89, 96, 20);
-			tModelRegisterPlane.setColumns(10);
-		}
-		return tModelRegisterPlane;
-	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tAvionRegisterPlane.setText("");
-		tAirplaneRegisterPalne.setText("");
-		tModelRegisterPlane.setText("");
+		comboBoxModel.setToolTipText("");
+		comboBoxAirline.setToolTipText("");
 		tYearRegisterPlane.setText("");
 	}
 //------------------------------------------------------------------------------------
@@ -252,4 +244,60 @@ public class GUIRegisterPlane extends JFrame {
 		}
 		return lYearRegisterPlane;
 	}
+	//---------------------------------------------------------------------
+	public JComboBox<String> getComboBoxAirline() {
+		if (comboBoxAirline == null) {
+			comboBoxAirline = new JComboBox<String>();
+			comboBoxAirline.setBounds(27, 145, 96, 22);
+			comboBoxAirline.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		}
+		return comboBoxAirline;
+	}
+	public ArrayList<Airline>getArrayListAirline(){
+		return arrayLA;
+	}
+	public void setArrayListPlane(ArrayList<Airline> arrayLA){
+		this.arrayLA = arrayLA;
+	}
+	public void llenarComboBoxAirline(ArrayList<Airline>arrayLA,JComboBox<String> comboBox) {
+		String[] nameA = new String[arrayLA.size()];
+		for(int i=0; i<arrayLA.size(); i++) {
+			nameA[i]=arrayLA.get(i).getName();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(nameA);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+	    public void setcomboBoxAvion1(JComboBox<String> comboBoxAirline) {
+	        this.comboBoxAirline = comboBoxAirline;
+	    }
+	
+	//------------------------------------------------------------------------
+	public JComboBox<String> getComboBoxModel() {
+		if (comboBoxModel == null) {
+			comboBoxModel = new JComboBox<String>();
+			comboBoxModel.setBounds(157, 88, 94, 22);
+			comboBoxModel.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+			
+		}
+		return comboBoxModel;
+	}
+	
+	public void llenarComboBoxModel(ArrayList<Model>arrayLM,JComboBox<String> comboBox) {
+		String[] nameM = new String[arrayLM.size()];
+		for(int i=0; i<arrayLM.size(); i++) {
+			nameM[i]=arrayLM.get(i).getName();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(nameM);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+	    public void setcomboBoxModel(JComboBox<String> comboBoxModel) {
+	        this.comboBoxModel = comboBoxModel;
+	    }
+	
 }
