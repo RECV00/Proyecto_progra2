@@ -11,15 +11,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Brand;
 import domain.Model;
+import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
+@SuppressWarnings("serial")
 public class GUIRegisterModel extends JFrame {
 
 	private JPanel contentPane;
@@ -42,15 +47,19 @@ public class GUIRegisterModel extends JFrame {
 	private JTextField tNameModel;
 	private JLabel lMarcaModel;
 	private JLabel lnumAsientosModelEJE;
-	private JTextField tMarcaModel;
 	private JTextField tCanMarcaModelEJE;
 	private JLabel lnumAsientosModelTUR;
 	private JTextField tCanAsientosTUR;
 	private JLabel lnumAsientosModelEco;
 	private JTextField tCanAsientosECO;
+	private JComboBox<String>comboBoxBrand;	//Combobox para cargar los nombres de las marcas
+    private DefaultComboBoxModel<String>comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+	ArrayList<Brand>arrayLB;
+	
+    public GUIRegisterModel(ArrayList<Brand>arrayLB) {
+    	
+    	llenarComboBoxBrand(arrayLB,getComboBoxBrand());
 
-	public GUIRegisterModel() {
-		
 		setDTMTModel(dataTable,getColumnsNames());
 		setModel(dtmTModel);
 		setSPTModel(tModel);
@@ -66,12 +75,12 @@ public class GUIRegisterModel extends JFrame {
 		getContentPane().add(getTNameModel());
 		getContentPane().add(getLMarcaModel());
 		getContentPane().add(getLnumAsientosModelEJE());
-		getContentPane().add(getTMarcaModel());
 		getContentPane().add(getTCanMarcaModelEJE());
 		getContentPane().add(getLnumAsientosModelTUR());
 		getContentPane().add(getTCanAsientosTUR());
 		getContentPane().add(getLnumAsientosModelEco());
 		getContentPane().add(getTCanAsientosECO());
+		getContentPane().add(getComboBoxBrand());
 		setSize(891,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -183,7 +192,7 @@ public class GUIRegisterModel extends JFrame {
 		if (tTitule == null) {
 			tTitule = new JLabel("Registrar Modelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(304, 11, 279, 29);
+			tTitule.setBounds(298, 11, 285, 29);
 		}
 		return tTitule;
 	}
@@ -199,7 +208,7 @@ public class GUIRegisterModel extends JFrame {
 	public JTextField getTNameModel() {
 		if (tNameModel == null) {
 			tNameModel = new JTextField();
-			tNameModel.setBounds(20, 85, 96, 20);
+			tNameModel.setBounds(10, 85, 94, 20);
 			tNameModel.setColumns(10);
 		}
 		return tNameModel;
@@ -208,7 +217,7 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLMarcaModel() {
 		if (lMarcaModel == null) {
 			lMarcaModel = new JLabel("Marca");
-			lMarcaModel.setBounds(20, 116, 80, 14);
+			lMarcaModel.setBounds(21, 116, 80, 14);
 		}
 		return lMarcaModel;
 	}
@@ -221,20 +230,11 @@ public class GUIRegisterModel extends JFrame {
 		return lnumAsientosModelEJE;
 	}
 //------------------------------------------------------------------------------------
-	public JTextField getTMarcaModel() {
-		if (tMarcaModel == null) {
-			tMarcaModel = new JTextField();
-			tMarcaModel.setBounds(20, 134, 96, 20);
-			tMarcaModel.setColumns(10);
-		}
-		return tMarcaModel;
-	}
-//------------------------------------------------------------------------------------
 	public JTextField getTCanMarcaModelEJE() {
 		if (tCanMarcaModelEJE == null) {
 			tCanMarcaModelEJE = new JTextField();
 			tCanMarcaModelEJE.setText("");
-			tCanMarcaModelEJE.setBounds(156, 85, 61, 20);
+			tCanMarcaModelEJE.setBounds(156, 85, 74, 20);
 			tCanMarcaModelEJE.setColumns(10);
 		}
 		return tCanMarcaModelEJE;
@@ -242,8 +242,10 @@ public class GUIRegisterModel extends JFrame {
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNameModel.setText("");
-		tMarcaModel.setText("");
+		comboBoxBrand.setToolTipText(null);
 		tCanMarcaModelEJE.setText("");
+		tCanAsientosTUR.setText("");
+		tCanAsientosECO.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
@@ -262,7 +264,7 @@ public class GUIRegisterModel extends JFrame {
 			tCanAsientosTUR = new JTextField();
 			tCanAsientosTUR.setText("");
 			tCanAsientosTUR.setColumns(10);
-			tCanAsientosTUR.setBounds(156, 134, 61, 20);
+			tCanAsientosTUR.setBounds(156, 134, 74, 20);
 		}
 		return tCanAsientosTUR;
 	}
@@ -278,9 +280,37 @@ public class GUIRegisterModel extends JFrame {
 			tCanAsientosECO = new JTextField();
 			tCanAsientosECO.setText("");
 			tCanAsientosECO.setColumns(10);
-			tCanAsientosECO.setBounds(375, 85, 61, 20);
+			tCanAsientosECO.setBounds(375, 85, 74, 20);
 		}
 		return tCanAsientosECO;
 	}
+	public JComboBox<String> getComboBoxBrand() {
+		if (comboBoxBrand == null) {
+			comboBoxBrand = new JComboBox<String>();
+			comboBoxBrand.setBounds(20, 141, 106, 22);
+			 comboBoxBrand.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		}
+		return comboBoxBrand;
+	}
+	public ArrayList<Brand>getArrayListBrand(){
+		return arrayLB;
+	}
+	public void setArrayListBrand(ArrayList<Brand> arrayLB){
+		this.arrayLB = arrayLB;
+	}
+	public void llenarComboBoxBrand(ArrayList<Brand>arrayLB,JComboBox<String> comboBox) {
+		String[] marca = new String[arrayLB.size()];
+		for(int i=0; i<arrayLB.size(); i++) {
+			marca[i]=arrayLB.get(i).getName();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(marca);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+	    public void setcomboBoxBrand(JComboBox<String> comboBoxBrand) {
+	        this.comboBoxBrand = comboBoxBrand;
+	    }
 }
 

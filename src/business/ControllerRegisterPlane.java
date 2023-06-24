@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
+import domain.Airline;
+import domain.Model;
 import domain.Plane;
 import domain.User;
 import presentation.GUIRegisterPlane;
@@ -17,14 +19,18 @@ public class ControllerRegisterPlane implements ActionListener{
 	private FilesXML fXML;
 	private Plane plane;
 	private Logic lo;
-	private ArrayList<Plane> arrayLUser;
+	ArrayList<Airline> arrayLA;
+	ArrayList<Model> arrayLM;
+	ArrayList<Plane> arrayLUser;
 	
 	public ControllerRegisterPlane() {
-	guiRPlane= new GUIRegisterPlane();
 	fXML = new FilesXML();
 	lo=new Logic();
 	plane = new Plane();
 	fXML.createXML("Planes", "Planes.xml");
+	arrayLA=lo.getNAirline("Airlines.xml", "Airline");
+	arrayLM=lo.getNModel("Models.xml", "Model");
+	guiRPlane= new GUIRegisterPlane(arrayLA,arrayLM);
 	initializer();
 	}
 
@@ -39,8 +45,8 @@ public class ControllerRegisterPlane implements ActionListener{
 		if(e.getSource()== guiRPlane.getBRegister()) {
 			
 			plane = new Plane(guiRPlane.getTAvionRegisterPlane().getText(),
-					guiRPlane.getTAirplaneRegisterPalne().getText(),
-					guiRPlane.getTModelRegisterPlane().getText(),
+					guiRPlane.getComboBoxAirline().getSelectedItem().toString(),
+					guiRPlane.getComboBoxModel().getSelectedItem().toString(),
 					guiRPlane.getTYearRegisterPlane().getText());
 			
 			fXML.writeXML("Planes.xml","Plane",plane.getDataName(),plane.getData());
@@ -48,7 +54,9 @@ public class ControllerRegisterPlane implements ActionListener{
 			arrayLUser = lo.readXMLArrayListPlane("Planes.xml","Plane",plane.getDataName());
 			guiRPlane.cleanForm();
 			
-				guiRPlane.getDTMTPlane().addRow(new Object [] {plane.getPlate(),plane.getAirline(),plane.getModel(),plane.getYear()});
+				guiRPlane.getDTMTPlane().addRow(new Object [] {plane.getPlate(),
+				guiRPlane.getComboBoxAirline().getSelectedItem().toString(),
+				guiRPlane.getComboBoxModel().getSelectedItem().toString(),plane.getYear()});
 		
 		}
 		if(e.getSource()== guiRPlane.getBExit()) {

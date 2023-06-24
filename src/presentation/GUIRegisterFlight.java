@@ -272,17 +272,10 @@ public class GUIRegisterFlight extends JFrame {
 	    if (comboBoxAvion1 == null) {
 	    	comboBoxAvion1 = new JComboBox<String>();
 	    	 comboBoxAvion1.setBounds(436, 84, 143, 22);
-	        // Obtener el ArrayList de aviones
 	    	 comboBoxAvion1.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 	    	
 	    }
 	    return comboBoxAvion1;
-	}
-	public ArrayList<Plane>getArrayListPlane(){
-		return arrayLP;
-	}
-	public void setArrayListPlane(ArrayList<Plane> arrayLP){
-		this.arrayLP = arrayLP;
 	}
 	public void llenarComboBoxAviones(ArrayList<Plane>arrayLP,JComboBox<String> comboBox) {
 		String[] placas = new String[arrayLP.size()];
@@ -305,8 +298,7 @@ public class GUIRegisterFlight extends JFrame {
 		tDepartureDateTime.setText("");
 		tArrivalCity.setText("");
 		tArrivalDateTime.setText("");
-		comboBoxState.setToolTipText("");
-		//comboBoxAvion.setToolTipText("");
+		comboBoxAvion1.setToolTipText("");
 		comboBoxState.setToolTipText("");
 	}
 //------------------------------------------------------------------------------------

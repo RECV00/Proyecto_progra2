@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
+import domain.Brand;
 import domain.Model;
 import presentation.GUIRegisterModel;
 
@@ -15,14 +16,16 @@ public class ControllerRegisterModel implements ActionListener{
 	private FilesXML fXML;
 	private Model model;
 	private Logic lo;
+	ArrayList<Brand> arrayLB;
 	ArrayList<Model> arrayLModel;
 	
-	public ControllerRegisterModel() {
-	guiRM= new GUIRegisterModel();
+	public ControllerRegisterModel() {	
 	fXML = new FilesXML();
 	lo=new Logic();
 	model = new Model();
 	fXML.createXML("Models", "Models.xml");
+	arrayLB=lo.getNameBrand("Brands.xml", "Brand");
+	guiRM= new GUIRegisterModel(arrayLB);
 	initializer();
 	}
 
@@ -37,7 +40,7 @@ public class ControllerRegisterModel implements ActionListener{
 		
 		if(e.getSource()== guiRM.getBRegister()) {
 			
-			model = new Model(guiRM.getTNameModel().getText(),guiRM.getTMarcaModel().getText(),
+			model = new Model(guiRM.getTNameModel().getText(),guiRM.getComboBoxBrand().getSelectedItem().toString(),
 					Integer.valueOf(guiRM.getTCanMarcaModelEJE().getText()),
 					Integer.valueOf(guiRM.getTCanAsientosTUR().getText()),
 					Integer.valueOf(guiRM.getTCanAsientosECO().getText()));
@@ -45,7 +48,8 @@ public class ControllerRegisterModel implements ActionListener{
 			fXML.writeXML("Models.xml","Model",model.getDataName(),model.getData());
 			arrayLModel= lo.readXMLArrayListModel("Models.xml","Model", model.getDataName());
 		    guiRM.cleanForm();
-			guiRM.getDTMTModel().addRow(new Object [] {model.getName(),model.getMarca(),
+			guiRM.getDTMTModel().addRow(new Object [] {model.getName(),
+			guiRM.getComboBoxBrand().getSelectedItem().toString(),
 			model.getCantSeatExecutive(),model.getCantSeatEconomic(),model.getCantSeatTourist()});
 			
 		}
