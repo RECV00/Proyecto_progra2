@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,10 +19,14 @@ import domain.Passenger;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 public class GUIImpresionTiquete extends JFrame {
 
@@ -29,10 +34,9 @@ public class GUIImpresionTiquete extends JFrame {
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
-	
+	private JLabel li;
 	private DefaultTableModel dtmTPassenger;
 	private JTable tPassenger;
-	
 	private JScrollPane spTPassenger;
 	
 	private ArrayList<Passenger> arrayLPassenger;
@@ -47,6 +51,9 @@ public class GUIImpresionTiquete extends JFrame {
 	private JButton bFiltrar;
 
 	public GUIImpresionTiquete() {
+		getContentPane().setBackground(new Color(255, 255, 255));
+		
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(GUIImpresionTiquete.class.getResource("/media/logo 1.png")));
 		
 		setDTMTPassenger(dataTable,getColumnsNames());
 		setPassenger(dtmTPassenger);
@@ -62,13 +69,31 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getTDatosPasajero());
 		getContentPane().add(getLPassportPassengerConsult());
 		getContentPane().add(getBFiltrar());
+		getContentPane().add(getImagen());
 		setSize(1000,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+<<<<<<< HEAD
 public void fillTable(ArrayList <Passenger> list,ArrayList <Airplane> listA,ArrayList <Plane> listP) {
+=======
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setHorizontalAlignment(SwingConstants.CENTER);
+		li.setBackground(new Color(255, 255, 255));
+		li.setBounds(527, -33, 131, 183);
+		ImageIcon imagen= new ImageIcon("media/Imagen1.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIImpresionTiquete.class.getResource("/media/Imagen1.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+public void fillTable(ArrayList <Passenger> list) {
+>>>>>>> 28698201537a63bc99d767b610c3522a0c963a44
 		
 		for (Passenger p : list) {
 			dtmTPassenger.addRow(new Object[]{p.getPassport()});
