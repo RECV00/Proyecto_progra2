@@ -26,7 +26,6 @@ public class GUILogin extends JFrame {
 	private JButton bLogin;
 	private JPasswordField pfPassword;
 	private JButton bExit;
-	private JLabel lLogin;
 	private JLabel li;
 	/**
 	 * Create the frame.
@@ -34,9 +33,9 @@ public class GUILogin extends JFrame {
 	public GUILogin() {
 		setBackground(new Color(255, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 525, 398);
+		setBounds(100, 100, 567, 407);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -47,17 +46,16 @@ public class GUILogin extends JFrame {
 		contentPane.add(getBLogin());
 		contentPane.add(getPfPassword());
 		contentPane.add(getBExit());
-		contentPane.add(getLLogin());
 		contentPane.add(getImagen());
 		setVisible(true);
 	}
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, 0, 509, 359);
+		li.setBounds(-38, -62, 589, 436);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUILogin.class.getResource("/media/airline-.png")));
+		li.setIcon(new ImageIcon(GUILogin.class.getResource("/media/logo3.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -67,7 +65,7 @@ public class GUILogin extends JFrame {
 			lUser = new JLabel("Usuario");
 			lUser.setBackground(UIManager.getColor("Button.focus"));
 			lUser.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lUser.setBounds(38, 86, 74, 23);
+			lUser.setBounds(45, 233, 74, 23);
 		}
 		return lUser;
 	}
@@ -76,15 +74,15 @@ public class GUILogin extends JFrame {
 			lPassword = new JLabel("Contraseña");
 			lPassword.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassword.setBackground(new Color(204, 255, 204));
-			lPassword.setBounds(38, 143, 74, 23);
+			lPassword.setBounds(45, 283, 74, 23);
 		}
 		return lPassword;
 	}
 	public JTextField getTUser() {
 		if (tUser == null) {
 			tUser = new JTextField();
-			tUser.setBackground(new Color(204, 255, 153));
-			tUser.setBounds(31, 84, 96, 27);
+			tUser.setBackground(new Color(255, 255, 255));
+			tUser.setBounds(33, 231, 96, 27);
 			tUser.setColumns(10);
 		}
 		return tUser;
@@ -94,7 +92,7 @@ public class GUILogin extends JFrame {
 			bLogin = new JButton("Iniciar Sesión");
 			bLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
 			bLogin.setBackground(UIManager.getColor("Button.shadow"));
-			bLogin.setBounds(31, 302, 124, 23);
+			bLogin.setBounds(191, 322, 124, 23);
 		}
 		return bLogin;
 	}
@@ -105,8 +103,8 @@ public class GUILogin extends JFrame {
 	public JPasswordField getPfPassword() {
 		if (pfPassword == null) {
 			pfPassword = new JPasswordField();
-			pfPassword.setBackground(new Color(204, 255, 153));
-			pfPassword.setBounds(31, 140, 96, 28);
+			pfPassword.setBackground(new Color(255, 255, 255));
+			pfPassword.setBounds(33, 280, 96, 28);
 		}
 		return pfPassword;
 	}
@@ -115,18 +113,9 @@ public class GUILogin extends JFrame {
 			bExit = new JButton("Salir");
 			bExit.setFont(new Font("Tahoma", Font.BOLD, 11));
 			bExit.setBackground(UIManager.getColor("Button.light"));
-			bExit.setBounds(429, 11, 70, 23);
+			bExit.setBounds(471, 11, 70, 23);
 		}
 		return bExit;
-	}
-	public JLabel getLLogin() {
-		if (lLogin == null) {
-			lLogin = new JLabel("LOGIN");
-			lLogin.setForeground(new Color(248, 248, 255));
-			lLogin.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 27));
-			lLogin.setBounds(31, 21, 124, 52);
-		}
-		return lLogin;
 	}
 }
 
