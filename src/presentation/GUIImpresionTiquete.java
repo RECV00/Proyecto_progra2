@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Airline;
-import domain.Brand;
 import domain.Passenger;
 
 import javax.swing.JTextField;
@@ -37,6 +36,8 @@ public class GUIImpresionTiquete extends JFrame {
 	private JScrollPane spTPassenger;
 	
 	private ArrayList<Passenger> arrayLPassenger;
+	private ArrayList <Airplane> listA;
+	private ArrayList <Plane> listP;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bImprimir;
@@ -67,7 +68,7 @@ public class GUIImpresionTiquete extends JFrame {
 		setVisible(true);
 		
 	}
-public void fillTable(ArrayList <Passenger> list) {
+public void fillTable(ArrayList <Passenger> list,ArrayList <Airplane> listA,ArrayList <Plane> listP) {
 		
 		for (Passenger p : list) {
 			dtmTPassenger.addRow(new Object[]{p.getPassport()});
@@ -120,7 +121,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"DATOS DEL PASAJERO"};
+		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA","DATOS DEL AVIÓN"};
 		return columnsNames;
 	}
 
@@ -146,7 +147,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 222, 183);
+			scrollPane.setBounds(41, 137, 556, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -173,7 +174,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(376, 107, 141, 23);
+			bImprimir.setBounds(560, 59, 141, 23);
 		}
 		return bImprimir;
 	}
