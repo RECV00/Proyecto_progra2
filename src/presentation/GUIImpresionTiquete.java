@@ -41,8 +41,8 @@ public class GUIImpresionTiquete extends JFrame {
 	private JScrollPane spTPassenger;
 	
 	private ArrayList<Passenger> arrayLPassenger;
-	private ArrayList <Airline> listA;
-	private ArrayList <Plane> listP;
+	private ArrayList <Airline> arrayLAirline;
+	private ArrayList <Plane> arrayLPlane;
 	private Object dataTable[][];
 	private JButton bExit;
 	private JButton bImprimir;
@@ -50,6 +50,15 @@ public class GUIImpresionTiquete extends JFrame {
 	private JTextField tDatosPasajero;
 	private JLabel lPassportPassengerConsult;
 	private JButton bFiltrar;
+	
+	private DefaultTableModel dtmTAirline;
+	private DefaultTableModel dtmTPlane;
+	private JTable tAirline;
+	private JTable tPlane;
+	private JTextField tDatosAerolinea;
+	private JTextField tDatosAvion;
+	private JLabel lDatosAerolinea;
+	private JLabel lDatoAvion;
 
 	public GUIImpresionTiquete() {
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -58,6 +67,8 @@ public class GUIImpresionTiquete extends JFrame {
 		
 		setDTMTPassenger(dataTable,getColumnsNames());
 		setPassenger(dtmTPassenger);
+		setAirline(dtmTAirline);
+		setPlane(dtmTPlane);
 		setSPTPassenger(tPassenger);
 
 		//setContentPane(contentPane);
@@ -71,6 +82,10 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getLPassportPassengerConsult());
 		getContentPane().add(getBFiltrar());
 		getContentPane().add(getImagen());
+		getContentPane().add(getTDatosAerolinea());
+		getContentPane().add(getTDatosAvion());
+		getContentPane().add(getLDatosAerolinea());
+		getContentPane().add(getLDatoAvion());
 		setSize(1000,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,7 +98,7 @@ public class GUIImpresionTiquete extends JFrame {
 		li = new JLabel();
 		li.setHorizontalAlignment(SwingConstants.CENTER);
 		li.setBackground(new Color(255, 255, 255));
-		li.setBounds(527, -33, 131, 183);
+		li.setBounds(845, 54, 131, 183);
 		ImageIcon imagen= new ImageIcon("media/Imagen1.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIImpresionTiquete.class.getResource("/media/Imagen1.png")));
@@ -91,17 +106,48 @@ public class GUIImpresionTiquete extends JFrame {
 		}
 		return li;
 	}
-public void fillTable(ArrayList <Passenger> list,ArrayList <Airline> listA,ArrayList <Plane> listP) {
-		
-		for (Passenger p : list) {
-			dtmTPassenger.addRow(new Object[]{p.getPassport()});
-	        dtmTPassenger.addRow(new Object[]{p.getName()});
-	        dtmTPassenger.addRow(new Object[]{p.getLastName()});
-	        dtmTPassenger.addRow(new Object[]{p.getBirthdate()});
-	        dtmTPassenger.addRow(new Object[]{p.getGmail()});
-	        dtmTPassenger.addRow(new Object[]{p.getPhone()});
+	public void fillTable(ArrayList<Passenger> list, ArrayList<Airline> listA, ArrayList<Plane> listP) {
+	    int maxRows = Math.max(Math.max(list.size(), listA.size()), listP.size());
+
+	    for (int i = 0; i < maxRows; i++) {
+	        if (i < list.size()) {
+	            Passenger p = list.get(i);
+	            dtmTPassenger.addRow(new Object[]{
+	                    p.getPassport(),
+	                    p.getName(),
+	                    p.getLastName(),
+	                    p.getBirthdate(),
+	                    p.getGmail(),
+	                    p.getPhone()
+	            });
+	        } else {
+	            dtmTPassenger.addRow(new Object[]{"", "", "", "", "", ""});
+	        }
+
+	        if (i < listA.size()) {
+	            Airline a = listA.get(i);
+	            dtmTAirline.addRow(new Object[]{
+	                    a.getName(),
+	                    a.getContry()});
+	        } else {
+	            dtmTAirline.addRow(new Object[]{"", ""});
+	        }
+
+	        if (i < listP.size()) {
+	            Plane pl = listP.get(i);
+	            dtmTPlane.addRow(new Object[]{
+	                    pl.getPlate(),
+	                    pl.getAirline(),
+	                    pl.getModel(),
+	                    pl.getYear()});
+	        } else {
+	            dtmTPlane.addRow(new Object[]{"", "", "", ""});
+	        }
 	    }
-		setPassenger(dtmTPassenger);
+
+	    setPassenger(dtmTPassenger);
+	    setAirline(dtmTAirline);
+	    setPlane(dtmTPlane);
 	}
 
 public ArrayList<Passenger>getArrayListPassenger(){
@@ -110,8 +156,40 @@ public ArrayList<Passenger>getArrayListPassenger(){
 public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	this.arrayLPassenger = arrayLPassenger;
 }
+public ArrayList<Airline>getArrayListAirline(){
+	return arrayLAirline;
+}
+public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
+	this.arrayLAirline = arrayLAirline;
+}
+public ArrayList<Plane>getArrayListPlane(){
+	return arrayLPlane;
+}
+public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
+	this.arrayLPlane = arrayLPlane;
+}
 //------------------------------------------------------------------------------------
-	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
+public void setAirline(DefaultTableModel dtmTAirline) {
+	tAirline = new JTable(dtmTAirline);
+	//No poder editar los valores de la tabla
+	tAirline.setEnabled(false);
+	//no poder mover las columnas
+	tAirline.getTableHeader().setReorderingAllowed(false);
+	//no poder reducir el tamanio de las columnas
+	tAirline.getTableHeader().setResizingAllowed(false);
+
+}
+public void setPlane(DefaultTableModel dtmTPlane) {
+	tPlane = new JTable(dtmTPlane);
+	//No poder editar los valores de la tabla
+	tPlane.setEnabled(false);
+	//no poder mover las columnas
+	tPlane.getTableHeader().setReorderingAllowed(false);
+	//no poder reducir el tamanio de las columnas
+	tPlane.getTableHeader().setResizingAllowed(false);
+
+}
+public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		dtmTPassenger = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
@@ -197,7 +275,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(560, 59, 141, 23);
+			bImprimir.setBounds(723, 297, 141, 23);
 		}
 		return bImprimir;
 	}
@@ -213,7 +291,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JTextField getTDatosPasajero() {
 		if (tDatosPasajero == null) {
 			tDatosPasajero = new JTextField();
-			tDatosPasajero.setBounds(34, 79, 146, 29);
+			tDatosPasajero.setBounds(41, 85, 146, 24);
 			tDatosPasajero.setColumns(10);
 		}
 		return tDatosPasajero;
@@ -222,7 +300,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLPassportPassengerConsult() {
 		if (lPassportPassengerConsult == null) {
 			lPassportPassengerConsult = new JLabel("Ingrese el Pasaporte del Pasajero");
-			lPassportPassengerConsult.setBounds(34, 59, 245, 20);
+			lPassportPassengerConsult.setBounds(41, 54, 245, 20);
 		}
 		return lPassportPassengerConsult;
 	}
@@ -230,17 +308,38 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JButton getBFiltrar() {
 		if (bFiltrar == null) {
 			bFiltrar = new JButton("Filtrar");
-			bFiltrar.setBounds(190, 82, 89, 23);
+			bFiltrar.setBounds(620, 156, 89, 23);
 		}
 		return bFiltrar;
 	}
-	
-
-	
-	
-//---------------------------AEROLINEAS----------------------------------------------------------
-	
-	
-	
-	
+	public JTextField getTDatosAerolinea() {
+		if (tDatosAerolinea == null) {
+			tDatosAerolinea = new JTextField();
+			tDatosAerolinea.setBounds(296, 87, 166, 20);
+			tDatosAerolinea.setColumns(10);
+		}
+		return tDatosAerolinea;
+	}
+	public JTextField getTDatosAvion() {
+		if (tDatosAvion == null) {
+			tDatosAvion = new JTextField();
+			tDatosAvion.setBounds(548, 87, 161, 20);
+			tDatosAvion.setColumns(10);
+		}
+		return tDatosAvion;
+	}
+	public JLabel getLDatosAerolinea() {
+		if (lDatosAerolinea == null) {
+			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
+			lDatosAerolinea.setBounds(296, 57, 204, 14);
+		}
+		return lDatosAerolinea;
+	}
+	public JLabel getLDatoAvion() {
+		if (lDatoAvion == null) {
+			lDatoAvion = new JLabel("Ingrese el Numero de Placa del Avión");
+			lDatoAvion.setBounds(548, 57, 217, 14);
+		}
+		return lDatoAvion;
+	}
 }
