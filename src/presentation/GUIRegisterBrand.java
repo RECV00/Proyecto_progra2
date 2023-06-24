@@ -162,7 +162,7 @@ public class GUIRegisterBrand extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Usuarios");
+			tTitule = new JLabel("Registrar Marca");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}

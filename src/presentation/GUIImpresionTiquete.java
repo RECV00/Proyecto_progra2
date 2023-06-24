@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Airline;
+import domain.Brand;
 import domain.Passenger;
 
 import javax.swing.JTextField;
@@ -72,6 +73,13 @@ public void fillTable(ArrayList <Passenger> list) {
 			dtmTPassenger.addRow(new Object[] {p.getPassport(),p.getName(),p.getLastName(),
 					p.getBirthdate(),p.getGmail(),p.getPhone()});
 		}
+		
+		for (int i = 1; i < list.size(); i++) {
+	        
+		       
+			// Agregar los valores en una segunda fila separada por "-"
+			dtmTPassenger.addRow(new Object[]{list[i]});
+			    }
 		setPassenger(dtmTPassenger);
 	}
 
