@@ -28,7 +28,6 @@ public class GUIColaborador extends JFrame {
 	private JMenuItem miiExit;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
-	private JLabel li;
 	private int resultAcces;
 	private JMenu mnBrand;
 	private JMenu mnModel;
@@ -54,13 +53,14 @@ public class GUIColaborador extends JFrame {
 	private JMenuItem mnImpresionT;
 	private JMenuItem mnHistorialT;
 	private JMenuItem mnVuelos;
+	private JLabel li;
 	/**
 	 * Create the frame.
 	 */
 	public GUIColaborador() {
 		setTitle("Privilegios del Colaborador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 716, 501);
+		setBounds(100, 100, 707, 501);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));

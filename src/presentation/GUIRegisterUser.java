@@ -3,6 +3,7 @@ package presentation;
 
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +21,10 @@ import javax.swing.JButton;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import java.awt.Color;
 
 public class GUIRegisterUser extends JFrame {
 
@@ -27,7 +32,7 @@ public class GUIRegisterUser extends JFrame {
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
-	
+	private JLabel li;
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
 	
@@ -50,6 +55,7 @@ public class GUIRegisterUser extends JFrame {
 	private JLabel lState;
 	
 	public GUIRegisterUser() {
+		getContentPane().setBackground(new Color(255, 255, 255));
 		
 		setDTMTUser(dataTable,getColumnsNames());
 		setUser(dtmTUser);
@@ -70,13 +76,26 @@ public class GUIRegisterUser extends JFrame {
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getComboBoxTypeUser());
 		getContentPane().add(getLState());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(715,414);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setVisible(true);
 		
 	}
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 528);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
 	
 public void fillTable(ArrayList <User> list) {
 		
@@ -192,6 +211,9 @@ public void fillTable(ArrayList <User> list) {
 	public JLabel getLName() {
 		if (lName == null) {
 			lName = new JLabel("Nombre");
+			lName.setForeground(new Color(153, 153, 153));
+			lName.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lName.setBackground(new Color(255, 255, 255));
 			lName.setBounds(20, 60, 49, 14);
 		}
 		return lName;
@@ -209,6 +231,8 @@ public void fillTable(ArrayList <User> list) {
 	public JLabel getLContrasena() {
 		if (lContrasena == null) {
 			lContrasena = new JLabel("Contraseña");
+			lContrasena.setForeground(new Color(153, 153, 153));
+			lContrasena.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lContrasena.setBounds(118, 60, 80, 14);
 		}
 		return lContrasena;
@@ -217,6 +241,8 @@ public void fillTable(ArrayList <User> list) {
 	public JLabel getLTypeUser() {
 		if (lTypeUser == null) {
 			lTypeUser = new JLabel("Tipo de Usuario");
+			lTypeUser.setForeground(new Color(153, 153, 153));
+			lTypeUser.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lTypeUser.setBounds(222, 60, 116, 14);
 		}
 		return lTypeUser;
@@ -263,6 +289,8 @@ public void fillTable(ArrayList <User> list) {
 	public JLabel getLState() {
 		if (lState == null) {
 			lState = new JLabel("Estado");
+			lState.setForeground(new Color(153, 153, 153));
+			lState.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lState.setBounds(343, 60, 55, 14);
 		}
 		return lState;

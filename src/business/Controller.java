@@ -3,6 +3,8 @@ package business;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import presentation.GUIWelcome;
+
 public class Controller implements ActionListener{
 	private GUIWelcome gui;
 	
@@ -13,7 +15,7 @@ public class Controller implements ActionListener{
 
 	private void inicializer() {
 		// TODO Auto-generated method stub
-		
+		gui.getBInicioSesion().addActionListener(this);
 	}
 
 	@Override
@@ -21,6 +23,7 @@ public class Controller implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==gui.getBInicioSesion()) {
 			new ControllerLogin();
+			gui.dispose();
 		}
 	}
 

@@ -33,7 +33,7 @@ public class GUILogin extends JFrame {
 	public GUILogin() {
 		setBackground(new Color(255, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 567, 407);
+		setBounds(100, 100, 652, 472);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,7 +52,7 @@ public class GUILogin extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-38, -62, 589, 436);
+		li.setBounds(-38, -62, 674, 553);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUILogin.class.getResource("/media/logo3.png")));
@@ -65,7 +65,7 @@ public class GUILogin extends JFrame {
 			lUser = new JLabel("Usuario");
 			lUser.setBackground(UIManager.getColor("Button.focus"));
 			lUser.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lUser.setBounds(45, 233, 74, 23);
+			lUser.setBounds(43, 276, 74, 23);
 		}
 		return lUser;
 	}
@@ -74,7 +74,7 @@ public class GUILogin extends JFrame {
 			lPassword = new JLabel("Contraseña");
 			lPassword.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassword.setBackground(new Color(204, 255, 204));
-			lPassword.setBounds(45, 283, 74, 23);
+			lPassword.setBounds(45, 324, 74, 23);
 		}
 		return lPassword;
 	}
@@ -82,17 +82,17 @@ public class GUILogin extends JFrame {
 		if (tUser == null) {
 			tUser = new JTextField();
 			tUser.setBackground(new Color(255, 255, 255));
-			tUser.setBounds(33, 231, 96, 27);
+			tUser.setBounds(33, 274, 96, 27);
 			tUser.setColumns(10);
 		}
 		return tUser;
 	}
 	public JButton getBLogin() {
 		if (bLogin == null) {
-			bLogin = new JButton("Iniciar Sesión");
+			bLogin = new JButton("Ingresar");
 			bLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
 			bLogin.setBackground(UIManager.getColor("Button.shadow"));
-			bLogin.setBounds(191, 322, 124, 23);
+			bLogin.setBounds(33, 382, 124, 23);
 		}
 		return bLogin;
 	}
@@ -104,7 +104,7 @@ public class GUILogin extends JFrame {
 		if (pfPassword == null) {
 			pfPassword = new JPasswordField();
 			pfPassword.setBackground(new Color(255, 255, 255));
-			pfPassword.setBounds(33, 280, 96, 28);
+			pfPassword.setBounds(33, 321, 96, 28);
 		}
 		return pfPassword;
 	}
@@ -113,7 +113,7 @@ public class GUILogin extends JFrame {
 			bExit = new JButton("Salir");
 			bExit.setFont(new Font("Tahoma", Font.BOLD, 11));
 			bExit.setBackground(UIManager.getColor("Button.light"));
-			bExit.setBounds(471, 11, 70, 23);
+			bExit.setBounds(556, 11, 70, 23);
 		}
 		return bExit;
 	}

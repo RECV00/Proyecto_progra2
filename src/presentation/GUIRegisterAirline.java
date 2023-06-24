@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class GUIRegisterAirline extends JFrame {
 
@@ -36,7 +39,7 @@ public class GUIRegisterAirline extends JFrame {
 	private DefaultTableModel dtmTAirline;
 	private JTable tAirline;
 	
-	
+	private JLabel li;
 	private JScrollPane spTAirline;
 	
 	private ArrayList<Airline>arrayLAirline;
@@ -66,12 +69,25 @@ public class GUIRegisterAirline extends JFrame {
 		getContentPane().add(getTNameAerolinea());
 		getContentPane().add(getLContry());
 		getContentPane().add(getTContry());
+		getContentPane().add(getImagen());
 		setSize(688,368);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+		public JLabel getImagen() {
+			if(li == null) {
+			li = new JLabel();
+			li.setBounds(-13, -127, 874, 528);
+			ImageIcon imagen= new ImageIcon("media/java.jpg");
+			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+			li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+			getContentPane().add(li);
+			}
+			return li;
+		}
 public void fillTable(ArrayList <Airline> list) {
 		
 		for(Airline air : list) {
@@ -169,7 +185,7 @@ public void fillTable(ArrayList <Airline> list) {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(380, 106, 137, 23);
+			bRegister.setBounds(393, 105, 110, 23);
 		}
 		return bRegister;
 	}
@@ -186,6 +202,8 @@ public void fillTable(ArrayList <Airline> list) {
 	public JLabel getLNameAeroline() {
 		if (lNameAeroline == null) {
 			lNameAeroline = new JLabel("Nombre de la Aerolinea");
+			lNameAeroline.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lNameAeroline.setForeground(new Color(153, 153, 153));
 			lNameAeroline.setBounds(20, 60, 179, 14);
 		}
 		return lNameAeroline;
@@ -203,6 +221,8 @@ public void fillTable(ArrayList <Airline> list) {
 	public JLabel getLContry() {
 		if (lContry == null) {
 			lContry = new JLabel("País");
+			lContry.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lContry.setForeground(new Color(153, 153, 153));
 			lContry.setBounds(209, 60, 80, 14);
 		}
 		return lContry;
