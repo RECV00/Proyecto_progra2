@@ -81,7 +81,7 @@ public class GUIAdmin extends JFrame {
 	public GUIAdmin() {
 		setTitle("Privilegios del Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 713, 505);
+		setBounds(100, 100, 752, 530);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -96,10 +96,10 @@ public class GUIAdmin extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, -24, 761, 506);
+		li.setBounds(-17, -23, 797, 506);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/logo5.png")));
+		li.setIcon(new ImageIcon(GUIAdmin.class.getResource("/media/logoA.png")));
 		getContentPane().add(li);
 		}
 		return li;

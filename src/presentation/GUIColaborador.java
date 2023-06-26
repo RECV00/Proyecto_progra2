@@ -60,7 +60,7 @@ public class GUIColaborador extends JFrame {
 	public GUIColaborador() {
 		setTitle("Privilegios del Colaborador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 707, 501);
+		setBounds(100, 100, 707, 519);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -78,7 +78,7 @@ public class GUIColaborador extends JFrame {
 		li.setBounds(0, -38, 874, 528);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIColaborador.class.getResource("/media/logo4.png")));
+		li.setIcon(new ImageIcon(GUIColaborador.class.getResource("/media/logoC.png")));
 		getContentPane().add(li);
 		}
 		return li;

@@ -55,7 +55,7 @@ public class GUIConsultModel extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
@@ -64,7 +64,7 @@ public class GUIConsultModel extends JFrame {
 		getContentPane().add(getLConsultNameModel());
 		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(891,410);
+		setSize(891,442);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -74,10 +74,10 @@ public class GUIConsultModel extends JFrame {
 		public JLabel getImagen() {
 			if(li == null) {
 			li = new JLabel();
-			li.setBounds(-13, -127, 987, 528);
+			li.setBounds(-33, -94, 987, 558);
 			ImageIcon imagen= new ImageIcon("media/java.jpg");
 			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-			li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+			li.setIcon(new ImageIcon(GUIConsultModel.class.getResource("/media/logo00.png")));
 			getContentPane().add(li);
 			}
 			return li;
@@ -213,6 +213,8 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JLabel getLConsultNameModel() {
 		if (lConsultNameModel == null) {
 			lConsultNameModel = new JLabel("Ingrese el Modelo");
+			lConsultNameModel.setForeground(new Color(128, 128, 128));
+			lConsultNameModel.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lConsultNameModel.setBounds(44, 61, 166, 20);
 		}
 		return lConsultNameModel;
