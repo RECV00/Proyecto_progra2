@@ -106,11 +106,9 @@ public class GUIImpresionTiquete extends JFrame {
 		}
 		return li;
 	}
-public void fillTable(ArrayList<Passenger> list) {
-	    for (Passenger p : list) {
-	        dtmTPassenger.addRow(
-	       
-	new Object[]{p.getPassport()});
+public void fillTable(ArrayList<Passenger> arrayLPassenger,ArrayList <Airline> arrayLAirline,ArrayList <Plane> arrayLPlane) {
+	    for (Passenger p : arrayLPassenger) {
+	        dtmTPassenger.addRow(new Object[]{p.getPassport()});
 	        dtmTPassenger.addRow(new Object[]{p.getName()});
 	        dtmTPassenger.addRow(new Object[]{p.getLastName()});
 	        dtmTPassenger.addRow(new Object[]{p.getBirthdate()});
