@@ -196,7 +196,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(760, 143, 141, 23);
+			bCheckHistory.setBounds(717, 138, 157, 23);
 		}
 		return bCheckHistory;
 	}

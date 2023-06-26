@@ -186,7 +186,7 @@ public void fillTable(ArrayList <User> list) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(407, 148, 141, 23);
+			bCheckHistory.setBounds(397, 148, 151, 23);
 		}
 		return bCheckHistory;
 	}

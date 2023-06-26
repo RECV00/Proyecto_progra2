@@ -56,7 +56,7 @@ public class GUIConsultPassenger extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
@@ -65,7 +65,7 @@ public class GUIConsultPassenger extends JFrame {
 		getContentPane().add(getLPassportPassengerConsult());
 		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(747,414);
+		setSize(747,456);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -75,7 +75,7 @@ public class GUIConsultPassenger extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 987, 528);
+		li.setBounds(-13, -127, 987, 614);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
@@ -159,7 +159,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 160, 507, 183);
+			scrollPane.setBounds(30, 186, 632, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -174,7 +174,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(613, 341, 94, 23);
+			bExit.setBounds(627, 383, 94, 23);
 		}
 		return bExit;
 	}
@@ -186,7 +186,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 138, 141, 23);
+			bCheckHistory.setBounds(510, 164, 152, 23);
 		}
 		return bCheckHistory;
 	}
