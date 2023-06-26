@@ -86,26 +86,26 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getTDatosAvion());
 		getContentPane().add(getLDatosAerolinea());
 		getContentPane().add(getLDatoAvion());
-		setSize(1000,368);
+		setSize(746,425);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
 
+//fondo de la GUI
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setHorizontalAlignment(SwingConstants.CENTER);
-		li.setBackground(new Color(255, 255, 255));
-		li.setBounds(845, 54, 131, 183);
-		ImageIcon imagen= new ImageIcon("media/Imagen1.jpg");
+		li.setBounds(-13, -127, 987, 569);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIImpresionTiquete.class.getResource("/media/Imagen1.png")));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
 		getContentPane().add(li);
 		}
 		return li;
 	}
+//llenado y creando la tabla
 	public void fillTable(ArrayList<Passenger> list, ArrayList<Airline> listA, ArrayList<Plane> listP) {
 	    int maxRows = Math.max(Math.max(list.size(), listA.size()), listP.size());
 
@@ -222,7 +222,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA","DATOS DEL AVIÓN"};
+		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLÍNEA","DATOS DEL AVIÓN"};
 		return columnsNames;
 	}
 
@@ -248,7 +248,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(41, 137, 556, 183);
+			scrollPane.setBounds(41, 137, 606, 204);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -263,7 +263,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(870, 20, 94, 23);
+			bExit.setBounds(503, 352, 94, 23);
 		}
 		return bExit;
 	}
@@ -275,7 +275,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(723, 297, 141, 23);
+			bImprimir.setBounds(222, 352, 124, 23);
 		}
 		return bImprimir;
 	}
@@ -284,7 +284,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		if (tTitule == null) {
 			tTitule = new JLabel("Imprimir Tiquete");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(335, 11, 279, 29);
+			tTitule.setBounds(240, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -300,6 +300,8 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	public JLabel getLPassportPassengerConsult() {
 		if (lPassportPassengerConsult == null) {
 			lPassportPassengerConsult = new JLabel("Ingrese el Pasaporte del Pasajero");
+			lPassportPassengerConsult.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lPassportPassengerConsult.setForeground(new Color(128, 128, 128));
 			lPassportPassengerConsult.setBounds(41, 54, 245, 20);
 		}
 		return lPassportPassengerConsult;
@@ -308,7 +310,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	public JButton getBFiltrar() {
 		if (bFiltrar == null) {
 			bFiltrar = new JButton("Filtrar");
-			bFiltrar.setBounds(620, 156, 89, 23);
+			bFiltrar.setBounds(41, 352, 89, 23);
 		}
 		return bFiltrar;
 	}
@@ -330,7 +332,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	}
 	public JLabel getLDatosAerolinea() {
 		if (lDatosAerolinea == null) {
-			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
+			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolínea");
 			lDatosAerolinea.setBounds(296, 57, 204, 14);
 		}
 		return lDatosAerolinea;

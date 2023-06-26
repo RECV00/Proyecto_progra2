@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,31 +19,32 @@ import domain.Brand;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIDeleteBrand extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTBrand;
 	private JTable tBrand;
-	
 	private JScrollPane spTBrand;
-	
 	private ArrayList<Brand> arrayLBrand;
 	private Object dataTable[][];
+//label, button y textfiel
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
 	private JTextField tNameDelete;
 	private JLabel lNameDelete;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIDeleteBrand() {
 		
 		setDTMTBrand(dataTable,getColumnsNames());
@@ -58,13 +60,26 @@ public class GUIDeleteBrand extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTNameDelete());
 		getContentPane().add(getLNameDelete());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(726,416);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 528);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla
 public void fillTable(ArrayList <Brand> list) {
 		
 		for(Brand b : list) {
@@ -137,7 +152,7 @@ public ArrayList<Brand>getArrayListBrand(){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(37, 158, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -152,7 +167,7 @@ public ArrayList<Brand>getArrayListBrand(){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(606, 343, 94, 23);
 		}
 		return bExit;
 	}
@@ -164,7 +179,7 @@ public ArrayList<Brand>getArrayListBrand(){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bDelete.setBounds(388, 109, 129, 23);
+			bDelete.setBounds(415, 135, 129, 23);
 		}
 		return bDelete;
 	}
@@ -189,8 +204,10 @@ public ArrayList<Brand>getArrayListBrand(){
 //------------------------------------------------------------------------------------
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
-			lNameDelete = new JLabel("Ingrese el Nombre  Eliminar");
-			lNameDelete.setBounds(27, 57, 176, 14);
+			lNameDelete = new JLabel("Ingrese el Nombre de la marca a Eliminar");
+			lNameDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lNameDelete.setForeground(new Color(128, 128, 128));
+			lNameDelete.setBounds(27, 57, 240, 14);
 		}
 		return lNameDelete;
 	}

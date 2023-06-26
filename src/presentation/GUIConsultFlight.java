@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +21,8 @@ import domain.Flight;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -47,12 +50,11 @@ public class GUIConsultFlight extends JFrame {
 	private JTextField tConsultNameVuelo;
 	private JLabel lConsultNameVuelo;
 	private JButton bSearch;
-
-	
 	private GUIRegisterFlight guiRF;
-	
+	private JLabel li;
 	
 	public GUIConsultFlight() {
+		getContentPane().setBackground(new Color(169, 169, 169));
 		//guiRF= new GUIRegisterFlight();
 		
 		setDTMTFlight(dataTable,getColumnsNames());
@@ -69,12 +71,26 @@ public class GUIConsultFlight extends JFrame {
 		getContentPane().add(getTConsultNameVuelo());
 		getContentPane().add(getLConsultNameVuelo());
 		getContentPane().add(getBSearch());
-		setSize(1000,440);
+		getContentPane().add(getImagen());
+		setSize(918,450);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 528);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla
 public void fillTable(ArrayList <Flight> list) {
 		
 		for(Flight f : list) {
@@ -168,7 +184,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(895, 309, 72, 23);
+			bExit.setBounds(800, 357, 72, 23);
 		}
 		return bExit;
 	}

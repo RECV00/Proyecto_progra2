@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,25 +19,24 @@ import domain.Plane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import java.awt.Color;
 
 public class GUIRegisterPlane extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTPlane;
 	private JTable tPlane;
-	
-	
 	private JScrollPane spTPlane;
-	
 	private ArrayList<Plane> arrayLPlane;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -46,14 +46,16 @@ public class GUIRegisterPlane extends JFrame {
 	private JLabel lModelRegisterPlane;
 	private JTextField tYearRegisterPlane;
 	private JLabel lYearRegisterPlane;
-	
+//comboBox de la lista seleccionable de aerolineas y modelos
 	private JComboBox<String> comboBoxAirline;
     private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
 	private JComboBox<String> comboBoxModel;
 	ArrayList<Airline>arrayLA;
 	ArrayList<Model>arrayLM;
+//fondo de la GUI
+	private JLabel li;
 	
-	public GUIRegisterPlane(ArrayList<Airline>arrayLA,ArrayList<Model>arrayLM) {
+	public GUIRegisterPlane(ArrayList<Airline>arrayLA,ArrayList<Model>arrayLM) {//muestra la lista al inicializar
 		
 		llenarComboBoxModel(arrayLM,getComboBoxModel());
 		llenarComboBoxAirline(arrayLA,getComboBoxAirline());
@@ -64,7 +66,7 @@ public class GUIRegisterPlane extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -77,13 +79,27 @@ public class GUIRegisterPlane extends JFrame {
 		getContentPane().add(getLYearRegisterPlane());
 		getContentPane().add(getComboBoxAirline());
 		getContentPane().add(getComboBoxModel());
-		setSize(661,420);
+		getContentPane().add(getImagen());
+		setSize(716,466);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(0, -127, 961, 633);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llenando y creando la tabla
+
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTPlane(Object data[][],String[] columnsNames) {
@@ -148,7 +164,7 @@ public class GUIRegisterPlane extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 189, 507, 183);
+			scrollPane.setBounds(48, 212, 538, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -163,7 +179,7 @@ public class GUIRegisterPlane extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 349, 94, 23);
+			bExit.setBounds(596, 393, 94, 23);
 		}
 		return bExit;
 	}
@@ -171,7 +187,7 @@ public class GUIRegisterPlane extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(373, 166, 144, 23);
+			bRegister.setBounds(457, 191, 129, 23);
 		}
 		return bRegister;
 	}
@@ -188,6 +204,8 @@ public class GUIRegisterPlane extends JFrame {
 	public JLabel getLAvionRegisterPlane() {
 		if (lAvionRegisterPlane == null) {
 			lAvionRegisterPlane = new JLabel("Avión");
+			lAvionRegisterPlane.setForeground(new Color(128, 128, 128));
+			lAvionRegisterPlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lAvionRegisterPlane.setBounds(27, 60, 49, 14);
 		}
 		return lAvionRegisterPlane;
@@ -204,7 +222,9 @@ public class GUIRegisterPlane extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getLAirplaneRegisterPalne() {
 		if (lAirplaneRegisterPalne == null) {
-			lAirplaneRegisterPalne = new JLabel("Aerolinea");
+			lAirplaneRegisterPalne = new JLabel("Aerolínea");
+			lAirplaneRegisterPalne.setForeground(new Color(128, 128, 128));
+			lAirplaneRegisterPalne.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lAirplaneRegisterPalne.setBounds(27, 120, 80, 14);
 		}
 		return lAirplaneRegisterPalne;
@@ -213,6 +233,8 @@ public class GUIRegisterPlane extends JFrame {
 	public JLabel getLModelRegisterPlane() {
 		if (lModelRegisterPlane == null) {
 			lModelRegisterPlane = new JLabel("Modelo");
+			lModelRegisterPlane.setForeground(new Color(128, 128, 128));
+			lModelRegisterPlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lModelRegisterPlane.setBounds(160, 60, 96, 14);
 		}
 		return lModelRegisterPlane;
@@ -240,6 +262,8 @@ public class GUIRegisterPlane extends JFrame {
 	public JLabel getLYearRegisterPlane() {
 		if (lYearRegisterPlane == null) {
 			lYearRegisterPlane = new JLabel("Año");
+			lYearRegisterPlane.setForeground(new Color(128, 128, 128));
+			lYearRegisterPlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lYearRegisterPlane.setBounds(160, 120, 49, 14);
 		}
 		return lYearRegisterPlane;

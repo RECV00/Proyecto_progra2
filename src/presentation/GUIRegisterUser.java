@@ -25,22 +25,20 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GUIRegisterUser extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	private JLabel li;
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
-	
-	
 	private JScrollPane spTUser;
-	
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
+//label , button, textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -49,10 +47,13 @@ public class GUIRegisterUser extends JFrame {
 	private JLabel lContrasena;
 	private JLabel lTypeUser;
 	private JTextField tContrasena;
-	
+	private JLabel lState;
+//comboBox
 	private JComboBox comboBoxState;
 	private JComboBox comboBoxTypeUser;
-	private JLabel lState;
+
+//fondo de la GUI
+	private JLabel li;
 	
 	public GUIRegisterUser() {
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -63,7 +64,7 @@ public class GUIRegisterUser extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aerolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -77,7 +78,7 @@ public class GUIRegisterUser extends JFrame {
 		getContentPane().add(getComboBoxTypeUser());
 		getContentPane().add(getLState());
 		getContentPane().add(getImagen());
-		setSize(715,414);
+		setSize(728,452);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -88,7 +89,7 @@ public class GUIRegisterUser extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 874, 528);
+		li.setBounds(-13, -127, 874, 606);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
@@ -96,7 +97,7 @@ public class GUIRegisterUser extends JFrame {
 		}
 		return li;
 	}
-	
+//llena y crea la tabla
 public void fillTable(ArrayList <User> list) {
 		
 		for(User user : list) {
@@ -171,7 +172,7 @@ public void fillTable(ArrayList <User> list) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(54, 190, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -186,7 +187,11 @@ public void fillTable(ArrayList <User> list) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(608, 379, 94, 23);
 		}
 		return bExit;
 	}
@@ -194,7 +199,7 @@ public void fillTable(ArrayList <User> list) {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(527, 146, 94, 23);
+			bRegister.setBounds(468, 168, 94, 23);
 		}
 		return bRegister;
 	}

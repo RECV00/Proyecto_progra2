@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,23 +16,25 @@ import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIUpdateAirline extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTAirline;
 	private JTable tAirline;
-	
 	private JScrollPane spTAirline;
-	
 	private ArrayList<Airline> arrayLAirline;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
@@ -39,7 +42,9 @@ public class GUIUpdateAirline extends JFrame {
 	private JLabel lUpdateName;
 	private JLabel lUpdateContry;
 	private JTextField tUpdateContry;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIUpdateAirline() {
 		
 		setDTMTAirline(dataTable,getColumnsNames());
@@ -48,7 +53,7 @@ public class GUIUpdateAirline extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aerolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
@@ -57,12 +62,26 @@ public class GUIUpdateAirline extends JFrame {
 		getContentPane().add(getLUpdateName());
 		getContentPane().add(getLUpdateContry());
 		getContentPane().add(getTUpdateContry());
-		setSize(688,368);
+		getContentPane().add(getImagen() );
+		setSize(723,450);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 606);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 public void fillTable(ArrayList <Airline> list) {
 		
 		for(Airline air : list) {
@@ -136,7 +155,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(59, 198, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tAirline=new JTable(dtmTAirline);
 			tAirline.setEnabled(false);
@@ -151,7 +170,11 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(603, 377, 94, 23);
 		}
 		return bExit;
 	}
@@ -159,14 +182,14 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(370, 107, 147, 23);
+			bUpdate.setBounds(432, 176, 133, 23);
 		}
 		return bUpdate;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Actualizar Aerolineas");
+			tTitule = new JLabel("Actualizar Aerolíneas");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
@@ -176,7 +199,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JTextField getTNameAeroUpdate() {
 		if (tNameAeroUpdate == null) {
 			tNameAeroUpdate = new JTextField();
-			tNameAeroUpdate.setBounds(27, 74, 147, 20);
+			tNameAeroUpdate.setBounds(27, 95, 147, 20);
 			tNameAeroUpdate.setColumns(10);
 		}
 		return tNameAeroUpdate;
@@ -184,22 +207,26 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 //------------------------------------------------------------------------------------
 	public JLabel getLUpdateName() {
 		if (lUpdateName == null) {
-			lUpdateName = new JLabel("Ingrese la Aerolinea a Actualizar");
-			lUpdateName.setBounds(27, 52, 230, 23);
+			lUpdateName = new JLabel("Ingrese la Aerolínea a Actualizar");
+			lUpdateName.setForeground(new Color(128, 128, 128));
+			lUpdateName.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lUpdateName.setBounds(27, 61, 230, 23);
 		}
 		return lUpdateName;
 	}
 	public JLabel getLUpdateContry() {
 		if (lUpdateContry == null) {
-			lUpdateContry = new JLabel("Ingrese el pais a Actualizar");
-			lUpdateContry.setBounds(262, 56, 173, 14);
+			lUpdateContry = new JLabel("Ingrese el país a Actualizar");
+			lUpdateContry.setForeground(new Color(128, 128, 128));
+			lUpdateContry.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lUpdateContry.setBounds(27, 126, 182, 14);
 		}
 		return lUpdateContry;
 	}
 	public JTextField getTUpdateContry() {
 		if (tUpdateContry == null) {
 			tUpdateContry = new JTextField();
-			tUpdateContry.setBounds(262, 74, 147, 20);
+			tUpdateContry.setBounds(27, 150, 147, 20);
 			tUpdateContry.setColumns(10);
 		}
 		return tUpdateContry;

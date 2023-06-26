@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,28 +12,32 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Airline;
+import domain.Model;
 import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class GUIUpdatePlane extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTPlane;
 	private JTable tPlane;
-	
-	
 	private JScrollPane spTPlane;
-	
 	private ArrayList<Plane> arrayLPlane;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
@@ -40,20 +45,28 @@ public class GUIUpdatePlane extends JFrame {
 	private JTextField tAvionUpdatePlane;
 	private JLabel lAirplaneUpdatePalne;
 	private JLabel lModelUpdatePlane;
-	private JTextField tAirplaneUpdatePalne;
-	private JTextField tModelUpdatePlane;
 	private JTextField tYearUpdatePlane;
 	private JLabel lYearUpdatePlane;
-
-	public GUIUpdatePlane() {
-		
+//comboBox de la lista seleccionable de aerolineas y modelos
+	private JComboBox<String> comboBoxAirline;
+	private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+	private JComboBox<String> comboBoxModel;
+	ArrayList<Airline>arrayLA;
+	ArrayList<Model>arrayLM;
+//fondo de la GUI
+	private JLabel li;
+	
+	public GUIUpdatePlane(ArrayList<Airline>arrayLA,ArrayList<Model>arrayLM) {//muestra la lista al inicializar
+		//llena y muestra la lista al inicializar
+		llenarComboBoxModel(arrayLM,getComboBoxModel());
+		llenarComboBoxAirline(arrayLA,getComboBoxAirline());
 		setDTMTPlane(dataTable,getColumnsNames());
 		setPlane(dtmTPlane);
 		setSPTPlane(tPlane);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
@@ -62,16 +75,30 @@ public class GUIUpdatePlane extends JFrame {
 		getContentPane().add(getTAvionUpdatePlane());
 		getContentPane().add(getLAirplaneUpdatePalne());
 		getContentPane().add(getLModelUpdatePlane());
-		getContentPane().add(getTAirplaneUpdatePalne());
-		getContentPane().add(getTModelUpdatePlane());
 		getContentPane().add(getTYearUpdatePlane());
 		getContentPane().add(getLYearUpdatePlane());
-		setSize(661,420);
+		getContentPane().add(getComboBoxAirline());
+		getContentPane().add(getComboBoxModel());
+		getContentPane().add(getImagen() );
+		setSize(715,504);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 878, 706);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 public void fillTable(ArrayList <Plane> list) {
 		
 		for(Plane pl : list) {
@@ -120,7 +147,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Avión", "Aerolinea", "Modelo", "Año"};
+		String columnsNames[] = {"Avión", "Aerolínea", "Modelo", "Año"};
 		return columnsNames;
 	}
 
@@ -146,7 +173,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 189, 507, 183);
+			scrollPane.setBounds(46, 230, 521, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -161,7 +188,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 349, 94, 23);
+			bExit.setBounds(595, 431, 94, 23);
 		}
 		return bExit;
 	}
@@ -169,7 +196,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(373, 166, 144, 23);
+			bUpdate.setBounds(451, 209, 116, 23);
 		}
 		return bUpdate;
 	}
@@ -186,6 +213,8 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JLabel getLAvionUpdatePlane() {
 		if (lAvionUpdatePlane == null) {
 			lAvionUpdatePlane = new JLabel("Avión");
+			lAvionUpdatePlane.setForeground(new Color(128, 128, 128));
+			lAvionUpdatePlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lAvionUpdatePlane.setBounds(27, 60, 49, 14);
 		}
 		return lAvionUpdatePlane;
@@ -202,7 +231,9 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 //------------------------------------------------------------------------------------
 	public JLabel getLAirplaneUpdatePalne() {
 		if (lAirplaneUpdatePalne == null) {
-			lAirplaneUpdatePalne = new JLabel("Aerolinea");
+			lAirplaneUpdatePalne = new JLabel("Aerolínea");
+			lAirplaneUpdatePalne.setForeground(new Color(128, 128, 128));
+			lAirplaneUpdatePalne.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lAirplaneUpdatePalne.setBounds(27, 120, 80, 14);
 		}
 		return lAirplaneUpdatePalne;
@@ -211,34 +242,18 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JLabel getLModelUpdatePlane() {
 		if (lModelUpdatePlane == null) {
 			lModelUpdatePlane = new JLabel("Modelo");
+			lModelUpdatePlane.setForeground(new Color(128, 128, 128));
+			lModelUpdatePlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lModelUpdatePlane.setBounds(160, 60, 96, 14);
 		}
 		return lModelUpdatePlane;
 	}
-//------------------------------------------------------------------------------------
-	public JTextField getTAirplaneUpdatePalne() {
-		if (tAirplaneUpdatePalne == null) {
-			tAirplaneUpdatePalne = new JTextField();
-			tAirplaneUpdatePalne.setBounds(27, 150, 96, 20);
-			tAirplaneUpdatePalne.setColumns(10);
-		}
-		return tAirplaneUpdatePalne;
-	}
-//------------------------------------------------------------------------------------
-	public JTextField getTModelUpdatePlane() {
-		if (tModelUpdatePlane == null) {
-			tModelUpdatePlane = new JTextField();
-			tModelUpdatePlane.setText("");
-			tModelUpdatePlane.setBounds(160, 89, 96, 20);
-			tModelUpdatePlane.setColumns(10);
-		}
-		return tModelUpdatePlane;
-	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tAvionUpdatePlane.setText("");
-		tAirplaneUpdatePalne.setText("");
-		tModelUpdatePlane.setText("");
+		comboBoxModel.setToolTipText("");
+		comboBoxAirline.setToolTipText("");
+		tYearUpdatePlane.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
@@ -256,8 +271,66 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JLabel getLYearUpdatePlane() {
 		if (lYearUpdatePlane == null) {
 			lYearUpdatePlane = new JLabel("Año");
+			lYearUpdatePlane.setForeground(new Color(128, 128, 128));
+			lYearUpdatePlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lYearUpdatePlane.setBounds(160, 120, 49, 14);
 		}
 		return lYearUpdatePlane;
 	}
-}
+
+public JComboBox<String> getComboBoxAirline() {
+		if (comboBoxAirline == null) {
+			comboBoxAirline = new JComboBox<String>();
+			comboBoxAirline.setBounds(27, 145, 96, 22);
+			comboBoxAirline.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		}
+		return comboBoxAirline;
+	}
+	public ArrayList<Airline>getArrayListAirline(){
+		return arrayLA;
+	}
+	public void setArrayListAirline(ArrayList<Airline> arrayLA){
+		this.arrayLA = arrayLA;
+	}
+public void llenarComboBoxAirline(ArrayList<Airline>arrayLA,JComboBox<String> comboBox) {
+		String[] nameA = new String[arrayLA.size()];
+		for(int i=0; i<arrayLA.size(); i++) {
+			nameA[i]=arrayLA.get(i).getName();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(nameA);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+	    public void setcomboBoxAvion1(JComboBox<String> comboBoxAirline) {
+	        this.comboBoxAirline = comboBoxAirline;
+	    }
+	
+//------------------------------------------------------------------------
+//llena y crea el comboBox de la lista de modelos
+public JComboBox<String> getComboBoxModel() {
+		if (comboBoxModel == null) {
+			comboBoxModel = new JComboBox<String>();
+			comboBoxModel.setBounds(157, 88, 94, 22);
+			comboBoxModel.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+			
+		}
+		return comboBoxModel;
+	}
+	
+	public void llenarComboBoxModel(ArrayList<Model>arrayLM,JComboBox<String> comboBox) {
+		String[] nameM = new String[arrayLM.size()];
+		for(int i=0; i<arrayLM.size(); i++) {
+			nameM[i]=arrayLM.get(i).getName();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(nameM);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+	    public void setcomboBoxModel(JComboBox<String> comboBoxModel) {
+	        this.comboBoxModel = comboBoxModel;
+	    }
+}	

@@ -30,20 +30,16 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class GUIRegisterAirline extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTAirline;
 	private JTable tAirline;
-	
-	private JLabel li;
 	private JScrollPane spTAirline;
-	
 	private ArrayList<Airline>arrayLAirline;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -51,16 +47,17 @@ public class GUIRegisterAirline extends JFrame {
 	private JTextField tNameAerolinea;
 	private JLabel lContry;
 	private JTextField tContry;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIRegisterAirline() {
 		
 		setDTMTAirline(dataTable,getColumnsNames());
 		setAirline(dtmTAirline);
 		setSPTAirline(tAirline);
-
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -70,13 +67,13 @@ public class GUIRegisterAirline extends JFrame {
 		getContentPane().add(getLContry());
 		getContentPane().add(getTContry());
 		getContentPane().add(getImagen());
-		setSize(688,368);
+		setSize(722,414);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	//fondo
+//fondo
 		public JLabel getImagen() {
 			if(li == null) {
 			li = new JLabel();
@@ -88,6 +85,7 @@ public class GUIRegisterAirline extends JFrame {
 			}
 			return li;
 		}
+//llenando y creando la tabla
 public void fillTable(ArrayList <Airline> list) {
 		
 		for(Airline air : list) {
@@ -162,7 +160,7 @@ public void fillTable(ArrayList <Airline> list) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(55, 155, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tAirline=new JTable(dtmTAirline);
 			tAirline.setEnabled(false);
@@ -177,7 +175,7 @@ public void fillTable(ArrayList <Airline> list) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(602, 341, 94, 23);
 		}
 		return bExit;
 	}
@@ -185,14 +183,14 @@ public void fillTable(ArrayList <Airline> list) {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(393, 105, 110, 23);
+			bRegister.setBounds(452, 134, 110, 23);
 		}
 		return bRegister;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Registrar Aerolinea");
+			tTitule = new JLabel("Registrar Aerolínea");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
@@ -201,7 +199,7 @@ public void fillTable(ArrayList <Airline> list) {
 //------------------------------------------------------------------------------------
 	public JLabel getLNameAeroline() {
 		if (lNameAeroline == null) {
-			lNameAeroline = new JLabel("Nombre de la Aerolinea");
+			lNameAeroline = new JLabel("Nombre de la Aerolínea");
 			lNameAeroline.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNameAeroline.setForeground(new Color(153, 153, 153));
 			lNameAeroline.setBounds(20, 60, 179, 14);
@@ -212,7 +210,7 @@ public void fillTable(ArrayList <Airline> list) {
 	public JTextField getTNameAerolinea() {
 		if (tNameAerolinea == null) {
 			tNameAerolinea = new JTextField();
-			tNameAerolinea.setBounds(10, 85, 137, 20);
+			tNameAerolinea.setBounds(20, 85, 137, 20);
 			tNameAerolinea.setColumns(10);
 		}
 		return tNameAerolinea;

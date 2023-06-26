@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,28 +19,27 @@ import domain.Plane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class GUIRegisterModel extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTModel;
 	private JTable tModel;
-	
-	
 	private JScrollPane spTModel;
-	
 	private ArrayList<Model> arrayLModel;
 	private Object dataTable[][];
+//label,textfield,button
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -52,14 +52,16 @@ public class GUIRegisterModel extends JFrame {
 	private JTextField tCanAsientosTUR;
 	private JLabel lnumAsientosModelEco;
 	private JTextField tCanAsientosECO;
+//comboBox lista seleccionable
 	private JComboBox<String>comboBoxBrand;	//Combobox para cargar los nombres de las marcas
     private DefaultComboBoxModel<String>comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
 	ArrayList<Brand>arrayLB;
+//fondo de la GUI
+	private JLabel li;
 	
-    public GUIRegisterModel(ArrayList<Brand>arrayLB) {
+    public GUIRegisterModel(ArrayList<Brand>arrayLB) {//muestra al inicializar
     	
     	llenarComboBoxBrand(arrayLB,getComboBoxBrand());
-
 		setDTMTModel(dataTable,getColumnsNames());
 		setModel(dtmTModel);
 		setSPTModel(tModel);
@@ -81,13 +83,25 @@ public class GUIRegisterModel extends JFrame {
 		getContentPane().add(getLnumAsientosModelEco());
 		getContentPane().add(getTCanAsientosECO());
 		getContentPane().add(getComboBoxBrand());
-		setSize(891,410);
+		getContentPane().add(getImagen());
+		setSize(747,445);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 590);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTModel(Object data[][],String[] columnsNames) {
@@ -152,7 +166,7 @@ public class GUIRegisterModel extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 179, 745, 183);
+			scrollPane.setBounds(10, 179, 711, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -171,7 +185,7 @@ public class GUIRegisterModel extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(771, 339, 94, 23);
+			bExit.setBounds(627, 372, 94, 23);
 		}
 		return bExit;
 	}
@@ -183,7 +197,7 @@ public class GUIRegisterModel extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bRegister.setBounds(590, 156, 165, 23);
+			bRegister.setBounds(581, 159, 140, 23);
 		}
 		return bRegister;
 	}
@@ -200,6 +214,8 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLNameModel() {
 		if (lNameModel == null) {
 			lNameModel = new JLabel("Nombre");
+			lNameModel.setForeground(new Color(128, 128, 128));
+			lNameModel.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNameModel.setBounds(20, 60, 49, 14);
 		}
 		return lNameModel;
@@ -217,6 +233,8 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLMarcaModel() {
 		if (lMarcaModel == null) {
 			lMarcaModel = new JLabel("Marca");
+			lMarcaModel.setForeground(new Color(128, 128, 128));
+			lMarcaModel.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lMarcaModel.setBounds(21, 116, 80, 14);
 		}
 		return lMarcaModel;
@@ -225,7 +243,9 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLnumAsientosModelEJE() {
 		if (lnumAsientosModelEJE == null) {
 			lnumAsientosModelEJE = new JLabel("Cantidad de Asientos Ejecutivos");
-			lnumAsientosModelEJE.setBounds(156, 60, 209, 14);
+			lnumAsientosModelEJE.setForeground(new Color(128, 128, 128));
+			lnumAsientosModelEJE.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lnumAsientosModelEJE.setBounds(126, 60, 209, 14);
 		}
 		return lnumAsientosModelEJE;
 	}
@@ -234,7 +254,7 @@ public class GUIRegisterModel extends JFrame {
 		if (tCanMarcaModelEJE == null) {
 			tCanMarcaModelEJE = new JTextField();
 			tCanMarcaModelEJE.setText("");
-			tCanMarcaModelEJE.setBounds(156, 85, 74, 20);
+			tCanMarcaModelEJE.setBounds(139, 85, 84, 20);
 			tCanMarcaModelEJE.setColumns(10);
 		}
 		return tCanMarcaModelEJE;
@@ -255,7 +275,9 @@ public class GUIRegisterModel extends JFrame {
 	public JLabel getLnumAsientosModelTUR() {
 		if (lnumAsientosModelTUR == null) {
 			lnumAsientosModelTUR = new JLabel("Cantidad de Asientos Turista");
-			lnumAsientosModelTUR.setBounds(156, 116, 209, 14);
+			lnumAsientosModelTUR.setForeground(new Color(128, 128, 128));
+			lnumAsientosModelTUR.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lnumAsientosModelTUR.setBounds(139, 116, 209, 14);
 		}
 		return lnumAsientosModelTUR;
 	}
@@ -264,14 +286,16 @@ public class GUIRegisterModel extends JFrame {
 			tCanAsientosTUR = new JTextField();
 			tCanAsientosTUR.setText("");
 			tCanAsientosTUR.setColumns(10);
-			tCanAsientosTUR.setBounds(156, 134, 74, 20);
+			tCanAsientosTUR.setBounds(149, 142, 74, 20);
 		}
 		return tCanAsientosTUR;
 	}
 	public JLabel getLnumAsientosModelEco() {
 		if (lnumAsientosModelEco == null) {
-			lnumAsientosModelEco = new JLabel("Cantidad de Asientos Económicos");
-			lnumAsientosModelEco.setBounds(375, 60, 209, 14);
+			lnumAsientosModelEco = new JLabel("Asientos Econónicos");
+			lnumAsientosModelEco.setForeground(new Color(128, 128, 128));
+			lnumAsientosModelEco.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lnumAsientosModelEco.setBounds(313, 88, 209, 14);
 		}
 		return lnumAsientosModelEco;
 	}
@@ -280,14 +304,14 @@ public class GUIRegisterModel extends JFrame {
 			tCanAsientosECO = new JTextField();
 			tCanAsientosECO.setText("");
 			tCanAsientosECO.setColumns(10);
-			tCanAsientosECO.setBounds(375, 85, 74, 20);
+			tCanAsientosECO.setBounds(322, 113, 74, 20);
 		}
 		return tCanAsientosECO;
 	}
 	public JComboBox<String> getComboBoxBrand() {
 		if (comboBoxBrand == null) {
 			comboBoxBrand = new JComboBox<String>();
-			comboBoxBrand.setBounds(20, 141, 106, 22);
+			comboBoxBrand.setBounds(20, 141, 99, 22);
 			 comboBoxBrand.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 		}
 		return comboBoxBrand;

@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,33 +18,35 @@ import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIConsultUser extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
-	
 	private JScrollPane spTUser;
-	
 	private ArrayList<Object> user;
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
+//JLabel , JButton y JTextField
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
 	private JTextField tConsultName;
 	private JLabel lConsultName;
 	private JButton bSearch;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIConsultUser() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
@@ -60,12 +63,26 @@ public class GUIConsultUser extends JFrame {
 		getContentPane().add(getTConsultName());
 		getContentPane().add(getLConsultName());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(725,415);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 528);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla
 //------------------------------------------------------------------------------------
 	public void setDTMTUser(Object data[][],String[] columnsNames) {
 		dtmTUser = new DefaultTableModel(data,columnsNames);
@@ -142,7 +159,7 @@ public void fillTable(ArrayList <User> list) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(34, 171, 514, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -157,7 +174,7 @@ public void fillTable(ArrayList <User> list) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(605, 342, 94, 23);
 		}
 		return bExit;
 	}
@@ -169,7 +186,7 @@ public void fillTable(ArrayList <User> list) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(407, 148, 141, 23);
 		}
 		return bCheckHistory;
 	}
@@ -194,6 +211,8 @@ public void fillTable(ArrayList <User> list) {
 	public JLabel getLConsultName() {
 		if (lConsultName == null) {
 			lConsultName = new JLabel("Ingrese el Nombre del Usuario");
+			lConsultName.setForeground(new Color(128, 128, 128));
+			lConsultName.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lConsultName.setBounds(34, 59, 213, 20);
 		}
 		return lConsultName;

@@ -2,10 +2,12 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
 import domain.Flight;
+import domain.Plane;
 import presentation.GUIUpdateFlight;
 
 
@@ -15,12 +17,14 @@ public class ControllerUpdateFlight implements ActionListener{
 	private FilesXML fXML;
 	private Logic lo;
 	private Flight flight;
+	ArrayList<Plane> arrayLP;
 	
 	public ControllerUpdateFlight() {
-		guiUF= new GUIUpdateFlight();
 		fXML= new FilesXML();
 		lo= new Logic();
 		flight = new Flight();
+		arrayLP= lo.getNamePlane("Planes.xml", "Plane");
+		guiUF= new GUIUpdateFlight(arrayLP);
 		initializer();
 	}
 	private void initializer() {
@@ -53,8 +57,8 @@ public class ControllerUpdateFlight implements ActionListener{
 					flight.getDepartureDateTime(),
 					flight.getArrivalCity(),
 					flight.getArrivalDateTime(),
-					flight.getFlight(),
-					flight.getSeat(),
+					guiUF.getComboBoxAvion().getSelectedItem().toString(),
+					guiUF.getComboBoxState().getSelectedItem().toString(),
 					flight.getAmount(flight.getSeat())});
 				
 				guiUF.setArrayListFlight(lo.getListFlight("Flights.xml","Flight"));

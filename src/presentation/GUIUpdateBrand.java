@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,31 +15,33 @@ import domain.Brand;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIUpdateBrand extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTBrand;
 	private JTable tBrand;
-	
 	private JScrollPane spTBrand;
-	
 	private ArrayList<Brand> arrayLBrand;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
 	private JTextField tNameBrandUpdate;
 	private JLabel lUpdateBrand;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIUpdateBrand() {
 		
 		setDTMTBrand(dataTable,getColumnsNames());
@@ -47,19 +50,33 @@ public class GUIUpdateBrand extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTNameBrandUpdate());
 		getContentPane().add(getLUpdateBrand());
-		setSize(688,368);
+		getContentPane().add(getImagen() );
+		setSize(724,455);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 606);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 public void fillTable(ArrayList <Brand> list) {
 		
 		for(Brand b : list) {
@@ -133,7 +150,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(31, 198, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -148,7 +165,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(548, 358, 94, 23);
 		}
 		return bExit;
 	}
@@ -160,7 +177,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(397, 112, 120, 23);
+			bUpdate.setBounds(418, 176, 120, 23);
 		}
 		return bUpdate;
 	}
@@ -177,7 +194,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JTextField getTNameBrandUpdate() {
 		if (tNameBrandUpdate == null) {
 			tNameBrandUpdate = new JTextField();
-			tNameBrandUpdate.setBounds(27, 74, 151, 20);
+			tNameBrandUpdate.setBounds(31, 98, 151, 20);
 			tNameBrandUpdate.setColumns(10);
 		}
 		return tNameBrandUpdate;
@@ -186,7 +203,9 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JLabel getLUpdateBrand() {
 		if (lUpdateBrand == null) {
 			lUpdateBrand = new JLabel("Ingrese el Nombre a Actualizar");
-			lUpdateBrand.setBounds(27, 52, 236, 23);
+			lUpdateBrand.setForeground(new Color(128, 128, 128));
+			lUpdateBrand.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lUpdateBrand.setBounds(31, 64, 236, 23);
 		}
 		return lUpdateBrand;
 	}

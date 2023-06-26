@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,24 +16,23 @@ import domain.Passenger;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class GUIRegisterPassenger extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTPassenger;
 	private JTable tPassenger;
-	
-	
 	private JScrollPane spTPassenger;
-	
 	private ArrayList<Passenger> arrayLPassenger;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -48,7 +48,9 @@ public class GUIRegisterPassenger extends JFrame {
 	private JTextField tPhonePassenger;
 	private JLabel lGmailPassenger;
 	private JLabel lPhonePassenger;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIRegisterPassenger() {
 		
 		setDTMTPassenger(dataTable,getColumnsNames());
@@ -57,7 +59,7 @@ public class GUIRegisterPassenger extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -74,14 +76,27 @@ public class GUIRegisterPassenger extends JFrame {
 		getContentPane().add(getTPhonePassenger());
 		getContentPane().add(getLGmailPassenger());
 		getContentPane().add(getLPhonePassenger());
-		setSize(1000,410);
+		getContentPane().add(getImagen());
+		setSize(760,454);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(0, -127, 961, 609);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llenando y creando la tabla
+
 //------------------------------------------------------------------------------------
 	public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		dtmTPassenger = new DefaultTableModel(data,columnsNames);
@@ -145,7 +160,7 @@ public class GUIRegisterPassenger extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 179, 745, 183);
+			scrollPane.setBounds(10, 179, 730, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -160,7 +175,7 @@ public class GUIRegisterPassenger extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(765, 325, 94, 23);
+			bExit.setBounds(652, 373, 94, 23);
 		}
 		return bExit;
 	}
@@ -168,7 +183,7 @@ public class GUIRegisterPassenger extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(611, 157, 144, 23);
+			bRegister.setBounds(596, 158, 144, 23);
 		}
 		return bRegister;
 	}
@@ -185,6 +200,8 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLPassportPassenger() {
 		if (lPassportPassenger == null) {
 			lPassportPassenger = new JLabel("Pasaporte");
+			lPassportPassenger.setForeground(new Color(128, 128, 128));
+			lPassportPassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassportPassenger.setBounds(20, 60, 96, 14);
 		}
 		return lPassportPassenger;
@@ -202,6 +219,8 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLNamePassenger() {
 		if (lNamePassenger == null) {
 			lNamePassenger = new JLabel("Nombre");
+			lNamePassenger.setForeground(new Color(128, 128, 128));
+			lNamePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNamePassenger.setBounds(20, 116, 80, 14);
 		}
 		return lNamePassenger;
@@ -210,6 +229,8 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLLastNamePassenger() {
 		if (lLastNamePassenger == null) {
 			lLastNamePassenger = new JLabel("Apellido");
+			lLastNamePassenger.setForeground(new Color(128, 128, 128));
+			lLastNamePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lLastNamePassenger.setBounds(154, 60, 80, 14);
 		}
 		return lLastNamePassenger;
@@ -255,6 +276,8 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLBirthdatePassenger() {
 		if (lBirthdatePassenger == null) {
 			lBirthdatePassenger = new JLabel("Cumpleaños");
+			lBirthdatePassenger.setForeground(new Color(128, 128, 128));
+			lBirthdatePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lBirthdatePassenger.setBounds(154, 116, 96, 14);
 		}
 		return lBirthdatePassenger;
@@ -262,7 +285,7 @@ public class GUIRegisterPassenger extends JFrame {
 	public JTextField getTGmailPassenger() {
 		if (tGmailPassenger == null) {
 			tGmailPassenger = new JTextField();
-			tGmailPassenger.setBounds(287, 85, 219, 20);
+			tGmailPassenger.setBounds(287, 85, 179, 20);
 			tGmailPassenger.setColumns(10);
 		}
 		return tGmailPassenger;
@@ -278,6 +301,8 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLGmailPassenger() {
 		if (lGmailPassenger == null) {
 			lGmailPassenger = new JLabel("Correo");
+			lGmailPassenger.setForeground(new Color(128, 128, 128));
+			lGmailPassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lGmailPassenger.setBounds(287, 60, 71, 14);
 		}
 		return lGmailPassenger;
@@ -285,6 +310,8 @@ public class GUIRegisterPassenger extends JFrame {
 	public JLabel getLPhonePassenger() {
 		if (lPhonePassenger == null) {
 			lPhonePassenger = new JLabel("Celular");
+			lPhonePassenger.setForeground(new Color(128, 128, 128));
+			lPhonePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPhonePassenger.setBounds(287, 116, 71, 14);
 		}
 		return lPhonePassenger;

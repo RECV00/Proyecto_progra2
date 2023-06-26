@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,31 +19,32 @@ import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIDeletePlane extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTPlane;
 	private JTable tPlane;
-	
 	private JScrollPane spTPlane;
-	
 	private ArrayList<Plane> arrayLPlane;
 	private Object dataTable[][];
+//label,textfield,button
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
 	private JTextField tPlaneDeletePlane;
 	private JLabel lPlaneDeletePlane;
-
+// fondo de la GUI
+	private JLabel li;
+	
 	public GUIDeletePlane() {
 		
 		setDTMTPlane(dataTable,getColumnsNames());
@@ -51,20 +53,33 @@ public class GUIDeletePlane extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTPlaneDeletePlane());
 		getContentPane().add(getLPlaneDeletePlane());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(721,439);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 569);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla		
 public void fillTable(ArrayList <Plane> list) {
 		
 		for(Plane plane : list) {
@@ -112,7 +127,7 @@ public void fillTable(ArrayList <Plane> list) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Avión", "Aerolinea", "Modelo", "Año"};
+		String columnsNames[] = {"Avión", "Aerolínea", "Modelo", "Año"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -139,7 +154,7 @@ public void fillTable(ArrayList <Plane> list) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(47, 176, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -154,7 +169,7 @@ public void fillTable(ArrayList <Plane> list) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(601, 366, 94, 23);
 		}
 		return bExit;
 	}
@@ -171,7 +186,7 @@ public void fillTable(ArrayList <Plane> list) {
 		if (tTitule == null) {
 			tTitule = new JLabel("Eliminar Avión");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(182, 11, 279, 29);
+			tTitule.setBounds(202, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -188,6 +203,8 @@ public void fillTable(ArrayList <Plane> list) {
 	public JLabel getLPlaneDeletePlane() {
 		if (lPlaneDeletePlane == null) {
 			lPlaneDeletePlane = new JLabel("Ingrese el Avión a Eliminar");
+			lPlaneDeletePlane.setForeground(new Color(128, 128, 128));
+			lPlaneDeletePlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPlaneDeletePlane.setBounds(27, 57, 157, 14);
 		}
 		return lPlaneDeletePlane;

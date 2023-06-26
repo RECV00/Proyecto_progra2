@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,24 +20,24 @@ import javax.swing.JButton;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIUpdateUser extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTUser;
 	private JTable tUser;
-	
-	
 	private JScrollPane spTUser;
-	
 	private ArrayList<User> arrayLUser;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
@@ -45,10 +46,12 @@ public class GUIUpdateUser extends JFrame {
 	private JLabel lContrasena;
 	private JLabel lTypeUser;
 	private JTextField tContrasena;
-	
+	private JLabel lState;
+//comboBox
 	private JComboBox comboBoxState;
 	private JComboBox comboBoxTypeUser;
-	private JLabel lState;
+//fondo de la GUI
+	private JLabel li;
 	
 	public GUIUpdateUser() {
 		
@@ -58,7 +61,7 @@ public class GUIUpdateUser extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aerolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
@@ -71,13 +74,26 @@ public class GUIUpdateUser extends JFrame {
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getComboBoxTypeUser());
 		getContentPane().add(getLState());
-		setSize(661,404);
+		getContentPane().add(getImagen() );
+		setSize(686,478);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 657);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 	
 public void fillTable(ArrayList <User> list) {
 		
@@ -152,7 +168,7 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(23, 173, 507, 183);
+			scrollPane.setBounds(51, 216, 520, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tUser=new JTable(dtmTUser);
 			tUser.setEnabled(false);
@@ -167,7 +183,7 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(540, 311, 94, 23);
+			bExit.setBounds(566, 405, 94, 23);
 		}
 		return bExit;
 	}
@@ -179,7 +195,7 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(389, 152, 141, 23);
+			bUpdate.setBounds(455, 194, 116, 23);
 		}
 		return bUpdate;
 	}
@@ -196,6 +212,8 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 	public JLabel getLName() {
 		if (lName == null) {
 			lName = new JLabel("Nombre");
+			lName.setForeground(new Color(128, 128, 128));
+			lName.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lName.setBounds(26, 56, 49, 14);
 		}
 		return lName;
@@ -213,6 +231,8 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 	public JLabel getLContrasena() {
 		if (lContrasena == null) {
 			lContrasena = new JLabel("Contraseña");
+			lContrasena.setForeground(new Color(128, 128, 128));
+			lContrasena.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lContrasena.setBounds(23, 112, 80, 14);
 		}
 		return lContrasena;
@@ -221,6 +241,8 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 	public JLabel getLTypeUser() {
 		if (lTypeUser == null) {
 			lTypeUser = new JLabel("Tipo de Usuario");
+			lTypeUser.setForeground(new Color(128, 128, 128));
+			lTypeUser.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lTypeUser.setBounds(192, 56, 116, 14);
 		}
 		return lTypeUser;
@@ -267,6 +289,8 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 	public JLabel getLState() {
 		if (lState == null) {
 			lState = new JLabel("Estado");
+			lState.setForeground(new Color(128, 128, 128));
+			lState.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lState.setBounds(192, 112, 55, 14);
 		}
 		return lState;

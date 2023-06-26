@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,31 +19,32 @@ import domain.User;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIDeleteTicket extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTTicket;
 	private JTable tTicket;
-	
 	private JScrollPane spTTicket;
-	
 	private ArrayList<Ticket> arrayLTicket;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
 	private JTextField tNameDeleteTicket;
 	private JLabel lNameDeleteTicket;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIDeleteTicket() {
 		
 		setDTMTTicket(dataTable,getColumnsNames());
@@ -51,20 +53,33 @@ public class GUIDeleteTicket extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTNameDeleteTicket());
 		getContentPane().add(getLNameDeleteTicket());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(727,428);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 569);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla	
 public void fillTable(ArrayList <Ticket> list) {
 		
 		for(Ticket ticket : list) {
@@ -138,7 +153,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(49, 171, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -153,7 +168,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(607, 355, 94, 23);
 		}
 		return bExit;
 	}
@@ -165,7 +180,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bDelete.setBounds(359, 106, 158, 23);
+			bDelete.setBounds(419, 148, 137, 23);
 		}
 		return bDelete;
 	}
@@ -191,6 +206,8 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JLabel getLNameDeleteTicket() {
 		if (lNameDeleteTicket == null) {
 			lNameDeleteTicket = new JLabel("Ingrese el Número de Tiquete a Eliminar");
+			lNameDeleteTicket.setForeground(new Color(128, 128, 128));
+			lNameDeleteTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNameDeleteTicket.setBounds(27, 57, 285, 14);
 		}
 		return lNameDeleteTicket;

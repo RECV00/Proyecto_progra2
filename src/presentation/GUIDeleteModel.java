@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,31 +19,32 @@ import domain.Model;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIDeleteModel extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTModel;
 	private JTable tModel;
-	
 	private JScrollPane spTModel;
-	
 	private ArrayList<Model> arrayLModel;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
 	private JTextField tNameDeleteModelo;
 	private JLabel lNameDeleteModelo;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIDeleteModel() {
 		
 		setDTMTModel(dataTable,getColumnsNames());
@@ -58,13 +60,26 @@ public class GUIDeleteModel extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTNameDeleteModelo());
 		getContentPane().add(getLNameDeleteModelo());
-		setSize(852,410);
+		getContentPane().add(getImagen());
+		setSize(747,436);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 569);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla	
 public void fillTable(ArrayList <Model> list) {
 		
 		for(Model model : list) {
@@ -153,7 +168,7 @@ public ArrayList<Model>getArrayListModel(){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(718, 339, 94, 23);
+			bExit.setBounds(614, 363, 94, 23);
 		}
 		return bExit;
 	}
@@ -174,7 +189,7 @@ public ArrayList<Model>getArrayListModel(){
 		if (tTitule == null) {
 			tTitule = new JLabel("Eliminar Modelos");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(319, 11, 279, 29);
+			tTitule.setBounds(239, 11, 279, 29);
 		}
 		return tTitule;
 	}
@@ -191,6 +206,8 @@ public ArrayList<Model>getArrayListModel(){
 	public JLabel getLNameDeleteModelo() {
 		if (lNameDeleteModelo == null) {
 			lNameDeleteModelo = new JLabel("Ingrese el Modelo a Eliminar");
+			lNameDeleteModelo.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lNameDeleteModelo.setForeground(new Color(128, 128, 128));
 			lNameDeleteModelo.setBounds(59, 72, 198, 14);
 		}
 		return lNameDeleteModelo;

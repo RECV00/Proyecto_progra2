@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,31 +19,33 @@ import domain.Flight;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIDeleteFlight extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTFlight;
 	private JTable tFlight;
-	
 	private JScrollPane spTFlight;
-	
 	private ArrayList<Flight> arrayLFlight;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bDelete;
 	private JLabel tTitule;
 	private JTextField tVueloDelete;
 	private JLabel lNameDelete;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIDeleteFlight() {
 		
 		setDTMTFlight(dataTable,getColumnsNames());
@@ -58,13 +61,26 @@ public class GUIDeleteFlight extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTVueloDelete());
 		getContentPane().add(getLNameDelete());
+		getContentPane().add(getImagen());
 		setSize(1000,440);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 569);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla	
 public void fillTable(ArrayList <Flight> list) {
 		
 		for(Flight f: list) {
@@ -191,6 +207,8 @@ public ArrayList<Flight>getArrayListFlight(){
 	public JLabel getLNameDelete() {
 		if (lNameDelete == null) {
 			lNameDelete = new JLabel("Ingrese el Número de Vuelo Eliminar");
+			lNameDelete.setForeground(new Color(128, 128, 128));
+			lNameDelete.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNameDelete.setBounds(86, 102, 233, 14);
 		}
 		return lNameDelete;

@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,6 +19,8 @@ import domain.Brand;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -43,7 +46,7 @@ public class GUIConsultBrand extends JFrame {
 	private JTextField tConsultBrandName;
 	private JLabel lConsultName;
 	private JButton bSearch;
-
+	private JLabel li;
 	public GUIConsultBrand() {
 		
 		setDTMTBrand(dataTable,getColumnsNames());
@@ -60,12 +63,27 @@ public class GUIConsultBrand extends JFrame {
 		getContentPane().add(getTConsultBrandName());
 		getContentPane().add(getLConsultName());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+
+		setSize(707,408);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+			public JLabel getImagen() {
+				if(li == null) {
+				li = new JLabel();
+				li.setBounds(-13, -127, 874, 528);
+				ImageIcon imagen= new ImageIcon("media/java.jpg");
+				Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+				li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+				getContentPane().add(li);
+				}
+				return li;
+			}
+//LLenado de la tabla
 public void fillTable(ArrayList <Brand> list) {
 		
 		for(Brand b : list) {
@@ -167,7 +185,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(376, 107, 134, 23);
 		}
 		return bCheckHistory;
 	}
