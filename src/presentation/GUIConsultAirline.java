@@ -54,7 +54,7 @@ public class GUIConsultAirline extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
@@ -63,7 +63,7 @@ public class GUIConsultAirline extends JFrame {
 		getContentPane().add(getLConsultAerolinea());
 		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(682,390);
+		setSize(682,432);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -73,7 +73,7 @@ public class GUIConsultAirline extends JFrame {
 		public JLabel getImagen() {
 			if(li == null) {
 			li = new JLabel();
-			li.setBounds(-13, -127, 874, 528);
+			li.setBounds(-13, -127, 874, 567);
 			ImageIcon imagen= new ImageIcon("media/java.jpg");
 			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 			li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
@@ -155,7 +155,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(32, 176, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tAirline=new JTable(dtmTAirline);
 			tAirline.setEnabled(false);
@@ -170,7 +170,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(562, 359, 94, 23);
 		}
 		return bExit;
 	}
@@ -182,14 +182,14 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 134, 23);
+			bCheckHistory.setBounds(373, 154, 166, 23);
 		}
 		return bCheckHistory;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Consultar Aerolinea");
+			tTitule = new JLabel("Consultar Aerolínea");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
 			tTitule.setBounds(182, 11, 279, 29);
 		}
@@ -206,7 +206,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 //------------------------------------------------------------------------------------
 	public JLabel getLConsultAerolinea() {
 		if (lConsultAerolinea == null) {
-			lConsultAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
+			lConsultAerolinea = new JLabel("Ingrese el Nombre de la Aerolínea");
 			lConsultAerolinea.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lConsultAerolinea.setForeground(Color.GRAY);
 			lConsultAerolinea.setBounds(34, 59, 292, 20);

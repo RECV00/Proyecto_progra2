@@ -65,7 +65,7 @@ public class GUIConsultBrand extends JFrame {
 		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
 
-		setSize(707,408);
+		setSize(707,406);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -158,7 +158,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(26, 154, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -173,7 +173,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(587, 333, 94, 23);
 		}
 		return bExit;
 	}
@@ -185,7 +185,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 134, 23);
+			bCheckHistory.setBounds(373, 131, 160, 23);
 		}
 		return bCheckHistory;
 	}

@@ -54,7 +54,7 @@ public class GUIConsultPlane extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBCheckHistory());
@@ -63,7 +63,7 @@ public class GUIConsultPlane extends JFrame {
 		getContentPane().add(getLConsultAvionPlane());
 		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(712,418);
+		setSize(712,446);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -73,7 +73,7 @@ public class GUIConsultPlane extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 987, 528);
+		li.setBounds(-13, -127, 987, 608);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
@@ -129,7 +129,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Avión", "Aerolinea", "Modelo", "Año"};
+		String columnsNames[] = {"Avión", "Aerolínea", "Modelo", "Año"};
 		return columnsNames;
 	}
 
@@ -155,7 +155,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(23, 161, 507, 183);
+			scrollPane.setBounds(33, 181, 526, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -174,7 +174,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(592, 345, 94, 23);
+			bExit.setBounds(592, 362, 94, 23);
 		}
 		return bExit;
 	}
@@ -186,7 +186,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(397, 139, 133, 23);
+			bCheckHistory.setBounds(407, 159, 152, 23);
 		}
 		return bCheckHistory;
 	}
