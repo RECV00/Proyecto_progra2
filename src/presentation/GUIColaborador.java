@@ -78,7 +78,7 @@ public class GUIColaborador extends JFrame {
 		li.setBounds(0, -38, 874, 528);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIColaborador.class.getResource("/media/logo4.png")));
+		li.setIcon(new ImageIcon(GUIColaborador.class.getResource("/media/logoC.png")));
 		getContentPane().add(li);
 		}
 		return li;

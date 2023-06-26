@@ -75,7 +75,7 @@ public class GUIRegisterFlight extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -95,7 +95,7 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getLTypeAsiento());
 		getContentPane().add(getComboBoxAvion1());
 		getContentPane().add(getImagen());
-		setSize(916,429);
+		setSize(919,462);
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,10 +106,10 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 874, 561);
+		li.setBounds(-13, -95, 916, 615);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIRegisterFlight.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -179,7 +179,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 185, 886, 183);
+			scrollPane.setBounds(10, 206, 886, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -198,7 +198,7 @@ public class GUIRegisterFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(786, 157, 75, 23);
+			bExit.setBounds(818, 389, 75, 23);
 		}
 		return bExit;
 	}
@@ -210,7 +210,7 @@ public class GUIRegisterFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bRegister.setBounds(767, 189, 129, 23);
+			bRegister.setBounds(767, 183, 129, 23);
 		}
 		return bRegister;
 	}

@@ -86,26 +86,26 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getTDatosAvion());
 		getContentPane().add(getLDatosAerolinea());
 		getContentPane().add(getLDatoAvion());
-		setSize(1000,368);
+		setSize(1000,427);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
 
+	//fondo de la GUI
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setHorizontalAlignment(SwingConstants.CENTER);
-		li.setBackground(new Color(255, 255, 255));
-		li.setBounds(845, 54, 131, 183);
-		ImageIcon imagen= new ImageIcon("media/Imagen1.jpg");
+		li.setBounds(-14, -86, 998, 573);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIImpresionTiquete.class.getResource("/media/Imagen1.png")));
+		li.setIcon(new ImageIcon(GUIConsultFlight.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
 	}
+//LLenado de la tabla
 public void fillTable(ArrayList<Passenger> list) {
 	    for (Passenger p : list) {
 	        dtmTPassenger.addRow(
@@ -200,7 +200,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(870, 20, 94, 23);
+			bExit.setBounds(880, 354, 94, 23);
 		}
 		return bExit;
 	}
@@ -212,7 +212,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(723, 297, 141, 23);
+			bImprimir.setBounds(607, 217, 125, 23);
 		}
 		return bImprimir;
 	}
@@ -237,6 +237,8 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	public JLabel getLPassportPassengerConsult() {
 		if (lPassportPassengerConsult == null) {
 			lPassportPassengerConsult = new JLabel("Ingrese el Pasaporte del Pasajero");
+			lPassportPassengerConsult.setForeground(new Color(128, 128, 128));
+			lPassportPassengerConsult.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassportPassengerConsult.setBounds(41, 54, 245, 20);
 		}
 		return lPassportPassengerConsult;

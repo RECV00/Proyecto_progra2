@@ -72,7 +72,7 @@ public class GUIConsultFlight extends JFrame {
 		getContentPane().add(getLConsultNameVuelo());
 		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(918,450);
+		setSize(918,460);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -82,10 +82,10 @@ public class GUIConsultFlight extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 987, 528);
+		li.setBounds(-14, -86, 987, 573);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIConsultFlight.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -165,7 +165,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 163, 875, 183);
+			scrollPane.setBounds(10, 189, 875, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -184,7 +184,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(800, 357, 72, 23);
+			bExit.setBounds(813, 387, 72, 23);
 		}
 		return bExit;
 	}
@@ -196,7 +196,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(717, 138, 157, 23);
+			bCheckHistory.setBounds(728, 167, 157, 23);
 		}
 		return bCheckHistory;
 	}
@@ -221,6 +221,8 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 	public JLabel getLConsultNameVuelo() {
 		if (lConsultNameVuelo == null) {
 			lConsultNameVuelo = new JLabel("Ingrese el Nombre del Vuelo");
+			lConsultNameVuelo.setForeground(new Color(128, 128, 128));
+			lConsultNameVuelo.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lConsultNameVuelo.setBounds(44, 64, 185, 20);
 		}
 		return lConsultNameVuelo;
