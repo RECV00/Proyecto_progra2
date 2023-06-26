@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,32 +19,33 @@ import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIConsultPlane extends JFrame {
-
+	//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTPlane;
 	private JTable tPlane;
-	
 	private JScrollPane spTPlane;
-	
 	private ArrayList<Plane> arrayLPlane;
 	private Object dataTable[][];
+	//JLabel y JTexfield 
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
 	private JTextField tConsultPlane;
 	private JLabel lConsultAvionPlane;
 	private JButton bSearch;
-
+// fondo GUI
+	private JLabel li;
+	
 	public GUIConsultPlane() {
 		
 		setDTMTPlane(dataTable,getColumnsNames());
@@ -60,12 +62,26 @@ public class GUIConsultPlane extends JFrame {
 		getContentPane().add(getTConsultPlane());
 		getContentPane().add(getLConsultAvionPlane());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(712,418);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 528);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla
 public void fillTable(ArrayList <Plane> list) {
 		
 		for(Plane pl : list) {
@@ -139,7 +155,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(23, 161, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -154,7 +170,11 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(592, 345, 94, 23);
 		}
 		return bExit;
 	}
@@ -166,7 +186,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(397, 139, 133, 23);
 		}
 		return bCheckHistory;
 	}
@@ -191,6 +211,8 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JLabel getLConsultAvionPlane() {
 		if (lConsultAvionPlane == null) {
 			lConsultAvionPlane = new JLabel("Ingrese el Nombre del Avión");
+			lConsultAvionPlane.setForeground(new Color(128, 128, 128));
+			lConsultAvionPlane.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lConsultAvionPlane.setBounds(34, 59, 202, 20);
 		}
 		return lConsultAvionPlane;

@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,26 +16,25 @@ import domain.Ticket;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIRegisterTicket extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTTicket;
 	private JTable tTicket;
-	
-	
 	private JScrollPane spTTicket;
-	
 	private ArrayList<Ticket> arrayLTicket;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -44,7 +44,9 @@ public class GUIRegisterTicket extends JFrame {
 	private JLabel lNumFlightTicket;
 	private JTextField tPassportTicket;
 	private JTextField tNumFlightTicket;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIRegisterTicket() {
 		
 		setDTMTTicket(dataTable,getColumnsNames());
@@ -53,7 +55,7 @@ public class GUIRegisterTicket extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
@@ -64,14 +66,27 @@ public class GUIRegisterTicket extends JFrame {
 		getContentPane().add(getLNumFlightTicket());
 		getContentPane().add(getTPassportTicket());
 		getContentPane().add(getTNumFlightTicket());
-		setSize(691,417);
+		getContentPane().add(getImagen());
+		setSize(724,465);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
 	
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 633);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 //------------------------------------------------------------------------------------
 	public void setDTMTTicket(Object data[][],String[] columnsNames) {
 		dtmTTicket = new DefaultTableModel(data,columnsNames);
@@ -135,7 +150,7 @@ public class GUIRegisterTicket extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 175, 507, 183);
+			scrollPane.setBounds(52, 210, 516, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -150,7 +165,7 @@ public class GUIRegisterTicket extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(604, 392, 94, 23);
 		}
 		return bExit;
 	}
@@ -158,7 +173,7 @@ public class GUIRegisterTicket extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(332, 153, 185, 23);
+			bRegister.setBounds(417, 188, 151, 23);
 		}
 		return bRegister;
 	}
@@ -175,6 +190,8 @@ public class GUIRegisterTicket extends JFrame {
 	public JLabel getLNumTicket() {
 		if (lNumTicket == null) {
 			lNumTicket = new JLabel("Número de Tiquete");
+			lNumTicket.setForeground(new Color(128, 128, 128));
+			lNumTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNumTicket.setBounds(26, 60, 116, 14);
 		}
 		return lNumTicket;
@@ -192,6 +209,8 @@ public class GUIRegisterTicket extends JFrame {
 	public JLabel getLPassportTicket() {
 		if (lPassportTicket == null) {
 			lPassportTicket = new JLabel("Pasaporte");
+			lPassportTicket.setForeground(new Color(128, 128, 128));
+			lPassportTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassportTicket.setBounds(26, 108, 80, 14);
 		}
 		return lPassportTicket;
@@ -200,6 +219,8 @@ public class GUIRegisterTicket extends JFrame {
 	public JLabel getLNumFlightTicket() {
 		if (lNumFlightTicket == null) {
 			lNumFlightTicket = new JLabel("Número de Vuelo");
+			lNumFlightTicket.setForeground(new Color(128, 128, 128));
+			lNumFlightTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNumFlightTicket.setBounds(164, 60, 116, 14);
 		}
 		return lNumFlightTicket;

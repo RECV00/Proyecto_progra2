@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,30 +12,33 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Brand;
 import domain.Model;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIUpdateModel extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTModel;
 	private JTable tModel;
-	
-	
 	private JScrollPane spTModel;
-	
 	private ArrayList<Model> arrayLModel;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
@@ -42,15 +46,21 @@ public class GUIUpdateModel extends JFrame {
 	private JTextField tNameModel;
 	private JLabel lMarcaModel;
 	private JLabel lnumAsientosModelEJE;
-	private JTextField tMarcaModel;
 	private JTextField tCanAsientosModelEJE;
 	private JLabel lnumAsientosModelTUR;
 	private JTextField tCanAsientosTUR;
 	private JLabel lnumAsientosModelEco;
 	private JTextField tCanAsientosECO;
-
-	public GUIUpdateModel() {
+//comboBox lista seleccionable
+	private JComboBox<String>comboBoxBrand;	//Combobox para cargar los nombres de las marcas
+	private DefaultComboBoxModel<String>comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+	ArrayList<Brand>arrayLB;
+//fondo de la GUI
+	private JLabel li;
+	
+	public GUIUpdateModel(ArrayList<Brand>arrayLB) {
 		
+		llenarComboBoxBrand(arrayLB,getComboBoxBrand());
 		setDTMTModel(dataTable,getColumnsNames());
 		setModel(dtmTModel);
 		setSPTModel(tModel);
@@ -66,18 +76,32 @@ public class GUIUpdateModel extends JFrame {
 		getContentPane().add(getTNameModel());
 		getContentPane().add(getLMarcaModel());
 		getContentPane().add(getLnumAsientosModelEJE());
-		getContentPane().add(getTMarcaModel());
 		getContentPane().add(getTCanAsientosModelEJE());
 		getContentPane().add(getLnumAsientosModelTUR());
 		getContentPane().add(getTCanAsientosTUR());
 		getContentPane().add(getLnumAsientosModelEco());
 		getContentPane().add(getTCanAsientosECO());
-		setSize(891,410);
+		getContentPane().add(getComboBoxBrand());
+		getContentPane().add(getImagen());
+		setSize(746,487);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 878, 706);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 public void fillTable(ArrayList <Model> list) {
 		
 		for(Model m : list) {
@@ -153,7 +177,7 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 179, 745, 183);
+			scrollPane.setBounds(10, 203, 723, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -172,7 +196,7 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(771, 339, 94, 23);
+			bExit.setBounds(639, 401, 94, 23);
 		}
 		return bExit;
 	}
@@ -184,7 +208,7 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(590, 156, 165, 23);
+			bUpdate.setBounds(601, 182, 132, 23);
 		}
 		return bUpdate;
 	}
@@ -201,6 +225,8 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JLabel getLNameModel() {
 		if (lNameModel == null) {
 			lNameModel = new JLabel("Nombre");
+			lNameModel.setForeground(new Color(128, 128, 128));
+			lNameModel.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNameModel.setBounds(20, 60, 49, 14);
 		}
 		return lNameModel;
@@ -217,8 +243,10 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 //------------------------------------------------------------------------------------
 	public JLabel getLMarcaModel() {
 		if (lMarcaModel == null) {
-			lMarcaModel = new JLabel("Marca");
-			lMarcaModel.setBounds(20, 116, 80, 14);
+			lMarcaModel = new JLabel("Lista de Marcas");
+			lMarcaModel.setForeground(new Color(128, 128, 128));
+			lMarcaModel.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lMarcaModel.setBounds(20, 116, 96, 14);
 		}
 		return lMarcaModel;
 	}
@@ -226,18 +254,11 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JLabel getLnumAsientosModelEJE() {
 		if (lnumAsientosModelEJE == null) {
 			lnumAsientosModelEJE = new JLabel("Cantidad de Asientos Ejecutivos");
+			lnumAsientosModelEJE.setForeground(new Color(128, 128, 128));
+			lnumAsientosModelEJE.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lnumAsientosModelEJE.setBounds(156, 60, 209, 14);
 		}
 		return lnumAsientosModelEJE;
-	}
-//------------------------------------------------------------------------------------
-	public JTextField getTMarcaModel() {
-		if (tMarcaModel == null) {
-			tMarcaModel = new JTextField();
-			tMarcaModel.setBounds(20, 134, 96, 20);
-			tMarcaModel.setColumns(10);
-		}
-		return tMarcaModel;
 	}
 //------------------------------------------------------------------------------------
 	public JTextField getTCanAsientosModelEJE() {
@@ -249,11 +270,38 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 		}
 		return tCanAsientosModelEJE;
 	}
+	public JComboBox<String> getComboBoxBrand() {
+		if (comboBoxBrand == null) {
+			comboBoxBrand = new JComboBox<String>();
+			comboBoxBrand.setBounds(20, 141, 99, 22);
+			 comboBoxBrand.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		}
+		return comboBoxBrand;
+	}
+	public ArrayList<Brand>getArrayListBrand(){
+		return arrayLB;
+	}
+	public void setArrayListBrand(ArrayList<Brand> arrayLB){
+		this.arrayLB = arrayLB;
+	}
+	public void llenarComboBoxBrand(ArrayList<Brand>arrayLB,JComboBox<String> comboBox) {
+		String[] marca = new String[arrayLB.size()];
+		for(int i=0; i<arrayLB.size(); i++) {
+			marca[i]=arrayLB.get(i).getName();
+		}
+		 // Crea un DefaultComboBoxModel con el array de aviones
+		comboBoxModelo = new DefaultComboBoxModel<>(marca);
+
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNameModel.setText("");
-		tMarcaModel.setText("");
+		comboBoxBrand.setToolTipText(null);
 		tCanAsientosModelEJE.setText("");
+		tCanAsientosTUR.setText("");
+		tCanAsientosECO.setText("");
 	}
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
@@ -263,6 +311,8 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JLabel getLnumAsientosModelTUR() {
 		if (lnumAsientosModelTUR == null) {
 			lnumAsientosModelTUR = new JLabel("Cantidad de Asientos Turista");
+			lnumAsientosModelTUR.setForeground(new Color(128, 128, 128));
+			lnumAsientosModelTUR.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lnumAsientosModelTUR.setBounds(156, 116, 209, 14);
 		}
 		return lnumAsientosModelTUR;
@@ -279,6 +329,8 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JLabel getLnumAsientosModelEco() {
 		if (lnumAsientosModelEco == null) {
 			lnumAsientosModelEco = new JLabel("Cantidad de Asientos Económicos");
+			lnumAsientosModelEco.setForeground(new Color(128, 128, 128));
+			lnumAsientosModelEco.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lnumAsientosModelEco.setBounds(375, 60, 209, 14);
 		}
 		return lnumAsientosModelEco;

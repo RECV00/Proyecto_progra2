@@ -2,10 +2,14 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
+import domain.Airline;
+import domain.Model;
 import domain.Plane;
+import presentation.GUIRegisterPlane;
 import presentation.GUIUpdatePlane;
 
 public class ControllerUpdatePlane implements ActionListener{
@@ -15,12 +19,16 @@ public class ControllerUpdatePlane implements ActionListener{
 	private FilesXML fXML;
 	private Plane plane;
 	private Logic lo;
+	ArrayList<Airline> arrayLA;
+	ArrayList<Model> arrayLM;
 	
 	public ControllerUpdatePlane() {
-		guiUPlane= new GUIUpdatePlane();
 		fXML= new FilesXML();
 		lo=new Logic();
 		plane = new Plane();
+		arrayLA=lo.getNAirline("Airlines.xml", "Airline");
+		arrayLM=lo.getNModel("Models.xml", "Model");
+		guiUPlane= new GUIUpdatePlane(arrayLA,arrayLM);
 		initializer();
 	}
 	private void initializer() {
@@ -37,14 +45,17 @@ public class ControllerUpdatePlane implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()== guiUPlane.getBUpdate()) {
 			plane = new Plane(guiUPlane.getTAvionUpdatePlane().getText(),
-					guiUPlane.getTAirplaneUpdatePalne().getText(),
-					guiUPlane.getTModelUpdatePlane().getText(),
+					guiUPlane.getComboBoxAirline().getSelectedItem().toString(),
+					guiUPlane.getComboBoxModel().getSelectedItem().toString(),
 					guiUPlane.getTYearUpdatePlane().getText());
 			try {
 				fXML.updateXML("Planes.xml","Plane",plane.getDataName(),plane.getData());
 				
 				guiUPlane.getDTMTPlane().setRowCount(0);
-				guiUPlane.getDTMTPlane().addRow(new Object [] {plane.getPlate(),plane.getAirline(),plane.getModel(),plane.getYear()});
+				guiUPlane.getDTMTPlane().addRow(new Object [] {plane.getPlate(),
+						guiUPlane.getComboBoxAirline().getSelectedItem().toString(),
+						guiUPlane.getComboBoxModel().getSelectedItem().toString(),
+						plane.getYear()});
 				guiUPlane.setArrayListPlane(lo.getListPlane("Planes.xml","Plane"));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

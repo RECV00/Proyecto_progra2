@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,33 +19,35 @@ import domain.Model;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIConsultModel extends JFrame {
-
+	//Para la table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTModel;
 	private JTable tModel;
-	
 	private JScrollPane spTModel;
-	
 	private ArrayList<Model> arrayLModel;
 	private Object dataTable[][];
+	private JButton bEXIT;
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
 	private JTextField tConsultName;
 	private JLabel lConsultNameModel;
 	private JButton bSearch;
-
+	//para el fondo de la GUI
+	private JLabel li;
+	
 	public GUIConsultModel() {
+		getContentPane().setBackground(new Color(128, 128, 128));
 		
 		setDTMTModel(dataTable,getColumnsNames());
 		setModel(dtmTModel);
@@ -60,12 +63,26 @@ public class GUIConsultModel extends JFrame {
 		getContentPane().add(getTConsultName());
 		getContentPane().add(getLConsultNameModel());
 		getContentPane().add(getBSearch());
+		getContentPane().add(getImagen());
 		setSize(891,410);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+		public JLabel getImagen() {
+			if(li == null) {
+			li = new JLabel();
+			li.setBounds(-13, -127, 987, 528);
+			ImageIcon imagen= new ImageIcon("media/java.jpg");
+			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+			li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+			getContentPane().add(li);
+			}
+			return li;
+		}
+	//LLenado de la tabla
 public void fillTable(ArrayList <Model> list) {
 		
 		for(Model m : list) {

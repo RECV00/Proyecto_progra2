@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,26 +16,25 @@ import domain.Ticket;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIUpdateTicket extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTTicket;
 	private JTable tTicket;
-	
-	
 	private JScrollPane spTTicket;
-	
 	private ArrayList<Ticket> arrayLTicket;
 	private Object dataTable[][];
+//label,button,textField
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
@@ -44,7 +44,9 @@ public class GUIUpdateTicket extends JFrame {
 	private JLabel lNumFlightTicket;
 	private JTextField tPassportTicket;
 	private JTextField tNumFlightTicket;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIUpdateTicket() {
 		
 		setDTMTTicket(dataTable,getColumnsNames());
@@ -53,7 +55,7 @@ public class GUIUpdateTicket extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
@@ -64,12 +66,26 @@ public class GUIUpdateTicket extends JFrame {
 		getContentPane().add(getLNumFlightTicket());
 		getContentPane().add(getTPassportTicket());
 		getContentPane().add(getTNumFlightTicket());
-		setSize(691,417);
+		getContentPane().add(getImagen());
+		setSize(696,483);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 657);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 public void fillTable(ArrayList <Ticket> list) {
 		
 		for(Ticket t : list) {
@@ -144,7 +160,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 175, 507, 183);
+			scrollPane.setBounds(43, 204, 520, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -159,7 +175,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(576, 410, 94, 23);
 		}
 		return bExit;
 	}
@@ -171,7 +187,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(332, 153, 185, 23);
+			bUpdate.setBounds(431, 184, 132, 23);
 		}
 		return bUpdate;
 	}
@@ -188,6 +204,8 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JLabel getLNumTicket() {
 		if (lNumTicket == null) {
 			lNumTicket = new JLabel("Número de Tiquete");
+			lNumTicket.setForeground(new Color(128, 128, 128));
+			lNumTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNumTicket.setBounds(26, 60, 116, 14);
 		}
 		return lNumTicket;
@@ -205,6 +223,8 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JLabel getLPassportTicket() {
 		if (lPassportTicket == null) {
 			lPassportTicket = new JLabel("Pasaporte");
+			lPassportTicket.setForeground(new Color(128, 128, 128));
+			lPassportTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassportTicket.setBounds(26, 108, 80, 14);
 		}
 		return lPassportTicket;
@@ -213,6 +233,8 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JLabel getLNumFlightTicket() {
 		if (lNumFlightTicket == null) {
 			lNumFlightTicket = new JLabel("Número de Vuelo");
+			lNumFlightTicket.setForeground(new Color(128, 128, 128));
+			lNumFlightTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNumFlightTicket.setBounds(164, 60, 116, 14);
 		}
 		return lNumFlightTicket;

@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,26 +16,25 @@ import domain.Passenger;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class GUIUpdatePassenger extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTPassenger;
 	private JTable tPassenger;
-	
-	
 	private JScrollPane spTPassenger;
-	
 	private ArrayList<Passenger> arrayLPassenger;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bUpdate;
 	private JLabel tTitule;
@@ -50,7 +50,9 @@ public class GUIUpdatePassenger extends JFrame {
 	private JTextField tPhonePassenger;
 	private JLabel lGmailPassenger;
 	private JLabel lPhonePassenger;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIUpdatePassenger() {
 		
 		setDTMTPassenger(dataTable,getColumnsNames());
@@ -59,7 +61,7 @@ public class GUIUpdatePassenger extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
@@ -76,12 +78,26 @@ public class GUIUpdatePassenger extends JFrame {
 		getContentPane().add(getTPhonePassenger());
 		getContentPane().add(getLGmailPassenger());
 		getContentPane().add(getLPhonePassenger());
-		setSize(1000,410);
+		getContentPane().add(getImagen());
+		setSize(1000,504);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 878, 706);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llena y crea la tabla
 public void fillTable(ArrayList <Passenger> list) {
 		
 		for(Passenger p : list) {
@@ -157,7 +173,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 179, 745, 183);
+			scrollPane.setBounds(10, 224, 722, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -172,7 +188,11 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(765, 325, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(638, 418, 94, 23);
 		}
 		return bExit;
 	}
@@ -184,7 +204,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(611, 157, 144, 23);
+			bUpdate.setBounds(615, 200, 117, 23);
 		}
 		return bUpdate;
 	}
@@ -201,6 +221,8 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLPassportPassenger() {
 		if (lPassportPassenger == null) {
 			lPassportPassenger = new JLabel("Pasaporte");
+			lPassportPassenger.setForeground(new Color(128, 128, 128));
+			lPassportPassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lPassportPassenger.setBounds(20, 60, 96, 14);
 		}
 		return lPassportPassenger;
@@ -218,6 +240,8 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLNamePassenger() {
 		if (lNamePassenger == null) {
 			lNamePassenger = new JLabel("Nombre");
+			lNamePassenger.setForeground(new Color(128, 128, 128));
+			lNamePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNamePassenger.setBounds(20, 116, 80, 14);
 		}
 		return lNamePassenger;
@@ -226,6 +250,8 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLLastNamePassenger() {
 		if (lLastNamePassenger == null) {
 			lLastNamePassenger = new JLabel("Apellido");
+			lLastNamePassenger.setForeground(new Color(128, 128, 128));
+			lLastNamePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lLastNamePassenger.setBounds(154, 60, 80, 14);
 		}
 		return lLastNamePassenger;
@@ -271,6 +297,8 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLBirthdatePassenger() {
 		if (lBirthdatePassenger == null) {
 			lBirthdatePassenger = new JLabel("Cumpleaños");
+			lBirthdatePassenger.setForeground(new Color(128, 128, 128));
+			lBirthdatePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lBirthdatePassenger.setBounds(154, 116, 96, 14);
 		}
 		return lBirthdatePassenger;
@@ -294,6 +322,8 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLGmailPassenger() {
 		if (lGmailPassenger == null) {
 			lGmailPassenger = new JLabel("Correo");
+			lGmailPassenger.setForeground(new Color(128, 128, 128));
+			lGmailPassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lGmailPassenger.setBounds(287, 60, 71, 14);
 		}
 		return lGmailPassenger;
@@ -301,6 +331,8 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JLabel getLPhonePassenger() {
 		if (lPhonePassenger == null) {
 			lPhonePassenger = new JLabel("Celular");
+			lPhonePassenger.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lPhonePassenger.setForeground(new Color(128, 128, 128));
 			lPhonePassenger.setBounds(287, 116, 71, 14);
 		}
 		return lPhonePassenger;

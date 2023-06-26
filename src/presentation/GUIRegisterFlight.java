@@ -2,6 +2,7 @@ package presentation;
 
 
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,24 +24,25 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import java.awt.List;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class GUIRegisterFlight extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
 	private FilesXML fXML;
 	private DefaultTableModel dtmTFlight;
 	private JTable tFlight;
-	
-	
 	private JScrollPane spTFlight;
-	
 	private ArrayList<Flight> arrayLFlight;
 	private Object dataTable[][];
+//label , button ,textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
@@ -50,19 +52,20 @@ public class GUIRegisterFlight extends JFrame {
 	private JLabel lDepartureDateTime;
 	private JTextField tDepartureCity;
 	private JTextField tDepartureDateTime;
-	
-	private JComboBox comboBoxState;
-	
-	private JComboBox<String>comboBoxAvion1;//Combobox para cargar los lenguajes
-    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
-	
-    private JLabel lArrivalCity;
+	private JLabel lArrivalCity;
 	private JLabel lArrivalDateTime;
 	private JLabel lFlight;
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
 	private JLabel lTypeAsiento;
-	ArrayList<Plane>arrayLP;
+//comboBox
+	private JComboBox comboBoxState;
+	private JComboBox<String>comboBoxAvion1;//Combobox para cargar las placas de los aviones
+    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los 
+	ArrayList<Plane>arrayLP;						//elementos de un JComboBox que son de tipo String.
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIRegisterFlight(ArrayList<Plane>arrayLP) {
 		
 		llenarComboBoxAviones(arrayLP,getComboBoxAvion1());
@@ -91,14 +94,28 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getTArrivalDateTime());
 		getContentPane().add(getLTypeAsiento());
 		getContentPane().add(getComboBoxAvion1());
-		setSize(1000,440);
+		getContentPane().add(getImagen());
+		setSize(916,429);
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 874, 561);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//llenando y creando la tabla
+
 //------------------------------------------------------------------------------------
 	public void setDTMTFlight(Object data[][],String[] columnsNames) {
 		dtmTFlight = new DefaultTableModel(data,columnsNames);
@@ -133,7 +150,7 @@ public class GUIRegisterFlight extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"Numero de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
+		String columnsNames[] = {"Número de Vuelo", "Ciudad de Salida", "Salida: Hora/Fecha", "Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Asiento","Monto"};
 		return columnsNames;
 	}
 //------------------------------------------------------------------------------------		
@@ -162,7 +179,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 209, 886, 183);
+			scrollPane.setBounds(10, 185, 886, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -181,7 +198,7 @@ public class GUIRegisterFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(901, 358, 75, 23);
+			bExit.setBounds(786, 157, 75, 23);
 		}
 		return bExit;
 	}
@@ -209,7 +226,9 @@ public class GUIRegisterFlight extends JFrame {
 //------------------------------------------------------------------------------------
 	public JLabel getLNumFlight() {
 		if (lNumFlight == null) {
-			lNumFlight = new JLabel("Numero de Vuelo");
+			lNumFlight = new JLabel("Número de Vuelo");
+			lNumFlight.setForeground(new Color(128, 128, 128));
+			lNumFlight.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNumFlight.setBounds(20, 60, 130, 14);
 		}
 		return lNumFlight;
@@ -227,6 +246,8 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLDepartureCity() {
 		if (lDepartureCity == null) {
 			lDepartureCity = new JLabel("Ciudad de Salidad");
+			lDepartureCity.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lDepartureCity.setForeground(new Color(128, 128, 128));
 			lDepartureCity.setBounds(20, 116, 130, 14);
 		}
 		return lDepartureCity;
@@ -235,6 +256,8 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLDepartureDateTime() {
 		if (lDepartureDateTime == null) {
 			lDepartureDateTime = new JLabel("Salida:Hora/Fecha");
+			lDepartureDateTime.setForeground(new Color(128, 128, 128));
+			lDepartureDateTime.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lDepartureDateTime.setBounds(160, 116, 133, 14);
 		}
 		return lDepartureDateTime;
@@ -267,7 +290,7 @@ public class GUIRegisterFlight extends JFrame {
 		}
 		return comboBoxState;
 	}
-
+// crea la lista seleccionable con las placas de los aviones
 	public JComboBox<String> getComboBoxAvion1() {
 	    if (comboBoxAvion1 == null) {
 	    	comboBoxAvion1 = new JComboBox<String>();
@@ -309,6 +332,8 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLArrivalCity() {
 		if (lArrivalCity == null) {
 			lArrivalCity = new JLabel("Ciudad de Arribo");
+			lArrivalCity.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lArrivalCity.setForeground(new Color(128, 128, 128));
 			lArrivalCity.setBounds(160, 60, 133, 14);
 		}
 		return lArrivalCity;
@@ -316,6 +341,8 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLArrivalDateTime() {
 		if (lArrivalDateTime == null) {
 			lArrivalDateTime = new JLabel("Arribo:Hora/Fecha");
+			lArrivalDateTime.setForeground(new Color(128, 128, 128));
+			lArrivalDateTime.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lArrivalDateTime.setBounds(303, 60, 129, 14);
 		}
 		return lArrivalDateTime;
@@ -323,6 +350,8 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLFlight() {
 		if (lFlight == null) {
 			lFlight = new JLabel("Avión");
+			lFlight.setForeground(new Color(128, 128, 128));
+			lFlight.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lFlight.setBounds(438, 60, 68, 14);
 		}
 		return lFlight;
@@ -346,6 +375,8 @@ public class GUIRegisterFlight extends JFrame {
 	public JLabel getLTypeAsiento() {
 		if (lTypeAsiento == null) {
 			lTypeAsiento = new JLabel("Asiento");
+			lTypeAsiento.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lTypeAsiento.setForeground(new Color(128, 128, 128));
 			lTypeAsiento.setBounds(438, 116, 49, 14);
 		}
 		return lTypeAsiento;

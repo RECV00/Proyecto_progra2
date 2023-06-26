@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,8 @@ import domain.Airline;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -42,7 +45,7 @@ public class GUIConsultAirline extends JFrame {
 	private JTextField tConsultAirline;
 	private JLabel lConsultAerolinea;
 	private JButton bSearch;
-
+	private JLabel li;
 	public GUIConsultAirline() {
 		
 		setDTMTAirline(dataTable,getColumnsNames());
@@ -59,12 +62,26 @@ public class GUIConsultAirline extends JFrame {
 		getContentPane().add(getTConsultAirline());
 		getContentPane().add(getLConsultAerolinea());
 		getContentPane().add(getBSearch());
-		setSize(666,368);
+		getContentPane().add(getImagen());
+		setSize(682,390);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo
+		public JLabel getImagen() {
+			if(li == null) {
+			li = new JLabel();
+			li.setBounds(-13, -127, 874, 528);
+			ImageIcon imagen= new ImageIcon("media/java.jpg");
+			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+			li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+			getContentPane().add(li);
+			}
+			return li;
+		}
+		
 public void fillTable(ArrayList <Airline> list) {
 		
 		for(Airline air : list) {
@@ -165,7 +182,7 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(376, 107, 141, 23);
+			bCheckHistory.setBounds(376, 107, 134, 23);
 		}
 		return bCheckHistory;
 	}
@@ -190,6 +207,8 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 	public JLabel getLConsultAerolinea() {
 		if (lConsultAerolinea == null) {
 			lConsultAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
+			lConsultAerolinea.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lConsultAerolinea.setForeground(Color.GRAY);
 			lConsultAerolinea.setBounds(34, 59, 292, 20);
 		}
 		return lConsultAerolinea;

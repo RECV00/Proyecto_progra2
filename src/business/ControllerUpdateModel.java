@@ -2,10 +2,13 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
+import domain.Brand;
 import domain.Model;
+import presentation.GUIRegisterModel;
 import presentation.GUIUpdateModel;
 
 
@@ -15,12 +18,14 @@ public class ControllerUpdateModel implements ActionListener{
 	private FilesXML fXML;
 	private Logic lo;
 	private Model model;
+	ArrayList<Brand> arrayLB;
 	
 	public ControllerUpdateModel() {
-		guiUM= new GUIUpdateModel();
 		fXML= new FilesXML();
 		lo=new Logic();
 		model = new Model();
+		arrayLB=lo.getNameBrand("Brands.xml", "Brand");
+		guiUM= new GUIUpdateModel(arrayLB);
 		initializer();
 	}
 	private void initializer() {
@@ -36,7 +41,8 @@ public class ControllerUpdateModel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiUM.getBUpdate()) {
-			model = new Model(guiUM.getTNameModel().getText(),guiUM.getTMarcaModel().getText(),
+			model = new Model(guiUM.getTNameModel().getText(),
+					guiUM.getComboBoxBrand().getSelectedItem().toString(),
 					Integer.valueOf(guiUM.getTCanAsientosModelEJE().getText()),
 					Integer.valueOf(guiUM.getTCanAsientosTUR().getText()),
 					Integer.valueOf(guiUM.getTCanAsientosECO().getText()));
@@ -44,9 +50,9 @@ public class ControllerUpdateModel implements ActionListener{
 				fXML.updateXML("Models.xml","Model",model.getDataName(),model.getData());
 				
 				guiUM.getDTMTModel().setRowCount(0);
-				guiUM.getDTMTModel().addRow(new Object [] {model.getName(),model.getMarca(),
-					model.getCantSeatExecutive(),model.getCantSeatEconomic(),model.getCantSeatTourist()});
-				
+				guiUM.getDTMTModel().addRow(new Object [] {model.getName(),
+				guiUM.getComboBoxBrand().getSelectedItem().toString(),
+				model.getCantSeatExecutive(),model.getCantSeatEconomic(),model.getCantSeatTourist()});
 				guiUM.setArrayListModel(lo.getListModel("Models.xml","Model"));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

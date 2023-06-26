@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,32 +19,33 @@ import domain.Ticket;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class GUIConsultTicket extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTTicket;
 	private JTable tTicket;
-	
 	private JScrollPane spTTicket;
-	
 	private ArrayList<Ticket> arrayLTicket;
 	private Object dataTable[][];
+//JLabel y JTextField
 	private JButton bExit;
 	private JButton bCheckHistory;
 	private JLabel tTitule;
 	private JTextField tConsultNumTicket;
 	private JLabel lConsultNumTicket;
 	private JButton bSearch;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIConsultTicket() {
 		
 		setDTMTTicket(dataTable,getColumnsNames());
@@ -60,12 +62,26 @@ public class GUIConsultTicket extends JFrame {
 		getContentPane().add(getTConsultNumTicket());
 		getContentPane().add(getLConsultNumTicket());
 		getContentPane().add(getBSearch());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(713,414);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(-13, -127, 987, 528);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+//LLenado de la tabla
 public void fillTable(ArrayList <Ticket> list) {
 		
 		for(Ticket t : list) {
@@ -139,7 +155,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(27, 165, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -154,7 +170,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(593, 341, 94, 23);
 		}
 		return bExit;
 	}
@@ -166,7 +182,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bCheckHistory.setBounds(334, 107, 183, 23);
+			bCheckHistory.setBounds(360, 141, 174, 23);
 		}
 		return bCheckHistory;
 	}
@@ -191,6 +207,8 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JLabel getLConsultNumTicket() {
 		if (lConsultNumTicket == null) {
 			lConsultNumTicket = new JLabel("Ingrese el Número de Tiquete");
+			lConsultNumTicket.setForeground(new Color(128, 128, 128));
+			lConsultNumTicket.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lConsultNumTicket.setBounds(34, 59, 224, 20);
 		}
 		return lConsultNumTicket;

@@ -3,6 +3,7 @@ package presentation;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,28 +25,28 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class GUIRegisterBrand extends JFrame {
-
+//table
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private JButton bEXIT;
-	
 	private DefaultTableModel dtmTBrand;
 	private JTable tBrand;
-	
-	
 	private JScrollPane spTBrand;
-	
 	private ArrayList<Brand> arrayLBrand;
 	private Object dataTable[][];
+//label,button,textfield
 	private JButton bExit;
 	private JButton bRegister;
 	private JLabel tTitule;
 	private JLabel lNameRegisterBrand;
 	private JTextField tNameRegisterBrand;
-
+//fondo de la GUI
+	private JLabel li;
+	
 	public GUIRegisterBrand() {
 		
 		setDTMTBrand(dataTable,getColumnsNames());
@@ -54,20 +55,33 @@ public class GUIRegisterBrand extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBRegister());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getLNameRegisterBrand());
 		getContentPane().add(getTNameRegisterBrand());
-		setSize(688,368);
+		getContentPane().add(getImagen());
+		setSize(729,408);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	
+	//fondo
+			public JLabel getImagen() {
+				if(li == null) {
+				li = new JLabel();
+				li.setBounds(-13, -127, 874, 528);
+				ImageIcon imagen= new ImageIcon("media/java.jpg");
+				Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+				li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+				getContentPane().add(li);
+				}
+				return li;
+			}
+	//llenando y creando la tabla
 	
 //------------------------------------------------------------------------------------
 	public void setDTMTBrand(Object data[][],String[] columnsNames) {
@@ -132,7 +146,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 130, 507, 183);
+			scrollPane.setBounds(44, 154, 507, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -147,7 +161,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(527, 290, 94, 23);
+			bExit.setBounds(609, 335, 94, 23);
 		}
 		return bExit;
 	}
@@ -155,7 +169,7 @@ public class GUIRegisterBrand extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(377, 109, 140, 23);
+			bRegister.setBounds(411, 132, 140, 23);
 		}
 		return bRegister;
 	}
@@ -172,6 +186,8 @@ public class GUIRegisterBrand extends JFrame {
 	public JLabel getLNameRegisterBrand() {
 		if (lNameRegisterBrand == null) {
 			lNameRegisterBrand = new JLabel("Nombre de la Marca");
+			lNameRegisterBrand.setForeground(new Color(128, 128, 128));
+			lNameRegisterBrand.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lNameRegisterBrand.setBounds(33, 61, 140, 14);
 		}
 		return lNameRegisterBrand;
