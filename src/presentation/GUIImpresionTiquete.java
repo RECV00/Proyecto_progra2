@@ -159,7 +159,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"DATOS DEL PASAJERO"};
+		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA"};
 		return columnsNames;
 	}
 
