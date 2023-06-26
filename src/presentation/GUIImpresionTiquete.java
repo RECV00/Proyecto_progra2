@@ -67,8 +67,8 @@ public class GUIImpresionTiquete extends JFrame {
 		
 		setDTMTPassenger(dataTable,getColumnsNames());
 		setPassenger(dtmTPassenger);
-		setAirline(dtmTAirline);
-		setPlane(dtmTPlane);
+		//setAirline(dtmTAirline);
+		//setPlane(dtmTPlane);
 		setSPTPassenger(tPassenger);
 
 		//setContentPane(contentPane);
@@ -106,88 +106,25 @@ public class GUIImpresionTiquete extends JFrame {
 		}
 		return li;
 	}
-	public void fillTable(ArrayList<Passenger> list, ArrayList<Airline> listA, ArrayList<Plane> listP) {
-	    int maxRows = Math.max(Math.max(list.size(), listA.size()), listP.size());
-
-	    for (int i = 0; i < maxRows; i++) {
-	        if (i < list.size()) {
-	            Passenger p = list.get(i);
-	            dtmTPassenger.addRow(new Object[]{
-	                    p.getPassport(),
-	                    p.getName(),
-	                    p.getLastName(),
-	                    p.getBirthdate(),
-	                    p.getGmail(),
-	                    p.getPhone()
-	            });
-	        } else {
-	            dtmTPassenger.addRow(new Object[]{"", "", "", "", "", ""});
-	        }
-
-	        if (i < listA.size()) {
-	            Airline a = listA.get(i);
-	            dtmTAirline.addRow(new Object[]{
-	                    a.getName(),
-	                    a.getContry()});
-	        } else {
-	            dtmTAirline.addRow(new Object[]{"", ""});
-	        }
-
-	        if (i < listP.size()) {
-	            Plane pl = listP.get(i);
-	            dtmTPlane.addRow(new Object[]{
-	                    pl.getPlate(),
-	                    pl.getAirline(),
-	                    pl.getModel(),
-	                    pl.getYear()});
-	        } else {
-	            dtmTPlane.addRow(new Object[]{"", "", "", ""});
-	        }
+public void fillTable(ArrayList<Passenger> list) {
+	    for (Passenger p : list) {
+	        dtmTPassenger.addRow(
+	       
+	new Object[]{p.getPassport()});
+	        dtmTPassenger.addRow(new Object[]{p.getName()});
+	        dtmTPassenger.addRow(new Object[]{p.getLastName()});
+	        dtmTPassenger.addRow(new Object[]{p.getBirthdate()});
+	        dtmTPassenger.addRow(new Object[]{p.getGmail()});
+	        dtmTPassenger.addRow(new Object[]{p.getPhone()});
 	    }
 
 	    setPassenger(dtmTPassenger);
-	    setAirline(dtmTAirline);
-	    setPlane(dtmTPlane);
 	}
-
 public ArrayList<Passenger>getArrayListPassenger(){
 	return arrayLPassenger;
 }
 public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	this.arrayLPassenger = arrayLPassenger;
-}
-public ArrayList<Airline>getArrayListAirline(){
-	return arrayLAirline;
-}
-public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
-	this.arrayLAirline = arrayLAirline;
-}
-public ArrayList<Plane>getArrayListPlane(){
-	return arrayLPlane;
-}
-public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
-	this.arrayLPlane = arrayLPlane;
-}
-//------------------------------------------------------------------------------------
-public void setAirline(DefaultTableModel dtmTAirline) {
-	tAirline = new JTable(dtmTAirline);
-	//No poder editar los valores de la tabla
-	tAirline.setEnabled(false);
-	//no poder mover las columnas
-	tAirline.getTableHeader().setReorderingAllowed(false);
-	//no poder reducir el tamanio de las columnas
-	tAirline.getTableHeader().setResizingAllowed(false);
-
-}
-public void setPlane(DefaultTableModel dtmTPlane) {
-	tPlane = new JTable(dtmTPlane);
-	//No poder editar los valores de la tabla
-	tPlane.setEnabled(false);
-	//no poder mover las columnas
-	tPlane.getTableHeader().setReorderingAllowed(false);
-	//no poder reducir el tamanio de las columnas
-	tPlane.getTableHeader().setResizingAllowed(false);
-
 }
 public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		dtmTPassenger = new DefaultTableModel(data,columnsNames);
@@ -222,7 +159,7 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA","DATOS DEL AVIÓN"};
+		String columnsNames[] = {"DATOS DEL PASAJERO"};
 		return columnsNames;
 	}
 
