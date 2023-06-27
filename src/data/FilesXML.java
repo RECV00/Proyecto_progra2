@@ -44,20 +44,14 @@ public void createXML(String objectName,String fileName) {
 			try {
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
 				Document doc = dBuilder.newDocument();
-
 				Element rootElement = doc.createElement(objectName);
 				doc.appendChild(rootElement);
-
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
-
 				DOMSource source = new DOMSource(doc);
-
 				StreamResult result = new StreamResult(file);
 				transformer.transform(source, result);
-
 				System.out.println("Archivo Creado");
 
 			}catch(Exception e) {
@@ -73,37 +67,28 @@ public void writeXML(String FileName, String elementType, String[] dataName, Str
 
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-
 			Document doc = db.parse(new File(FileName));
 			doc.getDocumentElement().normalize();
-
 			Element rootElement  =  doc.getDocumentElement();
-
 			Element ele = doc.createElement(elementType);
 			rootElement.appendChild(ele);
 //la informacion dentro del XML
 			Attr attr = doc.createAttribute(dataName[0]);//pestalla para ver datos 
 			attr.setValue(data[0]);
 			ele.setAttributeNode(attr);
-
 			for(int i = 1; i < data.length; i++){//cuenta desde el atributo siguiente 
 
 				Element dato = doc.createElement(dataName[i]);
-
 				dato.appendChild(doc.createTextNode(data[i]));//saca los datos
-
 				ele.appendChild(dato);//agrega
 			}
 
 			//escribirmos el contenido en un archivo xml
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
-
 			DOMSource source = new DOMSource(doc);
-
 			StreamResult result = new StreamResult(new File(FileName));
 			transformer.transform(source, result);
-
 			System.out.println("Registro Guardado");
 
 		}catch(ParserConfigurationException pce) {
@@ -133,16 +118,12 @@ public void deleteXML(String FileName, String elementType,String data, String wo
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(inputFile);
-
         NodeList nList = doc.getElementsByTagName(elementType);
         Element element;
 
         for (int i = 0; i < nList.getLength(); i++) {
-
             element = (Element) nList.item(i);
-
             if (element.getAttribute(data).equals(wordDelete)) {
-
                 element.getParentNode().removeChild(element);
 
             }
@@ -150,12 +131,9 @@ public void deleteXML(String FileName, String elementType,String data, String wo
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
-
         DOMSource source = new DOMSource(doc);
-
         StreamResult result = new StreamResult(new File(FileName));
         transformer.transform(source, result);
-
         System.out.println("Registro Eliminado");
     } catch (Exception e) {
         e.printStackTrace();
@@ -188,10 +166,8 @@ public String validateUser(String fileName, String elementType, String userName,
             if (encounteredUserNames.contains(name) || encounteredPasswords.contains(pass)) {
                 throw new Exception("Duplicate user or password found");
             }
-
             encounteredUserNames.add(name);
             encounteredPasswords.add(pass);
-
             if (userName.equals(name) && password.equals(pass)) {
                 if (sta.equals("Activo")) {
                 	//System.out.print(userType);
@@ -223,18 +199,13 @@ public void updateXML(String FileName, String elementType, String dataName[], St
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(inputFile);
         doc.getDocumentElement().normalize();
-
         NodeList nList = doc.getElementsByTagName(elementType);
         Element eElement;
 
         for (int i = 0; i < nList.getLength(); i++) {
-
             eElement = (Element) nList.item(i);
-
             if (eElement.getAttribute(dataName[0]).equals(data[0])) {
-
                 for (int j = 1; j < data.length; j++) {
-
                     eElement.getElementsByTagName(dataName[j]).item(0).setTextContent(data[j]);
                 }
             }
@@ -242,20 +213,13 @@ public void updateXML(String FileName, String elementType, String dataName[], St
         //Actualizamos el contenido en un archivo xml
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
-
         DOMSource source = new DOMSource(doc);
-
         StreamResult result = new StreamResult(new File(FileName));
         transformer.transform(source, result);
-
         System.out.println("Registro Actualizado");
     } catch (Exception e) {
         e.printStackTrace();
     }
 }
-//-----------------------------------------------------------------------------------------------------
-
-
-
 
 }

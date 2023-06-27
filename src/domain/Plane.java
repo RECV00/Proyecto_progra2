@@ -34,6 +34,7 @@ public class Plane {
 		this.plate=plate;
 	}
 
+
 	public String getPlate() {
 		return plate;
 	}
