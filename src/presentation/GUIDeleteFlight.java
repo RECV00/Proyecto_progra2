@@ -54,7 +54,7 @@ public class GUIDeleteFlight extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBDelete());
@@ -62,7 +62,7 @@ public class GUIDeleteFlight extends JFrame {
 		getContentPane().add(getTVueloDelete());
 		getContentPane().add(getLNameDelete());
 		getContentPane().add(getImagen());
-		setSize(1000,440);
+		setSize(1000,449);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -72,10 +72,10 @@ public class GUIDeleteFlight extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 987, 569);
+		li.setBounds(-15, -105, 999, 606);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIDeleteFlight.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -84,7 +84,8 @@ public class GUIDeleteFlight extends JFrame {
 public void fillTable(ArrayList <Flight> list) {
 		
 		for(Flight f: list) {
-			dtmTFlight.addRow(new Object[] {f.getNumFlight(),f.getDepartureCity(),f.getDepartureDateTime(),f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(getName())});
+			dtmTFlight.addRow(new Object[] {f.getNumFlight(),f.getDepartureCity(),f.getDepartureDateTime(),f.getArrivalCity(),
+					f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount()});
 		}
 		setFlight(dtmTFlight);
 	}
@@ -154,7 +155,7 @@ public ArrayList<Flight>getArrayListFlight(){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(22, 185, 865, 183);
+			scrollPane.setBounds(24, 198, 865, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -173,7 +174,7 @@ public ArrayList<Flight>getArrayListFlight(){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(897, 293, 75, 23);
+			bExit.setBounds(899, 376, 75, 23);
 		}
 		return bExit;
 	}
@@ -181,7 +182,7 @@ public ArrayList<Flight>getArrayListFlight(){
 	public JButton getBDelete() {
 		if (bDelete == null) {
 			bDelete = new JButton("Eliminar");
-			bDelete.setBounds(764, 163, 123, 23);
+			bDelete.setBounds(766, 177, 123, 23);
 		}
 		return bDelete;
 	}
@@ -198,7 +199,7 @@ public ArrayList<Flight>getArrayListFlight(){
 	public JTextField getTVueloDelete() {
 		if (tVueloDelete == null) {
 			tVueloDelete = new JTextField();
-			tVueloDelete.setBounds(86, 127, 158, 34);
+			tVueloDelete.setBounds(86, 127, 158, 23);
 			tVueloDelete.setColumns(10);
 		}
 		return tVueloDelete;

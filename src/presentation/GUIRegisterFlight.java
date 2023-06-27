@@ -29,6 +29,8 @@ import javax.swing.ImageIcon;
 
 import java.awt.List;
 import java.awt.Color;
+import javax.swing.DropMode;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class GUIRegisterFlight extends JFrame {
@@ -63,6 +65,8 @@ public class GUIRegisterFlight extends JFrame {
 	private JComboBox<String>comboBoxAvion1;//Combobox para cargar las placas de los aviones
     private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los 
 	ArrayList<Plane>arrayLP;						//elementos de un JComboBox que son de tipo String.
+	private JLabel lAmount;
+	private JTextField tAmount;
 //fondo de la GUI
 	private JLabel li;
 	
@@ -94,26 +98,29 @@ public class GUIRegisterFlight extends JFrame {
 		getContentPane().add(getTArrivalDateTime());
 		getContentPane().add(getLTypeAsiento());
 		getContentPane().add(getComboBoxAvion1());
+		getContentPane().add(getLAmount());
+		getContentPane().add(getTAmount());
 		getContentPane().add(getImagen());
-		setSize(919,462);
+		setSize(981,462);
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	//fondo
+	//fondo de la GUI
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -95, 916, 615);
+		li.setBounds(0, -124, 987, 683);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterFlight.class.getResource("/media/logo00.png")));
+		li.setIcon(new ImageIcon(GUIConsultModel.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
 	}
+
 //llenando y creando la tabla
 
 //------------------------------------------------------------------------------------
@@ -179,7 +186,7 @@ public class GUIRegisterFlight extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 206, 886, 183);
+			scrollPane.setBounds(37, 215, 886, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -198,7 +205,7 @@ public class GUIRegisterFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(818, 389, 75, 23);
+			bExit.setBounds(849, 397, 75, 23);
 		}
 		return bExit;
 	}
@@ -210,7 +217,7 @@ public class GUIRegisterFlight extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bRegister.setBounds(767, 183, 129, 23);
+			bRegister.setBounds(794, 193, 129, 23);
 		}
 		return bRegister;
 	}
@@ -286,7 +293,7 @@ public class GUIRegisterFlight extends JFrame {
 		if (comboBoxState == null) {
 			comboBoxState = new JComboBox();
 			comboBoxState.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Clase Ejecutiva", "Clase Turista", "Clase Económica"}));
-			comboBoxState.setBounds(436, 140, 143, 22);
+			comboBoxState.setBounds(303, 140, 143, 22);
 		}
 		return comboBoxState;
 	}
@@ -377,8 +384,25 @@ public class GUIRegisterFlight extends JFrame {
 			lTypeAsiento = new JLabel("Asiento");
 			lTypeAsiento.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lTypeAsiento.setForeground(new Color(128, 128, 128));
-			lTypeAsiento.setBounds(438, 116, 49, 14);
+			lTypeAsiento.setBounds(303, 126, 49, 14);
 		}
 		return lTypeAsiento;
+	}
+	public JLabel getLAmount() {
+		if (lAmount == null) {
+			lAmount = new JLabel("Monto del Asiento");
+			lAmount.setForeground(new Color(102, 102, 102));
+			lAmount.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lAmount.setBounds(491, 116, 111, 14);
+		}
+		return lAmount;
+	}
+	public JTextField getTAmount() {
+		if (tAmount == null) {
+			tAmount = new JTextField();
+			tAmount.setBounds(491, 141, 111, 20);
+			tAmount.setColumns(10);
+		}
+		return tAmount;
 	}
 }

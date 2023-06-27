@@ -47,7 +47,7 @@ public class ControllerUpdateFlight implements ActionListener{
 					guiUF.getTArrivalDateTime().getText(),
 					guiUF.getComboBoxAvion().getSelectedItem().toString(),
 					guiUF.getComboBoxState().getSelectedItem().toString(),
-					Integer.valueOf(flight.getAmount(guiUF.getComboBoxState().getSelectedItem().toString())));
+					Integer.valueOf(guiUF.getTAmount().getText()));
 			try {
 				fXML.updateXML("Flights.xml","Flight",flight.getDataName(),flight.getData());
 				
@@ -59,7 +59,7 @@ public class ControllerUpdateFlight implements ActionListener{
 					flight.getArrivalDateTime(),
 					guiUF.getComboBoxAvion().getSelectedItem().toString(),
 					guiUF.getComboBoxState().getSelectedItem().toString(),
-					flight.getAmount(flight.getSeat())});
+					Integer.valueOf(flight.getAmount())});
 				
 				guiUF.setArrayListFlight(lo.getListFlight("Flights.xml","Flight"));
 				

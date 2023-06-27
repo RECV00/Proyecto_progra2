@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class GUIUpdateModel extends JFrame {
 //table
@@ -67,7 +68,7 @@ public class GUIUpdateModel extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBUpdate());
@@ -83,7 +84,7 @@ public class GUIUpdateModel extends JFrame {
 		getContentPane().add(getTCanAsientosECO());
 		getContentPane().add(getComboBoxBrand());
 		getContentPane().add(getImagen());
-		setSize(746,487);
+		setSize(900,472);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -93,10 +94,11 @@ public class GUIUpdateModel extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 878, 706);
+		li.setHorizontalAlignment(SwingConstants.CENTER);
+		li.setBounds(0, -148, 884, 725);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIUpdateModel.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -177,7 +179,7 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 203, 723, 183);
+			scrollPane.setBounds(52, 209, 753, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tModel=new JTable(dtmTModel);
 			tModel.setEnabled(false);
@@ -196,7 +198,7 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(639, 401, 94, 23);
+			bExit.setBounds(780, 399, 94, 23);
 		}
 		return bExit;
 	}
@@ -208,7 +210,7 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(601, 182, 132, 23);
+			bUpdate.setBounds(671, 189, 132, 23);
 		}
 		return bUpdate;
 	}

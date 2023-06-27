@@ -453,7 +453,7 @@ public ArrayList<Flight> readXMLArrayListFlight(String FileName, String elementT
 				info+=(dataName[0] +":"+eElement.getAttribute(dataName[0])+"\n");
 				
 				flights = new Flight(flights.getNumFlight(),flights.getDepartureCity(),flights.getDepartureDateTime(),
-						flights.getArrivalCity(),flights.getArrivalDateTime(),flights.getFlight(),flights.getSeat(),flights.getAmount(flights.getSeat()));
+						flights.getArrivalCity(),flights.getArrivalDateTime(),flights.getFlight(),flights.getSeat(),flights.getAmount());
 				
 				arrayLFlight.add(flights);
 				
