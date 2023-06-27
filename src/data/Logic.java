@@ -544,7 +544,73 @@ public ArrayList<Flight> searchXMLFlight(String fileName,String elementType, Str
 
     return arrayLFlight;
 }
+public ArrayList<Flight> searchXMLAvion(String fileName,String elementType, String data,String word) {
+    arrayLFlight = new ArrayList<>();
+    Flight f = new Flight();
+    
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+               
+                String numFlight = eElement.getAttribute(data);
 
+                if (numFlight.equals(word)) {
+                	
+                	f = new Flight(eElement.getElementsByTagName("flight").item(0).getTextContent());
+
+                    arrayLFlight.add(f);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return arrayLFlight;
+}
+public ArrayList<Flight> getNameFlight(String rutaArchivo, String elementType) {
+    ArrayList<Flight> vuelo = new ArrayList<>();
+    Flight f = new Flight();
+
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        // Parsear el archivo XML y obtener el objeto Document
+        File archivoXML = new File(rutaArchivo);
+        Document documento = builder.parse(archivoXML);
+
+        // Obtener la lista de elementos de avión en el documento
+        NodeList nodeList = documento.getElementsByTagName(elementType);
+
+        // Recorrer los elementos de avión y obtener las placas
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element elementoAvion = (Element) nodeList.item(i);
+            String numV = elementoAvion.getAttribute("numFlight");
+            f=new Flight(numV);
+            vuelo.add(f);
+ 
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return vuelo;
+}
 //MODEL
 public ArrayList<Model> readXMLArrayListModel(String FileName, String elementType,String[]dataName) {
 	
@@ -938,9 +1004,7 @@ public ArrayList<Plane> getNamePlane(String rutaArchivo, String elementType) {
             Element elementoAvion = (Element) nodeList.item(i);
             String placa = elementoAvion.getAttribute("plate");
             p=new Plane(placa);
-            System.out.print(p);
             aviones.add(p);
-            System.out.print(aviones);
         }
     } catch (Exception e) {
         e.printStackTrace();
@@ -948,7 +1012,41 @@ public ArrayList<Plane> getNamePlane(String rutaArchivo, String elementType) {
 
     return aviones;
 }
+@SuppressWarnings("unlikely-arg-type")
+public ArrayList<Plane> getNamePlaneAirline(String rutaArchivo, String elementType,ArrayList<Flight>avion) {
+    ArrayList<Plane> aviones = new ArrayList<>();
+    Plane p = new Plane();
 
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        // Crear el objeto DocumentBuilder
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        // Parsear el archivo XML y obtener el objeto Document
+        File archivoXML = new File(rutaArchivo);
+        Document documento = builder.parse(archivoXML);
+
+        // Obtener la lista de elementos de avión en el documento
+        NodeList nodeList = documento.getElementsByTagName(elementType);
+
+        // Recorrer los elementos de avión y obtener las placas
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element elementoAvion = (Element) nodeList.item(i);
+            String name = elementoAvion.getAttribute("plate");
+            if(name.equals(avion)) {
+            String a = elementoAvion.getElementsByTagName("airline").item(0).getTextContent();
+            p=new Plane(a);
+            aviones.add(p);
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return aviones;
+}
 //TICKET
 public ArrayList<Ticket> readXMLArrayListTicket(String FileName, String elementType,String[]dataName) {
 	
