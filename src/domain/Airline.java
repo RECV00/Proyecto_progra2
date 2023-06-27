@@ -53,7 +53,7 @@ public Airline(String name) {
 //toString
 	@Override
 	public String toString() {
-		return name +":"+ contry;
+		return name +"-"+ contry;
 	}
 	
 

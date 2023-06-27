@@ -36,9 +36,9 @@ public class GUIImpresionTiquete extends JFrame {
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
 	private JLabel li;
-	private DefaultTableModel dtmTPassenger;
-	private JTable tPassenger;
-	private JScrollPane spTPassenger;
+	private DefaultTableModel dtmTImpresionTicket;
+	private JTable tImpresionTicket;
+	private JScrollPane spTImpresionTicket;
 	
 	private ArrayList<Passenger> arrayLPassenger;
 	private ArrayList <Airline> arrayLAirline;
@@ -48,7 +48,7 @@ public class GUIImpresionTiquete extends JFrame {
 	private JButton bImprimir;
 	private JLabel tTitule;
 	private JTextField tDatosPasajero;
-	private JLabel lPassportPassengerConsult;
+	private JLabel lDatosPasajero;
 	private JButton bFiltrar;
 	
 	private DefaultTableModel dtmTAirline;
@@ -65,11 +65,11 @@ public class GUIImpresionTiquete extends JFrame {
 		
 		//setIconImage(Toolkit.getDefaultToolkit().getImage(GUIImpresionTiquete.class.getResource("/media/logo 1.png")));
 		
-		setDTMTPassenger(dataTable,getColumnsNames());
-		setPassenger(dtmTPassenger);
+		setDTMTImpresionTicket(dataTable,getColumnsNames());
+		setImpresionTicket(dtmTImpresionTicket);
 		//setAirline(dtmTAirline);
 		//setPlane(dtmTPlane);
-		setSPTPassenger(tPassenger);
+		setSPTImpresionTicket(tImpresionTicket);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -79,7 +79,7 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getBImprimir());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTDatosPasajero());
-		getContentPane().add(getLPassportPassengerConsult());
+		getContentPane().add(getLDatosPasajero());
 		getContentPane().add(getBFiltrar());
 		getContentPane().add(getImagen());
 		getContentPane().add(getTDatosAerolinea());
@@ -106,65 +106,84 @@ public class GUIImpresionTiquete extends JFrame {
 		}
 		return li;
 	}
-public void fillTable(ArrayList<Passenger> arrayLPassenger,ArrayList <Airline> arrayLAirline,ArrayList <Plane> arrayLPlane) {
-	    for (Passenger p : arrayLPassenger) {
-	        dtmTPassenger.addRow(new Object[]{p.getPassport()});
-	        dtmTPassenger.addRow(new Object[]{p.getName()});
-	        dtmTPassenger.addRow(new Object[]{p.getLastName()});
-	        dtmTPassenger.addRow(new Object[]{p.getBirthdate()});
-	        dtmTPassenger.addRow(new Object[]{p.getGmail()});
-	        dtmTPassenger.addRow(new Object[]{p.getPhone()});
+public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
+	
+	int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());	for (int i = 0; i < maxLength; i++) {
+		
+	    String[] rowData = new String[3];
+	    
+	    if (i < arrayLPassenger.size()) {
+	        rowData[0] = arrayLPassenger.get(i).toString();
 	    }
-
-	    setPassenger(dtmTPassenger);
+	    if (i < arrayLAirline.size()) {
+	        rowData[1] = arrayLAirline.get(i).toString();
+	    }
+	    if (i < arrayLPlane.size()) {
+	        rowData[2] = arrayLPlane.get(i).toString();
+	    }
+	
+	    model.addRow(rowData);
 	}
+}
+public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
+	this.arrayLPlane= arrayLPlane;
+}
+public ArrayList<Plane>getArrayListPlane(){
+	return arrayLPlane;
+}
+public ArrayList<Airline>getArrayListAirline(){
+	return arrayLAirline;
+}
+public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
+	this.arrayLAirline = arrayLAirline;
+}
 public ArrayList<Passenger>getArrayListPassenger(){
 	return arrayLPassenger;
 }
 public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	this.arrayLPassenger = arrayLPassenger;
 }
-public void setDTMTPassenger(Object data[][],String[] columnsNames) {
-		dtmTPassenger = new DefaultTableModel(data,columnsNames);
+public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
+	dtmTImpresionTicket = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTPassenger() {
-		return dtmTPassenger;
+	public DefaultTableModel getDTMTImpresionTicket() {
+		return dtmTImpresionTicket;
 	}
 //------------------------------------------------------------------------------------
-	public void setPassenger(DefaultTableModel dtmTPassenger) {
-		tPassenger = new JTable(dtmTPassenger);
+	public void setImpresionTicket(DefaultTableModel dtmTImpresionTicket) {
+		tImpresionTicket = new JTable(dtmTImpresionTicket);
 		//No poder editar los valores de la tabla
-		tPassenger.setEnabled(false);
+		tImpresionTicket.setEnabled(false);
 		//no poder mover las columnas
-		tPassenger.getTableHeader().setReorderingAllowed(false);
+		tImpresionTicket.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tPassenger.getTableHeader().setResizingAllowed(false);
+		tImpresionTicket.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTPassenger() {
-		return this.tPassenger;
+	public JTable getTImpresionTicket() {
+		return this.tImpresionTicket;
 	}
 	
-	public void setSPTPassenger(JTable tPassenger) {
-		spTPassenger = new JScrollPane(tPassenger);
-		spTPassenger.setBounds(10,70,460,80);
+	public void setSPTImpresionTicket(JTable tImpresionTicket) {
+		spTImpresionTicket = new JScrollPane(tImpresionTicket);
+		spTImpresionTicket.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTPassenger() {
-		return this.spTPassenger;
+	public JScrollPane getSPTImpresionTicket() {
+		return this.spTImpresionTicket;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA"};
+		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA","DATOS DEL AVIÓN"};
 		return columnsNames;
 	}
 
 //------------------------------------------------------------------------------------
-	public void print(JTable tPassenger) {
+	public void print(JTable tImpresionTicket) {
 		try {
-			if(!tPassenger.print()) {
+			if(!tImpresionTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -185,12 +204,12 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 			scrollPane = new JScrollPane();
 			scrollPane.setBounds(41, 137, 556, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tPassenger=new JTable(dtmTPassenger);
-			tPassenger.setEnabled(false);
-			tPassenger.getTableHeader().setReorderingAllowed(false);
-			tPassenger.getTableHeader().setResizingAllowed(false);	
-			spTPassenger = new JScrollPane(tPassenger);
-			scrollPane.setColumnHeaderView(spTPassenger);
+			tImpresionTicket=new JTable(dtmTImpresionTicket);
+			tImpresionTicket.setEnabled(false);
+			tImpresionTicket.getTableHeader().setReorderingAllowed(false);
+			tImpresionTicket.getTableHeader().setResizingAllowed(false);	
+			spTImpresionTicket = new JScrollPane(tImpresionTicket);
+			scrollPane.setColumnHeaderView(spTImpresionTicket);
 		}
 		return scrollPane;
 	}
@@ -232,12 +251,12 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		return tDatosPasajero;
 	}
 //------------------------------------------------------------------------------------
-	public JLabel getLPassportPassengerConsult() {
-		if (lPassportPassengerConsult == null) {
-			lPassportPassengerConsult = new JLabel("Ingrese el Pasaporte del Pasajero");
-			lPassportPassengerConsult.setBounds(41, 54, 245, 20);
+	public JLabel getLDatosPasajero() {
+		if (lDatosPasajero == null) {
+			lDatosPasajero = new JLabel("Ingrese el Pasaporte del Pasajero");
+			lDatosPasajero.setBounds(41, 54, 245, 20);
 		}
-		return lPassportPassengerConsult;
+		return lDatosPasajero;
 	}
 //------------------------------------------------------------------------------------
 	public JButton getBFiltrar() {
@@ -277,4 +296,5 @@ public void setDTMTPassenger(Object data[][],String[] columnsNames) {
 		}
 		return lDatoAvion;
 	}
+
 }
