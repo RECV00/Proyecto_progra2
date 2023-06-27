@@ -29,6 +29,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
 
+@SuppressWarnings("serial")
 public class GUIImpresionTiquete extends JFrame {
 
 	private JPanel contentPane;
@@ -60,7 +61,8 @@ public class GUIImpresionTiquete extends JFrame {
 	private JLabel lDatoAvion;
 	private JLabel lMontoTotal;
 	private JTextField tMontoTotal;
-
+//fondo de la GUI
+	private JLabel li;
 	public GUIImpresionTiquete() {
 		getContentPane().setBackground(new Color(255, 255, 255));
 		setDTMTImpresionTicket(dataTable,getColumnsNames());
@@ -69,7 +71,7 @@ public class GUIImpresionTiquete extends JFrame {
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
-		setTitle("Sistema de Aereolineas");
+		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBImprimir());
@@ -83,12 +85,28 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getLDatoAvion());
 		getContentPane().add(getLMontoTotal());
 		getContentPane().add(getTMontoTotal());
+		getContentPane().add(getImagen() );
 		setSize(1000,382);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
+	//fondo de la GUI
+	public JLabel getImagen() {
+		if(li == null) {
+		li = new JLabel();
+		li.setBounds(0, -124, 987, 683);
+		ImageIcon imagen= new ImageIcon("media/java.jpg");
+		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
+		li.setIcon(new ImageIcon(GUIConsultModel.class.getResource("/media/logo00.png")));
+		getContentPane().add(li);
+		}
+		return li;
+	}
+
+//llenando y creando la tabla
+
 	public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
 	    int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());
 	    for (int i = 0; i < maxLength; i++) {
@@ -204,7 +222,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(870, 20, 94, 23);
+			bExit.setBounds(880, 297, 94, 23);
 		}
 		return bExit;
 	}
@@ -216,7 +234,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(723, 297, 141, 23);
+			bImprimir.setBounds(620, 230, 141, 23);
 		}
 		return bImprimir;
 	}
@@ -241,6 +259,8 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JLabel getLDatosPasajero() {
 		if (lDatosPasajero == null) {
 			lDatosPasajero = new JLabel("Ingrese el Pasaporte del Pasajero");
+			lDatosPasajero.setForeground(new Color(102, 102, 102));
+			lDatosPasajero.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lDatosPasajero.setBounds(41, 54, 245, 20);
 		}
 		return lDatosPasajero;
@@ -271,7 +291,9 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 	public JLabel getLDatosAerolinea() {
 		if (lDatosAerolinea == null) {
-			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
+			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolínea");
+			lDatosAerolinea.setForeground(new Color(102, 102, 102));
+			lDatosAerolinea.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lDatosAerolinea.setBounds(296, 57, 224, 14);
 		}
 		return lDatosAerolinea;
@@ -279,6 +301,8 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JLabel getLDatoAvion() {
 		if (lDatoAvion == null) {
 			lDatoAvion = new JLabel("Ingrese el Numero de Placa del Avión");
+			lDatoAvion.setForeground(new Color(102, 102, 102));
+			lDatoAvion.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lDatoAvion.setBounds(548, 57, 230, 14);
 		}
 		return lDatoAvion;
@@ -286,6 +310,8 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JLabel getLMontoTotal() {
 		if (lMontoTotal == null) {
 			lMontoTotal = new JLabel("Monto Total");
+			lMontoTotal.setForeground(new Color(102, 102, 102));
+			lMontoTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
 			lMontoTotal.setBounds(785, 57, 94, 14);
 		}
 		return lMontoTotal;

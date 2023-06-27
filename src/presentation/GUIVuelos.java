@@ -16,6 +16,8 @@ import domain.Plane;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class GUIVuelos extends JFrame {
@@ -41,6 +43,7 @@ public class GUIVuelos extends JFrame {
 	    private JLabel li;
 	    
 public GUIVuelos(ArrayList<Flight>arrayLF) {
+	getContentPane().setBackground(new Color(51, 51, 102));
 		
 		llenarComboBoxFlight(arrayLF,getComboBoxFlight());
 		setDTMTVuelos(dataTable,getColumnsNames());
@@ -148,6 +151,8 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 	public JLabel getLVuelos() {
 		if (lVuelos == null) {
 			lVuelos = new JLabel("Lista de Vuelos");
+			lVuelos.setForeground(new Color(153, 153, 153));
+			lVuelos.setFont(new Font("Tahoma", Font.BOLD, 13));
 			lVuelos.setBounds(23, 22, 114, 14);
 		}
 		return lVuelos;
@@ -178,7 +183,7 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 	public JButton getBConsultV() {
 		if (bConsultV == null) {
 			bConsultV = new JButton("Consultar Vuelo");
-			bConsultV.setBounds(23, 89, 130, 23);
+			bConsultV.setBounds(23, 102, 130, 23);
 		}
 		return bConsultV;
 	}

@@ -1034,7 +1034,7 @@ public ArrayList<Plane> getNamePlane(String rutaArchivo, String elementType) {
     ArrayList<Plane> aviones = new ArrayList<>();
     Plane p = new Plane();
 
-    try {
+    try {//obtiene el avion
        
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -1056,7 +1056,7 @@ public ArrayList<Plane> getNamePlane(String rutaArchivo, String elementType) {
 }
 public String getNamePlaneAirline(String rutaArchivo, String elementType, String avion) {
     StringBuilder result = new StringBuilder();
-    try {
+    try {//para obtener la aerolinea del avion
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();     
         File archivoXML = new File(rutaArchivo);
@@ -1100,7 +1100,7 @@ public String readXMLStringPlane(String FileName, String elementType) {
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
 				dato += ("\nPlaca: " + eElement.getAttribute("plate"));         
-				dato +=("\nAerolinea: "  + eElement.getElementsByTagName("airline").
+				dato +=("\nAerolínea: "  + eElement.getElementsByTagName("airline").
 						item(0).getTextContent());
 				dato +=("\nModelo: "  + eElement.getElementsByTagName("model").
 						item(0).getTextContent());
