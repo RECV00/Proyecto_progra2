@@ -51,6 +51,7 @@ public class GUIImpresionTiquete extends JFrame {
 	private JLabel lDatosPasajero;
 	private JButton bFiltrar;
 	
+	private DefaultTableModel dtmTPassenger;
 	private DefaultTableModel dtmTAirline;
 	private DefaultTableModel dtmTPlane;
 	private JTable tAirline;
@@ -106,25 +107,30 @@ public class GUIImpresionTiquete extends JFrame {
 		}
 		return li;
 	}
-public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
-	
-	int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());	for (int i = 0; i < maxLength; i++) {
-		
-	    String[] rowData = new String[3];
-	    
-	    if (i < arrayLPassenger.size()) {
-	        rowData[0] = arrayLPassenger.get(i).toString();
+	public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
+	    int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());
+	    for (int i = 0; i < maxLength; i++) {
+	        if (i < arrayLPassenger.size()) {
+	            
+	            for (Passenger p : arrayLPassenger) {
+	            	model.addColumn("DATOS DEL PASAJERO", new String[]{p.getPassport(),p.getName(),p.getLastName(),
+	            			p.getBirthdate(),p.getGmail(),String.valueOf(p.getPhone())});
+	            }
+	        }
+	        for (Airline a : arrayLAirline) {
+	        if (i < arrayLAirline.size()) {
+	            model.addColumn("DATOS DE LA AEROLINEA", new String[]{a.getName(),a.getContry()});
+	        	}
+	        }
+	        for (Plane pl : arrayLPlane) {
+	        if (i < arrayLPlane.size()) {
+	            model.addColumn("DATOS DEL AVIÓN", new String[]{pl.getPlate(),pl.getAirline(),pl.getModel(),
+	            		pl.getYear()});
+	        }
+	       }
 	    }
-	    if (i < arrayLAirline.size()) {
-	        rowData[1] = arrayLAirline.get(i).toString();
-	    }
-	    if (i < arrayLPlane.size()) {
-	        rowData[2] = arrayLPlane.get(i).toString();
-	    }
-	
-	    model.addRow(rowData);
 	}
-}
+	
 public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	this.arrayLPlane= arrayLPlane;
 }
@@ -176,7 +182,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] = {"DATOS DEL PASAJERO","DATOS DE LA AEROLINEA","DATOS DEL AVIÓN"};
+		String columnsNames[]= {};
 		return columnsNames;
 	}
 
