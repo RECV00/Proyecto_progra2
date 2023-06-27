@@ -20,7 +20,7 @@ public class ControllerImpresionT implements ActionListener{
 		fXML = new FilesXML();
 		lo= new Logic();
 		guiIT = new GUIImpresionTiquete();
-		//fXML.createXML("TiqutesImpresos", "TiqutesImpresos.xml");
+		//fXML.createXML("TiquetesImpresos", "TiqutesImpresos.xml");
 		initializer();
 	}
 	private void initializer() {
@@ -42,7 +42,7 @@ public class ControllerImpresionT implements ActionListener{
 			
 		}
 		if(e.getSource() == guiIT.getBImprimir()) {
-			guiIT.print(guiIT.getTImpresionTicket());//pdf
+			guiIT.print(lo.readXMLStringPassenger("Passengers.xml","Passenger"));//pdf
 		}
 
 	

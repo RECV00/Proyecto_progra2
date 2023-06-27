@@ -5,6 +5,12 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 
+
+
+
+import java.io.FileOutputStream;
+import java.nio.channels.Pipe;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 
 import domain.Airline;
 import domain.Passenger;
@@ -24,12 +31,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
 
-public class GUIImpresionTiquete extends JFrame {
+
+public class GUIImpresionTiquete<Objeto> extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -187,14 +196,15 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 
 //------------------------------------------------------------------------------------
-	public void print(JTable tImpresionTicket) {
+	public  void print(String dato1,String dato2,String dato3) {
 		try {
-			if(!tImpresionTicket.print()) {
+			if(!dato.print) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
 			System.err.format("Error de Impresión. %s%n", e.getMessage());
 		}
+	
 	}
 //------------------------------------------------------------------------------------	
 	public JTextPane getTAMostrarDato() {
