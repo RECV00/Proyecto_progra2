@@ -5,12 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 
-
-
-
-import java.io.FileOutputStream;
-import java.nio.channels.Pipe;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
 
 import domain.Airline;
 import domain.Passenger;
@@ -31,20 +24,17 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
 
-
-public class GUIImpresionTiquete<Objeto> extends JFrame {
+public class GUIImpresionTiquete extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
 	private JButton bEXIT;
-	private JLabel li;
 	private DefaultTableModel dtmTImpresionTicket;
 	private JTable tImpresionTicket;
 	private JScrollPane spTImpresionTicket;
@@ -60,7 +50,6 @@ public class GUIImpresionTiquete<Objeto> extends JFrame {
 	private JLabel lDatosPasajero;
 	private JButton bFiltrar;
 	
-	private DefaultTableModel dtmTPassenger;
 	private DefaultTableModel dtmTAirline;
 	private DefaultTableModel dtmTPlane;
 	private JTable tAirline;
@@ -69,16 +58,13 @@ public class GUIImpresionTiquete<Objeto> extends JFrame {
 	private JTextField tDatosAvion;
 	private JLabel lDatosAerolinea;
 	private JLabel lDatoAvion;
+	private JLabel lMontoTotal;
+	private JTextField tMontoTotal;
 
 	public GUIImpresionTiquete() {
 		getContentPane().setBackground(new Color(255, 255, 255));
-		
-		//setIconImage(Toolkit.getDefaultToolkit().getImage(GUIImpresionTiquete.class.getResource("/media/logo 1.png")));
-		
 		setDTMTImpresionTicket(dataTable,getColumnsNames());
 		setImpresionTicket(dtmTImpresionTicket);
-		//setAirline(dtmTAirline);
-		//setPlane(dtmTPlane);
 		setSPTImpresionTicket(tImpresionTicket);
 
 		//setContentPane(contentPane);
@@ -91,30 +77,17 @@ public class GUIImpresionTiquete<Objeto> extends JFrame {
 		getContentPane().add(getTDatosPasajero());
 		getContentPane().add(getLDatosPasajero());
 		getContentPane().add(getBFiltrar());
-		getContentPane().add(getImagen());
 		getContentPane().add(getTDatosAerolinea());
 		getContentPane().add(getTDatosAvion());
 		getContentPane().add(getLDatosAerolinea());
 		getContentPane().add(getLDatoAvion());
-		setSize(1000,368);
+		getContentPane().add(getLMontoTotal());
+		getContentPane().add(getTMontoTotal());
+		setSize(1000,382);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-	}
-
-	public JLabel getImagen() {
-		if(li == null) {
-		li = new JLabel();
-		li.setHorizontalAlignment(SwingConstants.CENTER);
-		li.setBackground(new Color(255, 255, 255));
-		li.setBounds(845, 54, 131, 183);
-		ImageIcon imagen= new ImageIcon("media/Imagen1.jpg");
-		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIImpresionTiquete.class.getResource("/media/Imagen1.png")));
-		getContentPane().add(li);
-		}
-		return li;
 	}
 	public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
 	    int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());
@@ -139,7 +112,6 @@ public class GUIImpresionTiquete<Objeto> extends JFrame {
 	       }
 	    }
 	}
-	
 public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	this.arrayLPlane= arrayLPlane;
 }
@@ -191,20 +163,19 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[]= {};
+		String columnsNames[] = {};
 		return columnsNames;
 	}
 
 //------------------------------------------------------------------------------------
-	public  void print(String dato1,String dato2,String dato3) {
+	public void print(JTable tImpresionTicket) {
 		try {
-			if(!dato.print) {
+			if(!tImpresionTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
 			System.err.format("Error de Impresión. %s%n", e.getMessage());
 		}
-	
 	}
 //------------------------------------------------------------------------------------	
 	public JTextPane getTAMostrarDato() {
@@ -261,7 +232,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JTextField getTDatosPasajero() {
 		if (tDatosPasajero == null) {
 			tDatosPasajero = new JTextField();
-			tDatosPasajero.setBounds(41, 85, 146, 24);
+			tDatosPasajero.setBounds(41, 85, 146, 22);
 			tDatosPasajero.setColumns(10);
 		}
 		return tDatosPasajero;
@@ -301,16 +272,30 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JLabel getLDatosAerolinea() {
 		if (lDatosAerolinea == null) {
 			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolinea");
-			lDatosAerolinea.setBounds(296, 57, 204, 14);
+			lDatosAerolinea.setBounds(296, 57, 224, 14);
 		}
 		return lDatosAerolinea;
 	}
 	public JLabel getLDatoAvion() {
 		if (lDatoAvion == null) {
 			lDatoAvion = new JLabel("Ingrese el Numero de Placa del Avión");
-			lDatoAvion.setBounds(548, 57, 217, 14);
+			lDatoAvion.setBounds(548, 57, 230, 14);
 		}
 		return lDatoAvion;
 	}
-
+	public JLabel getLMontoTotal() {
+		if (lMontoTotal == null) {
+			lMontoTotal = new JLabel("Monto Total");
+			lMontoTotal.setBounds(785, 57, 94, 14);
+		}
+		return lMontoTotal;
+	}
+	public JTextField getTMontoTotal() {
+		if (tMontoTotal == null) {
+			tMontoTotal = new JTextField();
+			tMontoTotal.setBounds(785, 86, 96, 20);
+			tMontoTotal.setColumns(10);
+		}
+		return tMontoTotal;
+	}
 }
