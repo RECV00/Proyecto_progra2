@@ -61,9 +61,11 @@ public class GUIUpdateFlight extends JFrame {
 		private JComboBox<String>comboBoxAvion;//Combobox para cargar las placas de los aviones
 	    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los 
 		ArrayList<Plane>arrayLP;						//elementos de un JComboBox que son de tipo String.
+		private JLabel lAmount;
+		private JTextField tAmount;
 //fondo de la GUI
-	private JLabel li;
-
+		private JLabel li;
+		
 	public GUIUpdateFlight(ArrayList<Plane>arrayLP) {
 		
 		llenarComboBoxAviones(arrayLP,getComboBoxAvion());//muestra la lista llena al inicializar
@@ -92,31 +94,34 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getLAsiento());
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getComboBoxAvion());
+		getContentPane().add(getLAmount());
+		getContentPane().add(getTAmount());
 		getContentPane().add(getImagen());
-		setSize(902,503);
+		setSize(902,474);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
-	//fondo
+	//fondo de la GUI
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 874, 706);
+		li.setBounds(-30, -114, 987, 663);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIConsultModel.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
 	}
+
 //llena y crea la tabla
 public void fillTable(ArrayList <Flight> list) {
 		
 		for(Flight f : list) {
 			dtmTFlight.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
-					f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(f.getSeat())});
+					f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount()});
 		}
 		setFlight(dtmTFlight);
 	}
@@ -206,7 +211,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(801, 414, 75, 23);
+			bExit.setBounds(801, 398, 75, 23);
 		}
 		return bExit;
 	}
@@ -302,7 +307,7 @@ public JComboBox getComboBoxState() {
 public JComboBox<String> getComboBoxAvion() {
 			if (comboBoxAvion == null) {
 		    	comboBoxAvion = new JComboBox<String>();
-		    	 comboBoxAvion.setBounds(436, 84, 143, 22);
+		    	 comboBoxAvion.setBounds(471, 84, 143, 22);
 		    	 comboBoxAvion.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 		    	
 		    }
@@ -369,7 +374,7 @@ public void llenarComboBoxAviones(ArrayList<Plane>arrayLP,JComboBox<String> comb
 	public JTextField getTArrivalDateTime() {
 		if (tArrivalDateTime == null) {
 			tArrivalDateTime = new JTextField();
-			tArrivalDateTime.setBounds(303, 85, 96, 20);
+			tArrivalDateTime.setBounds(303, 85, 107, 20);
 			tArrivalDateTime.setColumns(10);
 		}
 		return tArrivalDateTime;
@@ -391,5 +396,22 @@ public void llenarComboBoxAviones(ArrayList<Plane>arrayLP,JComboBox<String> comb
 			lAsiento.setBounds(313, 116, 75, 14);
 		}
 		return lAsiento;
+	}
+	public JLabel getLAmount() {
+		if (lAmount == null) {
+			lAmount = new JLabel("Monto del Asiento");
+			lAmount.setForeground(new Color(102, 102, 102));
+			lAmount.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lAmount.setBounds(485, 116, 129, 14);
+		}
+		return lAmount;
+	}
+	public JTextField getTAmount() {
+		if (tAmount == null) {
+			tAmount = new JTextField();
+			tAmount.setBounds(485, 141, 129, 20);
+			tAmount.setColumns(10);
+		}
+		return tAmount;
 	}
 }

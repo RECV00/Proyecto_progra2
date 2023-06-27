@@ -47,7 +47,7 @@ public class ControllerRegisterFlight implements ActionListener{
 					guiRF.getTArrivalDateTime().getText(),
 					guiRF.getComboBoxAvion1().getSelectedItem().toString(),
 					guiRF.getComboBoxState().getSelectedItem().toString(),
-					Integer.valueOf(flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())));
+					Integer.valueOf(guiRF.getTAmount().getText()));
 			
 			fXML.writeXML("Flights.xml","Flight",flight.getDataName(),flight.getData());
 			arrayLFlight= lo.readXMLArrayListFlight("Flights.xml","Flight",flight.getDataName());
@@ -59,7 +59,7 @@ public class ControllerRegisterFlight implements ActionListener{
 					flight.getArrivalDateTime(),
 					guiRF.getComboBoxAvion1().getSelectedItem().toString(),
 					guiRF.getComboBoxState().getSelectedItem().toString(),
-					flight.getAmount(guiRF.getComboBoxState().getSelectedItem().toString())});
+					Integer.valueOf(flight.getAmount())});
 			
 		}
 		if(e.getSource()== guiRF.getBExit()) {

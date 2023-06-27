@@ -43,8 +43,10 @@ public class ControllerUpdateUser implements ActionListener{
 					guiUu.getComboBoxTypeUser().getSelectedItem().toString(),
 					guiUu.getComboBoxState().getSelectedItem().toString());
 			try {
+			
 				fXML.updateXML("Users.xml","User",user.getDataName(),user.getData());
-				
+				guiUu.getTNameUpdate().setText(user.getUserName());
+				guiUu.getTContrasena().setText(user.getPassword());
 				guiUu.getDTMTUser().setRowCount(0);
 				guiUu.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
 				guiUu.setArrayListUser(lo.getListUser("Users.xml","User"));

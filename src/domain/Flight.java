@@ -93,16 +93,9 @@ public class Flight {
 		this.flight = flight;
 	}
 
-	public int getAmount(String typeSeat) {
-		int precio=5381;
-		if (typeSeat=="Clase Ejecutiva") {
-			precio=48429;
-		}else if (typeSeat=="Clase Turista") {
-			precio=16143;
-		}
-		return precio;
+	public int getAmount() {
+		return amount;
 	}
-
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
@@ -122,13 +115,13 @@ public class Flight {
 	}
 	public String[] getData() {
 		String[] data = {numFlight,departureCity,departureDateTime,
-				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(getAmount(seat))};
+				arrivalCity,arrivalDateTime,flight,seat,String.valueOf(amount)};
 		return data;
 	}
 	@Override
 	public String toString() {
 		return numFlight + "\n" + departureCity + "\n"+ departureDateTime + "\n" + arrivalCity + "\n"
-				+ arrivalDateTime+ "\n" + flight + "\n" + seat + "-" + getAmount(seat);
+				+ arrivalDateTime+ "\n" + flight + "\n" + seat + "-" + amount;
 	}
 	
 	

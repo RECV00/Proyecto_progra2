@@ -21,7 +21,8 @@ public class ControllerVuelos implements ActionListener{
 		fXML = new FilesXML();
 		lo= new Logic();
 		//arrayLP=new ArrayList<Plane>();
-		arrayLF=lo.getNameFlight("Flights.xml", "Flight");
+		arrayLF = lo.getNameFlight("Flights.xml", "Flight");
+		System.out.print(arrayLF);
 		guiV = new GUIVuelos(arrayLF);
 		initializer();
 	}
@@ -35,12 +36,12 @@ public class ControllerVuelos implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiV.getBConsultV()) {
-			//guiV.getDTMTVuelos().setRowCount(0);
-			//guiV.setArrayListFlight(lo.searchXMLFlight("Flights.xml", "Flight", "numFlight", 
-			//guiV.getComboBoxFlight().getSelectedItem().toString()));
-			//guiV.setArrayListPlane(lo.getNamePlaneAirline("Planes.xml", "Plane",
-			//lo.searchXMLAvion("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString())));
-			//guiV.fillTable(guiV.getArrayListFlight(),guiV.getArrayListPlane());
+			guiV.getDTMTFlight().setRowCount(0);
+			guiV.setArrayListFlight(lo.searchXMLFlight("Flights.xml", "Flight", "numFlight", 
+			guiV.getComboBoxFlight().getSelectedItem().toString()));
+			guiV.setArrayListPlane(lo.getNamePlaneAirline("Planes.xml", "Plane",
+			lo.searchXMLAvion("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString())));
+			guiV.fillTable(guiV.getArrayListFlight(),guiV.getArrayListPlane());
 			//System.out.print(lo.searchXMLAvion("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString()));
 		}
 		

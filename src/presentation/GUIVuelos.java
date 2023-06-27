@@ -3,6 +3,7 @@ package presentation;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 import data.FilesXML;
 import domain.Flight;
+import domain.Plane;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
@@ -27,10 +30,13 @@ public class GUIVuelos extends JFrame {
 		private JTable tVuelos;
 		private JScrollPane spTVuelos;
 		private ArrayList<Flight> arrayLF;
+		private ArrayList<Plane>arrayLP;
 		private Object dataTable[][];
 	//label , button ,textfield
 		private JLabel lVuelos;
-		private JComboBox comboBoxVuelos;
+		
+		private JComboBox<String>comboBoxFlight;//Combobox para cargar las placas de los aviones
+	    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
 		private JButton bConsultV;
 		private JButton bExit;
 
@@ -40,24 +46,20 @@ public class GUIVuelos extends JFrame {
 	 */
 	public GUIVuelos(ArrayList<Flight>arrayLF) {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		llenarComboBoxAviones(arrayLF,getComboBoxFlight());
 		setDTMTVuelos(dataTable,getColumnsNames());
 		setVuelos(dtmTVuelos);
 		setSPTVuelos(tVuelos);
 		
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		setTitle("Sistema de Aereolineas");
-		contentPane.add(getScrollPane());
-		contentPane.add(getLVuelos());
-		contentPane.add(getComboBox());
-		contentPane.add(getBConsultV());
-		contentPane.add(getBExit());
-		setSize(4500,500);
+		//setContentPane(contentPane);
+		getContentPane().setLayout(null);
+		setTitle("Sistema de Aerolíneas");
+		getContentPane().add(getScrollPane());
+		getContentPane().add(getLVuelos());
+		getContentPane().add(getComboBoxFlight());
+		getContentPane().add(getBConsultV());
+		getContentPane().add(getBExit());
+		setSize(1400,524);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -65,19 +67,30 @@ public class GUIVuelos extends JFrame {
 
 	
 	//LLenado de la tabla
-	public void fillTable(ArrayList <Flight> list) {
-			
+	public void fillTable(ArrayList <Flight> list,ArrayList<Plane>list2) {
+			String []aero=new String [list2.size()];
+		
+		for(int i=0; i<list2.size();i++) {
+			aero[i]=list2.get(i).getPlate();
+		}
 			for(Flight f : list) {
 				dtmTVuelos.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
-						f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),f.getSeat(),f.getAmount(f.getSeat())});
+						f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),aero,21,23,24,25,26,27,28,29,30,31});
 			}
 			setVuelos(dtmTVuelos);
 		}
+//--------------------------------------------------------------------------------------------------
 	public ArrayList<Flight>getArrayListFlight(){
 		return arrayLF;
 	}
 	public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 		this.arrayLF = arrayLFlight;
+	}
+	public ArrayList<Plane>getArrayListPlane(){
+		return arrayLP;
+	}
+	public void setArrayListPlane(ArrayList<Plane> arrayLP){
+		this.arrayLP = arrayLP;
 	}
 	//------------------------------------------------------------------------------------
 	public void setDTMTVuelos(Object data[][],String[] columnsNames) {
@@ -109,8 +122,9 @@ public class GUIVuelos extends JFrame {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] ={"Numero de Vuelo","Aerolínea", "Avión","Ciudad (Hora/Fecha) Salida", 
-				"Cuidad (Hora/Fecha) Arribo","Asientos: Ejecutiva Vendidos","Asientos: Ejecutiva Dispobles",
+		String columnsNames[] ={"Numero Vuelo","Ciudad Salida","Salida: Hora/Fecha",
+				"Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Aerolínea",
+				"Asientos: Ejecutiva Vendidos","Asientos: Ejecutiva Dispobles",
 				"Asientos: Turista Vendidos","Asientos: Turista Dispobles","Asientos: Economica Vendidos",
 				"Asientos: Economica Dispobles","Tiquete Ejecutivo","Tiquete Turista","Tiquete Economico",
 				"Monto por Vuelo"};
@@ -129,7 +143,7 @@ public class GUIVuelos extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 189, 1263, 183);
+			scrollPane.setBounds(10, 189, 1360, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tVuelos=new JTable(dtmTVuelos);
 			tVuelos.setEnabled(false);
@@ -144,21 +158,38 @@ public class GUIVuelos extends JFrame {
 	public JLabel getLVuelos() {
 		if (lVuelos == null) {
 			lVuelos = new JLabel("Lista de Vuelos");
-			lVuelos.setBounds(23, 22, 107, 14);
+			lVuelos.setBounds(23, 22, 114, 14);
 		}
 		return lVuelos;
 	}
-	public JComboBox getComboBox() {
-		if (comboBoxVuelos == null) {
-			comboBoxVuelos = new JComboBox();
-			comboBoxVuelos.setBounds(23, 47, 101, 22);
+	// crea la lista seleccionable con las placas de los aviones
+		public JComboBox<String> getComboBoxFlight() {
+		    if (comboBoxFlight == null) {
+		    	comboBoxFlight = new JComboBox<String>();
+		    	comboBoxFlight.setBounds(10, 47, 143, 22);
+		    	comboBoxFlight.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		    	
+		    }
+		    return comboBoxFlight;
 		}
-		return comboBoxVuelos;
-	}
+		public void llenarComboBoxAviones(ArrayList<Flight>arrayLF,JComboBox<String> comboBox) {
+			String[] numF = new String[arrayLF.size()];
+			for(int i=0; i<arrayLF.size(); i++) {
+				numF[i] = arrayLF.get(i).getNumFlight();
+			}
+			 // Crea un DefaultComboBoxModel con el array de aviones
+			comboBoxModelo = new DefaultComboBoxModel<>(numF);
+
+	        // Asigna el DefaultComboBoxModel al JComboBox
+	        comboBox.setModel(comboBoxModelo);
+		}
+		    public void setcomboBoxFlight(JComboBox<String> comboBoxFlight) {
+		        this.comboBoxFlight = comboBoxFlight;
+		    }
 	public JButton getBConsultV() {
 		if (bConsultV == null) {
 			bConsultV = new JButton("Consultar Vuelo");
-			bConsultV.setBounds(23, 89, 123, 23);
+			bConsultV.setBounds(23, 89, 130, 23);
 		}
 		return bConsultV;
 	}
@@ -167,8 +198,11 @@ public class GUIVuelos extends JFrame {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(275, 89, 89, 23);
+			bExit.setBounds(10, 436, 89, 23);
 		}
 		return bExit;
+	}
+	public void cleanForm() {
+		comboBoxFlight.setToolTipText("");
 	}
 }
