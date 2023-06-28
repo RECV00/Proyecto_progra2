@@ -38,11 +38,10 @@ public class Flight {
 		this.amount = amount;
 	}
 
-	public Flight(String flight) {
+	public Flight(String numFlight) {
 		// TODO Auto-generated constructor stub
-		this.flight=flight;
+		this.numFlight=numFlight;
 	}
-
 	public String getNumFlight() {
 		//ram numero
 		return numFlight;

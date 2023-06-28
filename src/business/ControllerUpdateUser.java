@@ -2,6 +2,7 @@ package business;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.w3c.dom.Element;
@@ -16,7 +17,7 @@ public class ControllerUpdateUser implements ActionListener{
 	private FilesXML fXML;
 	private User user;
 	private Logic lo;
-	
+	ArrayList<User>arrayLU;
 	public ControllerUpdateUser() {
 		guiUu= new GUIUpdateUser();
 		fXML= new FilesXML();
@@ -28,7 +29,7 @@ public class ControllerUpdateUser implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUu.getBUpdate().addActionListener(this);
 		guiUu.getBExit().addActionListener(this);
-		
+		guiUu.getBSearch().addActionListener(this);
 		guiUu.getDTMTUser().setRowCount(0);
 		guiUu.setArrayListUser(lo.getListUser("Users.xml","User"));
 		guiUu.fillTable(guiUu.getArrayListUser());
@@ -36,6 +37,13 @@ public class ControllerUpdateUser implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==guiUu.getBSearch()) {
+			
+			user = lo.searchUser("Users.xml","User","userName",guiUu.getTNameUpdate().getText());
+			//guiUu.getTNameUpdate().setText(user.getUserName());
+			System.out.print(user);
+			guiUu.getTContrasena().setText(user.getPassword());
+		}
 		if(e.getSource()==guiUu.getBUpdate()) {
 			
 			user = new User(guiUu.getTNameUpdate().getText(),
@@ -45,8 +53,6 @@ public class ControllerUpdateUser implements ActionListener{
 			try {
 			
 				fXML.updateXML("Users.xml","User",user.getDataName(),user.getData());
-				guiUu.getTNameUpdate().setText(user.getUserName());
-				guiUu.getTContrasena().setText(user.getPassword());
 				guiUu.getDTMTUser().setRowCount(0);
 				guiUu.getDTMTUser().addRow(new Object [] {user.getUserName(),user.getPassword(),user.getTypeUser(),user.getState()});
 				guiUu.setArrayListUser(lo.getListUser("Users.xml","User"));

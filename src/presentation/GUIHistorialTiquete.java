@@ -30,27 +30,26 @@ import java.awt.Toolkit;
 import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
-public class GUIImpresionTiquete extends JFrame {
+public class GUIHistorialTiquete extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextPane tAMostrarDato;
-	private DefaultTableModel dtmTImpresionTicket;
-	private JTable tImpresionTicket;
-	private JScrollPane spTImpresionTicket;
+	private JButton bEXIT;
+	private DefaultTableModel dtmTHTicket;
+	private JTable tHistorialTicket;
+	private JScrollPane spTHTicket;
 	
 	private ArrayList<Passenger> arrayLPassenger;
 	private ArrayList <Airline> arrayLAirline;
 	private ArrayList <Plane> arrayLPlane;
 	private Object dataTable[][];
 	private JButton bExit;
-	private JButton bImprimir;
+	private JButton bConsult;
 	private JLabel tTitule;
 	private JTextField tDatosPasajero;
 	private JLabel lDatosPasajero;
-	private JButton bFiltrar;
 	
-
 	private JTextField tDatosAerolinea;
 	private JTextField tDatosAvion;
 	private JLabel lDatosAerolinea;
@@ -59,22 +58,22 @@ public class GUIImpresionTiquete extends JFrame {
 	private JTextField tMontoTotal;
 //fondo de la GUI
 	private JLabel li;
-	public GUIImpresionTiquete() {
+	
+	public GUIHistorialTiquete() {
 		getContentPane().setBackground(new Color(255, 255, 255));
-		setDTMTImpresionTicket(dataTable,getColumnsNames());
-		setImpresionTicket(dtmTImpresionTicket);
-		setSPTImpresionTicket(tImpresionTicket);
+		setDTMTHistorialTicket(dataTable,getColumnsNames());
+		setHistorialTicket(dtmTHTicket);
+		setSPTHistorialTicket(tHistorialTicket);
 
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
 		setTitle("Sistema de Aerolíneas");
 		getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
-		getContentPane().add(getBImprimir());
+		getContentPane().add(getBConsult());
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTDatosPasajero());
 		getContentPane().add(getLDatosPasajero());
-		getContentPane().add(getBFiltrar());
 		getContentPane().add(getTDatosAerolinea());
 		getContentPane().add(getTDatosAvion());
 		getContentPane().add(getLDatosAerolinea());
@@ -144,36 +143,36 @@ public ArrayList<Passenger>getArrayListPassenger(){
 public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	this.arrayLPassenger = arrayLPassenger;
 }
-public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
-	dtmTImpresionTicket = new DefaultTableModel(data,columnsNames);
+public void setDTMTHistorialTicket(Object data[][],String[] columnsNames) {
+	dtmTHTicket = new DefaultTableModel(data,columnsNames);
 	}
 //------------------------------------------------------------------------------------
-	public DefaultTableModel getDTMTImpresionTicket() {
-		return dtmTImpresionTicket;
+	public DefaultTableModel getDTMTHistorialTicket() {
+		return dtmTHTicket;
 	}
 //------------------------------------------------------------------------------------
-	public void setImpresionTicket(DefaultTableModel dtmTImpresionTicket) {
-		tImpresionTicket = new JTable(dtmTImpresionTicket);
+	public void setHistorialTicket(DefaultTableModel dtmTHTicket) {
+		tHistorialTicket = new JTable(dtmTHTicket);
 		//No poder editar los valores de la tabla
-		tImpresionTicket.setEnabled(false);
+		tHistorialTicket.setEnabled(false);
 		//no poder mover las columnas
-		tImpresionTicket.getTableHeader().setReorderingAllowed(false);
+		tHistorialTicket.getTableHeader().setReorderingAllowed(false);
 		//no poder reducir el tamanio de las columnas
-		tImpresionTicket.getTableHeader().setResizingAllowed(false);
+		tHistorialTicket.getTableHeader().setResizingAllowed(false);
 
 	}
 //------------------------------------------------------------------------------------	
-	public JTable getTImpresionTicket() {
-		return this.tImpresionTicket;
+	public JTable getTHistorialTicket() {
+		return this.tHistorialTicket;
 	}
 	
-	public void setSPTImpresionTicket(JTable tImpresionTicket) {
-		spTImpresionTicket = new JScrollPane(tImpresionTicket);
-		spTImpresionTicket.setBounds(10,70,460,80);
+	public void setSPTHistorialTicket(JTable tHistorialTicket) {
+		spTHTicket = new JScrollPane(tHistorialTicket);
+		spTHTicket.setBounds(10,70,460,80);
 	}
 //------------------------------------------------------------------------------------
-	public JScrollPane getSPTImpresionTicket() {
-		return this.spTImpresionTicket;
+	public JScrollPane getSPTHistorialTicket() {
+		return this.spTHTicket;
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
@@ -182,9 +181,9 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 
 //------------------------------------------------------------------------------------
-	public void print(JTable tImpresionTicket) {
+	public void print(JTable tHistorialTicket) {
 		try {
-			if(!tImpresionTicket.print()) {
+			if(!tHistorialTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
 			}
 		}catch(java.awt.print.PrinterException e) {
@@ -205,12 +204,12 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 			scrollPane = new JScrollPane();
 			scrollPane.setBounds(41, 137, 556, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
-			tImpresionTicket=new JTable(dtmTImpresionTicket);
-			tImpresionTicket.setEnabled(false);
-			tImpresionTicket.getTableHeader().setReorderingAllowed(false);
-			tImpresionTicket.getTableHeader().setResizingAllowed(false);	
-			spTImpresionTicket = new JScrollPane(tImpresionTicket);
-			scrollPane.setColumnHeaderView(spTImpresionTicket);
+			tHistorialTicket=new JTable(dtmTHTicket);
+			tHistorialTicket.setEnabled(false);
+			tHistorialTicket.getTableHeader().setReorderingAllowed(false);
+			tHistorialTicket.getTableHeader().setResizingAllowed(false);	
+			spTHTicket = new JScrollPane(tHistorialTicket);
+			scrollPane.setColumnHeaderView(spTHTicket);
 		}
 		return scrollPane;
 	}
@@ -223,23 +222,23 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		return bExit;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBImprimir() {
-		if (bImprimir == null) {
-			bImprimir = new JButton("Imprimir");
-			bImprimir.addActionListener(new ActionListener() {
+	public JButton getBConsult() {
+		if (bConsult == null) {
+			bConsult = new JButton("Consultar Tiquetes");
+			bConsult.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(620, 230, 141, 23);
+			bConsult.setBounds(620, 230, 141, 23);
 		}
-		return bImprimir;
+		return bConsult;
 	}
 //------------------------------------------------------------------------------------
 	public JLabel getTTitule() {
 		if (tTitule == null) {
-			tTitule = new JLabel("Imprimir Tiquete");
+			tTitule = new JLabel("Consultar historial de Tiquete");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(335, 11, 279, 29);
+			tTitule.setBounds(237, 17, 424, 29);
 		}
 		return tTitule;
 	}
@@ -262,13 +261,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		return lDatosPasajero;
 	}
 //------------------------------------------------------------------------------------
-	public JButton getBFiltrar() {
-		if (bFiltrar == null) {
-			bFiltrar = new JButton("Filtrar");
-			bFiltrar.setBounds(620, 156, 89, 23);
-		}
-		return bFiltrar;
-	}
+
 	public JTextField getTDatosAerolinea() {
 		if (tDatosAerolinea == null) {
 			tDatosAerolinea = new JTextField();

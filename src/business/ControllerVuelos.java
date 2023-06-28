@@ -11,6 +11,7 @@ import domain.Plane;
 import presentation.GUIVuelos;
 
 public class ControllerVuelos implements ActionListener{
+	
 	private GUIVuelos guiV;
 	private FilesXML fXML;
 	private Logic lo;
@@ -20,9 +21,7 @@ public class ControllerVuelos implements ActionListener{
 	public ControllerVuelos() {
 		fXML = new FilesXML();
 		lo= new Logic();
-		//arrayLP=new ArrayList<Plane>();
 		arrayLF = lo.getNameFlight("Flights.xml", "Flight");
-		System.out.print(arrayLF);
 		guiV = new GUIVuelos(arrayLF);
 		initializer();
 	}
@@ -36,13 +35,19 @@ public class ControllerVuelos implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiV.getBConsultV()) {
+			
 			guiV.getDTMTFlight().setRowCount(0);
 			guiV.setArrayListFlight(lo.searchXMLFlight("Flights.xml", "Flight", "numFlight", 
 			guiV.getComboBoxFlight().getSelectedItem().toString()));
-			guiV.setArrayListPlane(lo.getNamePlaneAirline("Planes.xml", "Plane",
-			lo.searchXMLAvion("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString())));
-			guiV.fillTable(guiV.getArrayListFlight(),guiV.getArrayListPlane());
-			//System.out.print(lo.searchXMLAvion("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString()));
+			
+			String avion =lo.searchXMLAvion2("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString());
+			String aeroline = lo.getNamePlaneAirline("Planes.xml", "Plane",avion);
+			System.out.print(aeroline+avion);
+			guiV.fillTable(guiV.getArrayListFlight(),aeroline);
+			
+		}
+		if(e.getSource()==guiV.getBExit()) {
+			guiV.dispose();
 		}
 		
 	}

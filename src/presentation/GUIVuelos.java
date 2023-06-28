@@ -1,6 +1,5 @@
 package presentation;
 
-import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -10,16 +9,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import data.FilesXML;
 import domain.Flight;
 import domain.Plane;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import java.awt.Color;
+import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class GUIVuelos extends JFrame {
 
 	private JPanel contentPane;
@@ -32,21 +32,20 @@ public class GUIVuelos extends JFrame {
 		private ArrayList<Flight> arrayLF;
 		private ArrayList<Plane>arrayLP;
 		private Object dataTable[][];
-	//label , button ,textfield
 		private JLabel lVuelos;
-		
-		private JComboBox<String>comboBoxFlight;//Combobox para cargar las placas de los aviones
-	    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+// button 
 		private JButton bConsultV;
 		private JButton bExit;
-
-
-	/**
-	 * Create the frame.
-	 */
-	public GUIVuelos(ArrayList<Flight>arrayLF) {
+//comboBox
+		private JComboBox<String>comboBoxFlight;//Combobox para cargar las placas de los aviones
+	    private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+//fondo de la gui
+	    private JLabel li;
+	    
+public GUIVuelos(ArrayList<Flight>arrayLF) {
+	getContentPane().setBackground(new Color(51, 51, 102));
 		
-		llenarComboBoxAviones(arrayLF,getComboBoxFlight());
+		llenarComboBoxFlight(arrayLF,getComboBoxFlight());
 		setDTMTVuelos(dataTable,getColumnsNames());
 		setVuelos(dtmTVuelos);
 		setSPTVuelos(tVuelos);
@@ -65,17 +64,11 @@ public class GUIVuelos extends JFrame {
 		setVisible(true);
 	}
 
-	
 	//LLenado de la tabla
-	public void fillTable(ArrayList <Flight> list,ArrayList<Plane>list2) {
-			String []aero=new String [list2.size()];
-		
-		for(int i=0; i<list2.size();i++) {
-			aero[i]=list2.get(i).getPlate();
-		}
-			for(Flight f : list) {
+	public void fillTable(ArrayList <Flight> list,String avion) {
+		for(Flight f : list) {
 				dtmTVuelos.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
-						f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),aero,21,23,24,25,26,27,28,29,30,31});
+						f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),avion,21,23,24,25,26,27,28,29,30,31});
 			}
 			setVuelos(dtmTVuelos);
 		}
@@ -83,13 +76,13 @@ public class GUIVuelos extends JFrame {
 	public ArrayList<Flight>getArrayListFlight(){
 		return arrayLF;
 	}
-	public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
-		this.arrayLF = arrayLFlight;
+	public void setArrayListFlight(ArrayList<Flight>arrayLF){
+		this.arrayLF = arrayLF;
 	}
 	public ArrayList<Plane>getArrayListPlane(){
 		return arrayLP;
 	}
-	public void setArrayListPlane(ArrayList<Plane> arrayLP){
+	public void setArrayListPlane(ArrayList<Plane>arrayLP){
 		this.arrayLP = arrayLP;
 	}
 	//------------------------------------------------------------------------------------
@@ -158,6 +151,8 @@ public class GUIVuelos extends JFrame {
 	public JLabel getLVuelos() {
 		if (lVuelos == null) {
 			lVuelos = new JLabel("Lista de Vuelos");
+			lVuelos.setForeground(new Color(153, 153, 153));
+			lVuelos.setFont(new Font("Tahoma", Font.BOLD, 13));
 			lVuelos.setBounds(23, 22, 114, 14);
 		}
 		return lVuelos;
@@ -172,24 +167,23 @@ public class GUIVuelos extends JFrame {
 		    }
 		    return comboBoxFlight;
 		}
-		public void llenarComboBoxAviones(ArrayList<Flight>arrayLF,JComboBox<String> comboBox) {
+		public void llenarComboBoxFlight(ArrayList<Flight>arrayLF,JComboBox<String> comboBox) {
 			String[] numF = new String[arrayLF.size()];
 			for(int i=0; i<arrayLF.size(); i++) {
 				numF[i] = arrayLF.get(i).getNumFlight();
 			}
-			 // Crea un DefaultComboBoxModel con el array de aviones
+			 // Crea un DefaultComboBoxModel con el array de vuelos
 			comboBoxModelo = new DefaultComboBoxModel<>(numF);
-
 	        // Asigna el DefaultComboBoxModel al JComboBox
 	        comboBox.setModel(comboBoxModelo);
 		}
-		    public void setcomboBoxFlight(JComboBox<String> comboBoxFlight) {
+		    public void setcomboBoxFlight(JComboBox<String>comboBoxFlight) {
 		        this.comboBoxFlight = comboBoxFlight;
 		    }
 	public JButton getBConsultV() {
 		if (bConsultV == null) {
 			bConsultV = new JButton("Consultar Vuelo");
-			bConsultV.setBounds(23, 89, 130, 23);
+			bConsultV.setBounds(23, 102, 130, 23);
 		}
 		return bConsultV;
 	}

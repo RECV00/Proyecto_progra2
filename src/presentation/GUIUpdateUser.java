@@ -50,9 +50,9 @@ public class GUIUpdateUser extends JFrame {
 //comboBox
 	private JComboBox comboBoxState;
 	private JComboBox comboBoxTypeUser;
-//fondo de la GUI
+	private JButton bSearch;
+//fondo
 	private JLabel li;
-	
 	public GUIUpdateUser() {
 		
 		setDTMTUser(dataTable,getColumnsNames());
@@ -74,7 +74,8 @@ public class GUIUpdateUser extends JFrame {
 		getContentPane().add(getComboBoxState());
 		getContentPane().add(getComboBoxTypeUser());
 		getContentPane().add(getLState());
-		getContentPane().add(getImagen() );
+		getContentPane().add(getBSearch());
+		getContentPane().add(getImagen());
 		setSize(686,478);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,14 +86,15 @@ public class GUIUpdateUser extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 874, 657);
+		li.setBounds(0, -115, 874, 657);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIUpdateUser.class.getResource("/media/logo7.png")));
 		getContentPane().add(li);
 		}
 		return li;
 	}
+
 //llena y crea la tabla
 	
 public void fillTable(ArrayList <User> list) {
@@ -294,5 +296,12 @@ public void setArrayListUser(ArrayList<User> arrayLUser){
 			lState.setBounds(192, 112, 55, 14);
 		}
 		return lState;
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.setBounds(53, 194, 89, 23);
+		}
+		return bSearch;
 	}
 }

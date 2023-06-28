@@ -60,13 +60,14 @@ public class GUIRegisterFlight extends JFrame {
 	private JTextField tArrivalCity;
 	private JTextField tArrivalDateTime;
 	private JLabel lTypeAsiento;
+	private JLabel lAmount;
+	private JTextField tAmount;
 //comboBox
 	private JComboBox comboBoxState;
 	private JComboBox<String>comboBoxAvion1;//Combobox para cargar las placas de los aviones
     private DefaultComboBoxModel<String> comboBoxModelo; // Se utiliza para almacenar y administrar los 
 	ArrayList<Plane>arrayLP;						//elementos de un JComboBox que son de tipo String.
-	private JLabel lAmount;
-	private JTextField tAmount;
+
 //fondo de la GUI
 	private JLabel li;
 	
