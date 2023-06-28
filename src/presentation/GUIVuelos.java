@@ -12,6 +12,7 @@ import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Flight;
+import domain.Passenger;
 import domain.Plane;
 
 import javax.swing.JLabel;
@@ -58,18 +59,38 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 		getContentPane().add(getComboBoxFlight());
 		getContentPane().add(getBConsultV());
 		getContentPane().add(getBExit());
-		setSize(1400,524);
+		setSize(753,524);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
 	//LLenado de la tabla
-	public void fillTable(ArrayList <Flight> list,String avion) {
-		for(Flight f : list) {
-				dtmTVuelos.addRow(new Object[] {f.getNumFlight(), f.getDepartureCity(),f.getDepartureDateTime(),
-						f.getArrivalCity(),f.getArrivalDateTime(),f.getFlight(),avion,21,23,24,25,26,27,28,29,30,31});
+	public void fillTable(DefaultTableModel model,ArrayList <Flight> arrayLF,String avion) {
+		
+		for (int i = 0; i < arrayLF.size(); i++) {
+		 for (Flight f : arrayLF) {
+		       if ( i < arrayLF.size()){
+	    	model.addColumn("DATOS DEL VUELO", new String[]{"Numero de Vuelo: "+String.valueOf(f.getNumFlight()), 
+	    				"Ciudad de Salida: "+f.getDepartureCity(),
+	    				"Salida: Hora/Fecha: "+f.getDepartureDateTime(),
+						"Cuidad de Arrribo: "+f.getArrivalCity(),
+						"Arribo: Hora/Fecha: "+String.valueOf(f.getArrivalDateTime()),
+						"Avión: "+f.getFlight(),
+						"Aerolinea: "+avion,
+						"Asientos [Ejecutiva Vendidos]: "+String.valueOf(21),
+						"Asientos [Ejecutiva Dispobles]: "+String.valueOf(23),
+						"Asientos [Turista Vendidos]: "+String.valueOf(24),
+						"Asientos [Turista Dispobles]: "+String.valueOf(25),
+						"Asientos [Economica Vendidos]: "+String.valueOf(26),
+						"Asientos [Economica Dispobles]: "+String.valueOf(27),
+						"Tiquetes de Clase Ejecutiva: "+String.valueOf(28),
+						"Tiquetes de Clase Turista: "+String.valueOf(29),
+						"Tiquetes de Clase Economico: "+String.valueOf(30),
+						"Monto por Vuelo: $"+String.valueOf(10534560)});
 			}
+		 }
+		}
 			setVuelos(dtmTVuelos);
 		}
 //--------------------------------------------------------------------------------------------------
@@ -115,12 +136,7 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 	}
 //------------------------------------------------------------------------------------
 	public String[] getColumnsNames() {
-		String columnsNames[] ={"Numero Vuelo","Ciudad Salida","Salida: Hora/Fecha",
-				"Cuidad de Arrribo","Arribo: Hora/Fecha","Avión","Aerolínea",
-				"Asientos: Ejecutiva Vendidos","Asientos: Ejecutiva Dispobles",
-				"Asientos: Turista Vendidos","Asientos: Turista Dispobles","Asientos: Economica Vendidos",
-				"Asientos: Economica Dispobles","Tiquete Ejecutivo","Tiquete Turista","Tiquete Economico",
-				"Monto por Vuelo"};
+		String columnsNames[] ={};
 		return columnsNames;
 	}
 	
@@ -136,7 +152,7 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 189, 1360, 183);
+			scrollPane.setBounds(37, 110, 587, 315);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tVuelos=new JTable(dtmTVuelos);
 			tVuelos.setEnabled(false);
@@ -183,7 +199,7 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 	public JButton getBConsultV() {
 		if (bConsultV == null) {
 			bConsultV = new JButton("Consultar Vuelo");
-			bConsultV.setBounds(23, 102, 130, 23);
+			bConsultV.setBounds(184, 47, 130, 23);
 		}
 		return bConsultV;
 	}

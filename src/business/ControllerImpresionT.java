@@ -52,11 +52,11 @@ public class ControllerImpresionT implements ActionListener{
 			guiIT.setArrayListPlane(lo.searchXMLPlane("Planes.xml", "Plane", "plate", guiIT.getComboBoxPlane().getSelectedItem().toString()));
 			guiIT.fillTable(guiIT.getDTMTImpresionTicket(),guiIT.getArrayListPassenger(),guiIT.getArrayListAirline(),guiIT.getArrayListPlane());
 			
+			
 		}
 		if(e.getSource() == guiIT.getBImprimir()) {
-			guiIT.getDTMTImpresionTicket().setRowCount(0);
 			guiIT.print(guiIT.getTImpresionTicket());//pdf
-			
+			System.out.print(guiIT.getTImpresionTicket());
 			try {
 				lo.writeTiquetes( "TiquetesImpresos.xml","TiquetesImpresos", guiIT.getArrayListPassenger(), guiIT.getArrayListAirline(), guiIT.getArrayListPlane(),
 						String.valueOf(guiIT.numRandom())+"			"+guiIT.horaFecha()+"			"+
