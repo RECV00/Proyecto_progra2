@@ -603,7 +603,7 @@ public String searchXMLAvion2(String fileName, String elementType, String data, 
 
                 if (numFlight.equals(word)) {
                     String flight = eElement.getElementsByTagName("flight").item(0).getTextContent();
-                    flights.append(flight).append("\n");
+                    flights.append(flight);
                 }
             }
         }

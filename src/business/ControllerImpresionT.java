@@ -42,6 +42,7 @@ public class ControllerImpresionT implements ActionListener{
 			
 		}
 		if(e.getSource() == guiIT.getBImprimir()) {
+			
 			guiIT.print(guiIT.getTImpresionTicket());//pdf
 		}
 
