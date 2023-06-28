@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
+import domain.Airline;
 import domain.Passenger;
+import domain.Plane;
 import domain.User;
 import presentation.GUIImpresionTiquete;
 
@@ -15,14 +17,20 @@ public class ControllerImpresionT implements ActionListener{
 	private GUIImpresionTiquete guiIT;
 	private FilesXML fXML;
 	private Logic lo;
+	ArrayList<Plane> arrayLP;
+	ArrayList<Airline> arrayLA;
 	ArrayList<Passenger>arrayLPassenger;
 	public ControllerImpresionT() {
 		fXML = new FilesXML();
 		lo= new Logic();
-		guiIT = new GUIImpresionTiquete();
+		arrayLP=lo.getNamePlane("Planes.xml", "Plane");
+		arrayLA=lo.getNAirline("Airlines.xml", "Airline");
+		arrayLPassenger=lo.getNamePassport("Passengers.xml", "Passenger");
 		fXML.createXML("TiquetesImpresos", "TiquetesImpresos.xml");
+		guiIT = new GUIImpresionTiquete(arrayLA,arrayLP,arrayLPassenger);
 		initializer();
 	}
+	
 	private void initializer() {
 		guiIT.getBExit().addActionListener(this);
 		guiIT.getBImprimir().addActionListener(this);
@@ -35,9 +43,9 @@ public class ControllerImpresionT implements ActionListener{
 		
 		if(e.getSource()==guiIT.getBFiltrar()) {
 			
-			guiIT.setArrayListPassenger(lo.searchXMLPassenger("Passengers.xml","Passenger", "passport", guiIT.getTDatosPasajero().getText()));
-			guiIT.setArrayListAirline(lo.searchXMLAirline("Airlines.xml", "Airline", "name",guiIT.getTDatosAerolinea().getText()));
-			guiIT.setArrayListPlane(lo.searchXMLPlane("Planes.xml", "Plane", "plate", guiIT.getTDatosAvion().getText()));
+			guiIT.setArrayListPassenger(lo.searchXMLPassenger("Passengers.xml","Passenger", "passport", guiIT.getComboBoxPass().getSelectedItem().toString()));
+			guiIT.setArrayListAirline(lo.searchXMLAirline("Airlines.xml", "Airline", "name",guiIT.getComboBoxAirline().getSelectedItem().toString()));
+			guiIT.setArrayListPlane(lo.searchXMLPlane("Planes.xml", "Plane", "plate", guiIT.getComboBoxPlane().getSelectedItem().toString()));
 			guiIT.fillTable(guiIT.getDTMTImpresionTicket(),guiIT.getArrayListPassenger(),guiIT.getArrayListAirline(),guiIT.getArrayListPlane());
 			
 		}

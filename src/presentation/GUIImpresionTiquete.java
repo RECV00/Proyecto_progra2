@@ -20,9 +20,12 @@ import domain.Plane;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,35 +37,43 @@ import javax.swing.UIManager;
 @SuppressWarnings("serial")
 public class GUIImpresionTiquete extends JFrame {
 
-	private JPanel contentPane;
-	private JScrollPane scrollPane;
-	private JTextPane tAMostrarDato;
-	private DefaultTableModel dtmTImpresionTicket;
-	private JTable tImpresionTicket;
-	private JScrollPane spTImpresionTicket;
-	
-	private ArrayList<Passenger> arrayLPassenger;
-	private ArrayList <Airline> arrayLAirline;
-	private ArrayList <Plane> arrayLPlane;
-	private Object dataTable[][];
-	private JButton bExit;
-	private JButton bImprimir;
-	private JLabel tTitule;
-	private JTextField tDatosPasajero;
-	private JLabel lDatosPasajero;
-	private JButton bFiltrar;
-	
-
-	private JTextField tDatosAerolinea;
-	private JTextField tDatosAvion;
-	private JLabel lDatosAerolinea;
-	private JLabel lDatoAvion;
-	private JLabel lMontoTotal;
-	private JTextField tMontoTotal;
-//fondo de la GUI
-	private JLabel li;
-	public GUIImpresionTiquete() {
-		getContentPane().setBackground(new Color(255, 255, 255));
+	//table
+		private JPanel contentPane;
+		private JScrollPane scrollPane;
+		private JTextPane tAMostrarDato;
+		private DefaultTableModel dtmTImpresionTicket;
+		private JTable tImpresionTicket;
+		private JScrollPane spTImpresionTicket;
+		private ArrayList<Passenger> arrayLPassenger;
+		private ArrayList <Airline> arrayLAirline;
+		private ArrayList <Plane> arrayLPlane;
+		private Object dataTable[][];
+		private JButton bExit;
+		private JButton bImprimir;
+	//Label,button,textfield
+		private JLabel tTitule;
+		private JLabel lDatosPasajero;
+		private JButton bFiltrar;
+		private JLabel lDatosAerolinea;
+		private JLabel lDatoAvion;
+		private JLabel lMontoTotal;
+		private JTextField tMontoTotal;
+	//comboBox
+		private JComboBox<String>comboBoxAirline;	//Combobox para cargar los nombres de las marcas
+		private DefaultComboBoxModel<String>comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
+	//-------------------------------------------------------------
+		private JComboBox<String>comboBoxPlane;
+	//--------------------------------------------------------------
+		private JComboBox<String>comboBoxPass;
+	//fondo de la GUI
+		private JLabel li;
+		
+	public GUIImpresionTiquete(ArrayList <Airline> arrayLAirline,ArrayList <Plane> arrayLPlane,ArrayList<Passenger> arrayLPassenger) {
+		
+		llenarComboBoxPlane(arrayLPlane,getComboBoxPlane());
+		llenarComboBoxAirline(arrayLAirline,getComboBoxAirline());
+		llenarComboBoxPassenger(arrayLPassenger,getComboBoxPass());
+		
 		setDTMTImpresionTicket(dataTable,getColumnsNames());
 		setImpresionTicket(dtmTImpresionTicket);
 		setSPTImpresionTicket(tImpresionTicket);
@@ -74,15 +85,15 @@ public class GUIImpresionTiquete extends JFrame {
 		getContentPane().add(getBExit());
 		getContentPane().add(getBImprimir());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTDatosPasajero());
 		getContentPane().add(getLDatosPasajero());
 		getContentPane().add(getBFiltrar());
-		getContentPane().add(getTDatosAerolinea());
-		getContentPane().add(getTDatosAvion());
 		getContentPane().add(getLDatosAerolinea());
 		getContentPane().add(getLDatoAvion());
 		getContentPane().add(getLMontoTotal());
 		getContentPane().add(getTMontoTotal());
+		getContentPane().add(getComboBoxAirline());
+		getContentPane().add(getComboBoxPlane());
+		getContentPane().add(getComboBoxPass());
 		getContentPane().add(getImagen() );
 		setSize(1000,382);
 		setLocationRelativeTo(null);
@@ -210,7 +221,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(41, 137, 642, 183);
+			scrollPane.setBounds(26, 137, 702, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tImpresionTicket=new JTable(dtmTImpresionTicket);
 			tImpresionTicket.setEnabled(false);
@@ -225,7 +236,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(880, 297, 94, 23);
+			bExit.setBounds(894, 297, 80, 23);
 		}
 		return bExit;
 	}
@@ -237,7 +248,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(738, 232, 141, 23);
+			bImprimir.setBounds(738, 246, 125, 23);
 		}
 		return bImprimir;
 	}
@@ -250,21 +261,14 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		}
 		return tTitule;
 	}
-	public JTextField getTDatosPasajero() {
-		if (tDatosPasajero == null) {
-			tDatosPasajero = new JTextField();
-			tDatosPasajero.setBounds(41, 85, 146, 22);
-			tDatosPasajero.setColumns(10);
-		}
-		return tDatosPasajero;
-	}
+
 //------------------------------------------------------------------------------------
 	public JLabel getLDatosPasajero() {
 		if (lDatosPasajero == null) {
-			lDatosPasajero = new JLabel("Ingrese el Pasaporte del Pasajero");
+			lDatosPasajero = new JLabel("Lista de Pasaportes");
 			lDatosPasajero.setForeground(new Color(102, 102, 102));
 			lDatosPasajero.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lDatosPasajero.setBounds(41, 54, 245, 20);
+			lDatosPasajero.setBounds(41, 54, 164, 20);
 		}
 		return lDatosPasajero;
 	}
@@ -276,57 +280,42 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bFiltrar.setBounds(738, 159, 89, 23);
+			bFiltrar.setBounds(759, 198, 89, 23);
 		}
 		return bFiltrar;
 	}
-	public JTextField getTDatosAerolinea() {
-		if (tDatosAerolinea == null) {
-			tDatosAerolinea = new JTextField();
-			tDatosAerolinea.setBounds(296, 87, 166, 20);
-			tDatosAerolinea.setColumns(10);
-		}
-		return tDatosAerolinea;
-	}
-	public JTextField getTDatosAvion() {
-		if (tDatosAvion == null) {
-			tDatosAvion = new JTextField();
-			tDatosAvion.setBounds(548, 87, 161, 20);
-			tDatosAvion.setColumns(10);
-		}
-		return tDatosAvion;
-	}
+	
 	public JLabel getLDatosAerolinea() {
 		if (lDatosAerolinea == null) {
-			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolínea");
-			lDatosAerolinea.setForeground(new Color(102, 102, 102));
+			lDatosAerolinea = new JLabel("Lista de Aerolíneas");
+			lDatosAerolinea.setForeground(new Color(128, 128, 128));
 			lDatosAerolinea.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lDatosAerolinea.setBounds(296, 57, 224, 14);
+			lDatosAerolinea.setBounds(204, 53, 148, 23);
 		}
 		return lDatosAerolinea;
 	}
 	public JLabel getLDatoAvion() {
 		if (lDatoAvion == null) {
-			lDatoAvion = new JLabel("Ingrese el Numero de Placa del Avión");
-			lDatoAvion.setForeground(new Color(102, 102, 102));
+			lDatoAvion = new JLabel("Lista de Aviones");
+			lDatoAvion.setForeground(new Color(128, 128, 128));
 			lDatoAvion.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lDatoAvion.setBounds(548, 57, 230, 14);
+			lDatoAvion.setBounds(345, 54, 164, 20);
 		}
 		return lDatoAvion;
 	}
 	public JLabel getLMontoTotal() {
 		if (lMontoTotal == null) {
 			lMontoTotal = new JLabel("Monto Total");
-			lMontoTotal.setForeground(new Color(102, 102, 102));
+			lMontoTotal.setForeground(new Color(128, 128, 128));
 			lMontoTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lMontoTotal.setBounds(785, 57, 94, 14);
+			lMontoTotal.setBounds(519, 57, 94, 14);
 		}
 		return lMontoTotal;
 	}
 	public JTextField getTMontoTotal() {
 		if (tMontoTotal == null) {
 			tMontoTotal = new JTextField();
-			tMontoTotal.setBounds(785, 86, 96, 20);
+			tMontoTotal.setBounds(518, 82, 96, 20);
 			tMontoTotal.setColumns(10);
 		}
 		return tMontoTotal;
@@ -339,4 +328,74 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public  int numRandom() {
 	      return (int) (Math.random() * 100);
 	   }
+	//comboBox
+		public JComboBox<String> getComboBoxAirline() {
+			if (comboBoxAirline == null) {
+				comboBoxAirline = new JComboBox<String>();
+				comboBoxAirline.setBounds(192, 85, 125, 22);
+				comboBoxAirline.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+			}
+			return comboBoxAirline;
+		}
+		
+		public void llenarComboBoxAirline(ArrayList<Airline>arrayLA,JComboBox<String> comboBox) {
+			String[] nameA = new String[arrayLA.size()];
+			for(int i=0; i<arrayLA.size(); i++) {
+				nameA[i]=arrayLA.get(i).getName();
+			}
+			 // Crea un DefaultComboBoxModel con el array de aviones
+			comboBoxModelo = new DefaultComboBoxModel<>(nameA);
+	        // Asigna el DefaultComboBoxModel al JComboBox
+	        comboBox.setModel(comboBoxModelo);
+		}
+		    public void setcomboBoxAvion1(JComboBox<String> comboBoxAirline) {
+		        this.comboBoxAirline = comboBoxAirline;
+		    }
+	// crea la lista seleccionable con las placas de los aviones
+			public JComboBox<String> getComboBoxPlane() {
+			    if (comboBoxPlane == null) {
+			    	comboBoxPlane = new JComboBox<String>();
+			    	comboBoxPlane.setBounds(355, 82, 125, 22);
+			    	comboBoxPlane.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+			    	
+			    }
+			    return comboBoxPlane;
+			}
+			public void llenarComboBoxPlane(ArrayList<Plane>arrayLP,JComboBox<String> comboBox) {
+				String[] placas = new String[arrayLP.size()];
+				for(int i=0; i<arrayLP.size(); i++) {
+					placas[i]=arrayLP.get(i).getPlate();
+				}
+				 // Crea un DefaultComboBoxModel con el array de aviones
+				comboBoxModelo = new DefaultComboBoxModel<>(placas);
+
+		        // Asigna el DefaultComboBoxModel al JComboBox
+		        comboBox.setModel(comboBoxModelo);
+			}
+			    public void setcomboBoxPlane(JComboBox<String> comboBoxPlane) {
+			        this.comboBoxPlane = comboBoxPlane;
+			    }
+			    
+	public JComboBox<String> getComboBoxPass() {
+					if (comboBoxPass == null) {
+						comboBoxPass = new JComboBox<String>();
+						comboBoxPass.setBounds(41, 81, 118, 22);
+						comboBoxPass.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+					}
+					return comboBoxPass;
+				}
+				
+	public void llenarComboBoxPassenger(ArrayList<Passenger>arrayLPassenger,JComboBox<String> comboBox) {
+		String[] pas = new String[arrayLPassenger.size()];
+			for(int i=0; i<arrayLPassenger.size(); i++) {
+						pas[i]=arrayLPassenger.get(i).getPassport();
+					}
+					 // Crea un DefaultComboBoxModel con el array de pasaportes
+					comboBoxModelo = new DefaultComboBoxModel<>(pas);
+			        // Asigna el DefaultComboBoxModel al JComboBox
+			        comboBox.setModel(comboBoxModelo);
+				}
+				    public void setcomboBoxPassenger(JComboBox<String>comboBoxPass) {
+				        this.comboBoxPass = comboBoxPass;
+				    }
 }
