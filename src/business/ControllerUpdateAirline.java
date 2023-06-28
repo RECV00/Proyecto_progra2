@@ -27,7 +27,7 @@ public class ControllerUpdateAirline implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUA.getBUpdate().addActionListener(this);
 		guiUA.getBExit().addActionListener(this);
-		
+		guiUA.getBSearch().addActionListener(this);
 		guiUA.getDTMTAirline().setRowCount(0);
 		guiUA.setArrayListAirline(lo.getListAirline("Airlines.xml","Airline"));
 		guiUA.fillTable(guiUA.getArrayListAirline());
@@ -35,6 +35,10 @@ public class ControllerUpdateAirline implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==guiUA.getBSearch()) {
+			airline=lo.searchAirline("Airlines.xml", "Airline", "name", guiUA.getTNameAeroUpdate().getText());
+			guiUA.getTUpdateContry().setText(airline.getContry());
+		}
 		if(e.getSource()==guiUA.getBUpdate()) {
 			
 			airline = new Airline(guiUA.getTNameAeroUpdate().getText(),

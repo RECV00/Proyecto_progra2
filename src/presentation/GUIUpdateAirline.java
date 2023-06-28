@@ -42,9 +42,8 @@ public class GUIUpdateAirline extends JFrame {
 	private JLabel lUpdateName;
 	private JLabel lUpdateContry;
 	private JTextField tUpdateContry;
-//fondo de la GUI
+	private JButton bSearch;
 	private JLabel li;
-	
 	public GUIUpdateAirline() {
 		
 		setDTMTAirline(dataTable,getColumnsNames());
@@ -62,7 +61,8 @@ public class GUIUpdateAirline extends JFrame {
 		getContentPane().add(getLUpdateName());
 		getContentPane().add(getLUpdateContry());
 		getContentPane().add(getTUpdateContry());
-		getContentPane().add(getImagen() );
+		getContentPane().add(getBSearch());
+		getContentPane().add(getImagen());
 		setSize(723,450);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,6 +81,7 @@ public class GUIUpdateAirline extends JFrame {
 		}
 		return li;
 	}
+//llena y crea la tabla
 //llena y crea la tabla
 public void fillTable(ArrayList <Airline> list) {
 		
@@ -230,5 +231,12 @@ public void setArrayListAirline(ArrayList<Airline> arrayLAirline){
 			tUpdateContry.setColumns(10);
 		}
 		return tUpdateContry;
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.setBounds(58, 176, 89, 23);
+		}
+		return bSearch;
 	}
 }
