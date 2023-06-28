@@ -12,13 +12,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Flight;
+import domain.Passenger;
+import domain.Plane;
 import domain.Ticket;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -42,13 +48,19 @@ public class GUIRegisterTicket extends JFrame {
 	private JTextField tNumTicket;
 	private JLabel lPassportTicket;
 	private JLabel lNumFlightTicket;
-	private JTextField tPassportTicket;
-	private JTextField tNumFlightTicket;
 //fondo de la GUI
 	private JLabel li;
+//comboBox
+	private DefaultComboBoxModel<String>comboBoxModelo;
+	private JComboBox<String>comboBoxPass;
+	private JComboBox<String>comboBoxFlight;//Combobox para cargar las placas de los aviones
+	private ArrayList<Passenger> arrayLPassenger;
+	private ArrayList<Flight> arrayLF;
 	
-	public GUIRegisterTicket() {
+	public GUIRegisterTicket(ArrayList<Passenger>arrayLPassenger,ArrayList<Flight>arrayLF) {
 		
+		llenarComboBoxFlight(arrayLF,getComboBoxFlight());
+		llenarComboBoxPassenger(arrayLPassenger,getComboBoxPass());
 		setDTMTTicket(dataTable,getColumnsNames());
 		setTicket(dtmTTicket);
 		setSPTTicket(tTicket);
@@ -64,8 +76,8 @@ public class GUIRegisterTicket extends JFrame {
 		getContentPane().add(getTNumTicket());
 		getContentPane().add(getLPassportTicket());
 		getContentPane().add(getLNumFlightTicket());
-		getContentPane().add(getTPassportTicket());
-		getContentPane().add(getTNumFlightTicket());
+		getContentPane().add(getComboBoxPass());
+		getContentPane().add(getComboBoxFlight());
 		getContentPane().add(getImagen());
 		setSize(724,465);
 		setLocationRelativeTo(null);
@@ -150,7 +162,7 @@ public class GUIRegisterTicket extends JFrame {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(52, 210, 516, 183);
+			scrollPane.setBounds(43, 210, 551, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -173,7 +185,7 @@ public class GUIRegisterTicket extends JFrame {
 	public JButton getBRegister() {
 		if (bRegister == null) {
 			bRegister = new JButton("Registrar");
-			bRegister.setBounds(417, 188, 151, 23);
+			bRegister.setBounds(443, 190, 151, 23);
 		}
 		return bRegister;
 	}
@@ -225,31 +237,58 @@ public class GUIRegisterTicket extends JFrame {
 		}
 		return lNumFlightTicket;
 	}
-//------------------------------------------------------------------------------------
-	public JTextField getTPassportTicket() {
-		if (tPassportTicket == null) {
-			tPassportTicket = new JTextField();
-			tPassportTicket.setBounds(26, 133, 96, 20);
-			tPassportTicket.setColumns(10);
-		}
-		return tPassportTicket;
-	}
-//------------------------------------------------------------------------------------
-	public JTextField getTNumFlightTicket() {
-		if (tNumFlightTicket == null) {
-			tNumFlightTicket = new JTextField();
-			tNumFlightTicket.setText("");
-			tNumFlightTicket.setBounds(164, 82, 96, 20);
-			tNumFlightTicket.setColumns(10);
-		}
-		return tNumFlightTicket;
-	}
 //-----------------------------------------------------------------------------------
 	public void cleanForm() {
 		tNumTicket.setText("");
-		tPassportTicket.setText("");
-		tNumFlightTicket.setText("");
+		comboBoxPass.setToolTipText("");
+		comboBoxFlight.setToolTipText("");
 	}
+//-------------------------------------------------------------------------------------
+public JComboBox<String> getComboBoxPass() {
+		if (comboBoxPass == null) {
+			comboBoxPass = new JComboBox<String>();
+			comboBoxPass.setBounds(26, 133, 118, 22);
+			comboBoxPass.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		}
+		return comboBoxPass;
+	}
+	
+public void llenarComboBoxPassenger(ArrayList<Passenger>arrayLPassenger,JComboBox<String> comboBox) {
+String[] pas = new String[arrayLPassenger.size()];
+for(int i=0; i<arrayLPassenger.size(); i++) {
+			pas[i]=arrayLPassenger.get(i).getPassport();
+		}
+		 // Crea un DefaultComboBoxModel con el array de pasaportes
+		comboBoxModelo = new DefaultComboBoxModel<>(pas);
+        // Asigna el DefaultComboBoxModel al JComboBox
+        comboBox.setModel(comboBoxModelo);
+	}
+public void setcomboBoxPassenger(JComboBox<String>comboBoxPass) {
+	        this.comboBoxPass = comboBoxPass;
+	 }
+// crea la lista seleccionable con las placas de los aviones
+	public JComboBox<String> getComboBoxFlight() {
+		    if (comboBoxFlight == null) {
+		    	comboBoxFlight = new JComboBox<String>();
+		    	comboBoxFlight.setBounds(164, 81, 129, 22);
+		    	comboBoxFlight.setModel(new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+		    	
+		    }
+		    return comboBoxFlight;
+		}
+		public void llenarComboBoxFlight(ArrayList<Flight>arrayLF,JComboBox<String> comboBox) {
+			String[] numF = new String[arrayLF.size()];
+			for(int i=0; i<arrayLF.size(); i++) {
+				numF[i] = arrayLF.get(i).getNumFlight();
+			}
+			 // Crea un DefaultComboBoxModel con el array de vuelos
+			comboBoxModelo = new DefaultComboBoxModel<>(numF);
+	        // Asigna el DefaultComboBoxModel al JComboBox
+	        comboBox.setModel(comboBoxModelo);
+		}
+		    public void setcomboBoxFlight(JComboBox<String>comboBoxFlight) {
+		        this.comboBoxFlight = comboBoxFlight;
+		    }
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
 		
