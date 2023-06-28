@@ -1,19 +1,32 @@
 package data;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import domain.Airline;
 import domain.Brand;
@@ -1243,4 +1256,124 @@ public ArrayList<Ticket> searchXMLTicket(String fileName,String elementType, Str
 
     return arrayLTicket;
 }
+//------------------------Otros XML Necesarios----------------------------------------------------------------
+
+//ESCRITURA DE LOS DATOS DE LA TABLA AL XML
+public void writeTiquetes(String fileName, String elementType, ArrayList<Passenger> arrayListPassenger,
+        ArrayList<Airline> arrayListAirline, ArrayList<Plane> arrayListPlane, Object datos) throws ParserConfigurationException, SAXException {
+    try {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document doc = db.parse(new File(fileName));
+        Element rootElement = doc.getDocumentElement();
+        Element ele = doc.createElement(elementType);
+        rootElement.appendChild(ele);
+        doc.getDocumentElement().normalize();
+
+        System.out.println("Raíz de los Elementos:" + doc.getDocumentElement().getNodeName());
+        // Escribir los elementos del primer array
+        Element passengerElement = doc.createElement("Passenger");
+        ele.appendChild(passengerElement);
+        for (Passenger elemento : arrayListPassenger) {
+            Element datosPassengerElement = doc.createElement("datosPassenger");
+            datosPassengerElement.setTextContent(elemento.toString());
+            passengerElement.appendChild(datosPassengerElement);
+        }
+
+        // Escribir los elementos del segundo array
+        Element airlineElement = doc.createElement("Airline");
+        ele.appendChild(airlineElement);
+        for (Airline elemento : arrayListAirline) {
+            Element datosAirlineElement = doc.createElement("datosAirline");
+            datosAirlineElement.setTextContent(elemento.toString());
+            airlineElement.appendChild(datosAirlineElement);
+        }
+
+        // Escribir los elementos del tercer array
+        Element planeElement = doc.createElement("Plane");
+        ele.appendChild(planeElement);
+        for (Plane elemento : arrayListPlane) {
+            Element datosPlaneElement = doc.createElement("datosPlane");
+            datosPlaneElement.setTextContent(elemento.toString());
+            planeElement.appendChild(datosPlaneElement);
+        }
+
+        // Escribir el parámetro adicional
+        Element otrosDatosElement = doc.createElement("OtrosDatos");
+        otrosDatosElement.setTextContent(datos.toString());
+        ele.appendChild(otrosDatosElement);
+
+        // Guardar el documento XML en el archivo
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(fileName));
+        transformer.transform(source, result);
+
+        System.out.println("Datos escritos en el archivo XML: " + fileName);
+    } catch (IOException | TransformerException e) {
+        e.printStackTrace();
+    }
+}
+
+// PARA LA LECTURA DEL XML DE HISTORIAL TIQUETE
+
+public String readXMLStringHTiquete(String FileName, String elementType) {
+	String dato = " ";
+	
+	try {
+		File inputFile = new File(FileName);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+
+		System.out.println("Raíz de los Elementos:" + doc.getDocumentElement().getNodeName());
+		NodeList nList = doc.getElementsByTagName(elementType);
+		System.out.println("----------------------------");
+
+		for (int indice = 0; indice < nList.getLength(); indice++) {
+			Node nNode = nList.item(indice);
+			System.out.println("\nDatos de los usuarios: " + nNode.getNodeName());
+			
+			//PASSENGER
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				dato += ("\nDatos del Pasajero\n " + eElement.getElementsByTagName("datosPassenger").
+						item(0).getTextContent());
+				dato +=("\nDatos del Aerolinea\n " + eElement.getElementsByTagName("datosAirline").
+						item(0).getTextContent());
+				dato +=("\nDatos del Avión\n "  + eElement.getElementsByTagName("datosPlane").
+						item(0).getTextContent());
+				dato +=("\nOtros Datos\n "  + eElement.getElementsByTagName("OtrosDatos").
+						item(0).getTextContent())+"\n"; 
+			}
+			
+			/*//AIRLINE
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				dato += ("\nNombre: " + eElement.getAttribute("name"));         
+				dato += ("\nPaís: " + eElement.getElementsByTagName("contry").
+						item(0).getTextContent());
+				
+			}
+			//PLANE
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				dato += ("\nPlaca: " + eElement.getAttribute("plate"));         
+				dato +=("\nAerolínea: "  + eElement.getElementsByTagName("airline").
+						item(0).getTextContent());
+				dato +=("\nModelo: "  + eElement.getElementsByTagName("model").
+						item(0).getTextContent());
+				dato+=("\nAño: "  + eElement.getElementsByTagName("year").
+						item(0).getTextContent())+"\n"; 
+			}*/
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return dato;
+}
+
+
 }

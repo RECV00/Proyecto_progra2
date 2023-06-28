@@ -139,7 +139,7 @@ public class GUIImpresionTiquete extends JFrame {
 	       }
 	        
 	        if (i < arrayLPassenger.size()) {
-            	model.addColumn("DATOS Del TIQUETE", new String[]{String.valueOf(numRandom()),horaFecha(),
+            	model.addColumn("DATOS DEL TIQUETE", new String[]{String.valueOf(numRandom()),horaFecha(),
             			"$"+String.valueOf((Integer.parseInt(getTMontoTotal().getText())+(Integer.parseInt(getTMontoTotal().getText())*0.13)))});
             }
 	    }
@@ -322,7 +322,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 	
 	public String horaFecha() {
-		DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd/MM/yyyy			HH:mm:ss");
        return dtf2.format(LocalDateTime.now());
 	}
 	public  int numRandom() {

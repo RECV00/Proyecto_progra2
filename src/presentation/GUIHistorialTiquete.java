@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class GUIHistorialTiquete extends JFrame {
@@ -47,17 +48,10 @@ public class GUIHistorialTiquete extends JFrame {
 	private JButton bExit;
 	private JButton bConsult;
 	private JLabel tTitule;
-	private JTextField tDatosPasajero;
-	private JLabel lDatosPasajero;
-	
-	private JTextField tDatosAerolinea;
-	private JTextField tDatosAvion;
-	private JLabel lDatosAerolinea;
-	private JLabel lDatoAvion;
-	private JLabel lMontoTotal;
-	private JTextField tMontoTotal;
 //fondo de la GUI
 	private JLabel li;
+	private JScrollPane scrollPaneHTiquete;
+	private JTextArea taConsultarHTiquete;
 	
 	public GUIHistorialTiquete() {
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -68,19 +62,12 @@ public class GUIHistorialTiquete extends JFrame {
 		//setContentPane(contentPane);
 		getContentPane().setLayout(null);
 		setTitle("Sistema de Aerolíneas");
-		getContentPane().add(getScrollPane());
+		//getContentPane().add(getScrollPane());
 		getContentPane().add(getBExit());
 		getContentPane().add(getBConsult());
 		getContentPane().add(getTTitule());
-		getContentPane().add(getTDatosPasajero());
-		getContentPane().add(getLDatosPasajero());
-		getContentPane().add(getTDatosAerolinea());
-		getContentPane().add(getTDatosAvion());
-		getContentPane().add(getLDatosAerolinea());
-		getContentPane().add(getLDatoAvion());
-		getContentPane().add(getLMontoTotal());
-		getContentPane().add(getTMontoTotal());
-		getContentPane().add(getImagen() );
+		getContentPane().add(getScrollPaneHTiquete());
+		getContentPane().add(getImagen());
 		setSize(1000,382);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,7 +78,7 @@ public class GUIHistorialTiquete extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, -124, 987, 683);
+		li.setBounds(0, -124, 986, 683);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIConsultModel.class.getResource("/media/logo00.png")));
@@ -202,7 +189,7 @@ public void setDTMTHistorialTicket(Object data[][],String[] columnsNames) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(41, 137, 556, 183);
+			scrollPane.setBounds(23, 147, 808, 187);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tHistorialTicket=new JTable(dtmTHTicket);
 			tHistorialTicket.setEnabled(false);
@@ -217,7 +204,11 @@ public void setDTMTHistorialTicket(Object data[][],String[] columnsNames) {
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(880, 297, 94, 23);
+			bExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bExit.setBounds(870, 21, 94, 23);
 		}
 		return bExit;
 	}
@@ -229,7 +220,7 @@ public void setDTMTHistorialTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bConsult.setBounds(620, 230, 141, 23);
+			bConsult.setBounds(732, 292, 184, 23);
 		}
 		return bConsult;
 	}
@@ -238,79 +229,22 @@ public void setDTMTHistorialTicket(Object data[][],String[] columnsNames) {
 		if (tTitule == null) {
 			tTitule = new JLabel("Consultar historial de Tiquete");
 			tTitule.setFont(new Font("Tahoma", Font.BOLD, 26));
-			tTitule.setBounds(237, 17, 424, 29);
+			tTitule.setBounds(262, 21, 424, 29);
 		}
 		return tTitule;
 	}
-	public JTextField getTDatosPasajero() {
-		if (tDatosPasajero == null) {
-			tDatosPasajero = new JTextField();
-			tDatosPasajero.setBounds(41, 85, 146, 22);
-			tDatosPasajero.setColumns(10);
+	public JScrollPane getScrollPaneHTiquete() {
+		if (scrollPaneHTiquete == null) {
+			scrollPaneHTiquete = new JScrollPane();
+			scrollPaneHTiquete.setBounds(20, 72, 659, 262);
+			scrollPaneHTiquete.setViewportView(getTaConsultarHTiquete());
 		}
-		return tDatosPasajero;
+		return scrollPaneHTiquete;
 	}
-//------------------------------------------------------------------------------------
-	public JLabel getLDatosPasajero() {
-		if (lDatosPasajero == null) {
-			lDatosPasajero = new JLabel("Ingrese el Pasaporte del Pasajero");
-			lDatosPasajero.setForeground(new Color(102, 102, 102));
-			lDatosPasajero.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lDatosPasajero.setBounds(41, 54, 245, 20);
+	public JTextArea getTaConsultarHTiquete() {
+		if (taConsultarHTiquete == null) {
+			taConsultarHTiquete = new JTextArea();
 		}
-		return lDatosPasajero;
-	}
-//------------------------------------------------------------------------------------
-
-	public JTextField getTDatosAerolinea() {
-		if (tDatosAerolinea == null) {
-			tDatosAerolinea = new JTextField();
-			tDatosAerolinea.setBounds(296, 87, 166, 20);
-			tDatosAerolinea.setColumns(10);
-		}
-		return tDatosAerolinea;
-	}
-	public JTextField getTDatosAvion() {
-		if (tDatosAvion == null) {
-			tDatosAvion = new JTextField();
-			tDatosAvion.setBounds(548, 87, 161, 20);
-			tDatosAvion.setColumns(10);
-		}
-		return tDatosAvion;
-	}
-	public JLabel getLDatosAerolinea() {
-		if (lDatosAerolinea == null) {
-			lDatosAerolinea = new JLabel("Ingrese el Nombre de la Aerolínea");
-			lDatosAerolinea.setForeground(new Color(102, 102, 102));
-			lDatosAerolinea.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lDatosAerolinea.setBounds(296, 57, 224, 14);
-		}
-		return lDatosAerolinea;
-	}
-	public JLabel getLDatoAvion() {
-		if (lDatoAvion == null) {
-			lDatoAvion = new JLabel("Ingrese el Numero de Placa del Avión");
-			lDatoAvion.setForeground(new Color(102, 102, 102));
-			lDatoAvion.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lDatoAvion.setBounds(548, 57, 230, 14);
-		}
-		return lDatoAvion;
-	}
-	public JLabel getLMontoTotal() {
-		if (lMontoTotal == null) {
-			lMontoTotal = new JLabel("Monto Total");
-			lMontoTotal.setForeground(new Color(102, 102, 102));
-			lMontoTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
-			lMontoTotal.setBounds(785, 57, 94, 14);
-		}
-		return lMontoTotal;
-	}
-	public JTextField getTMontoTotal() {
-		if (tMontoTotal == null) {
-			tMontoTotal = new JTextField();
-			tMontoTotal.setBounds(785, 86, 96, 20);
-			tMontoTotal.setColumns(10);
-		}
-		return tMontoTotal;
+		return taConsultarHTiquete;
 	}
 }

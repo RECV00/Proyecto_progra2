@@ -14,7 +14,6 @@ public class ControllerHistorialT implements ActionListener{
 	private GUIHistorialTiquete guiHT;
 	private FilesXML fXML;
 	private Logic lo;
-	ArrayList<Passenger>arrayLPassenger;
 	public ControllerHistorialT() {
 		fXML = new FilesXML();
 		lo= new Logic();
@@ -29,7 +28,7 @@ public class ControllerHistorialT implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiHT.getBConsult()) {
-			
+			guiHT.getTaConsultarHTiquete().setText(lo.readXMLStringHTiquete("TiquetesImpresos.xml","TiquetesImpresos"));
 		}
 		if(e.getSource()==guiHT.getBExit()) {
 			guiHT.dispose();
