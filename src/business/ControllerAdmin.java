@@ -186,6 +186,9 @@ public class ControllerAdmin implements ActionListener{
 		if(e.getSource() == guiA.getMnVuelos()) {
 			new ControllerVuelos();
 		}
+		if(e.getSource()==guiA.getMiAboutSystem()) {
+			guiA.executeHTML1("admin1.html");
+		}
 		else if(e.getSource()== guiA.getMiiExit()) {
 			guiA.dispose();
 			new ControllerLogin();

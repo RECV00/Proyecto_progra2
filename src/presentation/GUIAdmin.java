@@ -14,6 +14,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.io.IOException;
+
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -24,8 +26,6 @@ public class GUIAdmin extends JFrame {
 	private JMenu mFile;
 	private JMenu mOperations;
 	private JMenu mHelp;
-	private JMenuItem miOpen;
-	private JMenuItem miSave;
 	private JMenuItem miiExit;
 	private JMenuItem miAboutSystem;
 	private JPanel contentPane;
@@ -120,8 +120,6 @@ public class GUIAdmin extends JFrame {
 			mFile.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 14));
 			mFile.setHorizontalAlignment(SwingConstants.CENTER);
 			mFile.setBackground(UIManager.getColor("MenuBar.background"));
-			mFile.add(getMiOpen());
-			mFile.add(getMiSave());
 			mFile.add(getMiiExit());
 		}
 		return mFile;
@@ -154,23 +152,9 @@ public class GUIAdmin extends JFrame {
 		}
 		return mHelp;
 	}
-	public JMenuItem getMiOpen() {
-		if (miOpen == null) {
-			miOpen = new JMenuItem("Abrir");
-			miOpen.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		}
-		return miOpen;
-	}
-	public JMenuItem getMiSave() {
-		if (miSave == null) {
-			miSave = new JMenuItem("Guardar");
-			miSave.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		}
-		return miSave;
-	}
 	public JMenuItem getMiiExit() {
 		if (miiExit == null) {
-			miiExit = new JMenuItem("Salir");
+			miiExit = new JMenuItem("Cerrar Sesión");
 			miiExit.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		}
 		return miiExit;
@@ -515,6 +499,28 @@ public class GUIAdmin extends JFrame {
 			mnVuelos.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 		}
 		return mnVuelos;
+	}
+
+	public void executeHTML1(String url) {
+	    String osName = System.getProperty("os.name");
+	    try {
+	        if (osName.startsWith("Windows")) {
+	            ProcessBuilder processBuilder = new ProcessBuilder("rundll32", "url.dll,FileProtocolHandler", url);
+	            processBuilder.start();
+	        } else if (osName.startsWith("Mac OS X")) {
+	            ProcessBuilder processBuilder = new ProcessBuilder("open", "-a", "safari", url);
+	            processBuilder.start();
+	            processBuilder = new ProcessBuilder("open", url + "/admin1.html");
+	            processBuilder.start();
+	            processBuilder = new ProcessBuilder("open", url);
+	            processBuilder.start();
+	        } else {
+	            System.out.println("Please open a browser and go to " + url);
+	        }
+	    } catch (IOException ioe) {
+	        System.out.println("Failed to start a browser to open the URL " + url);
+	        ioe.printStackTrace();
+	    }
 	}
 }
 
