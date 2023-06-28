@@ -29,7 +29,7 @@ public class ControllerHistorialT implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiHT.getBConsult()) {
 			guiHT.getTaConsultarHTiquete().setText(lo.readXMLStringHTiquete("TiquetesImpresos.xml","TiquetesImpresos"));
-			guiHT.getDTMTHistorialTicket().setRowCount(0);
+			
 		}
 		if(e.getSource()==guiHT.getBExit()) {
 			guiHT.dispose();

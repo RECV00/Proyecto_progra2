@@ -203,7 +203,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 
 //------------------------------------------------------------------------------------
-	/*public void print(JTable tImpresionTicket) {
+	public void print(JTable tImpresionTicket) {
 		try {
 			if(!tImpresionTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
@@ -211,9 +211,9 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		}catch(java.awt.print.PrinterException e) {
 			System.err.format("Error de Impresión. %s%n", e.getMessage());
 		}
-	}*/
+	}
 	
-	public void print(JTable tImpresionTicket) {
+	/*public void print(JTable tImpresionTicket) {
 	    StringBuilder content = new StringBuilder();
 	    
 	    // Obtener el número de filas y columnas de la tabla
@@ -240,7 +240,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	    } catch (java.awt.print.PrinterException e) {
 	        System.err.format("Error de Impresión. %s%n", e.getMessage());
 	    }
-	}
+	}*/
 
 //------------------------------------------------------------------------------------	
 	public JTextPane getTAMostrarDato() {
