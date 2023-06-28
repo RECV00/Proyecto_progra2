@@ -20,7 +20,7 @@ public class ControllerImpresionT implements ActionListener{
 		fXML = new FilesXML();
 		lo= new Logic();
 		guiIT = new GUIImpresionTiquete();
-		//fXML.createXML("TiquetesImpresos", "TiqutesImpresos.xml");
+		fXML.createXML("TiquetesImpresos", "TiquetesImpresos.xml");
 		initializer();
 	}
 	private void initializer() {
