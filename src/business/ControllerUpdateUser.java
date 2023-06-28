@@ -40,9 +40,10 @@ public class ControllerUpdateUser implements ActionListener{
 		if(e.getSource()==guiUu.getBSearch()) {
 			
 			user = lo.searchUser("Users.xml","User","userName",guiUu.getTNameUpdate().getText());
-			//guiUu.getTNameUpdate().setText(user.getUserName());
-			System.out.print(user);
 			guiUu.getTContrasena().setText(user.getPassword());
+			guiUu.getComboBoxTypeUser().setSelectedItem(user.getTypeUser());
+			guiUu.getComboBoxState().setSelectedItem(user.getState());
+			
 		}
 		if(e.getSource()==guiUu.getBUpdate()) {
 			
