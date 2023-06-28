@@ -33,7 +33,9 @@ public class Passenger {
 		this.gmail = gmail;
 		this.phone = phone;
 	}
-
+	public Passenger(String passport) {
+		this.passport=passport;
+	}
 	public String getName() {
 		return name;
 	}

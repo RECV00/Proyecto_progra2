@@ -926,6 +926,30 @@ public String readXMLStringPassenger(String FileName, String elementType) {
 	}
 	return dato;
 }
+public ArrayList<Passenger> getNamePassport(String rutaArchivo, String elementType) {
+	ArrayList<Passenger> pasajero = new ArrayList<>();
+    Passenger p = new Passenger();
+
+    try {//obtiene el avion
+       
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        File archivoXML = new File(rutaArchivo);
+        Document documento = builder.parse(archivoXML);
+        NodeList nodeList = documento.getElementsByTagName(elementType);
+        
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element element = (Element) nodeList.item(i);
+            String pasaporte = element.getAttribute("passport");
+            p=new Passenger(pasaporte);
+            pasajero.add(p);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return pasajero;
+}
 //PLANE
 public ArrayList<Plane> readXMLArrayListPlane(String FileName, String elementType,String[]dataName) {
 	
