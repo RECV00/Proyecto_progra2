@@ -1092,7 +1092,6 @@ public String getNamePlaneAirline(String rutaArchivo, String elementType, String
             String name = element.getAttribute("plate");
             if (name.equals(avion)) {
                 String air = element.getElementsByTagName("airline").item(0).getTextContent();
-                 System.out.print(air);
                 result.append(air);
                
             }
