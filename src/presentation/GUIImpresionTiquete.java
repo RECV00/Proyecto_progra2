@@ -24,6 +24,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -106,9 +108,9 @@ public class GUIImpresionTiquete extends JFrame {
 	public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
 	    int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());
 	    for (int i = 0; i < maxLength; i++) {
+	    	
+            for (Passenger p : arrayLPassenger) {
 	        if (i < arrayLPassenger.size()) {
-	            
-	            for (Passenger p : arrayLPassenger) {
 	            	model.addColumn("DATOS DEL PASAJERO", new String[]{p.getPassport(),p.getName(),p.getLastName(),
 	            			p.getBirthdate(),p.getGmail(),String.valueOf(p.getPhone())});
 	            }
@@ -124,6 +126,11 @@ public class GUIImpresionTiquete extends JFrame {
 	            		pl.getYear()});
 	        }
 	       }
+	        
+	        if (i < arrayLPassenger.size()) {
+            	model.addColumn("DATOS Del TIQUETE", new String[]{String.valueOf(numRandom()),horaFecha(),
+            			"$"+String.valueOf((Integer.parseInt(getTMontoTotal().getText())+(Integer.parseInt(getTMontoTotal().getText())*0.13)))});
+            }
 	    }
 	}
 public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
@@ -203,7 +210,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(41, 137, 556, 183);
+			scrollPane.setBounds(41, 137, 642, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tImpresionTicket=new JTable(dtmTImpresionTicket);
 			tImpresionTicket.setEnabled(false);
@@ -230,7 +237,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(620, 230, 141, 23);
+			bImprimir.setBounds(738, 232, 141, 23);
 		}
 		return bImprimir;
 	}
@@ -265,7 +272,11 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JButton getBFiltrar() {
 		if (bFiltrar == null) {
 			bFiltrar = new JButton("Filtrar");
-			bFiltrar.setBounds(620, 156, 89, 23);
+			bFiltrar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bFiltrar.setBounds(738, 159, 89, 23);
 		}
 		return bFiltrar;
 	}
@@ -320,4 +331,12 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		}
 		return tMontoTotal;
 	}
+	
+	public String horaFecha() {
+		DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+       return dtf2.format(LocalDateTime.now());
+	}
+	public  int numRandom() {
+	      return (int) (Math.random() * 100);
+	   }
 }
