@@ -143,13 +143,12 @@ public class GUIImpresionTiquete extends JFrame {
 	       }
 	        
 	      
-            	model.addColumn("DATOS DEL TIQUETE", new String[]{pas,horaFecha(),
+            	model.addColumn("DATOS DEL TIQUETE", new String[]{"#"+pas,horaFecha(),
             			"$"+String.valueOf((Integer.parseInt(getTMontoTotal().getText())+(Integer.parseInt(getTMontoTotal().getText())*0.13)))});
             
 	        
 	        
 	    }
-	    setImpresionTicket(model);
 	}
 
 public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
@@ -215,7 +214,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	}
 
 //------------------------------------------------------------------------------------
-	/*public void print(JTable tImpresionTicket) {
+	public void print(JTable tImpresionTicket) {
 		try {
 			if(!tImpresionTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
@@ -223,37 +222,8 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 		}catch(java.awt.print.PrinterException e) {
 			System.err.format("Error de Impresión. %s%n", e.getMessage());
 		}
-	}*/
-	
-	public void print(JTable tImpresionTicket) {
-	    StringBuilder content = new StringBuilder();
-	    
-	    // Obtener el número de filas y columnas de la tabla
-	    int rowCount = tImpresionTicket.getRowCount();
-	    int columnCount = tImpresionTicket.getColumnCount();
-	    
-	    // Recorrer las filas y columnas para obtener los valores de la tabla
-	    for (int i = 0; i < rowCount; i++) {
-	        for (int j = 0; j < columnCount; j++) {
-	            Object value = tImpresionTicket.getValueAt(i, j);
-	            content.append(value).append("\t"); // Agregar a la cadena
-	        }
-	        content.append("\n"); // salto de línea cada fila
-	    }
-	    
-	    System.out.println("Contenido de la tabla:");
-	    System.out.println(content.toString());
-	    
-	    //generar el PDF
-	    try {
-	        if (!tImpresionTicket.print()) {
-	            System.err.println("Se canceló la Impresión");
-	        }
-	    } catch (java.awt.print.PrinterException e) {
-	        System.err.format("Error de Impresión. %s%n", e.getMessage());
-	    }
 	}
-
+	
 //------------------------------------------------------------------------------------	
 	public JTextPane getTAMostrarDato() {
 		if (tAMostrarDato == null) {
