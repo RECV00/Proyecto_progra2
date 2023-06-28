@@ -1336,7 +1336,6 @@ public String readXMLStringHTiquete(String FileName, String elementType) {
 			Node nNode = nList.item(indice);
 			System.out.println("\nDatos de los usuarios: " + nNode.getNodeName());
 			
-			//PASSENGER
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
 				dato += ("\nDatos del Pasajero\n " + eElement.getElementsByTagName("datosPassenger").
@@ -1349,25 +1348,6 @@ public String readXMLStringHTiquete(String FileName, String elementType) {
 						item(0).getTextContent())+"\n"; 
 			}
 			
-			/*//AIRLINE
-			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-				Element eElement = (Element) nNode;
-				dato += ("\nNombre: " + eElement.getAttribute("name"));         
-				dato += ("\nPaís: " + eElement.getElementsByTagName("contry").
-						item(0).getTextContent());
-				
-			}
-			//PLANE
-			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-				Element eElement = (Element) nNode;
-				dato += ("\nPlaca: " + eElement.getAttribute("plate"));         
-				dato +=("\nAerolínea: "  + eElement.getElementsByTagName("airline").
-						item(0).getTextContent());
-				dato +=("\nModelo: "  + eElement.getElementsByTagName("model").
-						item(0).getTextContent());
-				dato+=("\nAño: "  + eElement.getElementsByTagName("year").
-						item(0).getTextContent())+"\n"; 
-			}*/
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
