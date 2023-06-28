@@ -29,9 +29,8 @@ public class ControllerVuelos implements ActionListener{
 	private void initializer() {
 		guiV.getBConsultV().addActionListener(this);
 		guiV.getBExit().addActionListener(this);
-		
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiV.getBConsultV()) {
