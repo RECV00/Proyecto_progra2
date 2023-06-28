@@ -50,16 +50,21 @@ public class ControllerImpresionT implements ActionListener{
 			guiIT.setArrayListPassenger(lo.searchXMLPassenger("Passengers.xml","Passenger", "passport", guiIT.getComboBoxPass().getSelectedItem().toString()));
 			guiIT.setArrayListAirline(lo.searchXMLAirline("Airlines.xml", "Airline", "name",guiIT.getComboBoxAirline().getSelectedItem().toString()));
 			guiIT.setArrayListPlane(lo.searchXMLPlane("Planes.xml", "Plane", "plate", guiIT.getComboBoxPlane().getSelectedItem().toString()));
-			guiIT.fillTable(guiIT.getDTMTImpresionTicket(),guiIT.getArrayListPassenger(),guiIT.getArrayListAirline(),guiIT.getArrayListPlane());
+			String numTicket=lo.getPassportTicket("Tickets.xml", "Ticket", guiIT.getComboBoxPass().getSelectedItem().toString());
+			
+			
+			guiIT.fillTable(guiIT.getDTMTImpresionTicket(),guiIT.getArrayListPassenger(),guiIT.getArrayListAirline(),guiIT.getArrayListPlane(),numTicket);
 			
 			
 		}
 		if(e.getSource() == guiIT.getBImprimir()) {
+			String numTicket=lo.getPassportTicket("Tickets.xml", "Ticket", guiIT.getComboBoxPass().getSelectedItem().toString());
+			
 			guiIT.print(guiIT.getTImpresionTicket());//pdf
 			System.out.print(guiIT.getTImpresionTicket());
 			try {
 				lo.writeTiquetes( "TiquetesImpresos.xml","TiquetesImpresos", guiIT.getArrayListPassenger(), guiIT.getArrayListAirline(), guiIT.getArrayListPlane(),
-						String.valueOf(guiIT.numRandom())+"			"+guiIT.horaFecha()+"			"+
+						numTicket+"			"+guiIT.horaFecha()+"			"+
 						"$" + String.valueOf((Integer.parseInt(guiIT.getTMontoTotal().getText()) + (Integer.parseInt(guiIT.getTMontoTotal().getText()) * 0.13))));
 			} catch (ParserConfigurationException e1) {
 				// TODO Auto-generated catch block

@@ -44,13 +44,13 @@ public class ControllerRegisterTicket implements ActionListener{
 		
 		if(e.getSource()== guiRT.getBRegister()) {
 			//creando en objeto
-			ticket = new Ticket(guiRT.getTNumTicket().getText(),
+			ticket = new Ticket(String.valueOf(guiRT.numRandom()),
 					guiRT.getComboBoxPass().getSelectedItem().toString(),
 					guiRT.getComboBoxFlight().getSelectedItem().toString());
 			
 			fXML.writeXML("Tickets.xml","Ticket",ticket.getDataName(),ticket.getData());
 			arrayLTicket = lo.readXMLArrayListTicket("Tickets.xml","Ticket",ticket.getDataName());
-			guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),guiRT.getComboBoxPass().getSelectedItem().toString(),ticket.getNumFlight()});
+			guiRT.getDTMTTicket().addRow(new Object [] {guiRT.numRandom(),guiRT.getComboBoxPass().getSelectedItem().toString(),ticket.getNumFlight()});
 			guiRT.cleanForm();
 			
 		}

@@ -289,6 +289,10 @@ public void setcomboBoxPassenger(JComboBox<String>comboBoxPass) {
 		    public void setcomboBoxFlight(JComboBox<String>comboBoxFlight) {
 		        this.comboBoxFlight = comboBoxFlight;
 		    }
+		    
+		    public  int numRandom() {
+			      return (int) (Math.random() * 100);
+			   }
 //------------------------------------------------------------------------------------
 	public void showMessage(String message) {
 		

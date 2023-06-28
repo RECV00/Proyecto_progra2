@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import domain.Airline;
 import domain.Passenger;
 import domain.Plane;
+import domain.Ticket;
 
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -47,6 +48,7 @@ public class GUIImpresionTiquete extends JFrame {
 		private ArrayList<Passenger> arrayLPassenger;
 		private ArrayList <Airline> arrayLAirline;
 		private ArrayList <Plane> arrayLPlane;
+		ArrayList<Ticket> arrayLTicket;
 		private Object dataTable[][];
 		private JButton bExit;
 		private JButton bImprimir;
@@ -68,7 +70,7 @@ public class GUIImpresionTiquete extends JFrame {
 	//fondo de la GUI
 		private JLabel li;
 		
-	public GUIImpresionTiquete(ArrayList <Airline> arrayLAirline,ArrayList <Plane> arrayLPlane,ArrayList<Passenger> arrayLPassenger) {
+	public GUIImpresionTiquete(ArrayList <Airline> arrayLAirline,ArrayList <Plane> arrayLPlane,ArrayList<Passenger> arrayLPassenger){
 		
 		llenarComboBoxPlane(arrayLPlane,getComboBoxPlane());
 		llenarComboBoxAirline(arrayLAirline,getComboBoxAirline());
@@ -116,8 +118,10 @@ public class GUIImpresionTiquete extends JFrame {
 
 //llenando y creando la tabla
 
-	public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline, ArrayList<Plane> arrayLPlane) {
-	    int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()), arrayLPlane.size());
+	public void fillTable(DefaultTableModel model, ArrayList<Passenger> arrayLPassenger, ArrayList<Airline> arrayLAirline,
+			ArrayList<Plane> arrayLPlane,String pas) {
+		int maxLength = Math.max(Math.max(arrayLPassenger.size(), arrayLAirline.size()),arrayLPlane.size());
+
 	    for (int i = 0; i < maxLength; i++) {
 	    	
             for (Passenger p : arrayLPassenger) {
@@ -138,10 +142,11 @@ public class GUIImpresionTiquete extends JFrame {
 	        }
 	       }
 	        
-	        if (i < arrayLPassenger.size()) {
-            	model.addColumn("DATOS DEL TIQUETE", new String[]{"#"+String.valueOf(numRandom()),horaFecha(),
+	      
+            	model.addColumn("DATOS DEL TIQUETE", new String[]{pas,horaFecha(),
             			"$"+String.valueOf((Integer.parseInt(getTMontoTotal().getText())+(Integer.parseInt(getTMontoTotal().getText())*0.13)))});
-            }
+            
+	        
 	        
 	    }
 	    setImpresionTicket(model);
@@ -168,6 +173,13 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	dtmTImpresionTicket = new DefaultTableModel(data,columnsNames);
 	}
+
+public ArrayList<Ticket>getArrayLTicket(){
+	return arrayLTicket;
+}
+public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
+	this.arrayLTicket = arrayLTicket;
+}
 //------------------------------------------------------------------------------------
 	public DefaultTableModel getDTMTImpresionTicket() {
 		return dtmTImpresionTicket;
@@ -203,7 +215,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	}
 
 //------------------------------------------------------------------------------------
-	public void print(JTable tImpresionTicket) {
+	/*public void print(JTable tImpresionTicket) {
 		try {
 			if(!tImpresionTicket.print()) {
 				System.err.println("Se cancelo la Impresión");
@@ -211,9 +223,9 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		}catch(java.awt.print.PrinterException e) {
 			System.err.format("Error de Impresión. %s%n", e.getMessage());
 		}
-	}
+	}*/
 	
-	/*public void print(JTable tImpresionTicket) {
+	public void print(JTable tImpresionTicket) {
 	    StringBuilder content = new StringBuilder();
 	    
 	    // Obtener el número de filas y columnas de la tabla
@@ -240,7 +252,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	    } catch (java.awt.print.PrinterException e) {
 	        System.err.format("Error de Impresión. %s%n", e.getMessage());
 	    }
-	}*/
+	}
 
 //------------------------------------------------------------------------------------	
 	public JTextPane getTAMostrarDato() {
@@ -358,9 +370,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 		DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd/MM/yyyy			HH:mm:ss");
        return dtf2.format(LocalDateTime.now());
 	}
-	public  int numRandom() {
-	      return (int) (Math.random() * 100);
-	   }
+
 	//comboBox
 		public JComboBox<String> getComboBoxAirline() {
 			if (comboBoxAirline == null) {

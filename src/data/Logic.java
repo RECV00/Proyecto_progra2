@@ -1508,6 +1508,32 @@ public Ticket searchTicket(String fileName, String elementType, String data, Str
 	    }
 	    return t;
 }
+
+public String getPassportTicket(String rutaArchivo, String elementType, String passport) {
+    StringBuilder result = new StringBuilder();
+    try {//para obtener la aerolinea del avion
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();     
+        File archivoXML = new File(rutaArchivo);
+        Document documento = builder.parse(archivoXML);
+        NodeList nodeList = documento.getElementsByTagName(elementType);
+        // Recorrer los elementos de avión 
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element element = (Element) nodeList.item(i);
+            String name = element.getElementsByTagName("passport").item(0).getTextContent();
+            System.out.print("***"+name);
+            if (name.equals(passport)) {
+                String pass = element.getAttribute("numTicket");
+                result.append(pass);
+                System.out.print("num: "+pass);
+                break;
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return result.toString();
+}
 //------------------------Otros XML Necesarios----------------------------------------------------------------
 
 //ESCRITURA DE LOS DATOS DE LA TABLA AL XML
