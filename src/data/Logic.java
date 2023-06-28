@@ -322,7 +322,37 @@ public ArrayList<Airline> getNAirline(String rutaArchivo, String elementType) {
 
     return arrayLAirline;
 }
+public Airline searchAirline(String fileName, String elementType, String data, String word) {
+   Airline a = null;
 
+    try {
+        // Crear el objeto DocumentBuilderFactory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // Parsear el archivo XML y obtener el documento
+        Document documento = builder.parse(new File(fileName));
+        // Obtener la lista de nodos con etiqueta "usuario"
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        // Recorrer la lista de usuarios
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+                // Obtener el nombre de usuario del elemento "username"
+                String userName = eElement.getAttribute(data);
+                if (userName.equals(word)) {
+                   a = new Airline(
+                            eElement.getAttribute("name"),
+                            eElement.getElementsByTagName("contry").item(0).getTextContent());
+                    break; 
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return a;
+}
 public String readXMLStringAerolinea(String FileName, String elementType) {
 	String dato = " ";
 	
