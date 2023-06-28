@@ -26,6 +26,7 @@ public class ControllerUpdatePlane implements ActionListener{
 		fXML= new FilesXML();
 		lo=new Logic();
 		plane = new Plane();
+		//muestra la lista seleccionable de los comboBox
 		arrayLA=lo.getNAirline("Airlines.xml", "Airline");
 		arrayLM=lo.getNModel("Models.xml", "Model");
 		guiUPlane= new GUIUpdatePlane(arrayLA,arrayLM);
@@ -35,7 +36,8 @@ public class ControllerUpdatePlane implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUPlane.getBUpdate().addActionListener(this);
 		guiUPlane.getBExit().addActionListener(this);
-		
+		guiUPlane.getBSearch().addActionListener(this);
+		//muestra tabla llena
 		guiUPlane.getDTMTPlane().setRowCount(0);
 		guiUPlane.setArrayListPlane(lo.getListPlane("Planes.xml","Plane"));
 		guiUPlane.fillTable(guiUPlane.getArrayListPlane());
@@ -43,6 +45,15 @@ public class ControllerUpdatePlane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==guiUPlane.getBSearch()) {
+			
+			plane = lo.searchPlane("Planes.xml","Plane","plate",guiUPlane.getTAvionUpdatePlane().getText());
+			guiUPlane.getTAvionUpdatePlane().setText(plane.getPlate());
+			guiUPlane.getComboBoxAirline().setSelectedItem(plane.getAirline());
+			guiUPlane.getComboBoxModel().setSelectedItem(plane.getModel());
+			guiUPlane.getTYearUpdatePlane().setText(plane.getYear());
+			
+		}
 		if(e.getSource()== guiUPlane.getBUpdate()) {
 			plane = new Plane(guiUPlane.getTAvionUpdatePlane().getText(),
 					guiUPlane.getComboBoxAirline().getSelectedItem().toString(),

@@ -30,6 +30,7 @@ public class ControllerUpdateUser implements ActionListener{
 		guiUu.getBUpdate().addActionListener(this);
 		guiUu.getBExit().addActionListener(this);
 		guiUu.getBSearch().addActionListener(this);
+		//muestra la tabla llena
 		guiUu.getDTMTUser().setRowCount(0);
 		guiUu.setArrayListUser(lo.getListUser("Users.xml","User"));
 		guiUu.fillTable(guiUu.getArrayListUser());

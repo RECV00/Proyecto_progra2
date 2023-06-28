@@ -28,6 +28,7 @@ public class ControllerUpdateAirline implements ActionListener{
 		guiUA.getBUpdate().addActionListener(this);
 		guiUA.getBExit().addActionListener(this);
 		guiUA.getBSearch().addActionListener(this);
+		//muestra la tabla llena con datos delas aerolíneas
 		guiUA.getDTMTAirline().setRowCount(0);
 		guiUA.setArrayListAirline(lo.getListAirline("Airlines.xml","Airline"));
 		guiUA.fillTable(guiUA.getArrayListAirline());

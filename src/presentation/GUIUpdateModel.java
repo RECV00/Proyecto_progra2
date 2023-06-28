@@ -56,9 +56,9 @@ public class GUIUpdateModel extends JFrame {
 	private JComboBox<String>comboBoxBrand;	//Combobox para cargar los nombres de las marcas
 	private DefaultComboBoxModel<String>comboBoxModelo; // Se utiliza para almacenar y administrar los elementos de un JComboBox que son de tipo String.
 	ArrayList<Brand>arrayLB;
+	private JButton bSearch;
 //fondo de la GUI
 	private JLabel li;
-	
 	public GUIUpdateModel(ArrayList<Brand>arrayLB) {
 		
 		llenarComboBoxBrand(arrayLB,getComboBoxBrand());
@@ -83,6 +83,7 @@ public class GUIUpdateModel extends JFrame {
 		getContentPane().add(getLnumAsientosModelEco());
 		getContentPane().add(getTCanAsientosECO());
 		getContentPane().add(getComboBoxBrand());
+		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
 		setSize(900,472);
 		setLocationRelativeTo(null);
@@ -345,6 +346,13 @@ public void setArrayListModel(ArrayList<Model> arrayLModel){
 			tCanAsientosECO.setBounds(375, 85, 61, 20);
 		}
 		return tCanAsientosECO;
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.setBounds(52, 189, 89, 23);
+		}
+		return bSearch;
 	}
 }
 

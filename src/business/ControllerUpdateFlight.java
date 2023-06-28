@@ -31,7 +31,8 @@ public class ControllerUpdateFlight implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUF.getBUpdate().addActionListener(this);
 		guiUF.getBExit().addActionListener(this);
-		
+		guiUF.getBSearch().addActionListener(this);
+		//muestra la tabla llena con los datos de los vuelos
 		guiUF.getDTMTFlight().setRowCount(0);
 		guiUF.setArrayListFlight(lo.getListFlight("Flights.xml","Flight"));
 		guiUF.fillTable(guiUF.getArrayListFlight());
@@ -39,6 +40,16 @@ public class ControllerUpdateFlight implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==guiUF.getBSearch()) {
+			flight=lo.searchFlight("Flights.xml", "Flight", "numFlight", guiUF.getTNumFlight().getText());
+			guiUF.getTDepartureCity().setText(flight.getDepartureCity());
+			guiUF.getTDepartureDateTime().setText(flight.getDepartureDateTime());
+			guiUF.getTArrivalCity().setText(flight.getArrivalCity());
+			guiUF.getTArrivalDateTime().setText(flight.getArrivalDateTime());
+			guiUF.getComboBoxAvion().setSelectedItem(flight.getFlight());
+			guiUF.getComboBoxState().setSelectedItem(flight.getSeat());
+			guiUF.getTAmount().setText(String.valueOf(flight.getAmount()));
+		}
 		if(e.getSource()==guiUF.getBUpdate()) {
 			flight = new Flight(guiUF.getTNumFlight().getText(),
 					guiUF.getTDepartureCity().getText(),

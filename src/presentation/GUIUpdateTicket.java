@@ -44,11 +44,12 @@ public class GUIUpdateTicket extends JFrame {
 	private JLabel lNumFlightTicket;
 	private JTextField tPassportTicket;
 	private JTextField tNumFlightTicket;
-//fondo de la GUI
+	private JButton bSearch;
+//fondo de la gui
 	private JLabel li;
 	
 	public GUIUpdateTicket() {
-		
+		//tabla 
 		setDTMTTicket(dataTable,getColumnsNames());
 		setTicket(dtmTTicket);
 		setSPTTicket(tTicket);
@@ -66,6 +67,7 @@ public class GUIUpdateTicket extends JFrame {
 		getContentPane().add(getLNumFlightTicket());
 		getContentPane().add(getTPassportTicket());
 		getContentPane().add(getTNumFlightTicket());
+		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
 		setSize(696,483);
 		setLocationRelativeTo(null);
@@ -160,7 +162,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(43, 204, 520, 183);
+			scrollPane.setBounds(53, 205, 558, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tTicket=new JTable(dtmTTicket);
 			tTicket.setEnabled(false);
@@ -187,7 +189,7 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(431, 184, 132, 23);
+			bUpdate.setBounds(479, 184, 132, 23);
 		}
 		return bUpdate;
 	}
@@ -268,5 +270,12 @@ public void setArrayListTicket(ArrayList<Ticket> arrayLTicket){
 	public void showMessage(String message) {
 		
 		JOptionPane.showMessageDialog(null, message);
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.setBounds(53, 184, 89, 23);
+		}
+		return bSearch;
 	}
 }

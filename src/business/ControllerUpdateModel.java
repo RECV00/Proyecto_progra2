@@ -25,6 +25,7 @@ public class ControllerUpdateModel implements ActionListener{
 		lo=new Logic();
 		model = new Model();
 		arrayLB=lo.getNameBrand("Brands.xml", "Brand");
+		//muestra la lista seleccionable de marcas
 		guiUM= new GUIUpdateModel(arrayLB);
 		initializer();
 	}
@@ -32,7 +33,8 @@ public class ControllerUpdateModel implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUM.getBUpdate().addActionListener(this);
 		guiUM.getBExit().addActionListener(this);
-		
+		guiUM.getBSearch().addActionListener(this);
+		//muestra tabla llena
 		guiUM.getDTMTModel().setRowCount(0);
 		guiUM.setArrayListModel(lo.getListModel("Models.xml","Model"));
 		guiUM.fillTable(guiUM.getArrayListModel());
@@ -40,6 +42,15 @@ public class ControllerUpdateModel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+if(e.getSource()==guiUM.getBSearch()) {
+			
+			model = lo.searchModel("Models.xml","Model","name",guiUM.getTNameModel().getText());
+			guiUM.getComboBoxBrand().setSelectedItem(model.getMarca());
+			guiUM.getTCanAsientosModelEJE().setText(String.valueOf(model.getCantSeatExecutive()));
+			guiUM.getTCanAsientosTUR().setText(String.valueOf(model.getCantSeatEconomic()));
+			guiUM.getTCanAsientosECO().setText(String.valueOf(model.getCantSeatTourist()));
+			
+		}
 		if(e.getSource()==guiUM.getBUpdate()) {
 			model = new Model(guiUM.getTNameModel().getText(),
 					guiUM.getComboBoxBrand().getSelectedItem().toString(),
