@@ -26,6 +26,7 @@ import javax.swing.JComboBox;
 
 import java.util.ArrayList;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class GUIUpdatePlane extends JFrame {
 //table
@@ -53,7 +54,8 @@ public class GUIUpdatePlane extends JFrame {
 	private JComboBox<String> comboBoxModel;
 	ArrayList<Airline>arrayLA;
 	ArrayList<Model>arrayLM;
-//fondo de la GUI
+	private JButton bSearch;
+//fondo de la gui
 	private JLabel li;
 	
 	public GUIUpdatePlane(ArrayList<Airline>arrayLA,ArrayList<Model>arrayLM) {//muestra la lista al inicializar
@@ -79,6 +81,7 @@ public class GUIUpdatePlane extends JFrame {
 		getContentPane().add(getLYearUpdatePlane());
 		getContentPane().add(getComboBoxAirline());
 		getContentPane().add(getComboBoxModel());
+		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen() );
 		setSize(715,504);
 		setLocationRelativeTo(null);
@@ -173,7 +176,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(46, 230, 521, 183);
+			scrollPane.setBounds(46, 230, 554, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPlane=new JTable(dtmTPlane);
 			tPlane.setEnabled(false);
@@ -196,7 +199,7 @@ public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	public JButton getBUpdate() {
 		if (bUpdate == null) {
 			bUpdate = new JButton("Actualizar");
-			bUpdate.setBounds(451, 209, 116, 23);
+			bUpdate.setBounds(484, 209, 116, 23);
 		}
 		return bUpdate;
 	}
@@ -333,4 +336,11 @@ public JComboBox<String> getComboBoxModel() {
 	    public void setcomboBoxModel(JComboBox<String> comboBoxModel) {
 	        this.comboBoxModel = comboBoxModel;
 	    }
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.setBounds(46, 209, 89, 23);
+		}
+		return bSearch;
+	}
 }	

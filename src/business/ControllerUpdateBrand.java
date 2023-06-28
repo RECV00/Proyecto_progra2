@@ -27,7 +27,8 @@ public class ControllerUpdateBrand implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUB.getBUpdate().addActionListener(this);
 		guiUB.getBExit().addActionListener(this);
-		
+		guiUB.getBSearch().addActionListener(this);
+		//inicializa la tabla con las marcas
 		guiUB.getDTMTBrand().setRowCount(0);
 		guiUB.setArrayListBrand(lo.getListBrand("Brands.xml","Brand"));
 		guiUB.fillTable(guiUB.getArrayListBrand());
@@ -35,6 +36,10 @@ public class ControllerUpdateBrand implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==guiUB.getBSearch()) {
+			b=lo.searchBrand("Brands.xml", "Brand", "name", guiUB.getTNameBrandUpdate().getText());
+			guiUB.getTNameBrandUpdate().setText(b.getName());
+		}
 		if(e.getSource()==guiUB.getBUpdate()) {
 			
 				b = new Brand (guiUB.getTNameBrandUpdate().getText());

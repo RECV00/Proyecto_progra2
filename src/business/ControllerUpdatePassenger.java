@@ -27,7 +27,8 @@ public class ControllerUpdatePassenger implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUP.getBUpdate().addActionListener(this);
 		guiUP.getBExit().addActionListener(this);
-		
+		guiUP.getBSearch().addActionListener(this);
+		//muestra la tabla llena 
 		guiUP.getDTMTPassenger().setRowCount(0);
 		guiUP.setArrayListPassenger(lo.getListPassenger("Passengers.xml","Passenger"));
 		guiUP.fillTable(guiUP.getArrayListPassenger());
@@ -35,6 +36,15 @@ public class ControllerUpdatePassenger implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+if(e.getSource()==guiUP.getBSearch()) {
+			
+			passenger = lo.searchPassenger("Passengers.xml","Passenger","passport",guiUP.getTPassportPassenger().getText());
+			guiUP.getTNamePassenger().setText(passenger.getName());
+			guiUP.getTLastNamePassenger().setText(passenger.getLastName());
+			guiUP.getTBirthdatePassenger().setText(passenger.getBirthdate());
+			guiUP.getTGmailPassenger().setText(passenger.getGmail());
+			guiUP.getTPhonePassenger().setText(String.valueOf(passenger.getPhone()));
+		}
 		if(e.getSource()==guiUP.getBUpdate()) {
 			passenger = new Passenger(guiUP.getTPassportPassenger().getText(),
 					guiUP.getTNamePassenger().getText(),
@@ -46,7 +56,8 @@ public class ControllerUpdatePassenger implements ActionListener{
 				fXML.updateXML("Passengers.xml","Passenger",passenger.getDataName(),passenger.getData());
 				guiUP.getDTMTPassenger().setRowCount(0);
 				guiUP.getDTMTPassenger().addRow(new Object[] {passenger.getPassport(),passenger.getName(),
-						passenger.getLastName(),passenger.getBirthdate(),passenger.getGmail(),passenger.getPhone()});
+				passenger.getLastName(),passenger.getBirthdate(),passenger.getGmail(),passenger.getPhone()});
+				
 				guiUP.setArrayListPassenger(lo.getListPassenger("Passengers.xml","Passenger"));
 
 			} catch (Exception e1) {

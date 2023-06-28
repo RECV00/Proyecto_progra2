@@ -56,6 +56,7 @@ public class GUIUpdateFlight extends JFrame {
 	private JTextField tArrivalDateTime;
 	private JLabel lAvion;
 	private JLabel lAsiento;
+	private JLabel li;
 //comboBox
 		private JComboBox comboBoxState;
 		private JComboBox<String>comboBoxAvion;//Combobox para cargar las placas de los aviones
@@ -63,8 +64,7 @@ public class GUIUpdateFlight extends JFrame {
 		ArrayList<Plane>arrayLP;						//elementos de un JComboBox que son de tipo String.
 		private JLabel lAmount;
 		private JTextField tAmount;
-//fondo de la GUI
-		private JLabel li;
+		private JButton bSearch;
 		
 	public GUIUpdateFlight(ArrayList<Plane>arrayLP) {
 		
@@ -96,8 +96,9 @@ public class GUIUpdateFlight extends JFrame {
 		getContentPane().add(getComboBoxAvion());
 		getContentPane().add(getLAmount());
 		getContentPane().add(getTAmount());
+		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(902,474);
+		setSize(902,467);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -192,7 +193,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 209, 874, 183);
+			scrollPane.setBounds(10, 209, 866, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tFlight=new JTable(dtmTFlight);
 			tFlight.setEnabled(false);
@@ -223,7 +224,7 @@ public void setArrayListFlight(ArrayList<Flight> arrayLFlight){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(755, 189, 129, 23);
+			bUpdate.setBounds(747, 189, 129, 23);
 		}
 		return bUpdate;
 	}
@@ -413,5 +414,12 @@ public void llenarComboBoxAviones(ArrayList<Plane>arrayLP,JComboBox<String> comb
 			tAmount.setColumns(10);
 		}
 		return tAmount;
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar ");
+			bSearch.setBounds(10, 189, 89, 23);
+		}
+		return bSearch;
 	}
 }

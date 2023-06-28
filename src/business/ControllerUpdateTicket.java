@@ -27,7 +27,8 @@ public class ControllerUpdateTicket implements ActionListener{
 		// TODO Auto-generated method stub
 		guiUT.getBUpdate().addActionListener(this);
 		guiUT.getBExit().addActionListener(this);
-		
+		guiUT.getBSearch().addActionListener(this);
+		//muestra tabla llena
 		guiUT.getDTMTTicket().setRowCount(0);
 		guiUT.setArrayListTicket(lo.getListTicket("Tickets.xml","Ticket"));
 		guiUT.fillTable(guiUT.getArrayListTicket());
@@ -35,6 +36,14 @@ public class ControllerUpdateTicket implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==guiUT.getBSearch()) {
+			
+			ticket = lo.searchTicket("Tickets.xml","Ticket","numTicket",guiUT.getTNumTicket().getText());
+			//guiUT.getTNumTicket().setText(ticket.getNumTicket());
+			guiUT.getTPassportTicket().setText(ticket.getPassport());
+			guiUT.getTNumFlightTicket().setText(ticket.getNumFlight());
+			
+		}
 		if(e.getSource() == guiUT.getBUpdate()) {
 			ticket = new Ticket(guiUT.getTNumTicket().getText(),
 					guiUT.getTPassportTicket().getText(),

@@ -39,9 +39,8 @@ public class GUIUpdateBrand extends JFrame {
 	private JLabel tTitule;
 	private JTextField tNameBrandUpdate;
 	private JLabel lUpdateBrand;
-//fondo de la GUI
+	private JButton bSearch;
 	private JLabel li;
-	
 	public GUIUpdateBrand() {
 		
 		setDTMTBrand(dataTable,getColumnsNames());
@@ -57,7 +56,8 @@ public class GUIUpdateBrand extends JFrame {
 		getContentPane().add(getTTitule());
 		getContentPane().add(getTNameBrandUpdate());
 		getContentPane().add(getLUpdateBrand());
-		getContentPane().add(getImagen() );
+		getContentPane().add(getBSearch());
+		getContentPane().add(getImagen());
 		setSize(724,455);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -150,7 +150,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(31, 198, 507, 183);
+			scrollPane.setBounds(61, 199, 560, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tBrand=new JTable(dtmTBrand);
 			tBrand.setEnabled(false);
@@ -165,7 +165,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 	public JButton getBExit() {
 		if (bExit == null) {
 			bExit = new JButton("Salir");
-			bExit.setBounds(548, 358, 94, 23);
+			bExit.setBounds(604, 382, 94, 23);
 		}
 		return bExit;
 	}
@@ -177,7 +177,7 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(418, 176, 120, 23);
+			bUpdate.setBounds(501, 176, 120, 23);
 		}
 		return bUpdate;
 	}
@@ -204,10 +204,21 @@ public void setArrayListBrand(ArrayList<Brand> arrayLBrand){
 		if (lUpdateBrand == null) {
 			lUpdateBrand = new JLabel("Ingrese el Nombre a Actualizar");
 			lUpdateBrand.setForeground(new Color(128, 128, 128));
-			lUpdateBrand.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lUpdateBrand.setFont(new Font("Tahoma", Font.BOLD, 12));
 			lUpdateBrand.setBounds(31, 64, 236, 23);
 		}
 		return lUpdateBrand;
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bSearch.setBounds(61, 176, 89, 23);
+		}
+		return bSearch;
 	}
 }
 

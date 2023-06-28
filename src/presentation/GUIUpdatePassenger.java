@@ -50,7 +50,8 @@ public class GUIUpdatePassenger extends JFrame {
 	private JTextField tPhonePassenger;
 	private JLabel lGmailPassenger;
 	private JLabel lPhonePassenger;
-//fondo de la GUI
+	private JButton bSearch;
+//fondo de la gui
 	private JLabel li;
 	
 	public GUIUpdatePassenger() {
@@ -78,8 +79,9 @@ public class GUIUpdatePassenger extends JFrame {
 		getContentPane().add(getTPhonePassenger());
 		getContentPane().add(getLGmailPassenger());
 		getContentPane().add(getLPhonePassenger());
+		getContentPane().add(getBSearch());
 		getContentPane().add(getImagen());
-		setSize(1000,504);
+		setSize(954,467);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -89,10 +91,10 @@ public class GUIUpdatePassenger extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(-13, -127, 878, 706);
+		li.setBounds(0, -161, 997, 752);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
-		li.setIcon(new ImageIcon(GUIRegisterUser.class.getResource("/media/logo7.png")));
+		li.setIcon(new ImageIcon(GUIUpdatePassenger.class.getResource("/media/logo00.png")));
 		getContentPane().add(li);
 		}
 		return li;
@@ -173,7 +175,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 224, 722, 183);
+			scrollPane.setBounds(58, 210, 722, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tPassenger=new JTable(dtmTPassenger);
 			tPassenger.setEnabled(false);
@@ -192,7 +194,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bExit.setBounds(638, 418, 94, 23);
+			bExit.setBounds(790, 394, 94, 23);
 		}
 		return bExit;
 	}
@@ -204,7 +206,7 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bUpdate.setBounds(615, 200, 117, 23);
+			bUpdate.setBounds(663, 187, 117, 23);
 		}
 		return bUpdate;
 	}
@@ -336,5 +338,12 @@ public void setArrayListPassenger(ArrayList<Passenger> arrayLPassenger){
 			lPhonePassenger.setBounds(287, 116, 71, 14);
 		}
 		return lPhonePassenger;
+	}
+	public JButton getBSearch() {
+		if (bSearch == null) {
+			bSearch = new JButton("Buscar");
+			bSearch.setBounds(58, 187, 89, 23);
+		}
+		return bSearch;
 	}
 }
