@@ -35,12 +35,13 @@ public class ControllerVuelos implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==guiV.getBConsultV()) {
+			
 			guiV.getDTMTFlight().setRowCount(0);
 			guiV.setArrayListFlight(lo.searchXMLFlight("Flights.xml", "Flight", "numFlight", 
 			guiV.getComboBoxFlight().getSelectedItem().toString()));
 			
-			String avion=lo.searchXMLAvion2("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString());
-			String aeroline=lo.getNamePlaneAirline("Planes.xml", "Plane",avion);
+			String avion =lo.searchXMLAvion2("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString());
+			String aeroline = lo.getNamePlaneAirline("Planes.xml", "Plane",avion);
 			System.out.print(aeroline+avion);
 			guiV.fillTable(guiV.getArrayListFlight(),aeroline);
 			
