@@ -132,7 +132,7 @@ public class ControllerColaborador implements ActionListener{
 			new ControllerVuelos();
 		}
 		if(e.getSource()==guiC.getMiAboutSystem()) {
-			guiC.executeHTML1("index.html.html");
+			guiC.executeHTML1("colaborador.html");
 		}
 		else if(e.getSource()== guiC.getMiiExit()) {
 			guiC.dispose();

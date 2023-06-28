@@ -354,7 +354,7 @@ public class GUIColaborador extends JFrame {
 	        } else if (osName.startsWith("Mac OS X")) {
 	            ProcessBuilder processBuilder = new ProcessBuilder("open", "-a", "safari", url);
 	            processBuilder.start();
-	            processBuilder = new ProcessBuilder("open", url + "/index.html.html");
+	            processBuilder = new ProcessBuilder("open", url + "/colaborador.html");
 	            processBuilder.start();
 	            processBuilder = new ProcessBuilder("open", url);
 	            processBuilder.start();

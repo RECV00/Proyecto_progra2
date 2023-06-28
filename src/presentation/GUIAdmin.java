@@ -510,7 +510,7 @@ public class GUIAdmin extends JFrame {
 	        } else if (osName.startsWith("Mac OS X")) {
 	            ProcessBuilder processBuilder = new ProcessBuilder("open", "-a", "safari", url);
 	            processBuilder.start();
-	            processBuilder = new ProcessBuilder("open", url + "/index.html.html");
+	            processBuilder = new ProcessBuilder("open", url + "/admin1.html");
 	            processBuilder.start();
 	            processBuilder = new ProcessBuilder("open", url);
 	            processBuilder.start();
