@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import data.FilesXML;
 import data.Logic;
+import domain.Flight;
+import domain.Passenger;
 import domain.Ticket;
 import domain.User;
 import presentation.GUIRegisterTicket;
@@ -18,13 +20,17 @@ public class ControllerRegisterTicket implements ActionListener{
 	private Ticket ticket;
 	private Logic lo;
 	private ArrayList<Ticket> arrayLTicket;
-	
+	ArrayList<Passenger>arrayLPassenger;
+	ArrayList<Flight> arrayLF;
 	public ControllerRegisterTicket() {
-	guiRT= new GUIRegisterTicket();
+	
 	fXML = new FilesXML();
 	ticket = new Ticket();
 	lo= new Logic();
 	fXML.createXML("Tickets", "Tickets.xml");
+	arrayLF = lo.getNameFlight("Flights.xml", "Flight");
+	arrayLPassenger=lo.getNamePassport("Passengers.xml", "Passenger");
+	guiRT= new GUIRegisterTicket(arrayLPassenger,arrayLF);
 	initializer();
 	}
 
@@ -39,19 +45,19 @@ public class ControllerRegisterTicket implements ActionListener{
 		if(e.getSource()== guiRT.getBRegister()) {
 			//creando en objeto
 			ticket = new Ticket(guiRT.getTNumTicket().getText(),
-					guiRT.getTPassportTicket().getText(),
-					guiRT.getTNumFlightTicket().getText());
+					guiRT.getComboBoxPass().getSelectedItem().toString(),
+					guiRT.getComboBoxFlight().getSelectedItem().toString());
 			
 			fXML.writeXML("Tickets.xml","Ticket",ticket.getDataName(),ticket.getData());
 			arrayLTicket = lo.readXMLArrayListTicket("Tickets.xml","Ticket",ticket.getDataName());
-			guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),ticket.getPassport(),ticket.getNumFlight()});
+			guiRT.getDTMTTicket().addRow(new Object [] {ticket.getNumTicket(),guiRT.getComboBoxPass().getSelectedItem().toString(),ticket.getNumFlight()});
 			guiRT.cleanForm();
 			
 		}
 		if(e.getSource()== guiRT.getBExit()) {
-			//meter la pagina anterior
+			
 			guiRT.dispose();
-			//System.exit(0);
+			
 		}
 	}
 }
