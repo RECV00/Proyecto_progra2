@@ -1,1 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Planes><Plane plate="Sansa"><airline>Iberojet</airline><model>Airbus</model><year>1990</year></Plane><Plane plate="Fel23"><airline>Liberia</airline><model>Boeing</model><year>2000</year></Plane></Planes>
+<Planes>
+<Plane plate="Sansa">
+<airline>Iberojet</airline>
+<model>Airbus</model>
+<year>1990</year>
+</Plane>
+<Plane plate="Fel23">
+<airline>Liberia</airline>
+<model>Boeing</model>
+<year>2000</year>
+</Plane>
+<Plane plate="Victoria">
+<airline>Aerobell</airline>
+<model>Ceiba</model>
+<year>2005</year>
+</Plane>
+</Planes>

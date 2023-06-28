@@ -41,8 +41,8 @@ public class ControllerVuelos implements ActionListener{
 			
 			String avion =lo.searchXMLAvion2("Flights.xml", "Flight", "numFlight",guiV.getComboBoxFlight().getSelectedItem().toString());
 			String aeroline = lo.getNamePlaneAirline("Planes.xml", "Plane",avion);
-			System.out.print("+++++"+avion+"eeeee"+aeroline);
-			System.out.print("}}}}}"+lo.getNamePlaneAirline("Planes.xml", "Plane",avion));
+			//System.out.print("+++++"+avion+"eeeee"+aeroline);
+			//System.out.print("}}}}}"+lo.getNamePlaneAirline("Planes.xml", "Plane",avion));
 			guiV.fillTable(guiV.getArrayListFlight(),aeroline);
 			
 		}
