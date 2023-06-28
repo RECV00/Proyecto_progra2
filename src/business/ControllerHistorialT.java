@@ -29,6 +29,7 @@ public class ControllerHistorialT implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==guiHT.getBConsult()) {
+			guiHT.getDTMTHistorialTicket().setRowCount(0);
 			
 		}
 		if(e.getSource()==guiHT.getBExit()) {

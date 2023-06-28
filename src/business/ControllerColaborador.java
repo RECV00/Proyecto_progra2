@@ -131,6 +131,9 @@ public class ControllerColaborador implements ActionListener{
 		if(e.getSource() == guiC.getMnVuelos()) {
 			new ControllerVuelos();
 		}
+		if(e.getSource()==guiC.getMiAboutSystem()) {
+			guiC.executeHTML1("index.html.html");
+		}
 		else if(e.getSource()== guiC.getMiiExit()) {
 			guiC.dispose();
 			new ControllerLogin();

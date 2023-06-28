@@ -3,6 +3,7 @@ package presentation;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.IOException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -343,5 +344,26 @@ public class GUIColaborador extends JFrame {
 			mnVuelos.setFont(new Font("Palatino Linotype", Font.BOLD, 12));
 		}
 		return mnVuelos;
+	}
+	public void executeHTML1(String url) {
+	    String osName = System.getProperty("os.name");
+	    try {
+	        if (osName.startsWith("Windows")) {
+	            ProcessBuilder processBuilder = new ProcessBuilder("rundll32", "url.dll,FileProtocolHandler", url);
+	            processBuilder.start();
+	        } else if (osName.startsWith("Mac OS X")) {
+	            ProcessBuilder processBuilder = new ProcessBuilder("open", "-a", "safari", url);
+	            processBuilder.start();
+	            processBuilder = new ProcessBuilder("open", url + "/index.html.html");
+	            processBuilder.start();
+	            processBuilder = new ProcessBuilder("open", url);
+	            processBuilder.start();
+	        } else {
+	            System.out.println("Please open a browser and go to " + url);
+	        }
+	    } catch (IOException ioe) {
+	        System.out.println("Failed to start a browser to open the URL " + url);
+	        ioe.printStackTrace();
+	    }
 	}
 }

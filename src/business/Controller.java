@@ -16,6 +16,7 @@ public class Controller implements ActionListener{
 	private void inicializer() {
 		// TODO Auto-generated method stub
 		gui.getBInicioSesion().addActionListener(this);
+		gui.getMAboutSistem().addActionListener(this);
 	}
 
 	@Override
@@ -24,6 +25,9 @@ public class Controller implements ActionListener{
 		if(e.getSource()==gui.getBInicioSesion()) {
 			new ControllerLogin();
 			gui.dispose();
+		}
+		if(e.getSource()==gui.getMAboutSistem()) {
+			gui.executeHTML1("index.html.html");
 		}
 	}
 

@@ -105,7 +105,7 @@ public class GUIImpresionTiquete extends JFrame {
 	public JLabel getImagen() {
 		if(li == null) {
 		li = new JLabel();
-		li.setBounds(0, -124, 987, 683);
+		li.setBounds(0, -147, 1023, 683);
 		ImageIcon imagen= new ImageIcon("media/java.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(li.getWidth(),li.getHeight(),Image.SCALE_DEFAULT));
 		li.setIcon(new ImageIcon(GUIConsultModel.class.getResource("/media/logo00.png")));
@@ -142,8 +142,11 @@ public class GUIImpresionTiquete extends JFrame {
             	model.addColumn("DATOS Del TIQUETE", new String[]{String.valueOf(numRandom()),horaFecha(),
             			"$"+String.valueOf((Integer.parseInt(getTMontoTotal().getText())+(Integer.parseInt(getTMontoTotal().getText())*0.13)))});
             }
+	        
 	    }
+	    setImpresionTicket(model);
 	}
+
 public void setArrayListPlane(ArrayList<Plane> arrayLPlane){
 	this.arrayLPlane= arrayLPlane;
 }
@@ -221,7 +224,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(26, 137, 702, 183);
+			scrollPane.setBounds(26, 137, 751, 183);
 			scrollPane.setViewportView(getTAMostrarDato());
 			tImpresionTicket=new JTable(dtmTImpresionTicket);
 			tImpresionTicket.setEnabled(false);
@@ -248,7 +251,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bImprimir.setBounds(738, 246, 125, 23);
+			bImprimir.setBounds(787, 236, 125, 23);
 		}
 		return bImprimir;
 	}
@@ -280,7 +283,7 @@ public void setDTMTImpresionTicket(Object data[][],String[] columnsNames) {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			bFiltrar.setBounds(759, 198, 89, 23);
+			bFiltrar.setBounds(806, 188, 89, 23);
 		}
 		return bFiltrar;
 	}
