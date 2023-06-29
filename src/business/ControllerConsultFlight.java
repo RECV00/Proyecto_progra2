@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Flight;
 import presentation.GUIConsultFlight;
 
@@ -12,12 +12,12 @@ public class ControllerConsultFlight implements ActionListener{
 	private GUIConsultFlight guiCF;
 	private Flight flight;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	
 	public ControllerConsultFlight() {
 		guiCF= new GUIConsultFlight();
 		fXML = new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		initializer();
 	}
 	private void initializer() {

@@ -4,20 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Brand;
 import presentation.GUIConsultBrand;
 
 public class ControllerConsultBrand implements ActionListener{
 	private GUIConsultBrand guiCB;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	private Brand brand;
 	
 	public ControllerConsultBrand() {
 		guiCB = new GUIConsultBrand();
 		fXML = new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		initializer();
 	}
 

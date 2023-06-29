@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Brand;
 import domain.Model;
 import presentation.GUIRegisterModel;
@@ -15,13 +15,13 @@ public class ControllerRegisterModel implements ActionListener{
 	private GUIRegisterModel guiRM;
 	private FilesXML fXML;
 	private Model model;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<Brand> arrayLB;
 	ArrayList<Model> arrayLModel;
 	
 	public ControllerRegisterModel() {	
 	fXML = new FilesXML();
-	lo=new Logic();
+	lo=new LogicXML();
 	model = new Model();
 	fXML.createXML("Models", "Models.xml");
 	arrayLB=lo.getNameBrand("Brands.xml", "Brand");

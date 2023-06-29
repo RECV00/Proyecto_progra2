@@ -4,7 +4,7 @@
 <departureDateTime>13:00-13/05/23</departureDateTime>
 <arrivalCity>San Jose</arrivalCity>
 <arrivalDateTime>8:00-13/05/23</arrivalDateTime>
-<flight>Aqui van los Aviones</flight>
+<flight>Llyvshin 11-76</flight>
 <seat>Clase Ejecutiva</seat>
 <amount>48429</amount>
 </Flight>
@@ -17,4 +17,4 @@
 <seat>Clase Turista</seat>
 <amount>23500</amount>
 </Flight>
-<Flight numFlight="ER45"><departureCity>Gallina</departureCity><departureDateTime>3:12 - 5/7/2023</departureDateTime><arrivalCity>Puerto</arrivalCity><arrivalDateTime>3:45-3/5/2023</arrivalDateTime><flight>Fel23</flight><seat>Clase Ejecutiva</seat><amount>48230</amount></Flight></Flights>
+<Flight numFlight="ER45"><departureCity>Estados Unidos</departureCity><departureDateTime>3:12 - 5/7/2023</departureDateTime><arrivalCity>Puerto</arrivalCity><arrivalDateTime>3:45-3/5/2023</arrivalDateTime><flight>Fel23</flight><seat>Clase Ejecutiva</seat><amount>48230</amount></Flight><Flight numFlight="B57"><departureCity>Chile</departureCity><departureDateTime>10:00-05/08/23</departureDateTime><arrivalCity>Brasil</arrivalCity><arrivalDateTime>17:00-05/08/23</arrivalDateTime><flight>A350</flight><seat>Clase Económica</seat><amount>40000</amount></Flight><Flight numFlight="T24"><departureCity>Japón</departureCity><departureDateTime>12:00-12/07/23</departureDateTime><arrivalCity>Korea Norte</arrivalCity><arrivalDateTime>14:00-12/07/23</arrivalDateTime><flight>A320</flight><seat>Clase Ejecutiva</seat><amount>60000</amount></Flight></Flights>

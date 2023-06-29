@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Airline;
 import domain.Model;
 import domain.Plane;
@@ -18,13 +18,13 @@ public class ControllerUpdatePlane implements ActionListener{
 	private GUIUpdatePlane guiUPlane;
 	private FilesXML fXML;
 	private Plane plane;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<Airline> arrayLA;
 	ArrayList<Model> arrayLM;
 	
 	public ControllerUpdatePlane() {
 		fXML= new FilesXML();
-		lo=new Logic();
+		lo=new LogicXML();
 		plane = new Plane();
 		//muestra la lista seleccionable de los comboBox
 		arrayLA=lo.getNAirline("Airlines.xml", "Airline");

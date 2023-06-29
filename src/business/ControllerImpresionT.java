@@ -9,7 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Airline;
 import domain.Passenger;
 import domain.Plane;
@@ -20,13 +20,13 @@ public class ControllerImpresionT implements ActionListener{
 
 	private GUIImpresionTiquete guiIT;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<Plane> arrayLP;
 	ArrayList<Airline> arrayLA;
 	ArrayList<Passenger>arrayLPassenger;
 	public ControllerImpresionT() {
 		fXML = new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		arrayLP=lo.getNamePlane("Planes.xml", "Plane");
 		arrayLA=lo.getNAirline("Airlines.xml", "Airline");
 		arrayLPassenger=lo.getNamePassport("Passengers.xml", "Passenger");

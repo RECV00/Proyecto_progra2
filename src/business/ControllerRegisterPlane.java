@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Airline;
 import domain.Model;
 import domain.Plane;
@@ -18,14 +18,14 @@ public class ControllerRegisterPlane implements ActionListener{
 	private GUIRegisterPlane guiRPlane;
 	private FilesXML fXML;
 	private Plane plane;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<Airline> arrayLA;
 	ArrayList<Model> arrayLM;
 	ArrayList<Plane> arrayLUser;
 	
 	public ControllerRegisterPlane() {
 	fXML = new FilesXML();
-	lo=new Logic();
+	lo=new LogicXML();
 	plane = new Plane();
 	fXML.createXML("Planes", "Planes.xml");
 	arrayLA=lo.getNAirline("Airlines.xml", "Airline");

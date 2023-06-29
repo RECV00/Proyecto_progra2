@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Brand;
 import presentation.GUIDeleteBrand;
 
@@ -14,13 +14,13 @@ public class ControllerDeleteBrand implements ActionListener{
 	private GUIDeleteBrand guiDB;
 	private FilesXML fXML;
 	private Brand brand;
-	private Logic lo;
+	private LogicXML lo;
 	
 	public ControllerDeleteBrand() {
 		// TODO Auto-generated constructor stub
 		guiDB= new GUIDeleteBrand();
 		fXML= new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		initializer();
 	}
 

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Brand;
 import domain.Model;
 import presentation.GUIRegisterModel;
@@ -16,13 +16,13 @@ public class ControllerUpdateModel implements ActionListener{
 
 	private GUIUpdateModel guiUM;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	private Model model;
 	ArrayList<Brand> arrayLB;
 	
 	public ControllerUpdateModel() {
 		fXML= new FilesXML();
-		lo=new Logic();
+		lo=new LogicXML();
 		model = new Model();
 		arrayLB=lo.getNameBrand("Brands.xml", "Brand");
 		//muestra la lista seleccionable de marcas

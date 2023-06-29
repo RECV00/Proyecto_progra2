@@ -8,7 +8,7 @@ import java.util.List;
 import org.w3c.dom.Element;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.User;
 import presentation.GUIUpdateUser;
 
@@ -16,13 +16,13 @@ public class ControllerUpdateUser implements ActionListener{
 	private GUIUpdateUser guiUu;
 	private FilesXML fXML;
 	private User user;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<User>arrayLU;
 	public ControllerUpdateUser() {
 		guiUu= new GUIUpdateUser();
 		fXML= new FilesXML();
 		user=new User();
-		lo=new Logic();
+		lo=new LogicXML();
 		initializer();
 	}
 	private void initializer() {

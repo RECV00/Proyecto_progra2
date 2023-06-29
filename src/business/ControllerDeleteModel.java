@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Model;
 import presentation.GUIDeleteModel;
 
@@ -14,13 +14,13 @@ public class ControllerDeleteModel implements ActionListener{
 	private GUIDeleteModel guiDM;
 	private FilesXML fXML;
 	private Model model;
-	private Logic lo;
+	private LogicXML lo;
 	
 	public ControllerDeleteModel() {
 		// TODO Auto-generated constructor stub
 		guiDM= new GUIDeleteModel();
 		fXML= new FilesXML();
-		lo = new Logic();
+		lo = new LogicXML();
 		initializer();
 	}
 

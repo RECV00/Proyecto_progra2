@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Flight;
 import presentation.GUIDeleteFlight;
 
@@ -15,13 +15,13 @@ public class ControllerDeleteFlight implements ActionListener{
 	private GUIDeleteFlight guiDF;
 	private FilesXML fXML;
 	private Flight flight;
-	private Logic lo;
+	private LogicXML lo;
 	
 	public ControllerDeleteFlight() {
 		// TODO Auto-generated constructor stub
 		guiDF= new GUIDeleteFlight();
 		fXML= new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		initializer();
 	}
 

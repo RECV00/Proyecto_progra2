@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.User;
 import presentation.GUIConsultUser;
 
 public class ControllerConsultUser implements ActionListener{
 	private GUIConsultUser guiCU;
-	private Logic lo;
+	private LogicXML lo;
 	private FilesXML fXML;
 	private User user;
 	ArrayList<User>arrayLUser;
@@ -19,7 +19,7 @@ public class ControllerConsultUser implements ActionListener{
 		// TODO Auto-generated constructor stub
 		guiCU= new GUIConsultUser();
 		fXML= new FilesXML();
-		lo = new Logic();
+		lo = new LogicXML();
 		initializer();
 	}
 	private void initializer() {

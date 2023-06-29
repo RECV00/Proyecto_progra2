@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Airline;
 import presentation.GUIUpdateAirline;
 
@@ -13,13 +13,13 @@ public class ControllerUpdateAirline implements ActionListener{
 
 	private GUIUpdateAirline guiUA;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	private Airline airline;
 	
 	public ControllerUpdateAirline() {
 		guiUA= new GUIUpdateAirline();
 		fXML= new FilesXML();
-		lo=new Logic();
+		lo=new LogicXML();
 		airline= new Airline();
 		initializer();
 	}

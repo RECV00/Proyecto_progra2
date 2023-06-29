@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Brand;
 import presentation.GUIUpdateBrand;
 ;
@@ -13,13 +13,13 @@ public class ControllerUpdateBrand implements ActionListener{
 
 	private GUIUpdateBrand guiUB;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	private Brand b;
 	
 	public ControllerUpdateBrand() {
 		guiUB= new GUIUpdateBrand();
 		fXML= new FilesXML();
-		lo=new Logic();
+		lo=new LogicXML();
 		b= new Brand();
 		initializer();
 	}

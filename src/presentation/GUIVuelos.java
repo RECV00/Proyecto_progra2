@@ -66,7 +66,7 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 	}
 
 	//LLenado de la tabla
-	public void fillTable(DefaultTableModel model,ArrayList <Flight> arrayLF,String avion) {
+	public void fillTable(DefaultTableModel model,ArrayList <Flight> arrayLF,String avion,int eje,int eco,int tour,int vEje) {
 		
 		for (int i = 0; i < arrayLF.size(); i++) {
 		 for (Flight f : arrayLF) {
@@ -78,16 +78,16 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 						"Arribo: Hora/Fecha: "+String.valueOf(f.getArrivalDateTime()),
 						"Avión: "+f.getFlight(),
 						"Aerolinea: "+avion,
-						"Asientos [Ejecutiva Vendidos]: "+String.valueOf(21),
-						"Asientos [Ejecutiva Dispobles]: "+String.valueOf(23),
+						"Asientos [Ejecutiva Vendidos]: "+String.valueOf(vEje),
+						"Asientos [Ejecutiva Dispobles]: "+String.valueOf(eje),
 						"Asientos [Turista Vendidos]: "+String.valueOf(24),
-						"Asientos [Turista Dispobles]: "+String.valueOf(25),
+						"Asientos [Turista Dispobles]: "+String.valueOf(tour),
 						"Asientos [Economica Vendidos]: "+String.valueOf(26),
-						"Asientos [Economica Dispobles]: "+String.valueOf(27),
+						"Asientos [Economica Dispobles]: "+String.valueOf(eco),
 						"Tiquetes de Clase Ejecutiva: "+String.valueOf(28),
 						"Tiquetes de Clase Turista: "+String.valueOf(29),
 						"Tiquetes de Clase Economico: "+String.valueOf(30),
-						"Monto por Vuelo: $"+String.valueOf(10534560)});
+						"Monto por Vuelo: $"+String.valueOf(157390*0.13)});
 			}
 		 }
 		}
@@ -216,3 +216,4 @@ public GUIVuelos(ArrayList<Flight>arrayLF) {
 		comboBoxFlight.setToolTipText("");
 	}
 }
+

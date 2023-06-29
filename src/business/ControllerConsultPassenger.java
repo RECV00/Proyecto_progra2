@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Passenger;
 import domain.User;
 import presentation.GUIConsultPassenger;
@@ -15,12 +15,12 @@ public class ControllerConsultPassenger implements ActionListener{
 	private GUIConsultPassenger guiCP;
 	private FilesXML fXML;
 	private Passenger passenger;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<Passenger>arrayLPassenger;
 	public ControllerConsultPassenger() {
 		guiCP = new GUIConsultPassenger();
 		passenger= new Passenger();
-		lo= new Logic();
+		lo= new LogicXML();
 		initializer();
 	}
 	private void initializer() {

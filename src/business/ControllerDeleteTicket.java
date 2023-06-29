@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Ticket;
 import presentation.GUIDeleteTicket;
 
@@ -14,13 +14,13 @@ public class ControllerDeleteTicket implements ActionListener{
 	private GUIDeleteTicket guiDT;
 	private FilesXML fXML;
 	private Ticket ticket;
-	private Logic lo;
+	private LogicXML lo;
 	
 	public ControllerDeleteTicket() {
 		// TODO Auto-generated constructor stub
 		guiDT= new GUIDeleteTicket();
 		fXML= new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		ticket= new Ticket();
 		initializer();
 	}

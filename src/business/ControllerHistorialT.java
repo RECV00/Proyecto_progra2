@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Passenger;
 import presentation.GUIHistorialTiquete;
 
@@ -13,10 +13,10 @@ public class ControllerHistorialT implements ActionListener{
 	
 	private GUIHistorialTiquete guiHT;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	public ControllerHistorialT() {
 		fXML = new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		guiHT= new GUIHistorialTiquete();
 		inicializar();
 	}

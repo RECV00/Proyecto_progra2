@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import data.FilesXML;
 import domain.Plane;
-import data.Logic;
+import data.LogicXML;
 import presentation.GUIDeletePlane;
 
 
@@ -14,13 +14,13 @@ public class ControllerDeletePlane implements ActionListener{
 	private GUIDeletePlane guiDPlane;
 	private FilesXML fXML;
 	private Plane plane;
-	private Logic lo;
+	private LogicXML lo;
 	
 	public ControllerDeletePlane() {
 		// TODO Auto-generated constructor stub
 		guiDPlane= new GUIDeletePlane();
 		fXML= new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		initializer();
 	}
 

@@ -1,4 +1,4 @@
-<Planes>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Planes>
 <Plane plate="Sansa">
 <airline>Iberojet</airline>
 <model>Airbus</model>
@@ -14,4 +14,4 @@
 <model>Ceiba</model>
 <year>2005</year>
 </Plane>
-</Planes>
+<Plane plate="A350"><airline>Singapore Airlines</airline><model>Boeing 737</model><year>2015</year></Plane><Plane plate="A320"><airline>Qatar Airways</airline><model>A330-900neo</model><year>2012</year></Plane><Plane plate="Llyvshin 11-76"><airline>Emirates</airline><model>AirBus A320</model><year>1990</year></Plane></Planes>

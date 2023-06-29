@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Airline;
 import presentation.GUIConsultAirline;
 
@@ -15,13 +15,13 @@ public class ControllerConsultAirline implements ActionListener{
 	private GUIConsultAirline guiCA;
 	private Airline air;
 	private FilesXML fXML;
-	private Logic lo;
+	private LogicXML lo;
 	ArrayList<Airline>arrayLAirline;
 	
 	public ControllerConsultAirline() {
 		guiCA= new GUIConsultAirline();
 		air = new Airline();
-		lo= new Logic();
+		lo= new LogicXML();
 		fXML = new FilesXML();
 		
 		initializer();

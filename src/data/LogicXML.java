@@ -37,7 +37,7 @@ import domain.Plane;
 import domain.Ticket;
 import domain.User;
 
-public class Logic {
+public class LogicXML {
 	
 	ArrayList<Airline> arrayLAirline;
 	ArrayList<Brand> arrayLBrand;
@@ -50,7 +50,7 @@ public class Logic {
 
 	Vector<Airline[]>vect;
 	
-	public Logic() {
+	public LogicXML() {
 		// TODO Auto-generated constructor stub
 	}
 	//usuario
@@ -686,6 +686,33 @@ public String searchXMLAvion2(String fileName, String elementType, String data, 
     }
     return flights.toString();
 }
+public String searchSeat(String fileName, String elementType, String data, String word) {
+    StringBuilder flights = new StringBuilder();
+
+    try {
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document documento = builder.parse(new File(fileName));
+        NodeList listaUser = documento.getElementsByTagName(elementType);
+        for (int i = 0; i < listaUser.getLength(); i++) {
+            Node nodoUser = listaUser.item(i);
+            if (nodoUser.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nodoUser;
+               
+                String numFlight = eElement.getAttribute(data);
+
+                if (numFlight.equals(word)) {
+                    String asiento = eElement.getElementsByTagName("seat").item(0).getTextContent();
+                    flights.append(asiento);
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return flights.toString();
+}
 //obtiene los numeros de vuelo para agregar al comboBox
 public ArrayList<Flight> getNameFlight(String rutaArchivo, String elementType) {
     ArrayList<Flight> vuelo = new ArrayList<Flight>();
@@ -709,6 +736,29 @@ public ArrayList<Flight> getNameFlight(String rutaArchivo, String elementType) {
         e.printStackTrace();
     }
     return vuelo;
+}
+public String getMontoFlight(String rutaArchivo, String elementType,String word) {
+    StringBuilder result = new StringBuilder();
+    try {//para obtener la aerolinea del avion
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();     
+        File archivoXML = new File(rutaArchivo);
+        Document documento = builder.parse(archivoXML);
+        NodeList nodeList = documento.getElementsByTagName(elementType);
+        // Recorrer los elementos de avión 
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element element = (Element) nodeList.item(i);
+            String name = element.getAttribute("plate");
+            if (name.equals(word)) {
+                String mont = element.getElementsByTagName("amount").item(0).getTextContent();
+                result.append(mont);
+               
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return result.toString();
 }
 //Busca y extrae el objeto para agregarlo a los textfield para poder actualizar
 public Flight searchFlight(String fileName, String elementType, String data, String word) {
@@ -928,6 +978,102 @@ public Model searchModel(String fileName, String elementType, String data, Strin
 	    }
 	    return m;
 }
+
+//obtiene la modelo que el avion tiene asociada 
+public String getNameModelPlane(String rutaArchivo, String elementType, String avion) {
+  StringBuilder result = new StringBuilder();
+  try {//para obtener la aerolinea del avion
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder builder = factory.newDocumentBuilder();     
+      File archivoXML = new File(rutaArchivo);
+      Document documento = builder.parse(archivoXML);
+      NodeList nodeList = documento.getElementsByTagName(elementType);
+      // Recorrer los elementos de avión 
+      for (int i = 0; i < nodeList.getLength(); i++) {
+          Element element = (Element) nodeList.item(i);
+          String name = element.getAttribute("plate");
+          if (name.equals(avion)) {
+              String mo = element.getElementsByTagName("model").item(0).getTextContent();
+              result.append(mo);
+             
+          }
+      }
+  } catch (Exception e) {
+      e.printStackTrace();
+  }
+  return result.toString();
+}
+
+public String getCantSeatExecutive(String rutaArchivo, String elementType, String model) {
+	  StringBuilder result = new StringBuilder();
+	  try {//para obtener la aerolinea del avion
+	      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	      DocumentBuilder builder = factory.newDocumentBuilder();     
+	      File archivoXML = new File(rutaArchivo);
+	      Document documento = builder.parse(archivoXML);
+	      NodeList nodeList = documento.getElementsByTagName(elementType);
+	      // Recorrer los elementos de avión 
+	      for (int i = 0; i < nodeList.getLength(); i++) {
+	          Element element = (Element) nodeList.item(i);
+	          String name = element.getAttribute("name");
+	          if (name.equals(model)) {
+	              String mo = element.getElementsByTagName("cantSeatExecutive").item(0).getTextContent();
+	              result.append(mo);
+	             
+	          }
+	      }
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	  return result.toString();
+	}
+
+public String getCantSeatTourist(String rutaArchivo, String elementType, String model) {
+	  StringBuilder result = new StringBuilder();
+	  try {//para obtener la aerolinea del avion
+	      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	      DocumentBuilder builder = factory.newDocumentBuilder();     
+	      File archivoXML = new File(rutaArchivo);
+	      Document documento = builder.parse(archivoXML);
+	      NodeList nodeList = documento.getElementsByTagName(elementType);
+	      // Recorrer los elementos de avión 
+	      for (int i = 0; i < nodeList.getLength(); i++) {
+	          Element element = (Element) nodeList.item(i);
+	          String name = element.getAttribute("name");
+	          if (name.equals(model)) {
+	              String mo = element.getElementsByTagName("cantSeatTourist").item(0).getTextContent();
+	              result.append(mo);
+	             
+	          }
+	      }
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	  return result.toString();
+	}
+public String getCantSeatEconomic(String rutaArchivo, String elementType, String model) {
+	  StringBuilder result = new StringBuilder();
+	  try {//para obtener la aerolinea del avion
+	      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	      DocumentBuilder builder = factory.newDocumentBuilder();     
+	      File archivoXML = new File(rutaArchivo);
+	      Document documento = builder.parse(archivoXML);
+	      NodeList nodeList = documento.getElementsByTagName(elementType);
+	      // Recorrer los elementos de avión 
+	      for (int i = 0; i < nodeList.getLength(); i++) {
+	          Element element = (Element) nodeList.item(i);
+	          String name = element.getAttribute("name");
+	          if (name.equals(model)) {
+	              String mo = element.getElementsByTagName("cantSeatEconomic").item(0).getTextContent();
+	              result.append(mo);
+	             
+	          }
+	      }
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	  return result.toString();
+	}
 //PASSENGER
 //para registrar en la tabla
 public ArrayList<Passenger> readXMLArrayListPassenger(String FileName, String elementType,String[]dataName) {
@@ -1635,3 +1781,4 @@ public String readXMLStringHTiquete(String FileName, String elementType) {
 
 
 }
+

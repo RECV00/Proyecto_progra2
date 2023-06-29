@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.User;
 import presentation.GUIDeleteUser;
 
@@ -14,7 +14,7 @@ public class ControllerDeleteUser implements ActionListener{
 	private GUIDeleteUser guiDU;
 	private FilesXML fXML;
 	private User user;
-	private Logic lo;
+	private LogicXML lo;
 	private ArrayList<User>arrayLUser;
 	
 	
@@ -22,7 +22,7 @@ public class ControllerDeleteUser implements ActionListener{
 		// TODO Auto-generated constructor stub
 		guiDU= new GUIDeleteUser();
 		fXML= new FilesXML();
-		lo= new Logic();
+		lo= new LogicXML();
 		user = new User();
 		initializer();
 	}

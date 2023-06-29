@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Flight;
 import domain.Passenger;
 import domain.Ticket;
@@ -18,7 +18,7 @@ public class ControllerRegisterTicket implements ActionListener{
 	private GUIRegisterTicket guiRT;
 	private FilesXML fXML;
 	private Ticket ticket;
-	private Logic lo;
+	private LogicXML lo;
 	private ArrayList<Ticket> arrayLTicket;
 	ArrayList<Passenger>arrayLPassenger;
 	ArrayList<Flight> arrayLF;
@@ -26,7 +26,7 @@ public class ControllerRegisterTicket implements ActionListener{
 	
 	fXML = new FilesXML();
 	ticket = new Ticket();
-	lo= new Logic();
+	lo= new LogicXML();
 	fXML.createXML("Tickets", "Tickets.xml");
 	arrayLF = lo.getNameFlight("Flights.xml", "Flight");
 	arrayLPassenger=lo.getNamePassport("Passengers.xml", "Passenger");

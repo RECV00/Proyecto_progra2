@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import data.FilesXML;
-import data.Logic;
+import data.LogicXML;
 import domain.Passenger;
 import presentation.GUIRegisterPassenger;
 
@@ -15,14 +15,14 @@ public class ControllerRegisterPassenger implements ActionListener{
 	private GUIRegisterPassenger guiRP;
 	private FilesXML fXML;
 	private Passenger passenger;
-	private Logic lo;
+	private LogicXML lo;
 	@SuppressWarnings("unused")
 	private ArrayList<Passenger> arrayLPassenger;
 	
 	public ControllerRegisterPassenger() {
 	guiRP= new GUIRegisterPassenger();
 	fXML = new FilesXML();
-	lo= new Logic();
+	lo= new LogicXML();
 	passenger = new Passenger();
 	fXML.createXML("Passengers", "Passengers.xml");
 	initializer();
